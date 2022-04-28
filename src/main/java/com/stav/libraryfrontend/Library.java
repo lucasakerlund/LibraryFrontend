@@ -1,7 +1,7 @@
 package com.stav.libraryfrontend;
 
+import com.stav.libraryfrontend.controllers.models.LoginScreenController;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -20,8 +20,7 @@ public class Library extends Application {
     public void start(Stage stage) throws IOException {
         instance = this;
         this.stage = stage;
-        FXMLLoader loader = new FXMLLoader(Library.class.getResource("loginScreen.fxml"));
-        root = loader.load();
+        root = LoginScreenController.inst();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

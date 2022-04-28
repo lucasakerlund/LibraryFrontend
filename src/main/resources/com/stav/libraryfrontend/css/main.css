@@ -1,0 +1,46 @@
+.login-screen{
+    -fx-background-color: #e2c8af;
+}
+
+.login-screen-login-button{
+    -fx-text-fill: #121213;
+    -fx-background-color: white;
+    -fx-border-color: orange;
+    -fx-underline: false;
+    -fx-border-width: 8;
+    -fx-font-size: 75;
+}
+
+.login-screen-login-button:hover{
+    -fx-text-fill: green;
+    -fx-border-color: green;
+}
+
+.login-screen-new-account-button{
+    -fx-text-fill: #4343ef;
+    -fx-font-size: 18;
+}
+
+.login-screen-new-account-button:hover{
+    -fx-underline: true;
+}
+
+.login-screen-quit-button{
+    -fx-border-color:orange;
+    -fx-border-width: 4;
+    -fx-background-color: white;
+}
+
+.login-screen-quit-button:hover{
+    -fx-border-color: green;
+    -fx-text-fill: green;
+}
+
+.login-screen-admin-button{
+    -fx-text-fill: #4343ef;
+    -fx-font-size: 12;
+}
+
+.login-screen-admin-button:hover{
+    -fx-underline: true;
+}
