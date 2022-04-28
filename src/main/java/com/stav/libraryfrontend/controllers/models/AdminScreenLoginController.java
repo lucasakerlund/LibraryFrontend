@@ -8,12 +8,12 @@ public class AdminScreenLoginController {
 
     private static AdminScreenLoginController instance;
 
-    @FXML
+    //@FXML
 
     private AdminScreenLoginController(){
         instance = this;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Library.class.getResource("fxml/loginScreen.fxml"))
+        FXMLLoader fxmlLoader = new FXMLLoader(Library.class.getResource("fxml/loginScreen.fxml"));
 
     }
 }
