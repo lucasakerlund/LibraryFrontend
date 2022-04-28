@@ -1,19 +1,16 @@
 package com.stav.libraryfrontend.controllers.models;
 
 import com.stav.libraryfrontend.Library;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
-public class AdminScreenLoginController {
+public class AdminScreen {
 
-    private static AdminScreenLoginController instance;
+    private static AdminScreen instance;
 
-    @FXML
-
-    private AdminScreenLoginController(){
+    private AdminScreen(){
         instance = this;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Library.class.getResource("fxml/loginScreen.fxml"))
+        FXMLLoader fxmlLoader = new FXMLLoader(Library.class.getResource("fxml/loginScreen.fxml"));
 
     }
 }
