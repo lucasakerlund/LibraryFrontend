@@ -1,3 +1,44 @@
+/*Customer Menu*/
+
+.customer-menu-bar{
+    -fx-background-color: #d4b38f;
+    -fx-border-width: 0 2 0 0;
+    -fx-border-color: white;
+}
+
+.customer-menu-bar-list{
+    -fx-background-color: #e2c8ab;
+}
+
+.customer-menu-bar-button{
+    -fx-background-color: #d4b38f;
+    -fx-background-insets: 2 5 2 5;
+}
+
+.customer-menu-bar-button:hover .customer-menu-bar-button-label{
+    -fx-text-fill: INDIANRED;
+}
+#customer-menu-bar-button-focused:hover .customer-menu-bar-button-label{
+    -fx-text-fill: white;
+}
+
+#customer-menu-bar-button-focused{
+    -fx-background-color: #efddc9;
+    -fx-background-insets: 0 -2 0 0;
+    -fx-border-width: 2 0 2 0;
+    -fx-border-insets: 0 -2 0 0;
+    -fx-border-color: white;
+}
+
+.customer-menu-bar-button-label{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: BOLD;
+}
+
+.customer-content{
+    -fx-background-color: #efddc9;
+}
 /* LOGIN SCREEN */
 .login-screen{
     -fx-background-color: #e2c8af;

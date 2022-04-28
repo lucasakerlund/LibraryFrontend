@@ -48,6 +48,9 @@ public class ExistingUserLoginScreen extends BorderPane {
         backButton.setOnMousePressed(e -> {
             Library.inst().setContent(LoginScreen.inst());
         });
+        loginButton.setOnMousePressed(e -> {
+            Library.inst().setContent(CustomerMenu.inst());
+        });
     }
 
     public static ExistingUserLoginScreen inst(){
