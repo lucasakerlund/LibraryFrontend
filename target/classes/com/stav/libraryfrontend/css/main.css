@@ -1,4 +1,3 @@
-/* LOGIN SCREEN */
 .login-screen{
     -fx-background-color: #e2c8af;
 }
@@ -45,45 +44,3 @@
 .login-screen-admin-button:hover{
     -fx-underline: true;
 }
-/* LOGIN SCREEN */
-
-/* EXISTING USER LOGIN SCREEN */
-
-.existing-user-login-screen{
-    -fx-background-color: #e2c8af;
-}
-
-.existing-user-login-screen-back-button{
-    -fx-border-color: black;
-    -fx-border-width: 2;
-    -fx-font-size: 20;
-    -fx-background-color: yellow;
-}
-
-.existing-user-login-screen-back-button:hover{
-    -fx-background-color: orange;
-}
-
-.existing-user-login-screen-login-button{
-    -fx-border-color: black;
-    -fx-border-width: 2;
-    -fx-border-radius: 20;
-    -fx-padding: 6;
-    -fx-font-size: 20;
-    -fx-background-color: #00ffea;
-    -fx-background-radius: 100;
-}
-
-.existing-user-login-screen-login-button:hover {
-    -fx-background-color: #00bbff;
-}
-
-.existing-user-login-screen-forgotten-password-button{
-    -fx-text-fill: #4343ef;
-    -fx-font-size: 12;
-}
-
-.existing-user-login-screen-forgotten-password-button:hover{
-    -fx-underline: true;
-}
-/* EXISTING USER LOGIN SCREEN */
