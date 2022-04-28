@@ -8,9 +8,9 @@ import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
-public class LoginScreenController extends BorderPane {
+public class LoginScreen extends BorderPane {
 
-    private static LoginScreenController instance = new LoginScreenController();
+    private static LoginScreen instance = new LoginScreen();
 
     @FXML
     private Label adminButton;
@@ -25,12 +25,16 @@ public class LoginScreenController extends BorderPane {
     private Label newAccountButton;
 
 
-    private LoginScreenController(){
+
+
+
+    private LoginScreen(){
         instance = this;
 
         FXMLLoader fxmlLoader = new FXMLLoader(Library.class.getResource("fxml/loginScreen.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
+
 
         try {
             fxmlLoader.load();
@@ -38,18 +42,22 @@ public class LoginScreenController extends BorderPane {
             e.printStackTrace();
         }
 
+
         setup();
     }
 
+    // "Action-listeners here! Match label names with corresponding action
     public void setup(){
         exitButton.setOnMousePressed(e -> {
             System.exit(0);
         });
 
-
+        loginButton.setOnMousePressed(e -> {
+            Library.inst().setContent(ExistingUserLoginScreen.inst());
+        });
     }
 
-    public static LoginScreenController inst(){
+    public static LoginScreen inst(){
         return instance;
     }
 }
