@@ -44,17 +44,3 @@
 .login-screen-admin-button:hover{
     -fx-underline: true;
 }
-
-.login-admin-screen{
--fx-background-color: #e2c8af;
-}
-
-.admin-screen-login-back-button-admin{
-    -fx-border-color: orange;
-    -fx-border-width: 4;
-    -fx-background-color: white;
-}
-.admin-screen-login-background-button-admin:hover{
-fx-border-color: green;
-fx-text-fill: green;
-}

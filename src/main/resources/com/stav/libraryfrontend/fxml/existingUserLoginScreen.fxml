@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="existing-user-login-screen" stylesheets="@../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <BorderPane prefHeight="53.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <left>
+            <Label id="existing-user-login-screen-back-button" fx:id="backButton" styleClass="existing-user-login-screen-back-button" text="Tillbaka" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="10.0" top="10.0" />
+               </padding>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </Label>
+         </left>
+      </BorderPane>
+   </bottom>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="40.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="150.0" text="Email-adress" />
+                  <TextField maxWidth="150.0" promptText="Adress här..." />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="150.0" text="Lösenord" />
+                  <TextField maxWidth="150.0" promptText="Lösen här..." />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" spacing="35.0">
+               <children>
+                  <Label id="existing-user-login-screen-login-button" fx:id="loginButton" styleClass="existing-user-login-screen-login-button" text="Logga in" />
+                  <Label id="existing-user-login-screen-forgotten-password-button" fx:id="forgottenPasswordButton" layoutX="396.0" layoutY="10.0" styleClass="existing-user-login-screen-forgotten-password-button" text="Glömt lösenord...">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+</fx:root>
