@@ -47,8 +47,9 @@
 }
 /* LOGIN SCREEN */
 
-/* EXISTING USER LOGIN SCREEN */
 
+
+/* EXISTING USER LOGIN SCREEN */
 .existing-user-login-screen{
     -fx-background-color: #e2c8af;
 }
