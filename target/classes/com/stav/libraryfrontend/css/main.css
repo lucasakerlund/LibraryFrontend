@@ -129,3 +129,37 @@
     -fx-underline: true;
 }
 /* EXISTING USER LOGIN SCREEN */
+
+/* USER LOGIN SCREEN */
+
+.admin-login-screen {
+    -fx-background-color: #e2c8af;
+}
+
+.admin-back-button{
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-font-size: 20;
+    -fx-background-color: red;
+}
+
+.admin-back-button:hover{
+    -fx-background-color: orange;
+}
+
+.admin-login-button{
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-font-size: 20;
+    -fx-background-color: red;
+}
+.admin.login-button:hover{
+    -fx-background-color: orange;
+}
+.admin-forgot-password-button{
+    -fx-text-fill: #4343ef;
+    -fx-font-size: 12;
+}
+.admin-forgot-password-button:hover{
+    -fx-underline: true;
+}
