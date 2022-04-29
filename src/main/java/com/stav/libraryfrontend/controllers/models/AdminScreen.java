@@ -13,7 +13,7 @@ public class AdminScreen extends BorderPane {
     private static AdminScreen instance = new AdminScreen();
 
     @FXML
-    private Label backButtons;
+    private Label backButton;
 
     @FXML
     private Label adminLoginButton;
@@ -40,7 +40,7 @@ public class AdminScreen extends BorderPane {
     }
 
     public void setup() {
-        backButtons.setOnMousePressed(e -> {
+        backButton.setOnMousePressed(e -> {
             Library.inst().setContent(LoginScreen.inst());
         });
     }
