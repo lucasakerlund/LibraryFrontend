@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -28,13 +29,13 @@
             <VBox alignment="CENTER">
                <children>
                   <Label prefHeight="17.0" prefWidth="150.0" text="Email-adress" />
-                  <TextField maxWidth="150.0" promptText="Adress här..." />
+                  <TextField fx:id="emailField" maxWidth="150.0" promptText="Adress här..." />
                </children>
             </VBox>
             <VBox alignment="CENTER">
                <children>
                   <Label prefHeight="17.0" prefWidth="150.0" text="Lösenord" />
-                  <TextField maxWidth="150.0" promptText="Lösen här..." />
+                  <PasswordField fx:id="passwordField" maxWidth="150.0" promptText="Lösen här..." />
                </children>
             </VBox>
             <VBox alignment="CENTER" spacing="35.0">
