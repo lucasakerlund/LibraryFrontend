@@ -55,6 +55,10 @@ public class LoginScreen extends BorderPane {
         loginButton.setOnMousePressed(e -> {
             Library.inst().setContent(ExistingUserLoginScreen.inst());
         });
+
+        adminButton.setOnMousePressed(e -> {
+            Library.inst().setContent(AdminScreen.inst());
+        });
     }
 
     public static LoginScreen inst(){
