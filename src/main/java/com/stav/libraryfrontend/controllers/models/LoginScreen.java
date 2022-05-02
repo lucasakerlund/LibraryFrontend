@@ -24,6 +24,9 @@ public class LoginScreen extends BorderPane {
     @FXML
     private Label newAccountButton;
 
+    @FXML
+    private Label userMessageLabel;
+
 
 
 
@@ -52,13 +55,25 @@ public class LoginScreen extends BorderPane {
             System.exit(0);
         });
 
+        // Every Action-listener empties the user message label so that it only appears after a new user has been added
         loginButton.setOnMousePressed(e -> {
+            userMessageLabel.setText("");
             Library.inst().setContent(ExistingUserLoginScreen.inst());
         });
 
         adminButton.setOnMousePressed(e -> {
+            userMessageLabel.setText("");
             Library.inst().setContent(AdminScreen.inst());
         });
+
+        newAccountButton.setOnMousePressed(e -> {
+            userMessageLabel.setText("");
+            Library.inst().setContent(NewCustomerScreen.inst());
+        });
+    }
+
+    public void userAddedSuccessfully(){
+        userMessageLabel.setText("Ny användare har lagts till i systemet!");
     }
 
     public static LoginScreen inst(){
