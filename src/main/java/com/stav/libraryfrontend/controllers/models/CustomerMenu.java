@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
@@ -30,6 +31,9 @@ public class CustomerMenu extends BorderPane {
     @FXML
     private BorderPane content;
 
+    @FXML
+    private ImageView test;
+
     private MenuButton focused;
     private HashMap<String, MenuButton> buttons;
 
@@ -50,6 +54,8 @@ public class CustomerMenu extends BorderPane {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
 
         setup();
     }
