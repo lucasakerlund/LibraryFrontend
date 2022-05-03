@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -59,10 +58,7 @@
             </BorderPane>
          </left>
          <center>
-            <BorderPane fx:id="content" prefHeight="200.0" prefWidth="200.0" styleClass="customer-content" BorderPane.alignment="CENTER">
-               <top>
-                  <ImageView fx:id="test" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" BorderPane.alignment="CENTER" />
-               </top></BorderPane>
+            <BorderPane fx:id="content" prefHeight="200.0" prefWidth="200.0" styleClass="customer-content" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </center>

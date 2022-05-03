@@ -38,6 +38,19 @@
 .customer-content{
     -fx-background-color: #efddc9;
 }
+
+.scroll-pane{
+    -fx-background-color: transparent;
+}
+
+.scroll-bar{
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
 /* LOGIN SCREEN */
 .login-screen{
     -fx-background-color: #e2c8af;
