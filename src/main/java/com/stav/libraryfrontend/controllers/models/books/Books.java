@@ -26,13 +26,14 @@ public class Books extends BorderPane {
         }
 
         try {
-            box.getChildren().add(new BookCover(BackendCaller.inst().getImage(1)));
-            box.getChildren().add(new BookCover(BackendCaller.inst().getImage(2)));
-            box.getChildren().add(new BookCover(BackendCaller.inst().getImage(3)));
-            box.getChildren().add(new BookCover(BackendCaller.inst().getImage(4)));
-            box.getChildren().add(new BookCover(BackendCaller.inst().getImage(5)));
-            box.getChildren().add(new BookCover(BackendCaller.inst().getImage(6)));
-            box.getChildren().add(new BookCover(BackendCaller.inst().getImage(7)));
+            addBook(new BookCover(BackendCaller.inst().getImage(1)));
+            addBook(new BookCover(BackendCaller.inst().getImage(2)));
+            addBook(new BookCover(BackendCaller.inst().getImage(3)));
+            addBook(new BookCover(BackendCaller.inst().getImage(4)));
+            addBook(new BookCover(BackendCaller.inst().getImage(5)));
+            addBook(new BookCover(BackendCaller.inst().getImage(6)));
+            addBook(new BookCover(BackendCaller.inst().getImage(7)));
+            addBook(new BookCover(BackendCaller.inst().getImage(8)));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -41,6 +42,10 @@ public class Books extends BorderPane {
 
     public static Books inst(){
         return instance;
+    }
+
+    public void addBook(BookCover bookCover){
+        box.getChildren().add(bookCover);
     }
 
 }
