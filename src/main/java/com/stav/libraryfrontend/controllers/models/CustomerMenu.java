@@ -3,6 +3,7 @@ package com.stav.libraryfrontend.controllers.models;
 import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.controllers.models.books.Books;
+import com.stav.libraryfrontend.controllers.models.myPage.MyPage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -51,7 +52,7 @@ public class CustomerMenu extends BorderPane {
         }
         try {
             buttons.put("books", new MenuButton(booksButton, Books.inst()));
-            buttons.put("books", new MenuButton(myPageButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/myPage/myPage.fxml")).load()));
+            buttons.put("books", new MenuButton(myPageButton, MyPage.inst()));
             buttons.put("books", new MenuButton(localsButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/local/local.fxml")).load()));
         } catch (IOException e) {
             e.printStackTrace();

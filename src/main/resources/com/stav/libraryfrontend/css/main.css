@@ -354,58 +354,44 @@
     -fx-text-fill: GREEN;
     -fx-underline: true;
 }
+/* ADD STAFF SCREEN */
 
-/*STAFF MENU*/
+/* MY PAGE (MIN SIDA) */
+.my-page{
+    -fx-background-color: transparent;
+}
 
-.staff-menu-bar{
-    -fx-background-color: #d4b38f;
-    -fx-border-width: 0 2 0 0;
+.my-page-header{
+    -fx-border-width: 0 0 4 0;
     -fx-border-color: white;
 }
 
-.staff-menu-bar-list{
-    -fx-background-color: #e2c8ab;
-}
-
-.staff-menu-bar-button{
-    -fx-background-color: #d4b38f;
-    -fx-background-insets: 2 5 2 5;
-}
-
-.staff-menu-bar-button:hover .customer-menu-bar-button-label{
-    -fx-text-fill: INDIANRED;
-}
-#staff-menu-bar-button-focused:hover .customer-menu-bar-button-label{
+.my-page-header-buttons{
     -fx-text-fill: white;
-}
-
-#staff-menu-bar-button-focused{
-    -fx-background-color: #efddc9;
-    -fx-background-insets: 0 -2 0 0;
-    -fx-border-width: 2 0 2 0;
-    -fx-border-insets: 0 -2 0 0;
+    -fx-border-width: 1;
     -fx-border-color: white;
-}
-
-.staff-menu-bar-button-label{
+    -fx-padding: 6;
+    -fx-background-color: #d4b38f;
     -fx-font-size: 20;
-    -fx-text-fill: white;
-    -fx-font-weight: BOLD;
+    -fx-cursor: hand;
 }
 
-.staff-content{
-    -fx-background-color: #efddc9;
+.my-page-header-buttons:hover{
+    -fx-background-color: #cb8b59;
+    -fx-underline: true;
 }
+/* MY PAGE (MIN SIDA) */
 
-.scroll-pane{
-    -fx-background-color: transparent;
+/* MY PAGE LOANED BOOKS */
+.my-page-loaned-books{
+    -fx-background-color: #e2c8af;
 }
+/* MY PAGE LOANED BOOKS */
 
-.scroll-bar{
-    -fx-background-color: transparent;
-}
 
-.scroll-pane .viewport{
-    -fx-background-color: transparent;
+/* LOANED BOOKS COVER */
+.loaned-book{
+    -fx-border-width: 2;
+    -fx-border-color: black;
 }
-/* STAFF MENU */
+/* LOANED BOOKS COVER */
