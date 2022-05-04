@@ -58,6 +58,7 @@
 
 .book-cover:hover .image-view{
     -fx-opacity: 0.5;
+    -fx-cursor: hand;
 }
 
 .book-cover:hover .book-cover-title{
@@ -98,8 +99,38 @@
     -fx-background-color: rgba(52,53,53,.4);
 }
 
+.book-loan-view-book-button{
+    -fx-font-size: 20;
+    -fx-text-fill: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: #00ff00;
+    -fx-padding: 0 5 0 5;
+}
+
+.book-loan-view-book-button:hover{
+    -fx-text-fill: #b0dab0;
+    -fx-border-color: #b0dab0;
+    -fx-cursor: hand;
+}
+
 .book-loan-view-location-list{
     -fx-background-color: rgba(52,53,53,.4);
+}
+
+.book-loan-view-book-information-box{
+    -fx-background-color: rgba(52,53,53,.4);
+    -fx-border-width: 2 2 0 0;
+    -fx-border-color: white;
+}
+
+.book-loan-view-information-label{
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+}
+
+.book-loan-view-book-information-value{
+    -fx-font-size: 15;
+    -fx-text-fill: #bebebe;
 }
 
 /* LOGIN SCREEN */
@@ -302,96 +333,3 @@
     -fx-background-color: #6b7700;
     -fx-underline: true;
 }
-/* NEW CUSTOMER SCREEN */
-
-/* ADD STAFF SCREEN */
-.add-staff-screen{
-    -fx-background-color: #e2c8af;
-}
-
-.add-staff-screen-first-name-label{
-    -fx-font-size: 21;
-    -fx-underline: true;
-}
-
-.add-staff-screen-last-name-label{
-    -fx-font-size: 21;
-    -fx-underline: true;
-}
-
-.add-staff-screen-password-label{
-    -fx-font-size: 21;
-    -fx-underline: true;
-}
-
-.add-staff-screen-admin-checkbox{
-    -fx-font-size: 14;
-}
-
-.add-staff-screen-create-button{
-    -fx-background-color: #00ff00;
-    -fx-border-width: 2;
-    -fx-border-color: black;
-    -fx-font-size: 24;
-}
-
-.add-staff-screen-create-button:hover{
-    -fx-background-color: green;
-}
-
-.add-staff-screen-back-button{
-    -fx-font-size: 24;
-    -fx-border-color: black;
-    -fx-border-width: 2;
-    -fx-background-color: red;
-}
-
-.add-staff-screen-back-button:hover{
-    -fx-background-color: rgb(138, 4, 4);
-}
-
-.add-staff-screen-message-label{
-    -fx-text-fill: GREEN;
-    -fx-underline: true;
-}
-/* ADD STAFF SCREEN */
-
-/* MY PAGE (MIN SIDA) */
-.my-page{
-    -fx-background-color: transparent;
-}
-
-.my-page-header{
-    -fx-border-width: 0 0 4 0;
-    -fx-border-color: white;
-}
-
-.my-page-header-buttons{
-    -fx-text-fill: white;
-    -fx-border-width: 1;
-    -fx-border-color: white;
-    -fx-padding: 6;
-    -fx-background-color: #d4b38f;
-    -fx-font-size: 20;
-    -fx-cursor: hand;
-}
-
-.my-page-header-buttons:hover{
-    -fx-background-color: #cb8b59;
-    -fx-underline: true;
-}
-/* MY PAGE (MIN SIDA) */
-
-/* MY PAGE LOANED BOOKS */
-.my-page-loaned-books{
-    -fx-background-color: #e2c8af;
-}
-/* MY PAGE LOANED BOOKS */
-
-
-/* LOANED BOOKS COVER */
-.loaned-book{
-    -fx-border-width: 2;
-    -fx-border-color: black;
-}
-/* LOANED BOOKS COVER */
