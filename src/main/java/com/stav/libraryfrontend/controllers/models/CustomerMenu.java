@@ -1,11 +1,14 @@
 package com.stav.libraryfrontend.controllers.models;
 
 import com.stav.libraryfrontend.Library;
+import com.stav.libraryfrontend.abstracts.BackendCaller;
+import com.stav.libraryfrontend.controllers.models.books.Books;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
@@ -30,6 +33,9 @@ public class CustomerMenu extends BorderPane {
     @FXML
     private BorderPane content;
 
+    @FXML
+    private ImageView test;
+
     private MenuButton focused;
     private HashMap<String, MenuButton> buttons;
 
@@ -44,7 +50,7 @@ public class CustomerMenu extends BorderPane {
             e.printStackTrace();
         }
         try {
-            buttons.put("books", new MenuButton(booksButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/books/books.fxml")).load()));
+            buttons.put("books", new MenuButton(booksButton, Books.inst()));
             buttons.put("books", new MenuButton(myPageButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/myPage/myPage.fxml")).load()));
             buttons.put("books", new MenuButton(localsButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/local/local.fxml")).load()));
         } catch (IOException e) {

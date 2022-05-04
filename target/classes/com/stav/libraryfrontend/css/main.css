@@ -1,5 +1,4 @@
 /*Customer Menu*/
-
 .customer-menu-bar{
     -fx-background-color: #d4b38f;
     -fx-border-width: 0 2 0 0;
@@ -39,9 +38,27 @@
 .customer-content{
     -fx-background-color: #efddc9;
 }
+
+.scroll-pane{
+    -fx-background-color: transparent;
+}
+
+.scroll-bar{
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
 /* LOGIN SCREEN */
 .login-screen{
     -fx-background-color: #e2c8af;
+}
+
+.login-screen-welcome-label{
+    -fx-underline: true;
+    -fx-font-size: 28;
 }
 
 .login-screen-login-button{
@@ -50,7 +67,7 @@
     -fx-border-color: orange;
     -fx-underline: false;
     -fx-border-width: 8;
-    -fx-font-size: 75;
+    -fx-font-size: 55;
 }
 
 .login-screen-login-button:hover{
@@ -60,7 +77,7 @@
 
 .login-screen-new-account-button{
     -fx-text-fill: #4343ef;
-    -fx-font-size: 18;
+    -fx-font-size: 14;
 }
 
 .login-screen-new-account-button:hover{
@@ -80,10 +97,16 @@
 
 .login-screen-admin-button{
     -fx-text-fill: #4343ef;
-    -fx-font-size: 12;
+    -fx-font-size: 11;
 }
 
 .login-screen-admin-button:hover{
+    -fx-underline: true;
+}
+
+.login-screen-user-message-label{
+    -fx-text-fill: green;
+    -fx-font-size: 14;
     -fx-underline: true;
 }
 /* LOGIN SCREEN */
@@ -129,3 +152,154 @@
     -fx-underline: true;
 }
 /* EXISTING USER LOGIN SCREEN */
+
+/* USER LOGIN SCREEN */
+.admin-login-screen {
+    -fx-background-color: #e2c8af;
+}
+
+.admin-back-button{
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-font-size: 20;
+    -fx-background-color: red;
+}
+
+.admin-back-button:hover{
+    -fx-background-color: orange;
+}
+
+.admin-login-button{
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-font-size: 20;
+    -fx-background-color: red;
+}
+.admin-login-button:hover{
+    -fx-background-color: orange;
+}
+.admin-forgot-password-button{
+    -fx-text-fill: #4343ef;
+    -fx-font-size: 12;
+}
+.admin-forgot-password-button:hover{
+    -fx-underline: true;
+}
+/* USER LOGIN SCREEN */
+
+/* NEW CUSTOMER SCREEN */
+.new-customer-screen{
+    -fx-background-color: #e2c8af;
+}
+
+.new-customer-screen-header{
+    -fx-font-size: 48;
+    -fx-underline: true;
+    -fx-text-fill: blue;
+}
+
+.new-customer-screen-first-name-label{
+    -fx-font-size: 14;
+    -fx-underline: true;
+}
+
+.new-customer-screen-last-name-label{
+    -fx-font-size: 14;
+    -fx-underline: true;
+}
+
+.new-customer-screen-email-label{
+    -fx-font-size: 14;
+    -fx-underline: true;
+}
+
+.new-customer-screen-password-label{
+    -fx-font-size: 14;
+    -fx-underline: true;
+}
+
+.new-customer-screen-confirm-password-label{
+    -fx-font-size: 14;
+    -fx-underline: true;
+}
+
+.new-customer-screen-create-user-button{
+    -fx-font-size: 18;
+    -fx-background-color: #00ff2e;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 40;
+    -fx-padding: 4;
+    -fx-background-radius: 100;
+}
+
+.new-customer-screen-create-user-button:hover{
+    -fx-background-color: #007715;
+    -fx-underline: true;
+}
+
+.new-customer-screen-back-button{
+    -fx-font-size: 18;
+    -fx-background-color: yellow;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-padding: 6;
+
+}
+
+.new-customer-screen-back-button:hover{
+    -fx-background-color: #6b7700;
+    -fx-underline: true;
+}
+/* NEW CUSTOMER SCREEN */
+
+/* ADD STAFF SCREEN */
+.add-staff-screen{
+    -fx-background-color: #e2c8af;
+}
+
+.add-staff-screen-first-name-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-last-name-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-password-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-admin-checkbox{
+    -fx-font-size: 14;
+}
+
+.add-staff-screen-create-button{
+    -fx-background-color: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-font-size: 24;
+}
+
+.add-staff-screen-create-button:hover{
+    -fx-background-color: green;
+}
+
+.add-staff-screen-back-button{
+    -fx-font-size: 24;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-color: red;
+}
+
+.add-staff-screen-back-button:hover{
+    -fx-background-color: rgb(138, 4, 4);
+}
+
+.add-staff-screen-message-label{
+    -fx-text-fill: GREEN;
+    -fx-underline: true;
+}

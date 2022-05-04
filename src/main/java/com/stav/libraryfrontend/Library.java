@@ -4,6 +4,7 @@ import com.stav.libraryfrontend.controllers.models.LoginScreen;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -28,6 +29,14 @@ public class Library extends Application {
 
     public static Library inst(){
         return instance;
+    }
+
+    public Stage getStage(){
+        return stage;
+    }
+
+    public BorderPane getRoot(){
+        return root;
     }
 
     public void setContent(Parent parent){
