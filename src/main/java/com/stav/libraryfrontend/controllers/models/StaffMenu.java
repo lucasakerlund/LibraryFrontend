@@ -45,7 +45,7 @@ public class StaffMenu extends BorderPane {
             e.printStackTrace();
         }
         try {
-            buttons.put("books", new MenuButton(allBooksButton, Something.inst()));
+            buttons.put("books", new MenuButton(allBooksButton, null));
             buttons.put("books", new MenuButton(staffPageButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/myPage/myPage.fxml")).load()));
             buttons.put("books", new MenuButton(staffLocalsButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/local/local.fxml")).load()));
         } catch (IOException e) {
