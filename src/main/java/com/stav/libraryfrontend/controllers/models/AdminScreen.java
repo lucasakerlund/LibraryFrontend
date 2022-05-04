@@ -28,7 +28,7 @@ public class AdminScreen extends BorderPane {
     private AdminScreen() {
         instance = this;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Library.class.getResource("/com/stav/libraryfrontend/fxml/adminScreenLogin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Library.class.getResource("/com/stav/libraryfrontend/fxml/staff/adminScreenLogin.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
