@@ -56,7 +56,7 @@ public class BackendCaller {
         System.out.println(data);
         JSONObject object = new JSONObject(data);
         JSONArray array = new JSONArray(object.getJSONArray("items"));
-        return array.getJSONObject(0).getJSONObject("volumeInfo").getJSONObject("imageLinks").getString("thumbnail");
+        return array.getJSONObject(0).getJSONObject("volumeInfo").getJSONObject("imageLinks").getString("thumbnail").replace("zoom=1", "zoom=10");
     }
 
 }

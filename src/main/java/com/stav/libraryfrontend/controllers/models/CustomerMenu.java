@@ -28,7 +28,7 @@ public class CustomerMenu extends BorderPane {
     @FXML
     private HBox aboutUsButton;
     @FXML
-    private HBox logutButton;
+    private HBox logoutButton;
 
     @FXML
     private BorderPane content;
@@ -69,7 +69,7 @@ public class CustomerMenu extends BorderPane {
     }
 
     private void setup(){
-        logutButton.setOnMousePressed(e -> {
+        logoutButton.setOnMousePressed(e -> {
             Library.inst().setContent(LoginScreen.inst());
         });
     }
