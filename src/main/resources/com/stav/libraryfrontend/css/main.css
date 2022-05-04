@@ -58,6 +58,7 @@
 
 .book-cover:hover .image-view{
     -fx-opacity: 0.5;
+    -fx-cursor: hand;
 }
 
 .book-cover:hover .book-cover-title{
@@ -98,8 +99,38 @@
     -fx-background-color: rgba(52,53,53,.4);
 }
 
+.book-loan-view-book-button{
+    -fx-font-size: 20;
+    -fx-text-fill: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: #00ff00;
+    -fx-padding: 0 5 0 5;
+}
+
+.book-loan-view-book-button:hover{
+    -fx-text-fill: #b0dab0;
+    -fx-border-color: #b0dab0;
+    -fx-cursor: hand;
+}
+
 .book-loan-view-location-list{
     -fx-background-color: rgba(52,53,53,.4);
+}
+
+.book-loan-view-book-information-box{
+    -fx-background-color: rgba(52,53,53,.4);
+    -fx-border-width: 2 2 0 0;
+    -fx-border-color: white;
+}
+
+.book-loan-view-information-label{
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+}
+
+.book-loan-view-book-information-value{
+    -fx-font-size: 15;
+    -fx-text-fill: #bebebe;
 }
 
 /* LOGIN SCREEN */
