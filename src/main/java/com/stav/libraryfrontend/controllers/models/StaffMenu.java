@@ -17,18 +17,16 @@ public class StaffMenu extends BorderPane {
     private static StaffMenu instance = new StaffMenu();
 
     @FXML
-    private HBox booksButton;
+    private HBox allBooksButton;
     @FXML
-    private HBox myPageButton;
+    private HBox staffPageButton;
     @FXML
-    private HBox localsButton;
+    private HBox staffLocalsButton;
     @FXML
-    private HBox aboutUsButton;
-    @FXML
-    private HBox logutButton;
+    private HBox logoutButton;
 
     @FXML
-    private BorderPane content;
+    private BorderPane staffContent;
 
     @FXML
     private ImageView test;
@@ -38,7 +36,7 @@ public class StaffMenu extends BorderPane {
 
     private StaffMenu() {
         buttons = new HashMap<>();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/customer/customerMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/staff/staffMenu.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         try {
@@ -47,9 +45,9 @@ public class StaffMenu extends BorderPane {
             e.printStackTrace();
         }
         try {
-            buttons.put("books", new MenuButton(booksButton, Books.inst()));
-            buttons.put("books", new MenuButton(myPageButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/myPage/myPage.fxml")).load()));
-            buttons.put("books", new MenuButton(localsButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/local/local.fxml")).load()));
+            buttons.put("books", new MenuButton(allBooksButton, Something.inst()));
+            buttons.put("books", new MenuButton(staffPageButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/myPage/myPage.fxml")).load()));
+            buttons.put("books", new MenuButton(staffLocalsButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/local/local.fxml")).load()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -62,11 +60,11 @@ public class StaffMenu extends BorderPane {
     }
 
     public void setContent(Parent parent){
-        content.setCenter(parent);
+        staffContent.setCenter(parent);
     }
 
     private void setup(){
-        logutButton.setOnMousePressed(e -> {
+        logoutButton.setOnMousePressed(e -> {
             Library.inst().setContent(LoginScreen.inst());
         });
     }
@@ -88,7 +86,7 @@ public class StaffMenu extends BorderPane {
                 if(focused != null){
                     focused.buttonBox.setId("");
                 }
-                buttonBox.setId("customer-menu-bar-button-focused");
+                buttonBox.setId("staff-menu-bar-button-focused");
                 focused = this;
             });
         }

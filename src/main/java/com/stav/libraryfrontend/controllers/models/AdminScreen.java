@@ -21,11 +21,14 @@ public class AdminScreen extends BorderPane {
     @FXML
     private Label adminForgotPasswordButton;
 
+    @FXML
+    private Label messageLabel;
+
 
     private AdminScreen() {
         instance = this;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Library.class.getResource("fxml/adminScreenLogin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Library.class.getResource("/com/stav/libraryfrontend/fxml/staff/adminScreenLogin.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -35,13 +38,16 @@ public class AdminScreen extends BorderPane {
             e.printStackTrace();
         }
 
-
         setup();
     }
 
     public void setup() {
         backButton.setOnMousePressed(e -> {
             Library.inst().setContent(LoginScreen.inst());
+        });
+
+        adminForgotPasswordButton.setOnMousePressed(e -> {
+            Library.inst().setContent(AddStaffScreen.inst());
         });
     }
 
