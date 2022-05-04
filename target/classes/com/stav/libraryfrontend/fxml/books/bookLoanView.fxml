@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" styleClass="book-loan-view" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="500.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../../../../../../CinemaFrontend/src/main/resources/com/example/cinemafrontend/images/spiderman.jpg" />
+         </image>
+      </ImageView>
+      <BorderPane>
+         <top>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label styleClass="book-loan-view-title" text="Titel" />
+               </children>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </HBox>
+         </top>
+         <bottom>
+            <HBox prefHeight="150.0" prefWidth="500.0" styleClass="book-loan-view-footer" BorderPane.alignment="CENTER">
+               <children>
+                  <TextArea styleClass="book-loan-view-description" text="Detta är en beskrivning" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </bottom>
+         <right>
+            <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets right="10.0" />
+               </BorderPane.margin>
+               <children>
+                  <Label styleClass="book-loan-view-book-button" text="Låna" />
+                  <VBox prefHeight="200.0" prefWidth="190.0" styleClass="book-loan-view-location-list" />
+               </children>
+            </VBox>
+         </right>
+         <left>
+            <VBox prefHeight="350.0" prefWidth="190.0" styleClass="book-loan-view-book-info-box" BorderPane.alignment="CENTER">
+               <children>
+                  <Label styleClass="book-loan-view-information-label" text="Författare:" />
+                  <Label layoutX="20.0" layoutY="32.0" styleClass="book-loan-view-information-value" text="Författare:" />
+               </children>
+               <padding>
+                  <Insets left="10.0" top="20.0" />
+               </padding>
+            </VBox>
+         </left>
+      </BorderPane>
+   </children>
+</StackPane>
