@@ -38,6 +38,37 @@
 .customer-content{
     -fx-background-color: #efddc9;
 }
+
+.scroll-pane{
+    -fx-background-color: transparent;
+}
+
+.scroll-bar{
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+/*Books*/
+.book-cover{
+    -fx-background-color: black;
+}
+
+.book-cover:hover .image-view{
+    -fx-opacity: 0.5;
+}
+
+.book-cover:hover .book-cover-title{
+    visibility: true;
+}
+
+.book-cover-title{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+
 /* LOGIN SCREEN */
 .login-screen{
     -fx-background-color: #e2c8af;
