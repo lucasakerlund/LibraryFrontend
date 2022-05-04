@@ -51,6 +51,57 @@
     -fx-background-color: transparent;
 }
 
+/*Books*/
+.book-cover{
+    -fx-background-color: black;
+}
+
+.book-cover:hover .image-view{
+    -fx-opacity: 0.5;
+}
+
+.book-cover:hover .book-cover-title{
+    visibility: true;
+}
+
+.book-cover-title{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+
+/*Book Loan View*/
+.book-loan-view{
+    -fx-background-color: black;
+}
+
+.book-loan-view .image-view{
+    -fx-opacity: .5;
+}
+
+.book-loan-view-title{
+    -fx-font-size: 40;
+    -fx-text-fill: white;
+}
+
+.book-loan-view-footer{
+    -fx-border-width: 2 0 0 0;
+    -fx-border-color: white;
+}
+
+.book-loan-view-description{
+    -fx-background-color: rgba(52,53,53,.4);
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+}
+
+.book-loan-view-description .content{
+    -fx-background-color: rgba(52,53,53,.4);
+}
+
+.book-loan-view-location-list{
+    -fx-background-color: rgba(52,53,53,.4);
+}
+
 /* LOGIN SCREEN */
 .login-screen{
     -fx-background-color: #e2c8af;
