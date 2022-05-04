@@ -251,3 +251,55 @@
     -fx-background-color: #6b7700;
     -fx-underline: true;
 }
+/* NEW CUSTOMER SCREEN */
+
+/* ADD STAFF SCREEN */
+.add-staff-screen{
+    -fx-background-color: #e2c8af;
+}
+
+.add-staff-screen-first-name-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-last-name-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-password-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-admin-checkbox{
+    -fx-font-size: 14;
+}
+
+.add-staff-screen-create-button{
+    -fx-background-color: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-font-size: 24;
+}
+
+.add-staff-screen-create-button:hover{
+    -fx-background-color: green;
+}
+
+.add-staff-screen-back-button{
+    -fx-font-size: 24;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-color: red;
+}
+
+.add-staff-screen-back-button:hover{
+    -fx-background-color: rgb(138, 4, 4);
+}
+
+.add-staff-screen-message-label{
+    -fx-text-fill: GREEN;
+    -fx-underline: true;
+}
