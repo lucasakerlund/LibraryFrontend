@@ -305,6 +305,41 @@
 /* NEW CUSTOMER SCREEN */
 
 /* ADD STAFF SCREEN */
+.add-staff-screen-security-buttons{
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-background-color: #00fff7;
+    -fx-font-size: 40;
+    -fx-background-radius: 100;
+}
+
+.add-staff-screen-security-buttons:hover{
+    -fx-background-color: #136173;
+}
+
+.add-staff-screen-accept-security-button{
+    -fx-border-width: 2;
+    -fx-border-color:black;
+    -fx-font-size:24;
+    -fx-background-color: #00ff00;
+}
+
+.add-staff-screen-accept-security-button:hover{
+    -fx-background-color: #1a8d1a;
+}
+
+.add-staff-screen-security-back-button{
+    -fx-border-width: 2;
+    -fx-border-color:black;
+    -fx-font-size:24;
+    -fx-background-color: #ff4d00;
+}
+
+.add-staff-screen-security-back-button:hover{
+    -fx-background-color: #6c0f0f;
+}
+
 .add-staff-screen{
     -fx-background-color: #e2c8af;
 }
