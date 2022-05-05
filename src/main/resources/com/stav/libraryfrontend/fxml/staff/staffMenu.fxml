@@ -6,22 +6,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root maxWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="customer" stylesheets="@../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="staff" stylesheets="@../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <BorderPane>
          <left>
-            <BorderPane styleClass="customer-menu-bar" BorderPane.alignment="CENTER">
+            <BorderPane styleClass="staff-menu-bar" stylesheets="@../../css/main.css" BorderPane.alignment="CENTER">
                <bottom>
                   <VBox alignment="BOTTOM_CENTER" fillWidth="false" BorderPane.alignment="CENTER">
                      <children>
-                        <HBox fx:id="aboutUsButton" alignment="CENTER" prefHeight="50.0" styleClass="customer-menu-bar-button">
+                        <HBox alignment="CENTER" prefHeight="50.0" styleClass="staff-menu-bar-button" stylesheets="@../../css/main.css" />
+                        <HBox fx:id="logoutButton" alignment="CENTER" prefHeight="50.0" styleClass="staff-menu-bar-button" stylesheets="@../../css/main.css">
                            <children>
-                              <Label alignment="TOP_LEFT" styleClass="customer-menu-bar-button-label" text="OM OSS" />
-                           </children>
-                        </HBox>
-                        <HBox fx:id="logutButton" alignment="CENTER" prefHeight="50.0" styleClass="customer-menu-bar-button">
-                           <children>
-                              <Label alignment="TOP_LEFT" styleClass="customer-menu-bar-button-label" text="LOGGA UT" />
+                              <Label alignment="TOP_LEFT" styleClass="staff-menu-bar-button-label" stylesheets="@../../css/main.css" text="LOGGA UT" />
                            </children>
                         </HBox>
                      </children>
@@ -30,21 +26,21 @@
                <top>
                   <VBox minWidth="-Infinity" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <VBox prefWidth="399.0" styleClass="customer-menu-bar-list">
+                        <VBox prefWidth="399.0" styleClass="staff-menu-bar-list" stylesheets="@../../css/main.css">
                            <children>
-                              <HBox fx:id="booksButton" alignment="CENTER" layoutX="10.0" layoutY="62.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="customer-menu-bar-button">
+                              <HBox fx:id="allBooksButton" alignment="CENTER" layoutX="10.0" layoutY="62.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="staff-menu-bar-button" stylesheets="@../../css/main.css">
                                  <children>
-                                    <Label alignment="TOP_LEFT" styleClass="customer-menu-bar-button-label" text="BÖCKER" />
+                                    <Label alignment="TOP_LEFT" styleClass="staff-menu-bar-button-label" stylesheets="@../../css/main.css" text="ALLA BÖCKER" />
                                  </children>
                               </HBox>
-                              <HBox fx:id="myPageButton" alignment="CENTER" layoutX="10.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="customer-menu-bar-button">
+                              <HBox fx:id="staffPageButton" alignment="CENTER" layoutX="10.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="staff-menu-bar-button" stylesheets="@../../css/main.css">
                                  <children>
-                                    <Label alignment="TOP_LEFT" styleClass="customer-menu-bar-button-label" text="MIN SIDA" />
+                                    <Label alignment="TOP_LEFT" styleClass="staff-menu-bar-button-label" stylesheets="@../../css/main.css" text="MIN SIDA" />
                                  </children>
                               </HBox>
-                              <HBox fx:id="localsButton" alignment="CENTER" layoutX="10.0" layoutY="62.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="customer-menu-bar-button">
+                              <HBox fx:id="staffLocalsButton" alignment="CENTER" layoutX="10.0" layoutY="62.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="staff-menu-bar-button" stylesheets="@../../css/main.css">
                                  <children>
-                                    <Label alignment="TOP_LEFT" styleClass="customer-menu-bar-button-label" text="LOKALER" />
+                                    <Label alignment="TOP_LEFT" styleClass="staff-menu-bar-button-label" stylesheets="@../../css/main.css" text="LOKALER" />
                                  </children>
                               </HBox>
                            </children>
@@ -58,7 +54,7 @@
             </BorderPane>
          </left>
          <center>
-            <BorderPane fx:id="content" prefHeight="200.0" prefWidth="200.0" styleClass="customer-content" BorderPane.alignment="CENTER" />
+            <BorderPane fx:id="staffContent" prefHeight="200.0" prefWidth="200.0" styleClass="staff-content" stylesheets="@../../css/main.css" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </center>

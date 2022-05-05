@@ -1,14 +1,10 @@
 package com.stav.libraryfrontend.controllers.models;
 
 import com.stav.libraryfrontend.Library;
-import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.controllers.models.books.Books;
-import com.stav.libraryfrontend.controllers.models.myPage.MyPage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -16,23 +12,21 @@ import javafx.scene.layout.HBox;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class CustomerMenu extends BorderPane {
+public class StaffMenu extends BorderPane {
 
-    private static CustomerMenu instance = new CustomerMenu();
+    private static StaffMenu instance = new StaffMenu();
 
     @FXML
-    private HBox booksButton;
+    private HBox allBooksButton;
     @FXML
-    private HBox myPageButton;
+    private HBox staffPageButton;
     @FXML
-    private HBox localsButton;
-    @FXML
-    private HBox aboutUsButton;
+    private HBox staffLocalsButton;
     @FXML
     private HBox logoutButton;
 
     @FXML
-    private BorderPane content;
+    private BorderPane staffContent;
 
     @FXML
     private ImageView test;
@@ -40,9 +34,9 @@ public class CustomerMenu extends BorderPane {
     private MenuButton focused;
     private HashMap<String, MenuButton> buttons;
 
-    private CustomerMenu() {
+    private StaffMenu() {
         buttons = new HashMap<>();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/customer/customerMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/staff/staffMenu.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         try {
@@ -51,9 +45,9 @@ public class CustomerMenu extends BorderPane {
             e.printStackTrace();
         }
         try {
-            buttons.put("books", new MenuButton(booksButton, Books.inst()));
-            buttons.put("books", new MenuButton(myPageButton, MyPage.inst()));
-            buttons.put("books", new MenuButton(localsButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/local/local.fxml")).load()));
+            buttons.put("books", new MenuButton(allBooksButton, null));
+            buttons.put("books", new MenuButton(staffPageButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/myPage/myPage.fxml")).load()));
+            buttons.put("books", new MenuButton(staffLocalsButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/local/local.fxml")).load()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,12 +55,12 @@ public class CustomerMenu extends BorderPane {
         setup();
     }
 
-    public static CustomerMenu inst(){
+    public static StaffMenu inst(){
         return instance;
     }
 
     public void setContent(Parent parent){
-        content.setCenter(parent);
+        staffContent.setCenter(parent);
     }
 
     private void setup(){
@@ -92,7 +86,7 @@ public class CustomerMenu extends BorderPane {
                 if(focused != null){
                     focused.buttonBox.setId("");
                 }
-                buttonBox.setId("customer-menu-bar-button-focused");
+                buttonBox.setId("staff-menu-bar-button-focused");
                 focused = this;
             });
         }
