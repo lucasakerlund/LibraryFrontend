@@ -546,6 +546,36 @@
     -fx-cursor: hand;
 }
 
+.my-page-header-buttons:hover{
+    -fx-background-color: #8c734e;
+    -fx-underline: true;
+    -fx-border-width: 4;
+    -fx-border-color: green;
+}
+
+
+.loaned-book-cover-return-button{
+    -fx-background-color: rgba(59, 59, 59, 0.34);;
+    -fx-border-width: 2;
+    -fx-border-color: green;
+    -fx-font-size: 24;
+    -fx-text-fill: green;
+}
+
+.loaned-book-cover-return-button:hover{
+    -fx-background-color: rgba(0, 128, 0, 0.75);
+    -fx-underline: true;
+    -fx-text-fill: black;
+    -fx-border-color: black;
+    -fx-cursor: hand;
+}
+
+.my-page-op-message-label{
+    -fx-text-fill: green;
+    -fx-underline: true;
+    -fx-font-size: 14;
+}
+
 /* STAFF PAGE */
 .staff-page{
     -fx-background-color: transparent;

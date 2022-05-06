@@ -37,6 +37,10 @@ public class LoanedBooksView extends BorderPane{
         box.getChildren().add(loanedBookCover);
     }
 
+    public void deleteBook (LoanedBookCover loanedBookCover){
+        box.getChildren().remove(loanedBookCover);
+    }
+
     public static LoanedBooksView inst(){
         return instance;
     }
