@@ -1,10 +1,13 @@
 package com.stav.libraryfrontend.abstracts;
 
+import com.stav.libraryfrontend.models.Book;
 import javafx.print.PrinterJob;
 import javafx.scene.image.Image;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -51,12 +54,43 @@ public class BackendCaller {
         return output;
     }
 
-    public String getImage(int index){
-        String data = request("books/v1/volumes?q=subject:fiction&maxResults=10&startIndex=" + index);
+    public Book getBook(String isbn){
+        String data = request("books/v1/volumes?q=isbn:" + isbn);
         System.out.println(data);
         JSONObject object = new JSONObject(data);
         JSONArray array = new JSONArray(object.getJSONArray("items"));
-        return array.getJSONObject(0).getJSONObject("volumeInfo").getJSONObject("imageLinks").getString("thumbnail").replace("zoom=1", "zoom=10");
+        Book book = new Book(
+                0,
+                array.getJSONObject(0).getJSONObject("volumeInfo").getString("title"),
+                array.getJSONObject(0).getJSONObject("volumeInfo").getString("description"),
+                convertJSONArrayToStringArray(array.getJSONObject(0).getJSONObject("volumeInfo").getJSONArray("authors")),
+                convertJSONArrayToStringArray(array.getJSONObject(0).getJSONObject("volumeInfo").getJSONArray("categories")),
+                array.getJSONObject(0).getJSONObject("volumeInfo").getJSONArray("industryIdentifiers").getJSONObject(1).getString("identifier"),
+                array.getJSONObject(0).getJSONObject("volumeInfo").getString("publishedDate"),
+                array.getJSONObject(0).getJSONObject("volumeInfo").getInt("pageCount"),
+                array.getJSONObject(0).getJSONObject("volumeInfo").getJSONObject("imageLinks").getString("thumbnail").replace("zoom=1", "zoom=10")
+        );
+        return book;
+    }
+
+    public Book[] getBooks(){
+        String data = request("api/books");
+        return null;
+    }
+
+    public Book[] getLoanedBooks(int customerId){
+        String data = request("api/books/customer/" + customerId);
+        return null;
+    }
+
+    private String[] convertJSONArrayToStringArray(JSONArray array){
+        List<String> output = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            output.add(array.getString(i));
+            System.out.println(array.getString(i));
+            System.out.println(array);
+        }
+        return output.toArray(new String[output.size()]);
     }
 
 }

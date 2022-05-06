@@ -1,11 +1,13 @@
 package com.stav.libraryfrontend.controllers.models.books;
 
+import com.stav.libraryfrontend.models.Book;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -29,9 +31,26 @@ public class BookLoanView extends StackPane {
     @FXML
     private Label lendButton;
 
+    @FXML
+    private Label titleLabel;
+    @FXML
+    private Label authorLabel;
+    @FXML
+    private Label genreLabel;
+    @FXML
+    private Label isbnLabel;
+    @FXML
+    private Label publishedLabel;
+    @FXML
+    private Label pagesLabel;
+    @FXML
+    private TextArea descriptionLabel;
+
+    private Book book;
     private LocationItem focused;
 
-    public BookLoanView(String imageSrc){
+    public BookLoanView(Book book){
+        this.book = book;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/books/bookLoanView.fxml"));
         loader.setRoot(this);
         loader.setController(this);
@@ -41,8 +60,6 @@ public class BookLoanView extends StackPane {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        imageView.setImage(new Image(imageSrc));
 
         setup();
     }
@@ -63,7 +80,16 @@ public class BookLoanView extends StackPane {
                 errorLabel.setVisible(true);
                 return;
             }
+            //Skicka till backend.
         });
+        imageView.setImage(new Image(book.getImageSrc()));
+        titleLabel.setText(book.getTitle());
+        authorLabel.setText(String.join(", ", book.getAuthors()));
+        genreLabel.setText(String.join(", ", book.getGenre()));
+        isbnLabel.setText(book.getIsbn());
+        publishedLabel.setText(book.getPublished());
+        pagesLabel.setText(book.getPages()+"");
+        descriptionLabel.setText(book.getDescription());
         addLocation("Tjena111111111111111", 3);
         addLocation("Yoooo", 6);
         addLocation("Yoooo", 6);
@@ -88,10 +114,11 @@ public class BookLoanView extends StackPane {
             amountLabel.setMinWidth(68);
             locationLabel.setWrapText(true);
             amountLabel.setWrapText(true);
-            locationLabel.setTextAlignment(TextAlignment.CENTER);
-            amountLabel.setTextAlignment(TextAlignment.CENTER);
+            locationLabel.setTextAlignment(TextAlignment.LEFT);
+            amountLabel.setTextAlignment(TextAlignment.LEFT);
             this.getChildren().add(locationLabel);
             this.getChildren().add(amountLabel);
+
 
             addClickListener();
         }
