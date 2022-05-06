@@ -8,14 +8,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
-import java.util.Objects;
 
-public class AddStaffScreen extends BorderPane {
+public class AddStaffScreen extends StackPane {
 
     private static AddStaffScreen instance = new AddStaffScreen();
 
+    private String securityInput = "";
+
+
+    /* Unlocked Add staff panel components */
     @FXML
     private CheckBox adminCheckBox;
 
@@ -37,8 +41,60 @@ public class AddStaffScreen extends BorderPane {
     @FXML
     private Label messageLabel;
 
+    @FXML
+    private BorderPane addStaffPane;
+    /* Unlocked Add staff panel components */
+
+
+
+    /* Security check panel components */
+    @FXML
+    private BorderPane securityCheckPane;
+
+    @FXML
+    private Label security1Button;
+
+    @FXML
+    private Label security2Button;
+
+    @FXML
+    private Label security3Button;
+
+    @FXML
+    private Label security4Button;
+
+    @FXML
+    private Label security5Button;
+
+    @FXML
+    private Label security6Button;
+
+    @FXML
+    private Label security7Button;
+
+    @FXML
+    private Label security8Button;
+
+    @FXML
+    private Label security9Button;
+
+    @FXML
+    private Label securityConfirmButton;
+
+    @FXML
+    private Label currentInputLabel;
+
+    @FXML
+    private Label securityInputMessageLabel;
+
+    @FXML
+    private Label securityBackButton;
+    /* Security check panel components */
+
+
 
     private AddStaffScreen(){
+        securityInput = "";
         instance = this;
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/addStaffScreen.fxml"));
@@ -55,7 +111,82 @@ public class AddStaffScreen extends BorderPane {
     }
 
     public void setup(){
+        /* Buttons for the locked "Add staff screen", or the security screen */
+        security1Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 1;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 1);
+        });
+
+        security2Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 2;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 2);
+        });
+
+        security3Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 3;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 3);
+        });
+
+        security4Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 4;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 4);
+        });
+
+        security5Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 5;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 5);
+        });
+
+        security6Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 6;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 6);
+        });
+
+        security7Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 7;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 7);
+        });
+
+        security8Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 8;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 8);
+        });
+
+        security9Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 9;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 9);
+        });
+
+        securityConfirmButton.setOnMousePressed(e -> {
+            if (securityInput.equals("1337")){
+                securityCheckPane.setVisible(false);
+                addStaffPane.setVisible(true);
+            } else {
+                securityInputMessageLabel.setText("FELAKTIG INMATNING! Försök igen...");
+                securityInput = "";
+                currentInputLabel.setText("Din inmatning: ");
+            }
+
+        });
+
+        securityBackButton.setOnMousePressed(e -> {
+            securityInput = "";
+            currentInputLabel.setText("Din inmatning: ");
+            addStaffPane.setVisible(false);
+            securityCheckPane.setVisible(true);
+            Library.inst().setContent(LoginScreen.inst());
+        });
+
+
+
+
+        /* Buttons for the unlocked "Add staff screen" */
+
         backButton.setOnMousePressed(e -> {
+            addStaffPane.setVisible(false);
+            securityCheckPane.setVisible(true);
+            securityInput = "";
+            currentInputLabel.setText("Din inmatning: ");
             Library.inst().setContent(AdminScreen.inst());
             messageLabel.setText("");
         });

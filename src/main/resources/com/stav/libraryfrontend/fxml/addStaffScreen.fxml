@@ -7,55 +7,123 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 
-<fx:root id="add-staff-screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="add-staff-screen" stylesheets="@../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label id="add-staff-screen-first-name-label" styleClass="add-staff-screen-first-name-label" text="Förnamn" />
-            <TextField fx:id="firstNameTextField" maxWidth="150.0" promptText="F.namn här..." />
-            <Label id="add-staff-screen-last-name-label" styleClass="add-staff-screen-last-name-label" text="Efternamn" />
-            <TextField fx:id="lastNameTextField" maxWidth="150.0" promptText="E.namn här..." />
-            <Label id="add-staff-screen-password-label" styleClass="add-staff-screen-password-label" text="Lösenord" />
-            <PasswordField fx:id="passwordField" maxWidth="150.0" promptText="Lösen här..." />
-            <CheckBox id="add-staff-screen-admin-checkbox" fx:id="adminCheckBox" mnemonicParsing="false" styleClass="add-staff-screen-admin-checkbox" text="Administratör-konto">
-               <VBox.margin>
+<fx:root styleClass="add-staff-screen" stylesheets="@../css/main.css" type="StackPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane fx:id="securityCheckPane" prefHeight="200.0" prefWidth="200.0" styleClass="add-staff-screen-security-checker">
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="currentInputLabel" text="Din inmatning: " />
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="25.0">
+                     <children>
+                        <Label fx:id="security1Button" styleClass="add-staff-screen-security-buttons" text=" 1 " />
+                        <Label fx:id="security2Button" layoutX="10.0" layoutY="10.0" styleClass="add-staff-screen-security-buttons" text=" 2 " />
+                        <Label fx:id="security3Button" layoutX="38.0" layoutY="10.0" styleClass="add-staff-screen-security-buttons" text=" 3 " />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="200.0" spacing="25.0">
+                     <children>
+                        <Label fx:id="security4Button" styleClass="add-staff-screen-security-buttons" text=" 4 " />
+                        <Label fx:id="security5Button" layoutX="10.0" layoutY="10.0" styleClass="add-staff-screen-security-buttons" text=" 5 " />
+                        <Label fx:id="security6Button" layoutX="38.0" layoutY="10.0" styleClass="add-staff-screen-security-buttons" text=" 6 " />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="50.0" prefWidth="200.0" spacing="25.0">
+                     <children>
+                        <Label fx:id="security7Button" styleClass="add-staff-screen-security-buttons" text=" 7 " />
+                        <Label fx:id="security8Button" layoutX="10.0" layoutY="10.0" styleClass="add-staff-screen-security-buttons" text=" 8 " />
+                        <Label fx:id="security9Button" layoutX="38.0" layoutY="10.0" styleClass="add-staff-screen-security-buttons" text=" 9 " />
+                     </children>
+                  </HBox>
+                  <Label fx:id="securityInputMessageLabel" />
+               </children>
+               <BorderPane.margin>
                   <Insets />
-               </VBox.margin>
+               </BorderPane.margin>
                <padding>
-                  <Insets top="50.0" />
+                  <Insets top="75.0" />
                </padding>
-            </CheckBox>
-            <Label id="add-staff-screen-create-button" fx:id="createStaffButton" alignment="CENTER" contentDisplay="CENTER" prefWidth="100.0" styleClass="add-staff-screen-create-button" text="Skapa">
-               <VBox.margin>
+            </VBox>
+         </center>
+         <bottom>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="securityBackButton" styleClass="add-staff-screen-security-back-button" text="Tillbaka">
+                     <HBox.margin>
+                        <Insets left="25.0" top="75.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="securityConfirmButton" layoutX="10.0" layoutY="10.0" styleClass="add-staff-screen-accept-security-button" text="Bekräfta">
+                     <HBox.margin>
+                        <Insets bottom="150.0" left="144.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </bottom>
+         <top>
+            <Label text="Skriv in administrativ nyckel..." BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <padding>
                   <Insets top="25.0" />
-               </VBox.margin>
+               </padding>
             </Label>
-            <Label id="add-staff-screen-message-label" fx:id="messageLabel" styleClass="add-staff-screen-message-label">
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-            </Label>
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-         <padding>
-            <Insets top="30.0" />
-         </padding>
-      </VBox>
-   </center>
-   <bottom>
-      <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label id="add-staff-screen-back-button" fx:id="backButton" styleClass="add-staff-screen-back-button" text="Tillbaka">
-               <HBox.margin>
-                  <Insets bottom="20.0" left="20.0" />
-               </HBox.margin>
-            </Label>
-         </children>
-      </HBox>
-   </bottom>
+         </top>
+      </BorderPane>
+      <BorderPane id="add-staff-screen" fx:id="addStaffPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="add-staff-screen" visible="false">
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label id="add-staff-screen-first-name-label" styleClass="add-staff-screen-first-name-label" text="Förnamn" />
+                  <TextField fx:id="firstNameTextField" maxWidth="150.0" promptText="F.namn här..." />
+                  <Label id="add-staff-screen-last-name-label" styleClass="add-staff-screen-last-name-label" text="Efternamn" />
+                  <TextField fx:id="lastNameTextField" maxWidth="150.0" promptText="E.namn här..." />
+                  <Label id="add-staff-screen-password-label" styleClass="add-staff-screen-password-label" text="Lösenord" />
+                  <PasswordField fx:id="passwordField" maxWidth="150.0" promptText="Lösen här..." />
+                  <CheckBox id="add-staff-screen-admin-checkbox" fx:id="adminCheckBox" mnemonicParsing="false" styleClass="add-staff-screen-admin-checkbox" text="Administratör-konto">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="50.0" />
+                     </padding>
+                  </CheckBox>
+                  <Label id="add-staff-screen-create-button" fx:id="createStaffButton" alignment="CENTER" contentDisplay="CENTER" prefWidth="100.0" styleClass="add-staff-screen-create-button" text="Skapa">
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label id="add-staff-screen-message-label" fx:id="messageLabel" styleClass="add-staff-screen-message-label">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </VBox>
+         </center>
+         <bottom>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label id="add-staff-screen-back-button" fx:id="backButton" styleClass="add-staff-screen-back-button" text="Tillbaka">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
 </fx:root>
