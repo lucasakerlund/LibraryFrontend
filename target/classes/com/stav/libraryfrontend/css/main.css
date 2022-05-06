@@ -1,4 +1,8 @@
 /*Customer Menu*/
+.root{
+    -fx-background-color: black;
+}
+
 .customer-menu-bar{
     -fx-background-color: #d4b38f;
     -fx-border-width: 0 2 0 0;
@@ -12,6 +16,10 @@
 .customer-menu-bar-button{
     -fx-background-color: #d4b38f;
     -fx-background-insets: 2 5 2 5;
+}
+
+.customer-menu-bar-button:hover{
+    -fx-cursor: hand;
 }
 
 .customer-menu-bar-button:hover .customer-menu-bar-button-label{
@@ -56,9 +64,12 @@
     -fx-background-color: black;
 }
 
+.book-cover:hover{
+    -fx-cursor: hand;
+}
+
 .book-cover:hover .image-view{
     -fx-opacity: 0.5;
-    -fx-cursor: hand;
 }
 
 .book-cover:hover .book-cover-title{
@@ -99,6 +110,11 @@
     -fx-background-color: rgba(52,53,53,.4);
 }
 
+.book-loan-view-error-label{
+    -fx-font-size: 20;
+    -fx-text-fill: red;
+}
+
 .book-loan-view-book-button{
     -fx-font-size: 20;
     -fx-text-fill: #00ff00;
@@ -115,6 +131,34 @@
 
 .book-loan-view-location-list{
     -fx-background-color: rgba(52,53,53,.4);
+}
+
+.book-loan-view-location-header-label{
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+}
+
+.book-loan-view-location-header{
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: white;
+}
+
+.book-loan-view-location-box{
+
+}
+
+.book-loan-view-location-label{
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+}
+
+.book-loan-view-location-box:hover{
+    -fx-background-color: rgba(126, 126, 126, 0.4);
+    -fx-cursor: hand;
+}
+
+#book-loan-view-location-box-focused{
+    -fx-background-color: rgba(187, 187, 187, 0.4);
 }
 
 .book-loan-view-book-information-box{
@@ -155,6 +199,7 @@
 .login-screen-login-button:hover{
     -fx-text-fill: green;
     -fx-border-color: green;
+    -fx-cursor: hand;
 }
 
 .login-screen-new-account-button{
@@ -164,6 +209,7 @@
 
 .login-screen-new-account-button:hover{
     -fx-underline: true;
+    -fx-cursor: hand;
 }
 
 .login-screen-quit-button{
@@ -175,6 +221,7 @@
 .login-screen-quit-button:hover{
     -fx-border-color: green;
     -fx-text-fill: green;
+    -fx-cursor: hand;
 }
 
 .login-screen-admin-button{
@@ -184,6 +231,7 @@
 
 .login-screen-admin-button:hover{
     -fx-underline: true;
+    -fx-cursor: hand;
 }
 
 .login-screen-user-message-label{
@@ -209,6 +257,7 @@
 
 .existing-user-login-screen-back-button:hover{
     -fx-background-color: orange;
+    -fx-cursor: hand;
 }
 
 .existing-user-login-screen-login-button{
@@ -223,6 +272,7 @@
 
 .existing-user-login-screen-login-button:hover {
     -fx-background-color: #00bbff;
+    -fx-cursor: hand;
 }
 
 .existing-user-login-screen-forgotten-password-button{
@@ -232,6 +282,7 @@
 
 .existing-user-login-screen-forgotten-password-button:hover{
     -fx-underline: true;
+    -fx-cursor: hand;
 }
 /* EXISTING USER LOGIN SCREEN */
 
@@ -249,6 +300,7 @@
 
 .admin-back-button:hover{
     -fx-background-color: orange;
+    -fx-cursor: hand;
 }
 
 .admin-login-button{
@@ -259,6 +311,7 @@
 }
 .admin-login-button:hover{
     -fx-background-color: orange;
+    -fx-cursor: hand;
 }
 .admin-forgot-password-button{
     -fx-text-fill: #4343ef;
@@ -266,6 +319,7 @@
 }
 .admin-forgot-password-button:hover{
     -fx-underline: true;
+    -fx-cursor: hand;
 }
 /* USER LOGIN SCREEN */
 
@@ -318,6 +372,7 @@
 .new-customer-screen-create-user-button:hover{
     -fx-background-color: #007715;
     -fx-underline: true;
+    -fx-cursor: hand;
 }
 
 .new-customer-screen-back-button{
@@ -333,3 +388,248 @@
     -fx-background-color: #6b7700;
     -fx-underline: true;
 }
+/* NEW CUSTOMER SCREEN */
+
+/* ADD STAFF SCREEN */
+.add-staff-screen-security-buttons{
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-background-color: #00fff7;
+    -fx-font-size: 40;
+    -fx-background-radius: 100;
+}
+
+.add-staff-screen-security-buttons:hover{
+    -fx-background-color: #136173;
+}
+
+.add-staff-screen-accept-security-button{
+    -fx-border-width: 2;
+    -fx-border-color:black;
+    -fx-font-size:24;
+    -fx-background-color: #00ff00;
+}
+
+.add-staff-screen-accept-security-button:hover{
+    -fx-background-color: #1a8d1a;
+}
+
+.add-staff-screen-security-back-button{
+    -fx-border-width: 2;
+    -fx-border-color:black;
+    -fx-font-size:24;
+    -fx-background-color: #ff4d00;
+}
+
+.add-staff-screen-security-back-button:hover{
+    -fx-background-color: #6c0f0f;
+}
+
+.add-staff-screen{
+    -fx-background-color: #e2c8af;
+}
+
+.add-staff-screen-first-name-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-last-name-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-password-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-admin-checkbox{
+    -fx-font-size: 14;
+}
+
+.add-staff-screen-create-button{
+    -fx-background-color: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-font-size: 24;
+}
+
+.add-staff-screen-create-button:hover{
+    -fx-background-color: green;
+}
+
+.add-staff-screen-back-button{
+    -fx-font-size: 24;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-color: red;
+}
+
+.add-staff-screen-back-button:hover{
+    -fx-background-color: rgb(138, 4, 4);
+}
+
+.add-staff-screen-message-label{
+    -fx-text-fill: GREEN;
+    -fx-underline: true;
+}
+/* ADD STAFF SCREEN */
+
+/* MY PAGE (MIN SIDA) */
+.my-page{
+    -fx-background-color: transparent;
+}
+
+.my-page-header{
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: white;
+}
+
+.my-page-header-buttons{
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+    -fx-padding: 6;
+    -fx-background-color: #d4b38f;
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+}
+/* NEW CUSTOMER SCREEN */
+
+/* ADD STAFF SCREEN */
+.add-staff-screen{
+    -fx-background-color: #e2c8af;
+}
+
+.add-staff-screen-first-name-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-last-name-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-password-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-admin-checkbox{
+    -fx-font-size: 14;
+}
+
+.add-staff-screen-create-button{
+    -fx-background-color: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-font-size: 24;
+}
+
+.add-staff-screen-create-button:hover{
+    -fx-background-color: green;
+}
+
+.add-staff-screen-back-button{
+    -fx-font-size: 24;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-color: red;
+}
+
+.add-staff-screen-back-button:hover{
+    -fx-background-color: rgb(138, 4, 4);
+}
+
+.add-staff-screen-message-label{
+    -fx-text-fill: GREEN;
+    -fx-underline: true;
+}
+/* ADD STAFF SCREEN */
+
+/* MY PAGE (MIN SIDA) */
+.my-page{
+    -fx-background-color: transparent;
+}
+
+.my-page-header{
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: white;
+}
+
+.my-page-header-buttons{
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+    -fx-padding: 6;
+    -fx-background-color: #d4b38f;
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+}
+
+.my-page-header-buttons:hover{
+    -fx-background-color: #cb8b59;
+    -fx-underline: true;
+}
+/* MY PAGE (MIN SIDA) */
+
+/* MY PAGE LOANED BOOKS */
+.my-page-loaned-books{
+    -fx-background-color: #e2c8af;
+}
+/* MY PAGE LOANED BOOKS */
+
+
+/* LOANED BOOKS COVER */
+.loaned-book{
+    -fx-border-width: 2;
+    -fx-border-color: black;
+}
+/* LOANED BOOKS COVER */
+
+/* STAFF MENU */
+
+.staff-menu-bar{
+    -fx-background-color: #d4b38f;
+    -fx-border-width: 0 2 0 0;
+    -fx-border-color: white;
+}
+
+.staff-menu-bar-list{
+    -fx-background-color: #e2c8ab;
+}
+
+.staff-menu-bar-button{
+    -fx-background-color: #d4b38f;
+    -fx-background-insets: 2 5 2 5;
+}
+
+.staff-menu-bar-button:hover .customer-menu-bar-button-label{
+    -fx-text-fill: INDIANRED;
+}
+#staff-menu-bar-button-focused:hover .customer-menu-bar-button-label{
+    -fx-text-fill: white;
+}
+
+#staff-menu-bar-button-focused{
+    -fx-background-color: #efddc9;
+    -fx-background-insets: 0 -2 0 0;
+    -fx-border-width: 2 0 2 0;
+    -fx-border-insets: 0 -2 0 0;
+    -fx-border-color: white;
+}
+
+.staff-menu-bar-button-label{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: BOLD;
+}
+
+.staff-content{
+    -fx-background-color: #efddc9;
+}
+
+/* STAFF MENU */
