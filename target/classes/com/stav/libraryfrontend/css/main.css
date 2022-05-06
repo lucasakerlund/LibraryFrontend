@@ -496,3 +496,140 @@
     -fx-font-size: 20;
     -fx-cursor: hand;
 }
+/* NEW CUSTOMER SCREEN */
+
+/* ADD STAFF SCREEN */
+.add-staff-screen{
+    -fx-background-color: #e2c8af;
+}
+
+.add-staff-screen-first-name-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-last-name-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-password-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-admin-checkbox{
+    -fx-font-size: 14;
+}
+
+.add-staff-screen-create-button{
+    -fx-background-color: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-font-size: 24;
+}
+
+.add-staff-screen-create-button:hover{
+    -fx-background-color: green;
+}
+
+.add-staff-screen-back-button{
+    -fx-font-size: 24;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-color: red;
+}
+
+.add-staff-screen-back-button:hover{
+    -fx-background-color: rgb(138, 4, 4);
+}
+
+.add-staff-screen-message-label{
+    -fx-text-fill: GREEN;
+    -fx-underline: true;
+}
+/* ADD STAFF SCREEN */
+
+/* MY PAGE (MIN SIDA) */
+.my-page{
+    -fx-background-color: transparent;
+}
+
+.my-page-header{
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: white;
+}
+
+.my-page-header-buttons{
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+    -fx-padding: 6;
+    -fx-background-color: #d4b38f;
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+}
+
+.my-page-header-buttons:hover{
+    -fx-background-color: #cb8b59;
+    -fx-underline: true;
+}
+/* MY PAGE (MIN SIDA) */
+
+/* MY PAGE LOANED BOOKS */
+.my-page-loaned-books{
+    -fx-background-color: #e2c8af;
+}
+/* MY PAGE LOANED BOOKS */
+
+
+/* LOANED BOOKS COVER */
+.loaned-book{
+    -fx-border-width: 2;
+    -fx-border-color: black;
+}
+/* LOANED BOOKS COVER */
+
+/* STAFF MENU */
+
+.staff-menu-bar{
+    -fx-background-color: #d4b38f;
+    -fx-border-width: 0 2 0 0;
+    -fx-border-color: white;
+}
+
+.staff-menu-bar-list{
+    -fx-background-color: #e2c8ab;
+}
+
+.staff-menu-bar-button{
+    -fx-background-color: #d4b38f;
+    -fx-background-insets: 2 5 2 5;
+}
+
+.staff-menu-bar-button:hover .customer-menu-bar-button-label{
+    -fx-text-fill: INDIANRED;
+}
+#staff-menu-bar-button-focused:hover .customer-menu-bar-button-label{
+    -fx-text-fill: white;
+}
+
+#staff-menu-bar-button-focused{
+    -fx-background-color: #efddc9;
+    -fx-background-insets: 0 -2 0 0;
+    -fx-border-width: 2 0 2 0;
+    -fx-border-insets: 0 -2 0 0;
+    -fx-border-color: white;
+}
+
+.staff-menu-bar-button-label{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: BOLD;
+}
+
+.staff-content{
+    -fx-background-color: #efddc9;
+}
+
+/* STAFF MENU */

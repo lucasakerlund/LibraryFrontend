@@ -11,29 +11,15 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class AddStaffScreen extends StackPane {
 
-    // Som tur är är denna klass INTE committad än.
-
-    // Fråga Lucas om hjälp angående knapparna och att setta "securityInput" via lambda action-listiners
-    // Få översta BorderPanen att svara på korrekt inmatning och gör den osynlig vid korrekt kod...
-
     private static AddStaffScreen instance = new AddStaffScreen();
 
-    // *************************** TESTING **************************
-    private String securityInput = "0";
+    private String securityInput = "";
 
-    public String getSecurityInput() {
-        return securityInput;
-    }
 
-    public void setSecurityInput(String securityInput) {
-        this.securityInput = securityInput;
-    }
-    // *************************** TESTING **************************
-
+    /* Unlocked Add staff panel components */
     @FXML
     private CheckBox adminCheckBox;
 
@@ -57,10 +43,11 @@ public class AddStaffScreen extends StackPane {
 
     @FXML
     private BorderPane addStaffPane;
+    /* Unlocked Add staff panel components */
 
 
 
-
+    /* Security check panel components */
     @FXML
     private BorderPane securityCheckPane;
 
@@ -102,10 +89,12 @@ public class AddStaffScreen extends StackPane {
 
     @FXML
     private Label securityBackButton;
+    /* Security check panel components */
+
 
 
     private AddStaffScreen(){
-        // setSecurityInput("");
+        securityInput = "";
         instance = this;
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/addStaffScreen.fxml"));
@@ -119,71 +108,85 @@ public class AddStaffScreen extends StackPane {
         }
 
         setup();
-
-        // IF LOGIN == "1337" make securityCheckPane invisible and addStaffPane visible
     }
 
     public void setup(){
-
-        System.out.println("Security input = " + getSecurityInput());
-
-        // currentInputLabel.setText(currentInputLabel.getText() + " " + securityInput);
-
+        /* Buttons for the locked "Add staff screen", or the security screen */
         security1Button.setOnMousePressed(e -> {
-            setSecurityInput(getSecurityInput() + "1");
-            System.out.println("Security input = " + getSecurityInput());
+            securityInput = securityInput + 1;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 1);
         });
 
-        security1Button.setOnMousePressed(e -> {
-            setSecurityInput(getSecurityInput() + "2");
+        security2Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 2;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 2);
         });
 
-        security1Button.setOnMousePressed(e -> {
-            setSecurityInput(getSecurityInput() + "3");
+        security3Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 3;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 3);
         });
 
-        security1Button.setOnMousePressed(e -> {
-            setSecurityInput(getSecurityInput() + "4");
+        security4Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 4;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 4);
         });
 
-        security1Button.setOnMousePressed(e -> {
-            setSecurityInput(getSecurityInput() + "5");
+        security5Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 5;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 5);
         });
 
-        security1Button.setOnMousePressed(e -> {
-            setSecurityInput(getSecurityInput() + "6");
+        security6Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 6;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 6);
         });
 
-        security1Button.setOnMousePressed(e -> {
-            setSecurityInput(getSecurityInput() + "7");
+        security7Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 7;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 7);
         });
 
-        security1Button.setOnMousePressed(e -> {
-            setSecurityInput(getSecurityInput() + "8");
+        security8Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 8;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 8);
         });
 
-        security1Button.setOnMousePressed(e -> {
-            setSecurityInput(getSecurityInput() + "9");
+        security9Button.setOnMousePressed(e -> {
+            securityInput = securityInput + 9;
+            currentInputLabel.setText(currentInputLabel.getText() + " " + 9);
         });
 
         securityConfirmButton.setOnMousePressed(e -> {
-            if (getSecurityInput().equals("1337")){
+            if (securityInput.equals("1337")){
                 securityCheckPane.setVisible(false);
                 addStaffPane.setVisible(true);
             } else {
                 securityInputMessageLabel.setText("FELAKTIG INMATNING! Försök igen...");
+                securityInput = "";
+                currentInputLabel.setText("Din inmatning: ");
             }
-            setSecurityInput("");
+
         });
 
         securityBackButton.setOnMousePressed(e -> {
-            setSecurityInput("0");
+            securityInput = "";
+            currentInputLabel.setText("Din inmatning: ");
+            addStaffPane.setVisible(false);
+            securityCheckPane.setVisible(true);
             Library.inst().setContent(LoginScreen.inst());
         });
 
 
 
+
+        /* Buttons for the unlocked "Add staff screen" */
+
         backButton.setOnMousePressed(e -> {
+            addStaffPane.setVisible(false);
+            securityCheckPane.setVisible(true);
+            securityInput = "";
+            currentInputLabel.setText("Din inmatning: ");
             Library.inst().setContent(AdminScreen.inst());
             messageLabel.setText("");
         });
