@@ -1,13 +1,13 @@
 package com.stav.libraryfrontend.controllers.models;
 
 import com.stav.libraryfrontend.Library;
-import com.stav.libraryfrontend.controllers.models.books.Books;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import com.stav.libraryfrontend.controllers.models.staffPage.StaffBookPage;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -44,14 +44,10 @@ public class StaffMenu extends BorderPane {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try {
             //buttons.put("books", new MenuButton(allBooksButton, Something.inst()));
-            buttons.put("books", new MenuButton(allBooksButton, null));
-            buttons.put("books", new MenuButton(staffPageButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/myPage/myPage.fxml")).load()));
-            buttons.put("books", new MenuButton(staffLocalsButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/local/local.fxml")).load()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            buttons.put("books", new MenuButton(allBooksButton, StaffBookPage.inst()));
+            buttons.put("books", new MenuButton(staffPageButton, null));
+            buttons.put("books", new MenuButton(staffLocalsButton, null));
 
         setup();
     }
