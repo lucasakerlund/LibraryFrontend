@@ -49,6 +49,10 @@ public class AdminScreen extends BorderPane {
         adminForgotPasswordButton.setOnMousePressed(e -> {
             Library.inst().setContent(AddStaffScreen.inst());
         });
+
+        adminLoginButton.setOnMousePressed(e -> {
+            Library.inst().setContent(StaffMenu.inst());
+        });
     }
 
     public static AdminScreen inst() {
