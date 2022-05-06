@@ -30,7 +30,7 @@ public class LoanedBooksView extends BorderPane{
     }
 
     public void setup(){
-        addBook(new LoanedBookCover(BackendCaller.inst().getImage(12)));
+        //addBook(new LoanedBookCover(BackendCaller.inst().getImage(12)));
     }
 
     public void addBook(LoanedBookCover loanedBookCover){

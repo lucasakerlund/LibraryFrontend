@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" styleClass="book-loan-view" stylesheets="@../../css/main.css" type="StackPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="imageView" fitHeight="600.0" fitWidth="500.0" pickOnBounds="true">
@@ -23,7 +22,7 @@
          <top>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label styleClass="book-loan-view-title" text="Titel" />
+                  <Label fx:id="titleLabel" styleClass="book-loan-view-title" text="Titel" />
                </children>
                <padding>
                   <Insets left="50.0" />
@@ -33,7 +32,7 @@
          <bottom>
             <HBox prefHeight="150.0" prefWidth="500.0" styleClass="book-loan-view-footer" BorderPane.alignment="CENTER">
                <children>
-                  <TextArea editable="false" styleClass="book-loan-view-description" text="Detta är en beskrivning." HBox.hgrow="ALWAYS" />
+                  <TextArea fx:id="descriptionLabel" editable="false" styleClass="book-loan-view-description" text="Detta är en beskrivning." HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </bottom>
@@ -53,9 +52,9 @@
                               <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" minHeight="50.0" minWidth="68.0" prefHeight="50.0" prefWidth="68.0" styleClass="book-loan-view-location-header-label" text="Antal" />
                            </children>
                         </HBox>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
+                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
                            <content>
-                              <VBox fx:id="locations" prefHeight="200.0" prefWidth="100.0" />
+                              <VBox fx:id="locations" />
                            </content>
                         </ScrollPane>
                      </children>
@@ -67,31 +66,31 @@
             <VBox prefHeight="350.0" prefWidth="190.0" styleClass="book-loan-view-book-information-box" BorderPane.alignment="CENTER">
                <children>
                   <Label styleClass="book-loan-view-information-label" text="Författare:" />
-                  <Label layoutX="20.0" layoutY="32.0" styleClass="book-loan-view-book-information-value" text="Lucas">
+                  <Label fx:id="authorLabel" layoutX="20.0" layoutY="32.0" styleClass="book-loan-view-book-information-value" text="Lucas" wrapText="true">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Label>
                   <Label layoutX="20.0" layoutY="32.0" styleClass="book-loan-view-information-label" text="Genre:" />
-                  <Label layoutX="20.0" layoutY="53.0" styleClass="book-loan-view-book-information-value" text="Dekare">
+                  <Label fx:id="genreLabel" layoutX="20.0" layoutY="53.0" styleClass="book-loan-view-book-information-value" text="Dekare" wrapText="true">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Label>
                   <Label layoutX="20.0" layoutY="74.0" styleClass="book-loan-view-information-label" text="ISBN:" />
-                  <Label layoutX="20.0" layoutY="95.0" styleClass="book-loan-view-book-information-value" text="2340202051053">
+                  <Label fx:id="isbnLabel" layoutX="20.0" layoutY="95.0" styleClass="book-loan-view-book-information-value" text="2340202051053">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Label>
                   <Label layoutX="20.0" layoutY="116.0" styleClass="book-loan-view-information-label" text="Utgiven:" />
-                  <Label layoutX="30.0" layoutY="137.0" styleClass="book-loan-view-book-information-value" text="2000-06-13">
+                  <Label fx:id="publishedLabel" layoutX="30.0" layoutY="137.0" styleClass="book-loan-view-book-information-value" text="2000-06-13">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Label>
                   <Label layoutX="20.0" layoutY="158.0" styleClass="book-loan-view-information-label" text="Sidor:" />
-                  <Label layoutX="30.0" layoutY="179.0" styleClass="book-loan-view-book-information-value" text="207">
+                  <Label fx:id="pagesLabel" layoutX="30.0" layoutY="179.0" styleClass="book-loan-view-book-information-value" text="207">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
