@@ -25,6 +25,7 @@ public class Library extends Application {
         root = new BorderPane();
         root.getStylesheets().add(getClass().getResource("/com/stav/libraryfrontend/css/main.css").toExternalForm());
         root.setCenter(LoginScreen.inst());
+        stage.setTitle("La Biblioteca");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

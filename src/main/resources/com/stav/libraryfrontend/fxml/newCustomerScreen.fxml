@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<fx:root id="new-customer-screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="new-customer-screen" stylesheets="@../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="new-customer-screen" prefHeight="600.0" prefWidth="800.0" styleClass="new-customer-screen" stylesheets="@../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" prefHeight="508.0" prefWidth="800.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>

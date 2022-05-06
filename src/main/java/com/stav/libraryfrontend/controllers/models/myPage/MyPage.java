@@ -1,6 +1,7 @@
 package com.stav.libraryfrontend.controllers.models.myPage;
 
 import com.stav.libraryfrontend.abstracts.BackendCaller;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -26,6 +27,9 @@ public class MyPage extends BorderPane {
     @FXML
     private Label reservedBooksButton;
 
+    @FXML
+    private Label confirmReturnLabel;
+
 
     public MyPage(){
         instance = this;
@@ -44,10 +48,34 @@ public class MyPage extends BorderPane {
     }
 
     public void setup(){
+        clearMessage();
+
         borrowedBooksButton.setOnMousePressed(e -> {
             content.setCenter(LoanedBooksView.inst());
         });
+    }
 
+    public void inputMessage(String update){
+        Thread th = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Platform.runLater(() -> clearMessage());
+            }
+        });
+
+
+        confirmReturnLabel.setText(update);
+        th.start();
+    }
+
+    public void clearMessage(){
+        confirmReturnLabel.setText("");
     }
 
     public static MyPage inst(){
