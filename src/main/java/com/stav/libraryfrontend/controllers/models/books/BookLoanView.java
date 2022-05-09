@@ -1,5 +1,6 @@
 package com.stav.libraryfrontend.controllers.models.books;
 
+import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.models.Book;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +46,8 @@ public class BookLoanView extends StackPane {
     private Label pagesLabel;
     @FXML
     private TextArea descriptionLabel;
+    @FXML
+    private Label languageLabel;
 
     private Book book;
     private LocationItem focused;
@@ -81,6 +84,8 @@ public class BookLoanView extends StackPane {
                 return;
             }
             //Skicka till backend.
+            BackendCaller.inst().loanBook(null, null);
+
         });
         imageView.setImage(new Image(book.getImageSrc()));
         titleLabel.setText(book.getTitle());
@@ -90,6 +95,7 @@ public class BookLoanView extends StackPane {
         publishedLabel.setText(book.getPublished());
         pagesLabel.setText(book.getPages()+"");
         descriptionLabel.setText(book.getDescription());
+        languageLabel.setText(book.getLanguage());
         addLocation("Tjena111111111111111", 3);
         addLocation("Yoooo", 6);
         addLocation("Yoooo", 6);

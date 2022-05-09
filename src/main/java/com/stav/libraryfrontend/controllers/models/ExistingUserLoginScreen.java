@@ -1,6 +1,7 @@
 package com.stav.libraryfrontend.controllers.models;
 
 import com.stav.libraryfrontend.Library;
+import com.stav.libraryfrontend.abstracts.UserDetails;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -29,10 +30,6 @@ public class ExistingUserLoginScreen extends BorderPane {
     @FXML
     private Label loginButton;
 
-
-
-
-
     private ExistingUserLoginScreen(){
         instance = this;
 
@@ -49,7 +46,6 @@ public class ExistingUserLoginScreen extends BorderPane {
         setup();
     }
 
-
     // "Action-listeners here! Match label names with corresponding action
     public void setup(){
         backButton.setOnMousePressed(e -> {
@@ -57,6 +53,7 @@ public class ExistingUserLoginScreen extends BorderPane {
         });
         loginButton.setOnMousePressed(e -> {
             Library.inst().setContent(CustomerMenu.inst());
+            //UserDetails.inst().setCustomer(null);
         });
     }
 

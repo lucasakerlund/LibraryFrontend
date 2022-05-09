@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Book {
 
     @JsonProperty("book_id")
-    private int bookId;
+    private int bookId = 0;
     @JsonProperty("title")
     private String title;
     @JsonProperty("description")
@@ -22,8 +22,10 @@ public class Book {
     private int pages;
     @JsonProperty("image_src")
     private String imageSrc;
+    @JsonProperty("language")
+    private String language;
 
-    public Book(int bookId, String title, String description, String[] authors, String[] genre, String isbn, String published, int pages, String imageSrc) {
+    public Book(int bookId, String title, String description, String[] authors, String[] genre, String isbn, String published, int pages, String language, String imageSrc) {
         this.bookId = bookId;
         this.title = title;
         this.description = description;
@@ -32,6 +34,7 @@ public class Book {
         this.isbn = isbn;
         this.published = published;
         this.pages = pages;
+        this.language = language;
         this.imageSrc = imageSrc;
     }
 
@@ -101,6 +104,14 @@ public class Book {
 
     public String getImageSrc() {
         return imageSrc;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public void setImageSrc(String imageSrc) {

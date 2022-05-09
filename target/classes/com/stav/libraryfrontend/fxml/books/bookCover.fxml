@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="200.0" styleClass="book-cover" stylesheets="@../../css/main.css" type="StackPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="200.0" styleClass="bookDetails-cover" stylesheets="@../../css/main.css" type="StackPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="imageView" fitHeight="250.0" fitWidth="200.0" pickOnBounds="true">
          <image>
             <Image url="@../../../../../../../../../CinemaFrontend/src/main/resources/com/example/cinemafrontend/images/spiderman.jpg" />
          </image>
       </ImageView>
-      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="book-cover-title">
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="bookDetails-cover-title">
          <children>
-            <Label fx:id="titleLabel" styleClass="book-cover-title" text="Titel" visible="false" />
+            <Label fx:id="titleLabel" styleClass="bookDetails-cover-title" text="Titel" visible="false" />
          </children>
          <padding>
             <Insets top="20.0" />

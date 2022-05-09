@@ -1,11 +1,15 @@
 package com.stav.libraryfrontend.abstracts;
 
 import com.stav.libraryfrontend.models.Book;
-import javafx.print.PrinterJob;
-import javafx.scene.image.Image;
+import com.stav.libraryfrontend.models.Customer;
+import com.stav.libraryfrontend.models.LoanedBook;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -54,6 +58,50 @@ public class BackendCaller {
         return output;
     }
 
+    private String post(String path, String body){
+        try {
+            URL url = new URL("http://localhost:8080/" + path);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json; utf-8");
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setDoOutput(true);
+
+            try(OutputStream os = connection.getOutputStream()){
+                byte[] input = body.getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
+            }
+
+            try(BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()))){
+                StringBuilder response = new StringBuilder();
+                String responseLine = null;
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public Book getBook(int bookId){
+        String data = request("api/books/id/" + bookId);
+        JSONObject object = new JSONObject(data);
+        return new Book(
+                object.getInt("book_id"),
+                object.getString("title"),
+                object.getString("description"),
+                convertJSONArrayToStringArray(object.getJSONArray("authors")),
+                convertJSONArrayToStringArray(object.getJSONArray("genre")),
+                object.getString("isbn"),
+                object.getString("published"),
+                object.getInt("pages"),
+                object.getString("language"),
+                object.getString("image_source")
+                );
+    }
+
     public Book getBook(String isbn){
         String data = request("books/v1/volumes?q=isbn:" + isbn);
         System.out.println(data);
@@ -68,6 +116,7 @@ public class BackendCaller {
                 array.getJSONObject(0).getJSONObject("volumeInfo").getJSONArray("industryIdentifiers").getJSONObject(1).getString("identifier"),
                 array.getJSONObject(0).getJSONObject("volumeInfo").getString("publishedDate"),
                 array.getJSONObject(0).getJSONObject("volumeInfo").getInt("pageCount"),
+                array.getJSONObject(0).getJSONObject("volumeInfo").getString("language"),
                 array.getJSONObject(0).getJSONObject("volumeInfo").getJSONObject("imageLinks").getString("thumbnail").replace("zoom=1", "zoom=10")
         );
         return book;
@@ -78,8 +127,31 @@ public class BackendCaller {
         return null;
     }
 
-    public Book[] getLoanedBooks(int customerId){
-        String data = request("api/books/customer/" + customerId);
+    public List<LoanedBook> getLoanedBooks(int customerId){
+        String data = request("api/loans/" + customerId);
+        JSONArray array = new JSONArray(data);
+        List<LoanedBook> output = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            output.add(new LoanedBook(
+                    object.getInt("book_id"),
+                    object.getInt("customer_id"),
+                    object.getString("loan_date"),
+                    object.getString("return_date")
+                    ));
+        }
+        return output;
+    }
+
+    /**
+     * @return the book with the correct book_id
+     * */
+
+    public Book loanBook(Book book, Customer customer){
+        JSONObject object = new JSONObject();
+        object.put("isbn", book.getIsbn());
+        object.put("customer_id", customer.getCustomerId());
+        post("fruit", object.toString());
         return null;
     }
 
