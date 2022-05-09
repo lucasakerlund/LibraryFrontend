@@ -1,7 +1,6 @@
 package com.stav.libraryfrontend.controllers.models.books;
 
 import com.stav.libraryfrontend.abstracts.BackendCaller;
-import com.stav.libraryfrontend.models.Book;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
