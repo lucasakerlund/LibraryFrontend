@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<fx:root prefHeight="400.0" prefWidth="600.0" styleClass="staff-page" stylesheets="@../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0" styleClass="staff-page-header" stylesheets="@../../css/main.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="availableBooksButton" styleClass="staff-page-header-button" stylesheets="@../../css/main.css" text="Tillgängliga böcker" />
+         </children>
+         <BorderPane.margin>
+            <Insets left="25.0" right="25.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <center>
+      <BorderPane fx:id="staffContent" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</fx:root>

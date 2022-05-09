@@ -582,3 +582,23 @@
     -fx-font-size: 14;
 }
 /* MY PAGE (MIN SIDA) */
+
+/* STAFF PAGE */
+.staff-page{
+    -fx-background-color: transparent;
+}
+
+.staff-page-header{
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: white;
+}
+
+.staff-page-header-button{
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+    -fx-padding: 6;
+    -fx-background-color: #d4b38f;
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+}
