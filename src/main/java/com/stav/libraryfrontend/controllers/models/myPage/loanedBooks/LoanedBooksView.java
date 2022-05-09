@@ -1,4 +1,4 @@
-package com.stav.libraryfrontend.controllers.models.myPage;
+package com.stav.libraryfrontend.controllers.models.myPage.loanedBooks;
 
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.UserDetails;
@@ -19,7 +19,7 @@ public class LoanedBooksView extends BorderPane{
     private FlowPane box;
 
     public LoanedBooksView(){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/myPage/loanedBooksView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/myPage/loanedBooks/loanedBooksView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -33,14 +33,14 @@ public class LoanedBooksView extends BorderPane{
     }
 
     public void setup(){
-
+        updateBooks();
     }
 
     public void updateBooks(){
-        List<LoanedBook> list = BackendCaller.inst().getLoanedBooks(UserDetails.inst().getCustomer().getCustomerId());
+        /*List<LoanedBook> list = BackendCaller.inst().getLoanedBooks(UserDetails.inst().getCustomer().getCustomerId());
         for (LoanedBook loanedBook : list) {
-            addBook(new LoanedBookCover(BackendCaller.inst().getBook(loanedBook.getBookId()).getImageSrc()));
-        }
+            addBook(new LoanedBookCover(BackendCaller.inst().getBook(loanedBook.getBookId())));
+        }*/
     }
 
     public void addBook(LoanedBookCover loanedBookCover){

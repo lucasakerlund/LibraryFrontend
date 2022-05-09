@@ -628,3 +628,94 @@
     -fx-opacity: 0.75;
     -fx-cursor: hand;
 }
+
+/*Staff Book Info View*/
+.staff-book-info-view{
+    -fx-background-color: black;
+}
+
+.staff-book-info-view .image-view{
+    -fx-opacity: .5;
+}
+
+.staff-book-info-view-title{
+    -fx-font-size: 30;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-footer{
+    -fx-border-width: 2 0 0 0;
+    -fx-border-color: white;
+}
+
+.staff-book-info-view-description{
+    -fx-background-color: rgba(52,53,53,.4);
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-description .content{
+    -fx-background-color: rgba(52,53,53,.4);
+}
+
+.staff-book-info-view-return-list{
+    -fx-background-color: rgba(52,53,53,.4);
+}
+
+.staff-book-info-view-return-header-label{
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-return-header{
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: white;
+}
+
+.staff-book-info-view-return-box{
+
+}
+
+.staff-book-info-view-return-label{
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-return-box:hover{
+    -fx-background-color: rgba(126, 126, 126, 0.4);
+    -fx-cursor: hand;
+}
+
+#staff-book-info-view-return-box-focused{
+    -fx-background-color: rgba(187, 187, 187, 0.4);
+}
+
+.staff-book-info-view-book-information-box{
+    -fx-background-color: rgba(52,53,53,.4);
+    -fx-border-width: 2 2 0 0;
+    -fx-border-color: white;
+}
+
+.staff-book-info-view-information-label{
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-book-information-value{
+    -fx-font-size: 15;
+    -fx-text-fill: #bebebe;
+}
+
+.staff-book-info-view-quantity-box{
+    -fx-background-color: rgba(52,53,53,.4);
+}
+
+.staff-book-info-view-quantity-label{
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-quantity-value{
+    -fx-font-size: 30;
+    -fx-text-fill: #dcdcdc;
+}

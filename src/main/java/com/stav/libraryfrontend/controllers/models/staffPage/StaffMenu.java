@@ -2,6 +2,7 @@ package com.stav.libraryfrontend.controllers.models.staffPage;
 
 import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.controllers.models.AdminScreen;
+import com.stav.libraryfrontend.controllers.models.staffPage.books.StaffBookPage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

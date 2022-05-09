@@ -1,4 +1,4 @@
-package com.stav.libraryfrontend.controllers.models.staffPage;
+package com.stav.libraryfrontend.controllers.models.staffPage.books;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +26,7 @@ public class StaffBookPage extends BorderPane {
     public StaffBookPage(){
         instance = this;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/staffPage/staffBookPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/staffPage/books/staffBookPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {

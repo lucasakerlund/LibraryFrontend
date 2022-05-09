@@ -122,6 +122,22 @@ public class BackendCaller {
         return book;
     }
 
+    public int getAmountOfBooks(String isbn){
+        String data = request("api/books/amount_with_isbn/" + isbn);
+        System.out.println(data);
+        return Integer.parseInt(data);
+    }
+
+    public int getAmountOfBooksInStock(String isbn){
+        String data = request("api/books/amount_in_stock/" + isbn);
+        return Integer.parseInt(data);
+    }
+
+    public int getAmountInQueue(String isbn){
+        String data = request("api/book_queue/amount/" + isbn);
+        return Integer.parseInt(data);
+    }
+
     public Book[] getBooks(){
         String data = request("api/books");
         return null;
@@ -141,6 +157,11 @@ public class BackendCaller {
                     ));
         }
         return output;
+    }
+
+    public int returnBook(int bookId){
+        String data = request("api/loans/return_book/" + bookId);
+        return Integer.parseInt(data);
     }
 
     /**

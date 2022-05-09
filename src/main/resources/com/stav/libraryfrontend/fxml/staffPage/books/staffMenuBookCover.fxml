@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.StackPane?>
 
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="252.0" prefWidth="202.0" styleClass="staff-menu-book-cover" stylesheets="@../../css/main.css" type="StackPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="252.0" prefWidth="202.0" styleClass="staff-menu-book-cover" stylesheets="@../../../css/main.css" type="StackPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="imageView" fitHeight="250.0" fitWidth="200.0" pickOnBounds="true" styleClass="staff-menu-book-cover-imageview">
          <image>
