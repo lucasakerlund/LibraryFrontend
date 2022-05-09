@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <fx:root styleClass="add-staff-screen" stylesheets="@../css/main.css" type="StackPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane fx:id="securityCheckPane" prefHeight="200.0" prefWidth="200.0" styleClass="add-staff-screen-security-checker">
@@ -40,6 +39,7 @@
                      </children>
                   </HBox>
                   <Label fx:id="securityInputMessageLabel" />
+                  <Label fx:id="securityConfirmButton" styleClass="add-staff-screen-accept-security-button" text="Bekräfta" />
                </children>
                <BorderPane.margin>
                   <Insets />
@@ -50,19 +50,17 @@
             </VBox>
          </center>
          <bottom>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
+            <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
                <children>
                   <Label fx:id="securityBackButton" styleClass="add-staff-screen-security-back-button" text="Tillbaka">
                      <HBox.margin>
-                        <Insets left="25.0" top="75.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="securityConfirmButton" layoutX="10.0" layoutY="10.0" styleClass="add-staff-screen-accept-security-button" text="Bekräfta">
-                     <HBox.margin>
-                        <Insets bottom="150.0" left="144.0" />
+                        <Insets bottom="10.0" left="10.0" />
                      </HBox.margin>
                   </Label>
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </HBox>
          </bottom>
          <top>
