@@ -1,6 +1,7 @@
 package com.stav.libraryfrontend.controllers.models;
 
 import com.stav.libraryfrontend.Library;
+import com.stav.libraryfrontend.abstracts.BackendCaller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.CheckBox;
@@ -30,6 +31,9 @@ public class AddStaffScreen extends StackPane {
     private Label createStaffButton;
 
     @FXML
+    private TextField userNameInput;
+
+    @FXML
     private TextField firstNameTextField;
 
     @FXML
@@ -37,6 +41,9 @@ public class AddStaffScreen extends StackPane {
 
     @FXML
     private PasswordField passwordField;
+
+    @FXML
+    private PasswordField confirmPasswordField;
 
     @FXML
     private Label messageLabel;
@@ -192,6 +199,16 @@ public class AddStaffScreen extends StackPane {
         });
 
         createStaffButton.setOnMousePressed(e -> {
+            if(!passwordField.getText().equals(confirmPasswordField.getText())){
+                //some error
+                return;
+            }
+            /*int response = BackendCaller.inst().createStaff(firstNameTextField.getText(), lastNameTextField.getText(), userNameInput.getText(), passwordField.getText(), adminCheckBox.isSelected() ? "ADMIN" : "LIBRARIAN");
+            if(response == 0){
+                //some error
+                return;
+            }*/
+
             messageLabel.setText("Ny anställd tillagd i systemet!");
         });
     }

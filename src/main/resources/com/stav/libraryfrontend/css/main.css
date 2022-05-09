@@ -383,27 +383,7 @@
     -fx-text-fill: blue;
 }
 
-.new-customer-screen-first-name-label{
-    -fx-font-size: 14;
-    -fx-underline: true;
-}
-
-.new-customer-screen-last-name-label{
-    -fx-font-size: 14;
-    -fx-underline: true;
-}
-
-.new-customer-screen-email-label{
-    -fx-font-size: 14;
-    -fx-underline: true;
-}
-
-.new-customer-screen-password-label{
-    -fx-font-size: 14;
-    -fx-underline: true;
-}
-
-.new-customer-screen-confirm-password-label{
+.new-customer-screen-label{
     -fx-font-size: 14;
     -fx-underline: true;
 }
@@ -479,17 +459,7 @@
     -fx-background-color: #e2c8af;
 }
 
-.add-staff-screen-first-name-label{
-    -fx-font-size: 21;
-    -fx-underline: true;
-}
-
-.add-staff-screen-last-name-label{
-    -fx-font-size: 21;
-    -fx-underline: true;
-}
-
-.add-staff-screen-password-label{
+.add-staff-screen-label{
     -fx-font-size: 21;
     -fx-underline: true;
 }

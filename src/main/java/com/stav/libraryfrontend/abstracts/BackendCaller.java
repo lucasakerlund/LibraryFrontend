@@ -176,6 +176,30 @@ public class BackendCaller {
         return null;
     }
 
+    public int createCustomer(String firstName, String lastName, String mail, String password){
+        String data = request("api/customer/create?firstName=" + firstName + "&lastName=" + lastName + "&mail=" + mail + "&password=" + password);
+        return Integer.parseInt(data);
+    }
+
+    public int createStaff(String firstName, String lastName, String userName, String password, String role){
+        String data = request("api/employee/create?firstName=" + firstName + "&lastName=" + lastName + "&userName=" + userName + "&password=" + password + "&role=" + role);
+        return Integer.parseInt(data);
+    }
+
+    public Customer loginCustomer(String email, String password){
+        String data = request("api/customer/login?email=" + email + "&password=" + password);
+        JSONObject object = new JSONObject(data);
+        if(data.equals("")){
+            return null;
+        }
+        return new Customer(object.getInt("customer_id"),
+                object.getString("first_name"),
+                object.getString("last_name"),
+                object.getString("mail"),
+                object.getString("password")
+                );
+    }
+
     private String[] convertJSONArrayToStringArray(JSONArray array){
         List<String> output = new ArrayList<>();
         for (int i = 0; i < array.length(); i++) {
