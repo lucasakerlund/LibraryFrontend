@@ -1,13 +1,13 @@
-package com.stav.libraryfrontend.controllers.models;
+package com.stav.libraryfrontend.controllers.models.staffPage;
 
 import com.stav.libraryfrontend.Library;
+import com.stav.libraryfrontend.controllers.models.AdminScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import com.stav.libraryfrontend.controllers.models.staffPage.StaffBookPage;
 
 import java.io.IOException;
 import java.util.HashMap;

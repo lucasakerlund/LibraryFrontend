@@ -3,6 +3,7 @@ package com.stav.libraryfrontend.controllers.models.staffPage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
@@ -15,7 +16,12 @@ public class StaffBookPage extends BorderPane {
     private BorderPane staffContent;
 
     @FXML
-    private Label availableBooksButton;
+    private TextField searchField;
+
+    @FXML
+    private Label searchButton;
+
+
 
     public StaffBookPage(){
         instance = this;
@@ -28,6 +34,12 @@ public class StaffBookPage extends BorderPane {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        setup();
+    }
+
+    public void setup(){
+        staffContent.setCenter(StaffMenuBookView.inst());
     }
 
     public static StaffBookPage inst(){

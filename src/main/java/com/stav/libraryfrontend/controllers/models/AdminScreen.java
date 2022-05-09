@@ -1,6 +1,7 @@
 package com.stav.libraryfrontend.controllers.models;
 
 import com.stav.libraryfrontend.Library;
+import com.stav.libraryfrontend.controllers.models.staffPage.StaffMenu;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;

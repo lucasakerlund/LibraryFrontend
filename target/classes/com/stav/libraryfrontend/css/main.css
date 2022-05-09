@@ -569,11 +569,19 @@
     -fx-cursor: hand;
 }
 
+.loaned-book-cover-days-left-label{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+}
+
 .my-page-op-message-label{
     -fx-text-fill: green;
     -fx-underline: true;
     -fx-font-size: 14;
 }
+/* MY PAGE (MIN SIDA) */
 
 /* STAFF PAGE */
 .staff-page{
@@ -594,4 +602,29 @@
     -fx-font-size: 20;
     -fx-cursor: hand;
 }
-/* MY PAGE (MIN SIDA) */
+
+.staff-book-page-search-button{
+    -fx-font-size: 14;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-padding: 6;
+    -fx-background-color: #00e100;
+}
+
+.staff-book-page-search-button:hover{
+    -fx-background-color: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+/* STAFF PAGE */
+
+/* Staff menu book cover */
+.staff-menu-book-cover{
+    -fx-border-width: 2;
+    -fx-border-color: black;
+}
+
+.staff-menu-book-cover-imageview:hover{
+    -fx-opacity: 0.75;
+    -fx-cursor: hand;
+}
