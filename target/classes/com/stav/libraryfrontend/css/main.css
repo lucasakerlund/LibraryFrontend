@@ -417,6 +417,13 @@
     -fx-background-color: #6b7700;
     -fx-underline: true;
 }
+
+.new-customer-screen-error-label{
+    -fx-text-fill: red;
+    -fx-font-size: 18;
+    -fx-underline: true;
+}
+
 /* NEW CUSTOMER SCREEN */
 
 /* ADD STAFF SCREEN */
@@ -494,6 +501,13 @@
     -fx-text-fill: GREEN;
     -fx-underline: true;
 }
+
+.add-staff-screen-create-account-error-label{
+    -fx-font-size: 18;
+    -fx-text-fill: red;
+    -fx-underline: true;
+}
+
 /* ADD STAFF SCREEN */
 
 /* MY PAGE (MIN SIDA) */
