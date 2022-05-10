@@ -28,13 +28,13 @@
             <VBox alignment="BOTTOM_CENTER" prefHeight="109.0" prefWidth="600.0">
                <children>
                   <Label text="Användanamn" />
-                  <TextField maxWidth="150.0" promptText="Användarnamn här..." />
+                  <TextField fx:id="usernameInput" maxWidth="150.0" promptText="Användarnamn här..." />
                </children>
             </VBox>
             <VBox alignment="BOTTOM_CENTER" prefHeight="86.0" prefWidth="600.0">
                <children>
                   <Label text="Lösenord" />
-                  <TextField maxWidth="150.0" promptText="Lösenord här..." />
+                  <TextField fx:id="passwordInput" maxWidth="150.0" promptText="Lösenord här..." />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0" spacing="20.0">

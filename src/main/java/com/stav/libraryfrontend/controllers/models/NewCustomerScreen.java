@@ -67,11 +67,11 @@ public class NewCustomerScreen extends BorderPane {
                 //fix some error labels
                 return;
             }
-            /*int response = BackendCaller.inst().createCustomer(firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(), passwordField.getText());
-            if(response == 0){
+            boolean response = BackendCaller.inst().createCustomer(firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(), passwordField.getText());
+            if(!response){
                 //some error
                 return;
-            }*/
+            }
 
             LoginScreen.inst().userAddedSuccessfully();
             Library.inst().setContent(LoginScreen.inst());

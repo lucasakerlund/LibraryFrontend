@@ -1,6 +1,7 @@
 package com.stav.libraryfrontend.controllers.models.books;
 
 import com.stav.libraryfrontend.abstracts.BackendCaller;
+import com.stav.libraryfrontend.abstracts.SubSceneHandler;
 import com.stav.libraryfrontend.controllers.models.myPage.loanedBooks.LoanedBooksView;
 import com.stav.libraryfrontend.models.Book;
 import javafx.fxml.FXML;
@@ -81,12 +82,17 @@ public class BookLoanView extends StackPane {
     private void setup(){
         lendButton.setOnMousePressed(e -> {
             if(focused == null){
+                errorLabel.setText("Välj ett bibliotek.");
                 errorLabel.setVisible(true);
                 return;
             }
             //Skicka till backend.
-            BackendCaller.inst().loanBook(null, null);
+            if(!BackendCaller.inst().loanBook(null, null)){
+                errorLabel.setText("Något fel inträffade.");
+                return;
+            }
             LoanedBooksView.inst().updateBooks();
+            SubSceneHandler.inst().hide();
         });
         imageView.setImage(new Image(book.getImageSrc()));
         titleLabel.setText(book.getTitle());

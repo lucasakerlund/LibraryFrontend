@@ -13,6 +13,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import com.stav.libraryfrontend.models.Staff;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
@@ -36,7 +38,7 @@ public class BackendCaller {
         String output = "";
 
         try {
-            URL url = new URL("https://www.googleapis.com/" + path);
+            URL url = new URL("http://localhost:8080/" + path);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(5000);
@@ -103,7 +105,21 @@ public class BackendCaller {
     }
 
     public Book getBook(String isbn){
-        String data = request("books/v1/volumes?q=isbn:" + isbn);
+        String data = request("api/book_details/" + isbn);
+        JSONObject object = new JSONObject(data);
+        return new Book(
+                0,
+                object.getString("title"),
+                object.getString("description"),
+                convertJSONArrayToStringArray(object.getJSONArray("authors")),
+                convertJSONArrayToStringArray(object.getJSONArray("genre")),
+                object.getString("isbn"),
+                object.getString("published"),
+                object.getInt("pages"),
+                object.getString("language"),
+                object.getString("image_source")
+        );
+        /*String data = request("books/v1/volumes?q=isbn:" + isbn);
         System.out.println(data);
         JSONObject object = new JSONObject(data);
         JSONArray array = new JSONArray(object.getJSONArray("items"));
@@ -119,7 +135,7 @@ public class BackendCaller {
                 array.getJSONObject(0).getJSONObject("volumeInfo").getString("language"),
                 array.getJSONObject(0).getJSONObject("volumeInfo").getJSONObject("imageLinks").getString("thumbnail").replace("zoom=1", "zoom=10")
         );
-        return book;
+        return book;*/
     }
 
     public int getAmountOfBooks(String isbn){
@@ -139,17 +155,17 @@ public class BackendCaller {
     }
 
     public List<Book> getBooks(){
-        String data = request("api/books");
+        String data = request("api/book_details");
         JSONArray array = new JSONArray(data);
         List<Book> output = new ArrayList<>();
         for (int i = 0; i < array.length(); i++) {
             JSONObject object = array.getJSONObject(i);
             output.add(new Book(
-                    object.getInt("book_id"),
+                    0,
                     object.getString("title"),
                     object.getString("description"),
-                    convertJSONArrayToStringArray(object.getJSONArray("authors")),
-                    convertJSONArrayToStringArray(object.getJSONArray("genre")),
+                    new String[]{""},//convertJSONArrayToStringArray(object.getJSONArray("authors")),
+                    new String[]{""},//convertJSONArrayToStringArray(object.getJSONArray("genre")),
                     object.getString("isbn"),
                     object.getString("published"),
                     object.getInt("pages"),
@@ -157,7 +173,7 @@ public class BackendCaller {
                     object.getString("image_source")
             ));
         }
-        return null;
+        return output;
     }
 
     public List<LoanedBook> getLoanedBooks(int customerId){
@@ -176,26 +192,25 @@ public class BackendCaller {
         return output;
     }
 
-    public int returnBook(int bookId){
+    public boolean returnBook(int bookId){
         String data = request("api/loans/return_book/" + bookId);
-        return Integer.parseInt(data);
+        return Boolean.parseBoolean(data);
     }
 
     /**
      * @return the book with the correct book_id
      * */
 
-    public Book loanBook(Book book, Customer customer){
+    public boolean loanBook(Book book, Customer customer){
         JSONObject object = new JSONObject();
         object.put("isbn", book.getIsbn());
         object.put("customer_id", customer.getCustomerId());
-        post("fruit", object.toString());
-        return null;
+        return Boolean.parseBoolean(post("api/loans/loan", object.toString()));
     }
 
-    public int createCustomer(String firstName, String lastName, String mail, String password){
-        String data = request("api/customer/create?firstName=" + firstName + "&lastName=" + lastName + "&mail=" + mail + "&password=" + password);
-        return Integer.parseInt(data);
+    public boolean createCustomer(String firstName, String lastName, String mail, String password){
+        String data = request("api/customers/create?firstName=" + firstName + "&lastName=" + lastName + "&mail=" + mail + "&password=" + password);
+        return Boolean.parseBoolean(data);
     }
 
     public int createStaff(String firstName, String lastName, String userName, String password, String role){
@@ -204,17 +219,32 @@ public class BackendCaller {
     }
 
     public Customer loginCustomer(String email, String password){
-        String data = request("api/customer/login?email=" + email + "&password=" + password);
+        String data = request("api/customers/login?email=" + email + "&password=" + password);
+        if(data.equals("")){
+            return null;
+        }
+        JSONObject object = new JSONObject(data);
+        return new Customer(object.getInt("customer_id"),
+                object.getString("first_name"),
+                object.getString("last_name"),
+                object.getString("email"),
+                object.getString("password")
+                );
+    }
+
+    public Staff loginStaff(String email, String password){
+        String data = request("api/employees/login?username=" + email + "&password=" + password);
         JSONObject object = new JSONObject(data);
         if(data.equals("")){
             return null;
         }
-        return new Customer(object.getInt("customer_id"),
+        return new Staff(object.getInt("customer_id"),
                 object.getString("first_name"),
                 object.getString("last_name"),
-                object.getString("mail"),
-                object.getString("password")
-                );
+                object.getString("username"),
+                object.getString("password"),
+                object.getString("role")
+        );
     }
 
     private String[] convertJSONArrayToStringArray(JSONArray array){

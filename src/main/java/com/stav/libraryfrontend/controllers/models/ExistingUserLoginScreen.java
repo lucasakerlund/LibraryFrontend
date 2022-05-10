@@ -54,13 +54,13 @@ public class ExistingUserLoginScreen extends BorderPane {
             Library.inst().setContent(LoginScreen.inst());
         });
         loginButton.setOnMousePressed(e -> {
-            Library.inst().setContent(CustomerMenu.inst()); //ta bort sen när koden under okommenteras
-            /*Customer customer = BackendCaller.inst().loginCustomer(emailField.getText(), passwordField.getText());
+            Customer customer = BackendCaller.inst().loginCustomer(emailField.getText(), passwordField.getText());
             if(customer == null){
+                System.out.println(1);
                 return;
             }
             UserDetails.inst().setCustomer(customer);
-            Library.inst().setContent(CustomerMenu.inst());*/
+            Library.inst().setContent(CustomerMenu.inst());
 
         });
     }

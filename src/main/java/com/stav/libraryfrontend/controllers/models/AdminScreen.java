@@ -1,10 +1,14 @@
 package com.stav.libraryfrontend.controllers.models;
 
 import com.stav.libraryfrontend.Library;
+import com.stav.libraryfrontend.abstracts.BackendCaller;
+import com.stav.libraryfrontend.abstracts.StaffDetails;
 import com.stav.libraryfrontend.controllers.models.staffPage.StaffMenu;
+import com.stav.libraryfrontend.models.Staff;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
@@ -15,6 +19,12 @@ public class AdminScreen extends BorderPane {
 
     @FXML
     private Label backButton;
+
+    @FXML
+    private TextField usernameInput;
+
+    @FXML
+    private TextField passwordInput;
 
     @FXML
     private Label adminLoginButton;
@@ -52,6 +62,12 @@ public class AdminScreen extends BorderPane {
         });
 
         adminLoginButton.setOnMousePressed(e -> {
+            Library.inst().setContent(StaffMenu.inst());
+            Staff staff = BackendCaller.inst().loginStaff(usernameInput.getText(), passwordInput.getText());
+            if(staff == null){
+                return;
+            }
+            StaffDetails.inst().setStaff(staff);
             Library.inst().setContent(StaffMenu.inst());
         });
     }

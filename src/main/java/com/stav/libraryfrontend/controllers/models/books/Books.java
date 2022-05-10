@@ -1,6 +1,7 @@
 package com.stav.libraryfrontend.controllers.models.books;
 
 import com.stav.libraryfrontend.abstracts.BackendCaller;
+import com.stav.libraryfrontend.models.Book;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
@@ -25,16 +26,21 @@ public class Books extends BorderPane {
             e.printStackTrace();
         }
 
-        try {
-            addBook(new BookCover(BackendCaller.inst().getBook("9781534321199")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        updateBooks();
     }
 
     public static Books inst(){
         return instance;
+    }
+
+    public void updateBooks(){
+        for(Book book : BackendCaller.inst().getBooks()) {
+            try {
+                addBook(new BookCover(book));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void addBook(BookCover bookCover){
