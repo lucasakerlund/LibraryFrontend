@@ -6,6 +6,8 @@ public class Book {
 
     @JsonProperty("book_id")
     private int bookId = 0;
+    @JsonProperty("library_id")
+    private int libraryId = 0;
     @JsonProperty("title")
     private String title;
     @JsonProperty("description")
@@ -20,13 +22,14 @@ public class Book {
     private String published;
     @JsonProperty("pages")
     private int pages;
-    @JsonProperty("image_src")
-    private String imageSrc;
     @JsonProperty("language")
     private String language;
+    @JsonProperty("image_src")
+    private String imageSrc;
 
-    public Book(int bookId, String title, String description, String[] authors, String[] genre, String isbn, String published, int pages, String language, String imageSrc) {
+    public Book(int bookId, int libraryId, String title, String description, String[] authors, String[] genre, String isbn, String published, int pages, String language, String imageSrc) {
         this.bookId = bookId;
+        this.libraryId = libraryId;
         this.title = title;
         this.description = description;
         this.authors = authors;
@@ -44,6 +47,14 @@ public class Book {
 
     public void setBookId(int bookId) {
         this.bookId = bookId;
+    }
+
+    public int getLibraryId() {
+        return libraryId;
+    }
+
+    public void setLibraryId(int libraryId) {
+        this.libraryId = libraryId;
     }
 
     public String getTitle() {
@@ -102,16 +113,16 @@ public class Book {
         this.pages = pages;
     }
 
-    public String getImageSrc() {
-        return imageSrc;
-    }
-
     public String getLanguage() {
         return language;
     }
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    public String getImageSrc() {
+        return imageSrc;
     }
 
     public void setImageSrc(String imageSrc) {

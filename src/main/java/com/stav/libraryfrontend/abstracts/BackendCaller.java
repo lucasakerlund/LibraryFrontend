@@ -89,13 +89,15 @@ public class BackendCaller {
 
     public Book getBook(int bookId){
         String data = request("api/books/id/" + bookId);
+        System.out.println(data);
         JSONObject object = new JSONObject(data);
         return new Book(
                 object.getInt("book_id"),
+                object.getInt("library_id"),
                 object.getString("title"),
                 object.getString("description"),
                 convertJSONArrayToStringArray(object.getJSONArray("authors")),
-                convertJSONArrayToStringArray(object.getJSONArray("genre")),
+                convertJSONArrayToStringArray(object.getJSONArray("genres")),
                 object.getString("isbn"),
                 object.getString("published"),
                 object.getInt("pages"),
@@ -108,6 +110,7 @@ public class BackendCaller {
         String data = request("api/book_details/" + isbn);
         JSONObject object = new JSONObject(data);
         return new Book(
+                0,
                 0,
                 object.getString("title"),
                 object.getString("description"),
@@ -162,6 +165,7 @@ public class BackendCaller {
             JSONObject object = array.getJSONObject(i);
             output.add(new Book(
                     0,
+                    0,
                     object.getString("title"),
                     object.getString("description"),
                     new String[]{""},//convertJSONArrayToStringArray(object.getJSONArray("authors")),
@@ -174,6 +178,17 @@ public class BackendCaller {
             ));
         }
         return output;
+    }
+
+    /**
+     * @return object that contains locations: [
+     * name, amount
+     * ]
+     * */
+    public JSONArray getAmountOfBookInLibraries(String isbn){
+        String data = request("api/books/amount_in_libraries/" + isbn);
+        System.out.println(data);
+        return new JSONArray(data);
     }
 
     public List<LoanedBook> getLoanedBooks(int customerId){
@@ -201,10 +216,11 @@ public class BackendCaller {
      * @return the book with the correct book_id
      * */
 
-    public boolean loanBook(Book book, Customer customer){
+    public boolean loanBook(Book book, Customer customer, int libraryId){
         JSONObject object = new JSONObject();
         object.put("isbn", book.getIsbn());
         object.put("customer_id", customer.getCustomerId());
+        object.put("library_id", libraryId);
         return Boolean.parseBoolean(post("api/loans/loan", object.toString()));
     }
 

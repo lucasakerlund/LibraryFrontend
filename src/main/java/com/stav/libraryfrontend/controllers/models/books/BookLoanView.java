@@ -2,6 +2,7 @@ package com.stav.libraryfrontend.controllers.models.books;
 
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.SubSceneHandler;
+import com.stav.libraryfrontend.abstracts.UserDetails;
 import com.stav.libraryfrontend.controllers.models.myPage.loanedBooks.LoanedBooksView;
 import com.stav.libraryfrontend.models.Book;
 import javafx.fxml.FXML;
@@ -17,6 +18,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -69,13 +72,13 @@ public class BookLoanView extends StackPane {
         setup();
     }
 
-    public void addLocation(String location, int amount){
+    public void addLocation(int libraryId, String location, int amount){
         if(!locations.getChildren().isEmpty()){
             Separator line = new Separator();
             line.setOrientation(Orientation.HORIZONTAL);
             locations.getChildren().add(line);
         }
-        LocationItem item = new LocationItem(location, amount);
+        LocationItem item = new LocationItem(libraryId, location, amount);
         locations.getChildren().add(item);
     }
 
@@ -87,13 +90,14 @@ public class BookLoanView extends StackPane {
                 return;
             }
             //Skicka till backend.
-            if(!BackendCaller.inst().loanBook(null, null)){
+            if(!BackendCaller.inst().loanBook(book, UserDetails.inst().getCustomer(), focused.libraryId)){
                 errorLabel.setText("Något fel inträffade.");
                 return;
             }
             LoanedBooksView.inst().updateBooks();
             SubSceneHandler.inst().hide();
         });
+
         imageView.setImage(new Image(book.getImageSrc()));
         titleLabel.setText(book.getTitle());
         authorLabel.setText(String.join(", ", book.getAuthors()));
@@ -103,17 +107,21 @@ public class BookLoanView extends StackPane {
         pagesLabel.setText(book.getPages()+"");
         descriptionLabel.setText(book.getDescription());
         languageLabel.setText(book.getLanguage());
-        addLocation("Tjena111111111111111", 3);
-        addLocation("Yoooo", 6);
-        addLocation("Yoooo", 6);
-        addLocation("Yoooo", 6);
-        addLocation("Yoooo", 6);
-        addLocation("Yoooo", 6);
+
+        JSONArray array = BackendCaller.inst().getAmountOfBookInLibraries(book.getIsbn());
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            addLocation(object.getInt("library_id"), object.getString("name"), object.getInt("amount"));
+        }
+        SubSceneHandler.inst().hide();
     }
 
     private class LocationItem extends HBox {
 
-        private LocationItem(String location, int amount){
+        private int libraryId;
+
+        private LocationItem(int libraryId, String location, int amount){
+            this.libraryId = libraryId;
             this.getStyleClass().add("book-loan-view-location-box");
             Label locationLabel = new Label(location);
             Label amountLabel = new Label(amount+"");
