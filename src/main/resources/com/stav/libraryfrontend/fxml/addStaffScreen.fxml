@@ -74,7 +74,7 @@
             </Label>
          </top>
       </BorderPane>
-      <BorderPane id="add-staff-screen" fx:id="addStaffPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="add-staff-screen" visible="false">
+      <BorderPane id="add-staff-screen" fx:id="addStaffPane" prefHeight="600.0" prefWidth="800.0" styleClass="add-staff-screen" visible="false">
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
@@ -126,6 +126,16 @@
                </children>
             </HBox>
          </bottom>
+         <top>
+            <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <children>
+                  <Label fx:id="errorLabel" styleClass="add-staff-screen-create-account-error-label" text="Test: ERROR LABEL" />
+               </children>
+            </VBox>
+         </top>
       </BorderPane>
    </children>
 </fx:root>
