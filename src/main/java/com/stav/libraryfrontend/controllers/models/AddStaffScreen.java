@@ -22,6 +22,9 @@ public class AddStaffScreen extends StackPane {
 
     /* Unlocked Add staff panel components */
     @FXML
+    private Label errorLabel;
+
+    @FXML
     private CheckBox adminCheckBox;
 
     @FXML
@@ -118,6 +121,8 @@ public class AddStaffScreen extends StackPane {
     }
 
     public void setup(){
+        errorLabel.setText("");
+
         /* Buttons for the locked "Add staff screen", or the security screen */
         security1Button.setOnMousePressed(e -> {
             securityInput = securityInput + 1;
@@ -178,6 +183,7 @@ public class AddStaffScreen extends StackPane {
 
         securityBackButton.setOnMousePressed(e -> {
             securityInput = "";
+            errorLabel.setText("");
             currentInputLabel.setText("Din inmatning: ");
             addStaffPane.setVisible(false);
             securityCheckPane.setVisible(true);
@@ -194,20 +200,34 @@ public class AddStaffScreen extends StackPane {
             securityCheckPane.setVisible(true);
             securityInput = "";
             currentInputLabel.setText("Din inmatning: ");
-            Library.inst().setContent(AdminScreen.inst());
             messageLabel.setText("");
+            errorLabel.setText("");
+            userNameInput.clear();
+            firstNameTextField.clear();
+            lastNameTextField.clear();
+            passwordField.clear();
+            confirmPasswordField.clear();
+            Library.inst().setContent(AdminScreen.inst());
         });
 
         createStaffButton.setOnMousePressed(e -> {
             if(!passwordField.getText().equals(confirmPasswordField.getText())){
-                //some error
+                errorLabel.setText("Lösenord och upprepat lösenord stämmer inte överens med varandra");
                 return;
             }
-            /*int response = BackendCaller.inst().createStaff(firstNameTextField.getText(), lastNameTextField.getText(), userNameInput.getText(), passwordField.getText(), adminCheckBox.isSelected() ? "ADMIN" : "LIBRARIAN");
-            if(response == 0){
-                //some error
+
+            if (userNameInput.getText().equals("") ||firstNameTextField.getText().equals("") || lastNameTextField.getText().equals("")
+            || passwordField.getText().equals("") || confirmPasswordField.getText().equals("")){
+                errorLabel.setText("Samtliga textfält är obligatoriska och får inte lämnas blanka");
                 return;
-            }*/
+            }
+
+            int response = BackendCaller.inst().createStaff(firstNameTextField.getText(), lastNameTextField.getText(),
+                    userNameInput.getText(), passwordField.getText(), adminCheckBox.isSelected() ? "ADMIN" : "LIBRARIAN");
+            if(response == 0){
+                errorLabel.setText("Det föreslagna kontot existerar redan...");
+                return;
+            }
 
             messageLabel.setText("Ny anställd tillagd i systemet!");
         });
