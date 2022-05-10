@@ -138,8 +138,25 @@ public class BackendCaller {
         return Integer.parseInt(data);
     }
 
-    public Book[] getBooks(){
+    public List<Book> getBooks(){
         String data = request("api/books");
+        JSONArray array = new JSONArray(data);
+        List<Book> output = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            output.add(new Book(
+                    object.getInt("book_id"),
+                    object.getString("title"),
+                    object.getString("description"),
+                    convertJSONArrayToStringArray(object.getJSONArray("authors")),
+                    convertJSONArrayToStringArray(object.getJSONArray("genre")),
+                    object.getString("isbn"),
+                    object.getString("published"),
+                    object.getInt("pages"),
+                    object.getString("language"),
+                    object.getString("image_source")
+            ));
+        }
         return null;
     }
 

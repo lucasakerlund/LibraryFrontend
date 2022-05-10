@@ -67,7 +67,7 @@ public class StaffBookInfoView extends StackPane {
         setup();
     }
 
-    public void addLocation(String location, int amount){
+    public void addReturn(String location, int amount){
         if(!returnList.getChildren().isEmpty()){
             Separator line = new Separator();
             line.setOrientation(Orientation.HORIZONTAL);

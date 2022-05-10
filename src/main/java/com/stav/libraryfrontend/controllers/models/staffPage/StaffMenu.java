@@ -2,6 +2,7 @@ package com.stav.libraryfrontend.controllers.models.staffPage;
 
 import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.controllers.models.AdminScreen;
+import com.stav.libraryfrontend.controllers.models.CustomerMenu;
 import com.stav.libraryfrontend.controllers.models.staffPage.books.StaffBookPage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,20 +46,33 @@ public class StaffMenu extends BorderPane {
         } catch (IOException e) {
             e.printStackTrace();
         }
-            //buttons.put("books", new MenuButton(allBooksButton, Something.inst()));
             buttons.put("books", new MenuButton(allBooksButton, StaffBookPage.inst()));
-            buttons.put("books", new MenuButton(staffPageButton, null));
-            buttons.put("books", new MenuButton(staffLocalsButton, null));
+            buttons.put("dunno", new MenuButton(staffPageButton, null));
+            buttons.put("locals", new MenuButton(staffLocalsButton, null));
 
         setup();
+        open("books");
     }
 
     public static StaffMenu inst(){
         return instance;
     }
 
-    public void setContent(Parent parent){
+    public void open(String id){
+        setContent(buttons.get(id).content);
+        setFocus(buttons.get(id));
+    }
+
+    private void setContent(Parent parent){
         staffContent.setCenter(parent);
+    }
+
+    private void setFocus(MenuButton button){
+        if(focused != null){
+            focused.buttonBox.setId("");
+        }
+        button.buttonBox.setId("customer-menu-bar-button-focused");
+        focused = button;
     }
 
     private void setup(){
