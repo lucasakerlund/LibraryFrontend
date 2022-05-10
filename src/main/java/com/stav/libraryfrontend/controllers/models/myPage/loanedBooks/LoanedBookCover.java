@@ -1,5 +1,8 @@
-package com.stav.libraryfrontend.controllers.models.myPage;
+package com.stav.libraryfrontend.controllers.models.myPage.loanedBooks;
 
+import com.stav.libraryfrontend.abstracts.BackendCaller;
+import com.stav.libraryfrontend.controllers.models.myPage.MyPage;
+import com.stav.libraryfrontend.models.Book;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -20,8 +23,11 @@ public class LoanedBookCover extends StackPane {
     @FXML
     private Label daysLeftLabel;
 
-    public LoanedBookCover(String imageSrc){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/myPage/loanedBookCover.fxml"));
+    private Book book;
+
+    public LoanedBookCover(Book book){
+        this.book = book;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/myPage/loanedBooks/loanedBookCover.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -31,7 +37,7 @@ public class LoanedBookCover extends StackPane {
             e.printStackTrace();
         }
 
-        imageView.setImage(new Image(imageSrc));
+        imageView.setImage(new Image(book.getImageSrc()));
 
         setup();
     }
@@ -40,6 +46,7 @@ public class LoanedBookCover extends StackPane {
         returnBookButton.setOnMousePressed(e -> {
             LoanedBooksView.inst().deleteBook(this);
             MyPage.inst().inputMessage("Boken har återlämnats!");
+            //BackendCaller.inst().returnBook(book.getBookId());
         });
     }
 

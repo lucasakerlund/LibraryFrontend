@@ -1,6 +1,7 @@
 package com.stav.libraryfrontend.controllers.models;
 
 import com.stav.libraryfrontend.Library;
+import com.stav.libraryfrontend.abstracts.BackendCaller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -62,6 +63,16 @@ public class NewCustomerScreen extends BorderPane {
         });
 
         createAccountButton.setOnMousePressed(e -> {
+            if(!passwordField.getText().equals(confirmPasswordField.getText())){
+                //fix some error labels
+                return;
+            }
+            /*int response = BackendCaller.inst().createCustomer(firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(), passwordField.getText());
+            if(response == 0){
+                //some error
+                return;
+            }*/
+
             LoginScreen.inst().userAddedSuccessfully();
             Library.inst().setContent(LoginScreen.inst());
         });

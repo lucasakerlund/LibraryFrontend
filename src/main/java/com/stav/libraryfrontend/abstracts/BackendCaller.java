@@ -122,8 +122,41 @@ public class BackendCaller {
         return book;
     }
 
-    public Book[] getBooks(){
+    public int getAmountOfBooks(String isbn){
+        String data = request("api/books/amount_with_isbn/" + isbn);
+        System.out.println(data);
+        return Integer.parseInt(data);
+    }
+
+    public int getAmountOfBooksInStock(String isbn){
+        String data = request("api/books/amount_in_stock/" + isbn);
+        return Integer.parseInt(data);
+    }
+
+    public int getAmountInQueue(String isbn){
+        String data = request("api/book_queue/amount/" + isbn);
+        return Integer.parseInt(data);
+    }
+
+    public List<Book> getBooks(){
         String data = request("api/books");
+        JSONArray array = new JSONArray(data);
+        List<Book> output = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            output.add(new Book(
+                    object.getInt("book_id"),
+                    object.getString("title"),
+                    object.getString("description"),
+                    convertJSONArrayToStringArray(object.getJSONArray("authors")),
+                    convertJSONArrayToStringArray(object.getJSONArray("genre")),
+                    object.getString("isbn"),
+                    object.getString("published"),
+                    object.getInt("pages"),
+                    object.getString("language"),
+                    object.getString("image_source")
+            ));
+        }
         return null;
     }
 
@@ -143,6 +176,11 @@ public class BackendCaller {
         return output;
     }
 
+    public int returnBook(int bookId){
+        String data = request("api/loans/return_book/" + bookId);
+        return Integer.parseInt(data);
+    }
+
     /**
      * @return the book with the correct book_id
      * */
@@ -153,6 +191,30 @@ public class BackendCaller {
         object.put("customer_id", customer.getCustomerId());
         post("fruit", object.toString());
         return null;
+    }
+
+    public int createCustomer(String firstName, String lastName, String mail, String password){
+        String data = request("api/customer/create?firstName=" + firstName + "&lastName=" + lastName + "&mail=" + mail + "&password=" + password);
+        return Integer.parseInt(data);
+    }
+
+    public int createStaff(String firstName, String lastName, String userName, String password, String role){
+        String data = request("api/employee/create?firstName=" + firstName + "&lastName=" + lastName + "&userName=" + userName + "&password=" + password + "&role=" + role);
+        return Integer.parseInt(data);
+    }
+
+    public Customer loginCustomer(String email, String password){
+        String data = request("api/customer/login?email=" + email + "&password=" + password);
+        JSONObject object = new JSONObject(data);
+        if(data.equals("")){
+            return null;
+        }
+        return new Customer(object.getInt("customer_id"),
+                object.getString("first_name"),
+                object.getString("last_name"),
+                object.getString("mail"),
+                object.getString("password")
+                );
     }
 
     private String[] convertJSONArrayToStringArray(JSONArray array){

@@ -52,21 +52,35 @@ public class CustomerMenu extends BorderPane {
         }
         try {
             buttons.put("books", new MenuButton(booksButton, Books.inst()));
-            buttons.put("books", new MenuButton(myPageButton, MyPage.inst()));
-            buttons.put("books", new MenuButton(localsButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/local/local.fxml")).load()));
+            buttons.put("myPage", new MenuButton(myPageButton, MyPage.inst()));
+            buttons.put("locals", new MenuButton(localsButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/local/local.fxml")).load()));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         setup();
+        open("books");
     }
 
     public static CustomerMenu inst(){
         return instance;
     }
 
-    public void setContent(Parent parent){
+    public void open(String id){
+        setContent(buttons.get(id).content);
+        setFocus(buttons.get(id));
+    }
+
+    private void setContent(Parent parent){
         content.setCenter(parent);
+    }
+
+    private void setFocus(MenuButton button){
+        if(focused != null){
+            focused.buttonBox.setId("");
+        }
+        button.buttonBox.setId("customer-menu-bar-button-focused");
+        focused = button;
     }
 
     private void setup(){
@@ -89,11 +103,7 @@ public class CustomerMenu extends BorderPane {
         private void addClickListener(){
             buttonBox.setOnMousePressed(e -> {
                 setContent(content);
-                if(focused != null){
-                    focused.buttonBox.setId("");
-                }
-                buttonBox.setId("customer-menu-bar-button-focused");
-                focused = this;
+                setFocus(this);
             });
         }
 

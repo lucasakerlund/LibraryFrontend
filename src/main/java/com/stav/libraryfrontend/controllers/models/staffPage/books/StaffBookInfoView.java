@@ -1,6 +1,7 @@
-package com.stav.libraryfrontend.controllers.models.books;
+package com.stav.libraryfrontend.controllers.models.staffPage.books;
 
 import com.stav.libraryfrontend.abstracts.BackendCaller;
+import com.stav.libraryfrontend.controllers.models.books.BookLoanView;
 import com.stav.libraryfrontend.controllers.models.myPage.loanedBooks.LoanedBooksView;
 import com.stav.libraryfrontend.models.Book;
 import javafx.fxml.FXML;
@@ -19,20 +20,18 @@ import javafx.scene.text.TextAlignment;
 
 import java.io.IOException;
 
-public class BookLoanView extends StackPane {
+public class StaffBookInfoView extends StackPane {
 
     @FXML
     private ImageView imageView;
-
     @FXML
-    private VBox locations;
-
+    private Label totalLabel;
     @FXML
-    private Label errorLabel;
-
+    private Label stockLabel;
     @FXML
-    private Label lendButton;
-
+    private Label queueLabel;
+    @FXML
+    private VBox returnList;
     @FXML
     private Label titleLabel;
     @FXML
@@ -51,11 +50,11 @@ public class BookLoanView extends StackPane {
     private Label languageLabel;
 
     private Book book;
-    private LocationItem focused;
+    private ReturnItem focused;
 
-    public BookLoanView(Book book){
+    public StaffBookInfoView(Book book){
         this.book = book;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/books/bookLoanView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/staffPage/books/staffBookInfoView.fxml"));
         loader.setRoot(this);
         loader.setController(this);
 
@@ -68,26 +67,17 @@ public class BookLoanView extends StackPane {
         setup();
     }
 
-    public void addLocation(String location, int amount){
-        if(!locations.getChildren().isEmpty()){
+    public void addReturn(String location, int amount){
+        if(!returnList.getChildren().isEmpty()){
             Separator line = new Separator();
             line.setOrientation(Orientation.HORIZONTAL);
-            locations.getChildren().add(line);
+            returnList.getChildren().add(line);
         }
-        LocationItem item = new LocationItem(location, amount);
-        locations.getChildren().add(item);
+        ReturnItem item = new ReturnItem(location, amount);
+        returnList.getChildren().add(item);
     }
 
     private void setup(){
-        lendButton.setOnMousePressed(e -> {
-            if(focused == null){
-                errorLabel.setVisible(true);
-                return;
-            }
-            //Skicka till backend.
-            BackendCaller.inst().loanBook(null, null);
-            LoanedBooksView.inst().updateBooks();
-        });
         imageView.setImage(new Image(book.getImageSrc()));
         titleLabel.setText(book.getTitle());
         authorLabel.setText(String.join(", ", book.getAuthors()));
@@ -97,22 +87,19 @@ public class BookLoanView extends StackPane {
         pagesLabel.setText(book.getPages()+"");
         descriptionLabel.setText(book.getDescription());
         languageLabel.setText(book.getLanguage());
-        addLocation("Tjena111111111111111", 3);
-        addLocation("Yoooo", 6);
-        addLocation("Yoooo", 6);
-        addLocation("Yoooo", 6);
-        addLocation("Yoooo", 6);
-        addLocation("Yoooo", 6);
+        //totalLabel.setText(BackendCaller.inst().getAmountOfBooks(book.getIsbn())+"");
+        //stockLabel.setText(BackendCaller.inst().getAmountOfBooksInStock(book.getIsbn())+"");
+        //queueLabel.setText(BackendCaller.inst().getAmountInQueue(book.getIsbn())+"");
     }
 
-    private class LocationItem extends HBox {
+    private class ReturnItem extends HBox {
 
-        private LocationItem(String location, int amount){
-            this.getStyleClass().add("book-loan-view-location-box");
+        private ReturnItem(String location, int amount){
+            this.getStyleClass().add("staff-book-info-view-return-box");
             Label locationLabel = new Label(location);
             Label amountLabel = new Label(amount+"");
-            locationLabel.getStyleClass().add("book-loan-view-location-label");
-            amountLabel.getStyleClass().add("book-loan-view-location-label");
+            locationLabel.getStyleClass().add("staff-book-info-view-return-label");
+            amountLabel.getStyleClass().add("staff-book-info-view-return-label");
             locationLabel.setAlignment(Pos.CENTER);
             amountLabel.setAlignment(Pos.CENTER);
             locationLabel.setMinHeight(50);

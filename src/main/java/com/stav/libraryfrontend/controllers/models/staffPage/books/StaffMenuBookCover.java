@@ -1,5 +1,8 @@
-package com.stav.libraryfrontend.controllers.models.staffPage;
+package com.stav.libraryfrontend.controllers.models.staffPage.books;
 
+import com.stav.libraryfrontend.abstracts.BackendCaller;
+import com.stav.libraryfrontend.abstracts.SubSceneHandler;
+import com.stav.libraryfrontend.models.Book;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
@@ -13,9 +16,11 @@ public class StaffMenuBookCover extends StackPane{
     @FXML
     private ImageView imageView;
 
-    public StaffMenuBookCover(String imageSrc){
+    private Book book;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/staffPage/staffMenuBookCover.fxml"));
+    public StaffMenuBookCover(Book book){
+        this.book = book;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/staffPage/books/staffMenuBookCover.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -25,14 +30,14 @@ public class StaffMenuBookCover extends StackPane{
             e.printStackTrace();
         }
 
-        imageView.setImage(new Image(imageSrc));
+        imageView.setImage(new Image(book.getImageSrc()));
 
         setup();
     }
 
     public void setup(){
         imageView.setOnMousePressed(e-> {
-            System.out.println("Här ska vi ha en såndär lucas-meny! ;)))");
+            SubSceneHandler.inst().show(new StaffBookInfoView(book));
         });
     }
 }

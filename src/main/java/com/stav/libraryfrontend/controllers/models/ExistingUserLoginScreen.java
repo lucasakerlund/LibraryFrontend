@@ -1,7 +1,9 @@
 package com.stav.libraryfrontend.controllers.models;
 
 import com.stav.libraryfrontend.Library;
+import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.UserDetails;
+import com.stav.libraryfrontend.models.Customer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -52,8 +54,14 @@ public class ExistingUserLoginScreen extends BorderPane {
             Library.inst().setContent(LoginScreen.inst());
         });
         loginButton.setOnMousePressed(e -> {
-            Library.inst().setContent(CustomerMenu.inst());
-            //UserDetails.inst().setCustomer(null);
+            Library.inst().setContent(CustomerMenu.inst()); //ta bort sen när koden under okommenteras
+            /*Customer customer = BackendCaller.inst().loginCustomer(emailField.getText(), passwordField.getText());
+            if(customer == null){
+                return;
+            }
+            UserDetails.inst().setCustomer(customer);
+            Library.inst().setContent(CustomerMenu.inst());*/
+
         });
     }
 
