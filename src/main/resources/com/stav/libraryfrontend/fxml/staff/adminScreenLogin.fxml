@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root prefHeight="600.0" prefWidth="800.0" styleClass="admin-login-screen" type="BorderPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="600.0" prefWidth="800.0" styleClass="admin-login-screen" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
       <BorderPane prefHeight="52.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <left>
@@ -28,7 +28,7 @@
          <children>
             <VBox alignment="BOTTOM_CENTER" prefHeight="109.0" prefWidth="600.0">
                <children>
-                  <Label styleClass="admin-screen-login-error-label" text="TEAST: Error label" />
+                  <Label fx:id="errorLabel" styleClass="admin-screen-login-error-label" text="TEAST: Error label" visible="false" />
                   <Label text="Användanamn" />
                   <TextField fx:id="usernameInput" maxWidth="150.0" promptText="Användarnamn här..." />
                </children>

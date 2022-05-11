@@ -67,14 +67,14 @@ public class AdminScreen extends BorderPane {
         adminLoginButton.setOnMousePressed(e -> {
             if (usernameInput.getText().equals("") || passwordInput.getText().equals("")){
                 errorLabel.setText("Vänligen fyll i båda textfälten...");
+                errorLabel.setVisible(true);
                 return;
             }
-
-            Library.inst().setContent(StaffMenu.inst());
 
             Staff staff = BackendCaller.inst().loginStaff(usernameInput.getText(), passwordInput.getText());
             if(staff == null){
                 errorLabel.setText("Felaktigt användarnamn eller lösenord...");
+                errorLabel.setVisible(true);
                 return;
             }
             StaffDetails.inst().setStaff(staff);
