@@ -5,15 +5,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 
-
 <fx:root prefHeight="400.0" prefWidth="600.0" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <ScrollPane BorderPane.alignment="TOP_LEFT">
+      <ScrollPane fitToHeight="true" fitToWidth="true" BorderPane.alignment="TOP_LEFT">
          <padding>
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
          </padding>
          <content>
-            <FlowPane fx:id="box" />
+            <FlowPane fx:id="box" hgap="10.0" vgap="10.0" />
          </content>
       </ScrollPane>
    </center>
