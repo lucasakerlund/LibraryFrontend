@@ -33,6 +33,10 @@ public class ExistingUserLoginScreen extends BorderPane {
     @FXML
     private Label loginButton;
 
+    @FXML
+    private Label errorLabel;
+
+
     private ExistingUserLoginScreen(){
         instance = this;
 
@@ -51,14 +55,24 @@ public class ExistingUserLoginScreen extends BorderPane {
 
     // "Action-listeners here! Match label names with corresponding action
     public void setup(){
+        clearOldInfo();
+
         backButton.setOnMousePressed(e -> {
             Library.inst().setContent(LoginScreen.inst());
         });
         loginButton.setOnMousePressed(e -> {
-            Customer customer = BackendCaller.inst().loginCustomer(emailField.getText(), passwordField.getText());
-            if(customer == null){
+            if (emailField.getText().equals("") || passwordField.getText().equals("")){
+                errorLabel.setText("Vänligen fyll i båda textfälten...");
                 return;
             }
+
+            Customer customer = BackendCaller.inst().loginCustomer(emailField.getText(), passwordField.getText());
+            if(customer == null){
+                errorLabel.setText("Felaktig e-post adress ELLER lösenord, försök igen...");
+                return;
+            }
+
+            clearOldInfo();
             UserDetails.inst().setCustomer(customer);
             Library.inst().setContent(CustomerMenu.inst());
             emailField.setText("");
@@ -66,6 +80,12 @@ public class ExistingUserLoginScreen extends BorderPane {
 
             LoanedBooksView.inst().loadBooks();
         });
+    }
+
+    public void clearOldInfo(){
+        errorLabel.setText("");
+        passwordField.clear();
+        emailField.clear();
     }
 
     public static ExistingUserLoginScreen inst(){
