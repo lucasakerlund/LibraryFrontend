@@ -3,6 +3,7 @@ package com.stav.libraryfrontend.controllers.models;
 import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.UserDetails;
+import com.stav.libraryfrontend.controllers.models.myPage.loanedBooks.LoanedBooksView;
 import com.stav.libraryfrontend.models.Customer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,12 +57,14 @@ public class ExistingUserLoginScreen extends BorderPane {
         loginButton.setOnMousePressed(e -> {
             Customer customer = BackendCaller.inst().loginCustomer(emailField.getText(), passwordField.getText());
             if(customer == null){
-                System.out.println(1);
                 return;
             }
             UserDetails.inst().setCustomer(customer);
             Library.inst().setContent(CustomerMenu.inst());
+            emailField.setText("");
+            passwordField.setText("");
 
+            LoanedBooksView.inst().loadBooks();
         });
     }
 

@@ -92,9 +92,10 @@ public class BookLoanView extends StackPane {
             //Skicka till backend.
             if(!BackendCaller.inst().loanBook(book, UserDetails.inst().getCustomer(), focused.libraryId)){
                 errorLabel.setText("Något fel inträffade.");
+                errorLabel.setVisible(true);
                 return;
             }
-            LoanedBooksView.inst().updateBooks();
+            LoanedBooksView.inst().loadBooks();
             SubSceneHandler.inst().hide();
         });
 

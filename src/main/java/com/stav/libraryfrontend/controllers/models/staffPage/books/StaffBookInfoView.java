@@ -4,6 +4,7 @@ import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.controllers.models.books.BookLoanView;
 import com.stav.libraryfrontend.controllers.models.myPage.loanedBooks.LoanedBooksView;
 import com.stav.libraryfrontend.models.Book;
+import com.stav.libraryfrontend.models.LoanedBook;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Orientation;
@@ -67,13 +68,13 @@ public class StaffBookInfoView extends StackPane {
         setup();
     }
 
-    public void addReturn(String location, int amount){
+    public void addReturn(String returnDate, int bookId){
         if(!returnList.getChildren().isEmpty()){
             Separator line = new Separator();
             line.setOrientation(Orientation.HORIZONTAL);
             returnList.getChildren().add(line);
         }
-        ReturnItem item = new ReturnItem(location, amount);
+        ReturnItem item = new ReturnItem(returnDate, bookId);
         returnList.getChildren().add(item);
     }
 
@@ -87,9 +88,12 @@ public class StaffBookInfoView extends StackPane {
         pagesLabel.setText(book.getPages()+"");
         descriptionLabel.setText(book.getDescription());
         languageLabel.setText(book.getLanguage());
-        //totalLabel.setText(BackendCaller.inst().getAmountOfBooks(book.getIsbn())+"");
-        //stockLabel.setText(BackendCaller.inst().getAmountOfBooksInStock(book.getIsbn())+"");
+        totalLabel.setText(BackendCaller.inst().getAmountOfBooks(book.getIsbn())+"");
+        stockLabel.setText(BackendCaller.inst().getAmountOfBooksInStock(book.getIsbn())+"");
         //queueLabel.setText(BackendCaller.inst().getAmountInQueue(book.getIsbn())+"");
+        for (LoanedBook loanedBook : BackendCaller.inst().getLoanedBooksWithIsbn(book.getIsbn())) {
+            addReturn(loanedBook.getReturnDate(), loanedBook.getBookId());
+        }
     }
 
     private class ReturnItem extends HBox {
@@ -112,19 +116,6 @@ public class StaffBookInfoView extends StackPane {
             amountLabel.setTextAlignment(TextAlignment.LEFT);
             this.getChildren().add(locationLabel);
             this.getChildren().add(amountLabel);
-
-
-            addClickListener();
-        }
-
-        private void addClickListener(){
-            this.setOnMousePressed(e -> {
-                if(focused != null){
-                    focused.setId("");
-                }
-                this.setId("book-loan-view-location-box-focused");
-                focused = this;
-            });
         }
 
     }

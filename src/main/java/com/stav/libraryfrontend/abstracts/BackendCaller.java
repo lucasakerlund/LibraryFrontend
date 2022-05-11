@@ -80,6 +80,7 @@ public class BackendCaller {
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
+                return response.toString();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -159,6 +160,7 @@ public class BackendCaller {
 
     public List<Book> getBooks(){
         String data = request("api/book_details");
+        System.out.println("hej " + data);
         JSONArray array = new JSONArray(data);
         List<Book> output = new ArrayList<>();
         for (int i = 0; i < array.length(); i++) {
@@ -168,8 +170,8 @@ public class BackendCaller {
                     0,
                     object.getString("title"),
                     object.getString("description"),
-                    new String[]{""},//convertJSONArrayToStringArray(object.getJSONArray("authors")),
-                    new String[]{""},//convertJSONArrayToStringArray(object.getJSONArray("genre")),
+                    convertJSONArrayToStringArray(object.getJSONArray("authors")),
+                    convertJSONArrayToStringArray(object.getJSONArray("genres")),
                     object.getString("isbn"),
                     object.getString("published"),
                     object.getInt("pages"),
@@ -207,6 +209,22 @@ public class BackendCaller {
         return output;
     }
 
+    public List<LoanedBook> getLoanedBooksWithIsbn(String isbn){
+        String data = request("api/loans/isbn/" + isbn);
+        JSONArray array = new JSONArray(data);
+        List<LoanedBook> output = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            output.add(new LoanedBook(
+                    object.getInt("book_id"),
+                    object.getInt("customer_id"),
+                    object.getString("loan_date"),
+                    object.getString("return_date")
+            ));
+        }
+        return output;
+    }
+
     public boolean returnBook(int bookId){
         String data = request("api/loans/return_book/" + bookId);
         return Boolean.parseBoolean(data);
@@ -229,9 +247,9 @@ public class BackendCaller {
         return Boolean.parseBoolean(data);
     }
 
-    public int createStaff(String firstName, String lastName, String userName, String password, String role){
-        String data = request("api/employee/create?firstName=" + firstName + "&lastName=" + lastName + "&userName=" + userName + "&password=" + password + "&role=" + role);
-        return Integer.parseInt(data);
+    public boolean createStaff(String firstName, String lastName, String userName, String password, String role){
+        String data = request("api/employees/create?firstName=" + firstName + "&lastName=" + lastName + "&username=" + userName + "&password=" + password + "&role=" + role);
+        return Boolean.parseBoolean(data);
     }
 
     public Customer loginCustomer(String email, String password){
@@ -250,11 +268,11 @@ public class BackendCaller {
 
     public Staff loginStaff(String email, String password){
         String data = request("api/employees/login?username=" + email + "&password=" + password);
-        JSONObject object = new JSONObject(data);
         if(data.equals("")){
             return null;
         }
-        return new Staff(object.getInt("customer_id"),
+        JSONObject object = new JSONObject(data);
+        return new Staff(object.getInt("employee_id"),
                 object.getString("first_name"),
                 object.getString("last_name"),
                 object.getString("username"),

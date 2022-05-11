@@ -33,10 +33,11 @@ public class LoanedBooksView extends BorderPane{
     }
 
     public void setup(){
-        updateBooks();
+        loadBooks();
     }
 
-    public void updateBooks(){
+    public void loadBooks(){
+        box.getChildren().clear();
         List<LoanedBook> list = BackendCaller.inst().getLoanedBooks(UserDetails.inst().getCustomer().getCustomerId());
         for (LoanedBook loanedBook : list) {
             addBook(new LoanedBookCover(BackendCaller.inst().getBook(loanedBook.getBookId())));

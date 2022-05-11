@@ -222,9 +222,9 @@ public class AddStaffScreen extends StackPane {
                 return;
             }
 
-            int response = BackendCaller.inst().createStaff(firstNameTextField.getText(), lastNameTextField.getText(),
+            boolean response = BackendCaller.inst().createStaff(firstNameTextField.getText(), lastNameTextField.getText(),
                     userNameInput.getText(), passwordField.getText(), adminCheckBox.isSelected() ? "ADMIN" : "LIBRARIAN");
-            if(response == 0){
+            if(!response){
                 errorLabel.setText("Det föreslagna kontot existerar redan...");
                 return;
             }

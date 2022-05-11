@@ -62,13 +62,14 @@ public class AdminScreen extends BorderPane {
         });
 
         adminLoginButton.setOnMousePressed(e -> {
-            Library.inst().setContent(StaffMenu.inst());
             Staff staff = BackendCaller.inst().loginStaff(usernameInput.getText(), passwordInput.getText());
             if(staff == null){
                 return;
             }
             StaffDetails.inst().setStaff(staff);
             Library.inst().setContent(StaffMenu.inst());
+            usernameInput.setText("");
+            passwordInput.setText("");
         });
     }
 

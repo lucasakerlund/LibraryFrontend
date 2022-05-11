@@ -29,6 +29,7 @@ public class MyPage extends BorderPane {
     @FXML
     private Label confirmReturnLabel;
 
+    private Label focused;
 
     public MyPage(){
         instance = this;
@@ -44,6 +45,17 @@ public class MyPage extends BorderPane {
         }
 
         setup();
+        content.setCenter(LoanedBooksView.inst());
+        LoanedBooksView.inst().loadBooks();
+        setFocused(borrowedBooksButton);
+    }
+
+    public void setFocused(Label focused) {
+        if(this.focused != null){
+            this.focused.setId("");
+        }
+        focused.setId("my-page-header-buttons-focused");
+        this.focused = focused;
     }
 
     public void setup(){
@@ -51,6 +63,8 @@ public class MyPage extends BorderPane {
 
         borrowedBooksButton.setOnMousePressed(e -> {
             content.setCenter(LoanedBooksView.inst());
+            LoanedBooksView.inst().loadBooks();
+            setFocused(borrowedBooksButton);
         });
     }
 

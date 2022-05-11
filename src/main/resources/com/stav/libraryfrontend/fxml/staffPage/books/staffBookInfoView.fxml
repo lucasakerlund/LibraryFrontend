@@ -46,7 +46,7 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" prefWidth="70.0" styleClass="staff-book-info-view-quantity-label" text="Total:">
+                              <Label alignment="CENTER_RIGHT" prefWidth="70.0" styleClass="staff-book-info-view-quantity-label" text="Totalt:">
                                  <padding>
                                     <Insets left="15.0" />
                                  </padding>

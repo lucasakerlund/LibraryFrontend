@@ -25,7 +25,7 @@
                   <Label fx:id="titleLabel" styleClass="book-loan-view-title" text="Titel" wrapText="true" />
                </children>
                <padding>
-                  <Insets left="50.0" />
+                  <Insets left="25.0" right="25.0" />
                </padding>
             </HBox>
          </top>
