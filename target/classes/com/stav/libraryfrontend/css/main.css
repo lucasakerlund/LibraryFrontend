@@ -333,9 +333,16 @@
     -fx-underline: true;
     -fx-cursor: hand;
 }
+
+.existing-user-login-screen-error-label{
+    -fx-underline: true;
+    -fx-font-size:22;
+    -fx-text-fill: red;
+}
 /* EXISTING USER LOGIN SCREEN */
 
-/* USER LOGIN SCREEN */
+
+/* ADMIN LOGIN SCREEN */
 .admin-login-screen {
     -fx-background-color: #e2c8af;
 }
@@ -370,7 +377,14 @@
     -fx-underline: true;
     -fx-cursor: hand;
 }
-/* USER LOGIN SCREEN */
+
+.admin-screen-login-error-label{
+    -fx-text-fill: red;
+    -fx-font-size: 18;
+    -fx-underline: true;
+}
+/* ADMIN LOGIN SCREEN */
+
 
 /* NEW CUSTOMER SCREEN */
 .new-customer-screen{
