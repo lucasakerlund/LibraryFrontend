@@ -845,3 +845,32 @@
     -fx-font-size: 30;
     -fx-text-fill: #dcdcdc;
 }
+
+/* BankID */
+.bank-id{
+    -fx-background-color: white;
+}
+
+.bank-id-confirm-button{
+    -fx-background-color: #44b7ef;
+    -fx-font-size: 18;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+    -fx-border-radius: 20;
+    -fx-background-radius: 100;
+}
+
+.bank-id-confirm-button:hover{
+    -fx-background-color: #286d8f;
+    -fx-cursor: hand;
+}
+
+.bank-id-cancel-button{
+    -fx-font-size: 14;
+    -fx-text-fill: blue;
+}
+
+.bank-id-cancel-button:hover{
+    -fx-underline: true;
+    -fx-cursor: hand;
+}

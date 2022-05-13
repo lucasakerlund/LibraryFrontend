@@ -2,6 +2,7 @@ package com.stav.libraryfrontend.controllers.models;
 
 import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.abstracts.BackendCaller;
+import com.stav.libraryfrontend.abstracts.SubSceneHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -84,10 +85,13 @@ public class NewCustomerScreen extends BorderPane {
                     emailTextField.getText(), passwordField.getText());
             if(!response){
                 errorLabel.setText("Email-adressen används redan av ett annat konto");
+                return;
             }
 
-            LoginScreen.inst().userAddedSuccessfully();
-            Library.inst().setContent(LoginScreen.inst());
+            SubSceneHandler.inst().show(BankID.inst());
+
+            // LoginScreen.inst().userAddedSuccessfully();
+            // Library.inst().setContent(LoginScreen.inst());
         });
     }
 
