@@ -1,3 +1,7 @@
+.root{
+    -fx-background-color: black;
+}
+
 /* STAFF MENU */
 .staff{
     -fx-background-color: black;
@@ -22,10 +26,10 @@
     -fx-cursor: hand;
 }
 
-.staff-menu-bar-button:hover .customer-menu-bar-button-label{
+.staff-menu-bar-button:hover .staff-menu-bar-button-label{
     -fx-text-fill: INDIANRED;
 }
-#staff-menu-bar-button-focused:hover .customer-menu-bar-button-label{
+#staff-menu-bar-button-focused:hover .staff-menu-bar-button-label{
     -fx-text-fill: white;
 }
 
@@ -48,9 +52,6 @@
 }
 
 /*Customer Menu*/
-.root{
-    -fx-background-color: black;
-}
 
 .customer-menu-bar{
     -fx-background-color: #d4b38f;
@@ -109,6 +110,128 @@
 }
 
 /*Books*/
+.books-header{
+
+}
+
+.books-header-choice{
+    -fx-background-color: white;
+    -fx-focus-traversable: false;
+    -fx-faint-focus-color: transparent;
+}
+
+.books-header-choice .text-field{
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.books-header-choice .text-field:focused{
+    -fx-background-color: transparent;
+}
+
+.books-header-choice .arrow-button{
+    -fx-background-color: transparent;
+}
+
+.books-header-choice .list-cell{
+    -fx-background-color: white;
+}
+
+.books-header-choice .list-cell:hover{
+    -fx-background-color: rgb(217, 217, 217);
+    -fx-text-fill: black;
+}
+
+.books-header-choice .list-cell:focused{
+    -fx-background-color: rgb(204, 204, 204);
+    -fx-text-fill: black;
+}
+
+.books-header-released{
+    -fx-text-box-border: transparent;
+}
+
+.books-header-released:focused{
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+}
+
+.books-header-search-bar{
+}
+
+.books-header-search-bar .combo-box{
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-background-radius: 10 0 0 10;
+    -fx-background-insets: 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10 0 0 10;
+    -fx-border-color: gray;
+}
+
+.books-header-search-bar .combo-box:showing{
+    -fx-background-radius: 10 0 0 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10 0 0 0;
+    -fx-border-color: gray;
+}
+
+.books-header-search-bar .combo-box .combo-box-popup .list-view{
+    -fx-border-width: 0 1 1 1;
+    -fx-border-color: gray;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-padding: 0;
+}
+
+.books-header-search-bar .combo-box .list-view .list-cell{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-border-radius: 0;
+}
+
+.books-header-search-bar .combo-box .list-view .list-cell:hover{
+    -fx-background-color: rgb(229, 229, 229);
+}
+
+.books-header-search-bar .combo-box .list-view .list-cell:selected{
+    -fx-background-color: rgb(178, 178, 178);
+}
+
+.books-header-search-bar .combo-box .text{
+    -fx-fill: black;
+}
+
+.books-header-search-bar .text-field{
+    -fx-text-box-border: transparent;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-border-width: 1 0 1 0;
+    -fx-border-color: gray;
+    -fx-background-radius: 0;
+}
+
+.books-header-search-bar .text-field:focused{
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+
+}
+
+.books-header-search-bar .label{
+    -fx-font-size: 16;
+    -fx-text-fill: black;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-background-radius: 0 10 10 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 0 10 10 0;
+    -fx-border-color: gray;
+    -fx-padding: 0 7 0 5;
+}
+
+.books-header-search-bar .label:hover{
+    -fx-background-color: #e5e5e5;
+}
+
+/*Book Cover*/
 .book-cover{
     -fx-background-color: black;
 }
@@ -140,7 +263,7 @@
 }
 
 .book-loan-view-title{
-    -fx-font-size: 40;
+    -fx-font-size: 30;
     -fx-text-fill: white;
 }
 
@@ -333,9 +456,16 @@
     -fx-underline: true;
     -fx-cursor: hand;
 }
+
+.existing-user-login-screen-error-label{
+    -fx-underline: true;
+    -fx-font-size:22;
+    -fx-text-fill: red;
+}
 /* EXISTING USER LOGIN SCREEN */
 
-/* USER LOGIN SCREEN */
+
+/* ADMIN LOGIN SCREEN */
 .admin-login-screen {
     -fx-background-color: #e2c8af;
 }
@@ -370,7 +500,14 @@
     -fx-underline: true;
     -fx-cursor: hand;
 }
-/* USER LOGIN SCREEN */
+
+.admin-screen-login-error-label{
+    -fx-text-fill: red;
+    -fx-font-size: 18;
+    -fx-underline: true;
+}
+/* ADMIN LOGIN SCREEN */
+
 
 /* NEW CUSTOMER SCREEN */
 .new-customer-screen{
@@ -383,27 +520,7 @@
     -fx-text-fill: blue;
 }
 
-.new-customer-screen-first-name-label{
-    -fx-font-size: 14;
-    -fx-underline: true;
-}
-
-.new-customer-screen-last-name-label{
-    -fx-font-size: 14;
-    -fx-underline: true;
-}
-
-.new-customer-screen-email-label{
-    -fx-font-size: 14;
-    -fx-underline: true;
-}
-
-.new-customer-screen-password-label{
-    -fx-font-size: 14;
-    -fx-underline: true;
-}
-
-.new-customer-screen-confirm-password-label{
+.new-customer-screen-label{
     -fx-font-size: 14;
     -fx-underline: true;
 }
@@ -437,6 +554,13 @@
     -fx-background-color: #6b7700;
     -fx-underline: true;
 }
+
+.new-customer-screen-error-label{
+    -fx-text-fill: red;
+    -fx-font-size: 18;
+    -fx-underline: true;
+}
+
 /* NEW CUSTOMER SCREEN */
 
 /* ADD STAFF SCREEN */
@@ -479,17 +603,7 @@
     -fx-background-color: #e2c8af;
 }
 
-.add-staff-screen-first-name-label{
-    -fx-font-size: 21;
-    -fx-underline: true;
-}
-
-.add-staff-screen-last-name-label{
-    -fx-font-size: 21;
-    -fx-underline: true;
-}
-
-.add-staff-screen-password-label{
+.add-staff-screen-label{
     -fx-font-size: 21;
     -fx-underline: true;
 }
@@ -524,6 +638,13 @@
     -fx-text-fill: GREEN;
     -fx-underline: true;
 }
+
+.add-staff-screen-create-account-error-label{
+    -fx-font-size: 18;
+    -fx-text-fill: red;
+    -fx-underline: true;
+}
+
 /* ADD STAFF SCREEN */
 
 /* MY PAGE (MIN SIDA) */
@@ -553,6 +674,16 @@
     -fx-border-color: green;
 }
 
+#my-page-header-buttons-focused{
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+    -fx-padding: 6;
+    -fx-background-color: #e0c4b0;
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+}
+
 .loaned-book-cover-return-button{
     -fx-background-color: rgba(59, 59, 59, 0.34);;
     -fx-border-width: 2;
@@ -567,6 +698,13 @@
     -fx-text-fill: black;
     -fx-border-color: black;
     -fx-cursor: hand;
+}
+
+.loaned-book-cover-days-left-label{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
 }
 
 .my-page-op-message-label{
@@ -593,5 +731,146 @@
     -fx-padding: 6;
     -fx-background-color: #d4b38f;
     -fx-font-size: 20;
+    -fx-cursor: hand;
+}
+
+.staff-book-page-search-button{
+    -fx-font-size: 14;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-padding: 6;
+    -fx-background-color: #00e100;
+}
+
+.staff-book-page-search-button:hover{
+    -fx-background-color: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+/* STAFF PAGE */
+
+/* Staff menu book cover */
+.staff-menu-book-cover{
+    -fx-border-width: 2;
+    -fx-border-color: black;
+}
+
+.staff-menu-book-cover-imageview:hover{
+    -fx-opacity: 0.75;
+    -fx-cursor: hand;
+}
+
+/*Staff Book Info View*/
+.staff-book-info-view{
+    -fx-background-color: black;
+}
+
+.staff-book-info-view .image-view{
+    -fx-opacity: .5;
+}
+
+.staff-book-info-view-title{
+    -fx-font-size: 30;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-footer{
+    -fx-border-width: 2 0 0 0;
+    -fx-border-color: white;
+}
+
+.staff-book-info-view-description{
+    -fx-background-color: rgba(52,53,53,.4);
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-description .content{
+    -fx-background-color: rgba(52,53,53,.4);
+}
+
+.staff-book-info-view-return-list{
+    -fx-background-color: rgba(52,53,53,.4);
+}
+
+.staff-book-info-view-return-header-label{
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-return-header{
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: white;
+}
+
+.staff-book-info-view-return-box{
+
+}
+
+.staff-book-info-view-return-label{
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+}
+
+#staff-book-info-view-return-box-focused{
+    -fx-background-color: rgba(187, 187, 187, 0.4);
+}
+
+.staff-book-info-view-book-information-box{
+    -fx-background-color: rgba(52,53,53,.4);
+    -fx-border-width: 2 2 0 0;
+    -fx-border-color: white;
+}
+
+.staff-book-info-view-information-label{
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-book-information-value{
+    -fx-font-size: 15;
+    -fx-text-fill: #bebebe;
+}
+
+.staff-book-info-view-quantity-box{
+    -fx-background-color: rgba(52,53,53,.4);
+}
+
+.staff-book-info-view-quantity-label{
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-quantity-value{
+    -fx-font-size: 30;
+    -fx-text-fill: #dcdcdc;
+}
+
+/* BankID */
+.bank-id{
+    -fx-background-color: white;
+}
+
+.bank-id-confirm-button{
+    -fx-background-color: #44b7ef;
+    -fx-font-size: 18;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+    -fx-border-radius: 20;
+    -fx-background-radius: 100;
+}
+
+.bank-id-confirm-button:hover{
+    -fx-background-color: #286d8f;
+    -fx-cursor: hand;
+}
+
+.bank-id-cancel-button{
+    -fx-font-size: 14;
+    -fx-text-fill: blue;
+}
+
+.bank-id-cancel-button:hover{
+    -fx-underline: true;
     -fx-cursor: hand;
 }

@@ -1,6 +1,8 @@
 package com.stav.libraryfrontend.controllers.models;
 
 import com.stav.libraryfrontend.Library;
+import com.stav.libraryfrontend.abstracts.BackendCaller;
+import com.stav.libraryfrontend.abstracts.SubSceneHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -35,6 +37,9 @@ public class NewCustomerScreen extends BorderPane {
     @FXML
     private PasswordField passwordField;
 
+    @FXML
+    private Label errorLabel;
+
     private NewCustomerScreen(){
         instance = this;
 
@@ -52,18 +57,41 @@ public class NewCustomerScreen extends BorderPane {
     }
 
     public void setup(){
+        errorLabel.setText("");
+
         backButton.setOnMousePressed(e -> {
             firstNameTextField.clear();
             lastNameTextField.clear();
             emailTextField.clear();
             passwordField.clear();
             confirmPasswordField.clear();
+            errorLabel.setText("");
             Library.inst().setContent(LoginScreen.inst());
         });
 
         createAccountButton.setOnMousePressed(e -> {
-            LoginScreen.inst().userAddedSuccessfully();
-            Library.inst().setContent(LoginScreen.inst());
+            if(!passwordField.getText().equals(confirmPasswordField.getText())){
+                errorLabel.setText("Lösenord och upprepat lösenord stämmer inte överens med varandra");
+                return;
+            }
+
+            if (firstNameTextField.getText().equals("") || lastNameTextField.getText().equals("") || emailTextField.getText().equals("")
+                    || passwordField.getText().equals("") || confirmPasswordField.getText().equals("")){
+                errorLabel.setText("Samtliga textfält är obligatoriska och får inte lämnas blanka");
+                return;
+            }
+
+            boolean response = BackendCaller.inst().createCustomer(firstNameTextField.getText(), lastNameTextField.getText(),
+                    emailTextField.getText(), passwordField.getText());
+            if(!response){
+                errorLabel.setText("Email-adressen används redan av ett annat konto");
+                return;
+            }
+
+            SubSceneHandler.inst().show(BankID.inst());
+
+            // LoginScreen.inst().userAddedSuccessfully();
+            // Library.inst().setContent(LoginScreen.inst());
         });
     }
 

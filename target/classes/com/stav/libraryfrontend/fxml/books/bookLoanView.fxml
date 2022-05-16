@@ -20,19 +20,19 @@
       </ImageView>
       <BorderPane>
          <top>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER_LEFT" prefWidth="500.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="titleLabel" styleClass="book-loan-view-title" text="Titel" />
+                  <Label fx:id="titleLabel" styleClass="book-loan-view-title" text="Titel" wrapText="true" />
                </children>
                <padding>
-                  <Insets left="50.0" />
+                  <Insets left="25.0" right="25.0" />
                </padding>
             </HBox>
          </top>
          <bottom>
             <HBox prefHeight="150.0" prefWidth="500.0" styleClass="book-loan-view-footer" BorderPane.alignment="CENTER">
                <children>
-                  <TextArea fx:id="descriptionLabel" editable="false" styleClass="book-loan-view-description" text="Detta är en beskrivning." HBox.hgrow="ALWAYS" />
+                  <TextArea fx:id="descriptionLabel" editable="false" styleClass="book-loan-view-description" text="Detta är en beskrivning." wrapText="true" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </bottom>
@@ -95,10 +95,19 @@
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Label>
+                  <Label layoutX="20.0" layoutY="200.0" styleClass="book-loan-view-information-label" text="Språk:" />
+                  <Label fx:id="languageLabel" layoutX="30.0" layoutY="221.0" styleClass="book-loan-view-book-information-value" text="SE">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
                </children>
                <padding>
                   <Insets left="10.0" top="20.0" />
                </padding>
+               <BorderPane.margin>
+                  <Insets top="30.0" />
+               </BorderPane.margin>
             </VBox>
          </left>
       </BorderPane>

@@ -1,12 +1,11 @@
 package com.stav.libraryfrontend.controllers.models.myPage;
 
-import com.stav.libraryfrontend.abstracts.BackendCaller;
+import com.stav.libraryfrontend.controllers.models.myPage.loanedBooks.LoanedBooksView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
 
@@ -30,6 +29,7 @@ public class MyPage extends BorderPane {
     @FXML
     private Label confirmReturnLabel;
 
+    private Label focused;
 
     public MyPage(){
         instance = this;
@@ -45,6 +45,17 @@ public class MyPage extends BorderPane {
         }
 
         setup();
+        content.setCenter(LoanedBooksView.inst());
+        LoanedBooksView.inst().loadBooks();
+        setFocused(borrowedBooksButton);
+    }
+
+    public void setFocused(Label focused) {
+        if(this.focused != null){
+            this.focused.setId("");
+        }
+        focused.setId("my-page-header-buttons-focused");
+        this.focused = focused;
     }
 
     public void setup(){
@@ -52,6 +63,8 @@ public class MyPage extends BorderPane {
 
         borrowedBooksButton.setOnMousePressed(e -> {
             content.setCenter(LoanedBooksView.inst());
+            LoanedBooksView.inst().loadBooks();
+            setFocused(borrowedBooksButton);
         });
     }
 

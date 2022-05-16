@@ -13,15 +13,15 @@
    <center>
       <VBox alignment="CENTER" prefHeight="508.0" prefWidth="800.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Label id="new-customer-screen-first-name-label" prefHeight="0.0" prefWidth="57.0" styleClass="new-customer-screen-first-name-label" text="Förnamn" />
+            <Label id="new-customer-screen-first-name-label" prefHeight="0.0" prefWidth="57.0" styleClass="new-customer-screen-label" text="Förnamn" />
             <TextField fx:id="firstNameTextField" maxWidth="150.0" promptText="Förnamn..." />
-            <Label id="new-customer-screen-last-name-label" styleClass="new-customer-screen-last-name-label" text="Efternamn" />
+            <Label id="new-customer-screen-last-name-label" styleClass="new-customer-screen-label" text="Efternamn" />
             <TextField fx:id="lastNameTextField" layoutX="10.0" layoutY="10.0" maxWidth="150.0" promptText="Efternamn..." />
-            <Label id="new-customer-screen-email-label" styleClass="new-customer-screen-email-label" text="E-mail adress" />
+            <Label id="new-customer-screen-email-label" styleClass="new-customer-screen-label" text="E-mail adress" />
             <TextField fx:id="emailTextField" layoutX="10.0" layoutY="35.0" maxWidth="150.0" promptText="E-mail..." />
-            <Label id="new-customer-screen-password-label" styleClass="new-customer-screen-password-label" text="Lösenord" />
+            <Label id="new-customer-screen-password-label" styleClass="new-customer-screen-label" text="Lösenord" />
             <PasswordField fx:id="passwordField" maxWidth="150.0" promptText="Lösen..." />
-            <Label id="new-customer-screen-confirm-password-label" styleClass="new-customer-screen-confirm-password-label" text="Upprepa lösenord" />
+            <Label id="new-customer-screen-confirm-password-label" styleClass="new-customer-screen-label" text="Upprepa lösenord" />
             <PasswordField fx:id="confirmPasswordField" maxWidth="150.0" promptText="Upprepa lösen..." />
             <Label id="new-customer-screen-create-user-button" fx:id="createAccountButton" styleClass="new-customer-screen-create-user-button" text="Skapa!">
                <VBox.margin>
@@ -42,6 +42,7 @@
                   <Font name="Cambria" size="12.0" />
                </font>
             </Label>
+            <Label fx:id="errorLabel" styleClass="new-customer-screen-error-label" text="TEST: Error label" />
          </children>
          <padding>
             <Insets top="25.0" />

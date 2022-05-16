@@ -1,11 +1,16 @@
 package com.stav.libraryfrontend.controllers.models;
 
 import com.stav.libraryfrontend.Library;
+import com.stav.libraryfrontend.abstracts.BackendCaller;
+import com.stav.libraryfrontend.abstracts.UserDetails;
+import com.stav.libraryfrontend.controllers.models.myPage.loanedBooks.LoanedBooksView;
+import com.stav.libraryfrontend.models.Customer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
@@ -29,8 +34,8 @@ public class ExistingUserLoginScreen extends BorderPane {
     @FXML
     private Label loginButton;
 
-
-
+    @FXML
+    private Label errorLabel;
 
 
     private ExistingUserLoginScreen(){
@@ -49,15 +54,52 @@ public class ExistingUserLoginScreen extends BorderPane {
         setup();
     }
 
-
     // "Action-listeners here! Match label names with corresponding action
     public void setup(){
+        clearOldInfo();
+
         backButton.setOnMousePressed(e -> {
             Library.inst().setContent(LoginScreen.inst());
         });
         loginButton.setOnMousePressed(e -> {
-            Library.inst().setContent(CustomerMenu.inst());
+            login();
         });
+
+        emailField.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.ENTER){
+                login();
+            }
+        });
+        passwordField.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.ENTER){
+                login();
+            }
+        });
+    }
+
+    private void login(){
+        if (emailField.getText().equals("") || passwordField.getText().equals("")){
+            errorLabel.setText("Vänligen fyll i båda textfälten...");
+            return;
+        }
+
+        Customer customer = BackendCaller.inst().loginCustomer(emailField.getText(), passwordField.getText());
+        if(customer == null){
+            errorLabel.setText("Felaktig e-post adress ELLER lösenord, försök igen...");
+            return;
+        }
+
+        clearOldInfo();
+        UserDetails.inst().setCustomer(customer);
+        Library.inst().setContent(CustomerMenu.inst());
+
+        LoanedBooksView.inst().loadBooks();
+    }
+
+    public void clearOldInfo(){
+        errorLabel.setText("");
+        passwordField.clear();
+        emailField.clear();
     }
 
     public static ExistingUserLoginScreen inst(){

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root prefHeight="600.0" prefWidth="800.0" styleClass="admin-login-screen" stylesheets="@../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="600.0" prefWidth="800.0" styleClass="admin-login-screen" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
       <BorderPane prefHeight="52.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <left>
@@ -27,14 +28,15 @@
          <children>
             <VBox alignment="BOTTOM_CENTER" prefHeight="109.0" prefWidth="600.0">
                <children>
+                  <Label fx:id="errorLabel" styleClass="admin-screen-login-error-label" text="TEAST: Error label" visible="false" />
                   <Label text="Användanamn" />
-                  <TextField maxWidth="150.0" promptText="Användarnamn här..." />
+                  <TextField fx:id="usernameInput" maxWidth="150.0" promptText="Användarnamn här..." />
                </children>
             </VBox>
             <VBox alignment="BOTTOM_CENTER" prefHeight="86.0" prefWidth="600.0">
                <children>
                   <Label text="Lösenord" />
-                  <TextField maxWidth="150.0" promptText="Lösenord här..." />
+                  <TextField fx:id="passwordInput" maxWidth="150.0" promptText="Lösenord här..." />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
@@ -66,4 +68,8 @@
          </children>
       </VBox>
    </center>
+   <stylesheets>
+      <URL value="@../css/main.css" />
+      <URL value="@../../css/main.css" />
+   </stylesheets>
 </fx:root>

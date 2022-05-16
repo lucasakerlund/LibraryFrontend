@@ -16,7 +16,7 @@
       </ImageView>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="book-cover-title">
          <children>
-            <Label fx:id="titleLabel" styleClass="book-cover-title" text="Titel" visible="false" />
+            <Label fx:id="titleLabel" styleClass="book-cover-title" text="Titel" visible="false" wrapText="true" />
          </children>
          <padding>
             <Insets top="20.0" />
