@@ -1,3 +1,7 @@
+.root{
+    -fx-background-color: black;
+}
+
 /* STAFF MENU */
 .staff{
     -fx-background-color: black;
@@ -22,10 +26,10 @@
     -fx-cursor: hand;
 }
 
-.staff-menu-bar-button:hover .customer-menu-bar-button-label{
+.staff-menu-bar-button:hover .staff-menu-bar-button-label{
     -fx-text-fill: INDIANRED;
 }
-#staff-menu-bar-button-focused:hover .customer-menu-bar-button-label{
+#staff-menu-bar-button-focused:hover .staff-menu-bar-button-label{
     -fx-text-fill: white;
 }
 
@@ -48,9 +52,6 @@
 }
 
 /*Customer Menu*/
-.root{
-    -fx-background-color: black;
-}
 
 .customer-menu-bar{
     -fx-background-color: #d4b38f;
@@ -109,6 +110,128 @@
 }
 
 /*Books*/
+.books-header{
+
+}
+
+.books-header-choice{
+    -fx-background-color: white;
+    -fx-focus-traversable: false;
+    -fx-faint-focus-color: transparent;
+}
+
+.books-header-choice .text-field{
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.books-header-choice .text-field:focused{
+    -fx-background-color: transparent;
+}
+
+.books-header-choice .arrow-button{
+    -fx-background-color: transparent;
+}
+
+.books-header-choice .list-cell{
+    -fx-background-color: white;
+}
+
+.books-header-choice .list-cell:hover{
+    -fx-background-color: rgb(217, 217, 217);
+    -fx-text-fill: black;
+}
+
+.books-header-choice .list-cell:focused{
+    -fx-background-color: rgb(204, 204, 204);
+    -fx-text-fill: black;
+}
+
+.books-header-released{
+    -fx-text-box-border: transparent;
+}
+
+.books-header-released:focused{
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+}
+
+.books-header-search-bar{
+}
+
+.books-header-search-bar .combo-box{
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-background-radius: 10 0 0 10;
+    -fx-background-insets: 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10 0 0 10;
+    -fx-border-color: gray;
+}
+
+.books-header-search-bar .combo-box:showing{
+    -fx-background-radius: 10 0 0 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10 0 0 0;
+    -fx-border-color: gray;
+}
+
+.books-header-search-bar .combo-box .combo-box-popup .list-view{
+    -fx-border-width: 0 1 1 1;
+    -fx-border-color: gray;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-padding: 0;
+}
+
+.books-header-search-bar .combo-box .list-view .list-cell{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-border-radius: 0;
+}
+
+.books-header-search-bar .combo-box .list-view .list-cell:hover{
+    -fx-background-color: rgb(229, 229, 229);
+}
+
+.books-header-search-bar .combo-box .list-view .list-cell:selected{
+    -fx-background-color: rgb(178, 178, 178);
+}
+
+.books-header-search-bar .combo-box .text{
+    -fx-fill: black;
+}
+
+.books-header-search-bar .text-field{
+    -fx-text-box-border: transparent;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-border-width: 1 0 1 0;
+    -fx-border-color: gray;
+    -fx-background-radius: 0;
+}
+
+.books-header-search-bar .text-field:focused{
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+
+}
+
+.books-header-search-bar .label{
+    -fx-font-size: 16;
+    -fx-text-fill: black;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-background-radius: 0 10 10 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 0 10 10 0;
+    -fx-border-color: gray;
+    -fx-padding: 0 7 0 5;
+}
+
+.books-header-search-bar .label:hover{
+    -fx-background-color: #e5e5e5;
+}
+
+/*Book Cover*/
 .book-cover{
     -fx-background-color: black;
 }

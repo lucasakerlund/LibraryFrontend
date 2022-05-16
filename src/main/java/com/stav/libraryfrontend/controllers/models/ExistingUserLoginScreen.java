@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
@@ -61,23 +62,38 @@ public class ExistingUserLoginScreen extends BorderPane {
             Library.inst().setContent(LoginScreen.inst());
         });
         loginButton.setOnMousePressed(e -> {
-            if (emailField.getText().equals("") || passwordField.getText().equals("")){
-                errorLabel.setText("Vänligen fyll i båda textfälten...");
-                return;
-            }
-
-            Customer customer = BackendCaller.inst().loginCustomer(emailField.getText(), passwordField.getText());
-            if(customer == null){
-                errorLabel.setText("Felaktig e-post adress ELLER lösenord, försök igen...");
-                return;
-            }
-
-            clearOldInfo();
-            UserDetails.inst().setCustomer(customer);
-            Library.inst().setContent(CustomerMenu.inst());
-
-            LoanedBooksView.inst().loadBooks();
+            login();
         });
+
+        emailField.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.ENTER){
+                login();
+            }
+        });
+        passwordField.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.ENTER){
+                login();
+            }
+        });
+    }
+
+    private void login(){
+        if (emailField.getText().equals("") || passwordField.getText().equals("")){
+            errorLabel.setText("Vänligen fyll i båda textfälten...");
+            return;
+        }
+
+        Customer customer = BackendCaller.inst().loginCustomer(emailField.getText(), passwordField.getText());
+        if(customer == null){
+            errorLabel.setText("Felaktig e-post adress ELLER lösenord, försök igen...");
+            return;
+        }
+
+        clearOldInfo();
+        UserDetails.inst().setCustomer(customer);
+        Library.inst().setContent(CustomerMenu.inst());
+
+        LoanedBooksView.inst().loadBooks();
     }
 
     public void clearOldInfo(){
