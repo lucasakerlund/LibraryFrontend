@@ -21,7 +21,7 @@ public class StaffMenu extends BorderPane {
     @FXML
     private HBox allBooksButton;
     @FXML
-    private HBox staffPageButton;
+    private HBox staffAddBookButton;
     @FXML
     private HBox staffLocalsButton;
     @FXML
@@ -47,7 +47,7 @@ public class StaffMenu extends BorderPane {
             e.printStackTrace();
         }
             buttons.put("books", new MenuButton(allBooksButton, StaffBookPage.inst()));
-            buttons.put("dunno", new MenuButton(staffPageButton, null));
+            buttons.put("dunno", new MenuButton(staffAddBookButton, StaffAddBookPage.inst()));
             buttons.put("locals", new MenuButton(staffLocalsButton, null));
 
         setup();
