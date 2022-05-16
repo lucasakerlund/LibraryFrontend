@@ -17,6 +17,9 @@ public class StaffBookPage extends BorderPane {
     @FXML
     private Label availableBooksButton;
 
+    @FXML
+    private Label addBook;
+
     public StaffBookPage(){
         instance = this;
 
