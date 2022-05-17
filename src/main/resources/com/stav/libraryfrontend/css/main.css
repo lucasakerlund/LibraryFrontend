@@ -231,6 +231,11 @@
     -fx-background-color: #e5e5e5;
 }
 
+.books-header-error-label{
+    -fx-font-size: 15;
+    -fx-text-fill: red;
+}
+
 /*Book Cover*/
 .book-cover{
     -fx-background-color: black;
@@ -871,6 +876,26 @@
 }
 
 .bank-id-cancel-button:hover{
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+/*Staff Add Book Page*/
+
+.staff-add-book-page-content{
+    -fx-background-color: white;
+}
+
+.staff-add-button{
+    -fx-font-size: 14;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-padding: 6;
+    -fx-background-color: #00e100;
+}
+
+.staff-add-button:hover{
+    -fx-background-color: green;
     -fx-underline: true;
     -fx-cursor: hand;
 }

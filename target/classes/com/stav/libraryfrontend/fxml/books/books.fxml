@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <fx:root prefHeight="400.0" prefWidth="800.0" styleClass="a" stylesheets="@../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <center>
@@ -22,22 +23,27 @@
       </ScrollPane>
    </center>
    <top>
-      <HBox alignment="CENTER" focusTraversable="true" prefHeight="50.0" prefWidth="600.0" spacing="10.0" styleClass="books-header" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <ComboBox fx:id="languageChoice" focusTraversable="false" prefHeight="25.0" prefWidth="105.0" promptText="Språk" styleClass="books-header-choice" />
-            <TextField fx:id="releaseInput" focusTraversable="false" prefHeight="25.0" prefWidth="96.0" styleClass="books-header-released" />
-            <ComboBox fx:id="libraryChoice" focusTraversable="false" prefHeight="25.0" prefWidth="105.0" promptText="Bibliotek" styleClass="books-header-choice" />
-            <HBox alignment="CENTER" focusTraversable="true" maxHeight="25.0" styleClass="books-header-search-bar">
+            <HBox alignment="CENTER" focusTraversable="true" prefHeight="50.0" prefWidth="600.0" spacing="10.0" styleClass="books-header">
                <children>
-                  <ComboBox fx:id="searchByChoice" prefHeight="27.0" prefWidth="113.0" promptText="Söktyp" />
-                  <TextField fx:id="searchInput" prefHeight="25.0" prefWidth="170.0" text="das" />
-                  <Label fx:id="searchButton" text="Sök" />
+                  <ComboBox fx:id="languageChoice" focusTraversable="false" prefHeight="25.0" prefWidth="105.0" promptText="Språk" styleClass="books-header-choice" />
+                  <TextField fx:id="releaseInput" focusTraversable="false" prefHeight="25.0" prefWidth="96.0" promptText="Datum" styleClass="books-header-released" />
+                  <ComboBox fx:id="libraryChoice" focusTraversable="false" prefHeight="25.0" prefWidth="105.0" promptText="Bibliotek" styleClass="books-header-choice" />
+                  <HBox alignment="CENTER" focusTraversable="true" maxHeight="25.0" styleClass="books-header-search-bar">
+                     <children>
+                        <ComboBox fx:id="searchByChoice" prefHeight="27.0" prefWidth="113.0" promptText="Söktyp" />
+                        <TextField fx:id="searchInput" prefHeight="25.0" prefWidth="170.0" />
+                        <Label fx:id="searchButton" text="Sök" />
+                     </children>
+                  </HBox>
                </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
             </HBox>
+            <Label fx:id="errorLabel" styleClass="books-header-error-label" text="Formatet på datumet måste vara yyyy-MM-dd" visible="false" />
          </children>
-         <padding>
-            <Insets left="20.0" right="20.0" />
-         </padding>
-      </HBox>
+      </VBox>
    </top>
 </fx:root>

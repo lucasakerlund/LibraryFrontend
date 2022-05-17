@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root prefHeight="600.0" prefWidth="900.0" styleClass="staff" stylesheets="@../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="600.0" prefWidth="900.0" styleClass="staff" stylesheets="@../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <BorderPane>
          <left>
@@ -33,9 +33,9 @@
                                     <Label alignment="TOP_LEFT" styleClass="staff-menu-bar-button-label" stylesheets="@../../css/main.css" text="ALLA BÖCKER" />
                                  </children>
                               </HBox>
-                              <HBox fx:id="staffPageButton" alignment="CENTER" layoutX="10.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="staff-menu-bar-button" stylesheets="@../../css/main.css">
+                              <HBox fx:id="staffAddBookButton" alignment="CENTER" layoutX="10.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="staff-menu-bar-button" stylesheets="@../../css/main.css">
                                  <children>
-                                    <Label alignment="TOP_LEFT" styleClass="staff-menu-bar-button-label" stylesheets="@../../css/main.css" text="MIN SIDA" />
+                                    <Label alignment="TOP_LEFT" styleClass="staff-menu-bar-button-label" stylesheets="@../../css/main.css" text="LÄGG TILL BÖCKER" />
                                  </children>
                               </HBox>
                               <HBox fx:id="staffLocalsButton" alignment="CENTER" layoutX="10.0" layoutY="62.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="staff-menu-bar-button" stylesheets="@../../css/main.css">

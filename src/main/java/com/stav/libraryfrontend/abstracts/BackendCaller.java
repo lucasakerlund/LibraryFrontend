@@ -7,8 +7,10 @@ import com.stav.libraryfrontend.models.LoanedBook;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -157,9 +159,21 @@ public class BackendCaller {
         return Integer.parseInt(data);
     }
 
-    public List<Book> getBooks(){
-        String data = request("api/book_details");
-        System.out.println("hej " + data);
+    public List<Book> getBooks(String language, String releaseDate, String library, String searchType, String search){
+        try {
+            language = URLEncoder.encode(language, "UTF-8");
+            releaseDate = URLEncoder.encode(releaseDate, "UTF-8");
+            library = URLEncoder.encode(library, "UTF-8");
+            searchType = URLEncoder.encode(searchType, "UTF-8");
+            search = URLEncoder.encode(search, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        System.out.println("123 " + search);
+        String data = request("api/book_details?language=" + language + "&releaseDate=" + releaseDate + "&library=" + library + "&searchType=" + searchType + "&search=" + search);
+        if(data.equals("")){
+            return new ArrayList<>();
+        }
         JSONArray array = new JSONArray(data);
         List<Book> output = new ArrayList<>();
         for (int i = 0; i < array.length(); i++) {
@@ -205,6 +219,16 @@ public class BackendCaller {
                     object.getString("loan_date"),
                     object.getString("return_date")
                     ));
+        }
+        return output;
+    }
+
+    public List<JSONObject> getLibraries(){
+        String data = request("api/libraries");
+        JSONArray array = new JSONArray(data);
+        List<JSONObject> output = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            output.add(array.getJSONObject(i));
         }
         return output;
     }
