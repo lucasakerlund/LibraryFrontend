@@ -919,7 +919,7 @@
 /* group rooms box*/
 
 .room-box-pane{
-    -fx-background-color: #121213;
+    -fx-background-color: #303034;
     -fx-border-width:2;
     -fx-border-color: white;
 }
@@ -999,3 +999,30 @@
 }
 
 /* group room view */
+
+/* user suggestion box */
+
+.suggestion-box{
+    -fx-background-color: #353538;
+}
+
+.suggestion-box-label{
+    -fx-text-fill: white;
+    -fx-font-size: 17;
+}
+
+.suggestion-box-press-me-label{
+    -fx-text-fill: #3c779d;
+    -fx-font-size: 14;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-padding: 5;
+}
+
+.suggestion-box-press-me-label:hover{
+    -fx-border-color: green;
+    -fx-text-fill: green;
+    -fx-cursor: hand;
+}
+
+/* user suggestion box */
