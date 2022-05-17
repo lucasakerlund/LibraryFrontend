@@ -14,11 +14,15 @@
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <FlowPane fx:id="box" hgap="10.0" vgap="10.0">
-               <padding>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-               </padding>
-            </FlowPane>
+            <VBox fx:id="centerVbox" alignment="TOP_CENTER">
+               <children>
+                  <FlowPane fx:id="box" hgap="10.0" vgap="10.0">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </FlowPane>
+               </children>
+            </VBox>
          </content>
       </ScrollPane>
    </center>

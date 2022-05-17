@@ -1,6 +1,7 @@
 package com.stav.libraryfrontend.controllers.models.books;
 
 import com.stav.libraryfrontend.abstracts.BackendCaller;
+import com.stav.libraryfrontend.controllers.models.userSuggestions.SuggestionBox;
 import com.stav.libraryfrontend.models.Book;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
@@ -12,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -40,6 +43,8 @@ public class Books extends BorderPane {
     private ComboBox<String> searchByChoice;
     @FXML
     private Label errorLabel;
+    @FXML
+    private VBox centerVbox;
 
     private Books(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/books/books.fxml"));
@@ -128,6 +133,11 @@ public class Books extends BorderPane {
                 e.printStackTrace();
             }
         }
+        addSuggestionBox();
+    }
+
+    public void addSuggestionBox(){
+        centerVbox.getChildren().add(SuggestionBox.inst());
     }
 
     public void addBook(BookCover bookCover){

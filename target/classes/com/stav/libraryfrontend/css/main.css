@@ -880,6 +880,26 @@
     -fx-cursor: hand;
 }
 
+/*Staff Add Book Page*/
+
+.staff-add-book-page-content{
+    -fx-background-color: white;
+}
+
+.staff-add-button{
+    -fx-font-size: 14;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-padding: 6;
+    -fx-background-color: #00e100;
+}
+
+.staff-add-button:hover{
+    -fx-background-color: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
 /* group rooms */
 
 .group-rooms-header{
@@ -924,7 +944,7 @@
 /* group rooms box*/
 
 .room-box-pane{
-    -fx-background-color: #121213;
+    -fx-background-color: #303034;
     -fx-border-width:2;
     -fx-border-color: white;
 }
@@ -1004,3 +1024,91 @@
 }
 
 /* group room view */
+
+/* user suggestion box */
+
+.suggestion-box{
+    -fx-background-color: transparent;
+}
+
+.suggestion-box-label{
+    -fx-text-fill: black;
+    -fx-font-size: 16;
+    -fx-underline: true;
+}
+
+.suggestion-box-press-me-label{
+    -fx-text-fill: blue;
+    -fx-font-size: 14;
+    -fx-border-color: blue;
+    -fx-border-width: 2;
+    -fx-padding: 5;
+}
+
+.suggestion-box-press-me-label:hover{
+    -fx-border-color: green;
+    -fx-text-fill: green;
+    -fx-cursor: hand;
+}
+
+/* user suggestion box */
+
+/* user suggestion view */
+
+.suggestion-view{
+    -fx-background-color: #242426;
+    -fx-border-color: white;
+}
+
+.suggestion-view-back-button{
+    -fx-font-size: 14;
+    -fx-text-fill: white;
+    -fx-border-width: 3;
+    -fx-border-color: #25a4e8;
+    -fx-padding: 3;
+}
+
+.suggestion-view-back-button:hover{
+    -fx-text-fill: green;
+    -fx-border-color: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.suggestion-view-intro-text{
+    -fx-font-size: 18;
+    -fx-text-fill: white;
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+}
+
+.suggestion-view-intro-text .content{
+    -fx-background-color: #242426;
+}
+
+.suggestion-view-suggest-button{
+    -fx-font-size: 18;
+    -fx-text-fill: white;
+    -fx-border-width: 4;
+    -fx-border-color: orange;
+    -fx-padding: 6;
+}
+
+.suggestion-view-suggest-button:hover{
+    -fx-border-color: green;
+    -fx-text-fill: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.suggestion-view-error-label{
+    -fx-underline: true;
+    -fx-text-fill: red;
+    -fx-padding: 3;
+}
+
+.suggestion-view-basic-labels{
+    -fx-text-fill: white;
+}
+
+/* user suggestion view */
