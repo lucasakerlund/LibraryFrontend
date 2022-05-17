@@ -12,8 +12,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Books extends BorderPane {
 
@@ -34,6 +38,8 @@ public class Books extends BorderPane {
     private Label searchButton;
     @FXML
     private ComboBox<String> searchByChoice;
+    @FXML
+    private Label errorLabel;
 
     private Books(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/books/books.fxml"));
@@ -54,28 +60,68 @@ public class Books extends BorderPane {
     }
 
     private void setup(){
+        languageChoice.getItems().add("Alla");
         languageChoice.getItems().add("Svenska");
         languageChoice.getItems().add("Engelska");
+        languageChoice.setValue("Alla");
 
         searchByChoice.getItems().add("Titel");
         searchByChoice.getItems().add("Författare");
-        searchByChoice.setValue("Författare");
+        searchByChoice.setValue("Titel");
 
+        libraryChoice.setValue("Alla");
+
+        searchButton.setOnMousePressed(e -> {
+            updateBooks();
+        });
         searchInput.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.ENTER){
-                searchBooks();
+                updateBooks();
             }
         });
-
-        //Get all libraries and add them to libraryChoice box.
+        libraryChoice.getItems().add("Alla");
+        for (JSONObject library : BackendCaller.inst().getLibraries()) {
+            libraryChoice.getItems().add(library.getString("name"));
+        }
     }
 
-    private void searchBooks(){
-
+    private boolean correctDateFormat() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setLenient(false);
+        if(releaseInput.getText().equals("")){
+            return true;
+        }
+        try {
+            sdf.parse(releaseInput.getText());
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
     }
 
     public void updateBooks(){
-        for(Book book : BackendCaller.inst().getBooks()) {
+        box.getChildren().clear();
+        String lang = "";
+        switch(languageChoice.getValue().toLowerCase()){
+            case "svenska":
+                lang = "SE";
+                break;
+            case "engelska":
+                lang = "EN";
+                break;
+        }
+        if(!correctDateFormat()){
+            errorLabel.setText("Formatet på datumet måste vara yyyy-MM-dd");
+            errorLabel.setVisible(true);
+            return;
+        }
+        errorLabel.setVisible(false);
+        for(Book book : BackendCaller.inst().getBooks(
+                languageChoice.getValue().equalsIgnoreCase("alla") ? "" : lang,
+                releaseInput.getText(),
+                libraryChoice.getValue().equalsIgnoreCase("alla") ? "" : libraryChoice.getValue(),
+                searchByChoice.getValue(),
+                searchInput.getText())) {
             try {
                 addBook(new BookCover(book));
             } catch (IOException e) {

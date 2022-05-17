@@ -231,6 +231,11 @@
     -fx-background-color: #e5e5e5;
 }
 
+.books-header-error-label{
+    -fx-font-size: 15;
+    -fx-text-fill: red;
+}
+
 /*Book Cover*/
 .book-cover{
     -fx-background-color: black;
