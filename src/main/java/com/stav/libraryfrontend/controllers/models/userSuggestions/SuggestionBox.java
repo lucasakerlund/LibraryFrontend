@@ -1,8 +1,10 @@
 package com.stav.libraryfrontend.controllers.models.userSuggestions;
 
 import com.stav.libraryfrontend.Library;
+import com.stav.libraryfrontend.abstracts.SubSceneHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.SubScene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
@@ -33,7 +35,7 @@ public class SuggestionBox extends BorderPane {
 
     public void setup(){
         pressMeButton.setOnMousePressed(e->{
-            System.out.println("WOOOP, du tryckte på en knapp! Imponerande!");
+            SubSceneHandler.inst().show(SuggestionView.inst());
         });
     }
 

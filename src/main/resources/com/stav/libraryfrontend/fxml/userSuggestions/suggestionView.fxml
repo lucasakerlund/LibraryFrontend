@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" styleClass="suggestion-view" stylesheets="@../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="backButton" styleClass="suggestion-view-back-button" text="Avbryt och återgå">
+               <HBox.margin>
+                  <Insets bottom="5.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <TextArea editable="false" prefHeight="75.0" prefWidth="598.0" styleClass="suggestion-view-intro-text" text="Saknar vi en bok du önskar dig? Ingen fara; fyll i informationen nedanför så skall vi ha ditt försölag i åtanke!" wrapText="true" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="181.0" prefWidth="598.0" spacing="6.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label styleClass="suggestion-view-basic-labels" text="Boktitel: (Obligatoriskt)" />
+            <TextField fx:id="titleField" maxWidth="150.0" promptText="Titel..." />
+            <Label layoutX="10.0" layoutY="10.0" styleClass="suggestion-view-basic-labels" text="Författarens namn:" />
+            <TextField fx:id="authorField" layoutX="10.0" layoutY="61.0" maxWidth="150.0" promptText="Författare..." />
+            <Label layoutX="10.0" layoutY="27.0" styleClass="suggestion-view-basic-labels" text="ISB-nummer:" />
+            <TextField fx:id="isbnField" layoutX="10.0" layoutY="86.0" maxWidth="150.0" promptText="ISBN..." />
+            <Label fx:id="suggestButton" styleClass="suggestion-view-suggest-button" text="Skicka in förslag">
+               <VBox.margin>
+                  <Insets bottom="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="errorLabel" styleClass="suggestion-view-error-label" text="TEST: ERROR LABEL">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets top="25.0" />
+         </padding>
+      </VBox>
+   </center>
+</fx:root>

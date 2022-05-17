@@ -12,7 +12,7 @@
          <children>
             <Label styleClass="suggestion-box-label" text="Hittar du inte vad du söker?" wrapText="true">
                <VBox.margin>
-                  <Insets left="4.0" />
+                  <Insets left="8.5" />
                </VBox.margin>
             </Label>
             <Label fx:id="pressMeButton" alignment="CENTER" styleClass="suggestion-box-press-me-label" text="Tryck på mig!" wrapText="true">
