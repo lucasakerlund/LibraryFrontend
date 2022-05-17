@@ -28,8 +28,6 @@ public class BackendCaller {
 
     private BackendCaller(){
 
-
-
     }
 
     public static BackendCaller inst(){
@@ -125,6 +123,7 @@ public class BackendCaller {
                 object.getString("language"),
                 object.getString("image_source")
         );
+
         /*String data = request("books/v1/volumes?q=isbn:" + isbn);
         System.out.println(data);
         JSONObject object = new JSONObject(data);
@@ -201,6 +200,7 @@ public class BackendCaller {
      * name, amount
      * ]
      * */
+
     public JSONArray getAmountOfBookInLibraries(String isbn){
         String data = request("api/books/amount_in_libraries/" + isbn);
         System.out.println(data);

@@ -879,3 +879,148 @@
     -fx-underline: true;
     -fx-cursor: hand;
 }
+
+/*Staff Add Book Page*/
+
+.staff-add-book-page-content{
+    -fx-background-color: white;
+}
+
+.staff-add-button{
+    -fx-font-size: 14;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-padding: 6;
+    -fx-background-color: #00e100;
+}
+
+.staff-add-button:hover{
+    -fx-background-color: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+/* group rooms */
+
+.group-rooms-header{
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+    -fx-padding: 6;
+    -fx-background-color: #d4b38f;
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+}
+
+.group-rooms-header:hover{
+    -fx-background-color: #8c734e;
+    -fx-underline: true;
+    -fx-border-width: 4;
+    -fx-border-color: green;
+}
+
+#group-rooms-header-focused{
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+    -fx-padding: 6;
+    -fx-background-color: #e0c4b0;
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+}
+
+.group-rooms-header-border{
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: white;
+}
+
+.group-rooms-combo-box{
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+}
+
+/* group rooms */
+
+/* group rooms box*/
+
+.room-box-pane{
+    -fx-background-color: #121213;
+    -fx-border-width:2;
+    -fx-border-color: white;
+}
+
+.room-box-pane:hover {
+    -fx-border-color: #06b206;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.room-box-label{
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+}
+
+/* group rooms box*/
+
+/* group room view */
+
+.room-view{
+    -fx-background-color: #303034;
+}
+
+.room-view-name-label{
+    -fx-font-size: 24;
+    -fx-text-fill: white;
+    -fx-underline: true;
+}
+
+.room-view-left-side-text{
+    -fx-text-fill: white;
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-border-width: 0;
+    -fx-border: none;
+    -fx-background-color: transparent;
+}
+
+.room-view-left-side-text:hover{
+    -fx-cursor: default;
+}
+
+.room-view-left-side-text .content{
+    -fx-background-color: #303034;
+}
+
+.room-view-book-button{
+    -fx-font-size: 18;
+    -fx-border-width: 2;
+    -fx-border-color: gray;
+    -fx-text-fill: gray;
+}
+
+.room-view-book-button:hover{
+    -fx-text-fill: green;
+    -fx-border-color: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.room-view-avalible-label{
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+}
+
+.room-view-right-side-avalible-text-area{
+    -fx-text-fill: white;
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-border-width: 0;
+    -fx-border: none;
+    -fx-background-color: transparent;
+}
+
+.room-view-right-side-avalible-text-area .content{
+    -fx-background-color: #303034;
+}
+
+/* group room view */

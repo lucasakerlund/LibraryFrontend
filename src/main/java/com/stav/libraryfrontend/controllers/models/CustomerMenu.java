@@ -3,6 +3,7 @@ package com.stav.libraryfrontend.controllers.models;
 import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.controllers.models.books.Books;
+import com.stav.libraryfrontend.controllers.models.groupRooms.GroupRooms;
 import com.stav.libraryfrontend.controllers.models.myPage.MyPage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,18 +46,16 @@ public class CustomerMenu extends BorderPane {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/customer/customerMenu.fxml"));
         loader.setRoot(this);
         loader.setController(this);
+
         try {
             loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try {
-            buttons.put("books", new MenuButton(booksButton, Books.inst()));
-            buttons.put("myPage", new MenuButton(myPageButton, MyPage.inst()));
-            buttons.put("locals", new MenuButton(localsButton, new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/local/local.fxml")).load()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        buttons.put("books", new MenuButton(booksButton, Books.inst()));
+        buttons.put("myPage", new MenuButton(myPageButton, MyPage.inst()));
+        buttons.put("locals", new MenuButton(localsButton, GroupRooms.inst()));
 
         setup();
         open("books");
