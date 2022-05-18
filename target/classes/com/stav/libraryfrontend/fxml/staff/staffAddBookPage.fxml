@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="staff-add-book-page-content" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" />
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="BorderPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <BorderPane fx:id="staffAddBookContent" prefHeight="200.0" prefWidth="200.0" styleClass="staff-add-book-page-content" stylesheets="@../../css/main.css" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="25.0" right="25.0" />
+         </BorderPane.margin>
+         <children>
+            <TextField fx:id="isbnField" maxWidth="-Infinity" promptText="Sök på ISBN..." />
+            <Label fx:id="addButton" styleClass="staff-add-button" stylesheets="@../../css/main.css" text="Lägg till" />
+         </children>
+      </HBox>
+   </top>
+</fx:root>

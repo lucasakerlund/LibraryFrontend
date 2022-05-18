@@ -1023,6 +1023,18 @@
     -fx-background-color: #303034;
 }
 
+.room-view-message-label{
+    -fx-font-size: 16;
+    -fx-underline: true;
+    -fx-text-fill: red;
+}
+
+#room-view-message-label-green{
+    -fx-font-size: 16;
+    -fx-underline: true;
+    -fx-text-fill: #03b003;
+}
+
 /* group room view */
 
 /* user suggestion box */
@@ -1112,3 +1124,25 @@
 }
 
 /* user suggestion view */
+
+/* time select button */
+.time-select-button{
+    -fx-font-size: 14;
+    -fx-text-fill: white;
+    -fx-underline: true;
+    -fx-border-width: 4;
+    -fx-border-color: black;
+}
+
+.time-select-button:hover{
+    -fx-cursor: hand;
+    -fx-text-fill: #4d4d4d;
+}
+
+#time-select-button-focused{
+    -fx-font-size: 14;
+    -fx-text-fill: #969696;
+    -fx-underline: true;
+    -fx-border-width: 4;
+    -fx-border-color: #007715;
+}
