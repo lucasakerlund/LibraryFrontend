@@ -2,6 +2,7 @@ package com.stav.libraryfrontend.controllers.models.myPage.loanedBooks;
 
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.UserDetails;
+import com.stav.libraryfrontend.controllers.models.userSuggestions.SuggestionBox;
 import com.stav.libraryfrontend.models.LoanedBook;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
