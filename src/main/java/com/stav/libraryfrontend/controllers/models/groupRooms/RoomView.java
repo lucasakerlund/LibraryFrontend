@@ -39,6 +39,7 @@ public class RoomView extends BorderPane {
             e.printStackTrace();
         }
 
+        // Hides message label by default until it is needed
         messageLabel.setText("");
         setup();
     }
@@ -55,10 +56,18 @@ public class RoomView extends BorderPane {
 
         // This button must remove the available time from the room and save it for the current user
         bookRoomButton.setOnMousePressed(e->{
-            System.out.println(focused.getTime());
-            messageLabel.setId("room-view-message-label-green");
-            messageLabel.setText("Du har bokat tiden: " + focused.getTime());
-            timesVbox.getChildren().remove(focused);
+            // If nothing is selected, tell user
+            if(focused == null){
+                messageLabel.setId("room-view-message-label");
+                messageLabel.setText("Ett rum måste markeras först!");
+            } else {
+                System.out.println(focused.getTime());
+                messageLabel.setId("room-view-message-label-green");
+                messageLabel.setText("Du har bokat tiden: " + focused.getTime());
+                timesVbox.getChildren().remove(focused);
+                // Removes highlight
+                focused = null;
+            }
         });
 
     }

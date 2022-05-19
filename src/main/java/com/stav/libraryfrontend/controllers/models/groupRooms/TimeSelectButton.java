@@ -27,13 +27,6 @@ public class TimeSelectButton extends Label{
         }
 
         timeSelectButton.setText(time);
-        setup();
-    }
-
-    private void setup(){
-        this.setOnMousePressed(e->{
-
-        });
     }
 
     public String getTime() {
