@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+
+
+<fx:root fx:id="timeSelectButton" alignment="CENTER" prefHeight="17.0" prefWidth="185.0" styleClass="time-select-button" stylesheets="@../../css/main.css" text="TID: Placeholder" type="Label" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" />
