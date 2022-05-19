@@ -292,7 +292,8 @@
     -fx-text-fill: red;
 }
 
-.book-loan-view-book-button{
+.book-loan-view-book-button, .book-loan-view-queue-button, .book-loan-view-in-queue{
+    -fx-background-color: rgba(52,53,53,.4);
     -fx-font-size: 20;
     -fx-text-fill: #00ff00;
     -fx-border-width: 2;
@@ -300,7 +301,7 @@
     -fx-padding: 0 5 0 5;
 }
 
-.book-loan-view-book-button:hover{
+.book-loan-view-book-button:hover, .book-loan-view-queue-button:hover, .book-loan-view-in-queue:hover{
     -fx-text-fill: #b0dab0;
     -fx-border-color: #b0dab0;
     -fx-cursor: hand;
@@ -689,6 +690,7 @@
     -fx-cursor: hand;
 }
 
+/*Loaned Book*/
 .loaned-book-cover-return-button{
     -fx-background-color: rgba(59, 59, 59, 0.34);;
     -fx-border-width: 2;
@@ -717,6 +719,28 @@
     -fx-underline: true;
     -fx-font-size: 14;
 }
+
+/**/
+.reserved-book{
+
+}
+
+.reserved-book-cover-leave-queue-button{
+    -fx-background-color: rgba(52,53,53,.4);
+    -fx-font-size: 20;
+    -fx-text-fill: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: #00ff00;
+    -fx-padding: 0 5 0 5;
+
+}
+
+.reserved-book-cover-leave-queue-button:hover{
+    -fx-text-fill: #b0dab0;
+    -fx-border-color: #b0dab0;
+    -fx-cursor: hand;
+}
+
 /* MY PAGE (MIN SIDA) */
 
 /* STAFF PAGE */
@@ -876,6 +900,26 @@
 }
 
 .bank-id-cancel-button:hover{
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+/*Staff Add Book Page*/
+
+.staff-add-book-page-content{
+    -fx-background-color: white;
+}
+
+.staff-add-button{
+    -fx-font-size: 14;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-padding: 6;
+    -fx-background-color: #00e100;
+}
+
+.staff-add-button:hover{
+    -fx-background-color: green;
     -fx-underline: true;
     -fx-cursor: hand;
 }

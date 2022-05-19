@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="252.0" prefWidth="202.0" styleClass="reserved-book" stylesheets="@../../../css/main.css" type="StackPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="250.0" fitWidth="200.0" pickOnBounds="true" styleClass="loaned-book-cover-image">
+         <image>
+            <Image url="@../../../../../../../../../../Desktop/hpcovertest.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="leaveQueueButton" styleClass="reserved-book-cover-leave-queue-button" text="Lämna kö">
+         <StackPane.margin>
+            <Insets top="200.0" />
+         </StackPane.margin>
+      </Label>
+   </children>
+</fx:root>

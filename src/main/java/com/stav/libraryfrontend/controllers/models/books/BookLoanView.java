@@ -35,7 +35,13 @@ public class BookLoanView extends StackPane {
     private Label errorLabel;
 
     @FXML
+    private VBox box;
+    @FXML
     private Label lendButton;
+    @FXML
+    private Label queueButton;
+    @FXML
+    private Label inQueueButton;
 
     @FXML
     private Label titleLabel;
@@ -89,7 +95,6 @@ public class BookLoanView extends StackPane {
                 errorLabel.setVisible(true);
                 return;
             }
-            //Skicka till backend.
             if(!BackendCaller.inst().loanBook(book, UserDetails.inst().getCustomer(), focused.libraryId)){
                 errorLabel.setText("Något fel inträffade.");
                 errorLabel.setVisible(true);
@@ -98,7 +103,46 @@ public class BookLoanView extends StackPane {
             LoanedBooksView.inst().loadBooks();
             SubSceneHandler.inst().hide();
         });
+        inQueueButton.setOnMousePressed(e -> {
+            BackendCaller.inst().reserveBook(book.getIsbn(), UserDetails.inst().getCustomer().getCustomerId());
+        });
 
+        setupBookInformation();
+
+        JSONArray array = BackendCaller.inst().getAmountOfBookInLibraries(book.getIsbn());
+        boolean outOfStock = true;
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            addLocation(object.getInt("library_id"), object.getString("name"), object.getInt("amount"));
+            if(object.getInt("amount") > 0){
+                outOfStock = false;
+            }
+        }
+        if(outOfStock){
+            if (BackendCaller.inst().isInQueue(book.getIsbn(), UserDetails.inst().getCustomer().getCustomerId())) {
+                box.getChildren().remove(lendButton);
+                box.getChildren().remove(queueButton);
+                if(!box.getChildren().contains(inQueueButton)){
+                    box.getChildren().add(0, inQueueButton);
+                }
+                return;
+            }
+            if(!box.getChildren().contains(queueButton)){
+                box.getChildren().add(0, queueButton);
+            }
+            box.getChildren().remove(lendButton);
+            box.getChildren().remove(inQueueButton);
+        }else{
+            if(!box.getChildren().contains(lendButton)){
+                box.getChildren().add(0, lendButton);
+            }
+            box.getChildren().remove(queueButton);
+        }
+
+        SubSceneHandler.inst().hide();
+    }
+
+    private void setupBookInformation() {
         imageView.setImage(new Image(book.getImageSrc()));
         titleLabel.setText(book.getTitle());
         authorLabel.setText(String.join(", ", book.getAuthors()));
@@ -108,13 +152,6 @@ public class BookLoanView extends StackPane {
         pagesLabel.setText(book.getPages()+"");
         descriptionLabel.setText(book.getDescription());
         languageLabel.setText(book.getLanguage());
-
-        JSONArray array = BackendCaller.inst().getAmountOfBookInLibraries(book.getIsbn());
-        for (int i = 0; i < array.length(); i++) {
-            JSONObject object = array.getJSONObject(i);
-            addLocation(object.getInt("library_id"), object.getString("name"), object.getInt("amount"));
-        }
-        SubSceneHandler.inst().hide();
     }
 
     private class LocationItem extends HBox {
@@ -140,7 +177,6 @@ public class BookLoanView extends StackPane {
             amountLabel.setTextAlignment(TextAlignment.LEFT);
             this.getChildren().add(locationLabel);
             this.getChildren().add(amountLabel);
-
 
             addClickListener();
         }
