@@ -1,8 +1,6 @@
 package com.stav.libraryfrontend.abstracts;
 
-import com.stav.libraryfrontend.models.Book;
-import com.stav.libraryfrontend.models.Customer;
-import com.stav.libraryfrontend.models.LoanedBook;
+import com.stav.libraryfrontend.models.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -16,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.stav.libraryfrontend.models.Staff;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
@@ -313,6 +310,23 @@ public class BackendCaller {
             System.out.println(array);
         }
         return output.toArray(new String[output.size()]);
+    }
+
+    // Placeholder, change if database groupRooms table changes
+    public List<GroupRoom> getGroupRooms(){
+        String data = request("api/group_rooms");
+        JSONArray allRooms = new JSONArray(data);
+
+        List<GroupRoom> returnable = new ArrayList<GroupRoom>();
+
+        for (int i = 0; i < allRooms.length(); i++){
+            GroupRoom groupRoom = new GroupRoom (allRooms.getJSONObject(i).getInt("room_id"), allRooms.getJSONObject(i).getString("name"),
+                    allRooms.getJSONObject(i).getInt("library_id"), allRooms.getJSONObject(i).getString("date"));
+
+            returnable.add(groupRoom);
+        }
+
+        return returnable;
     }
 
 }
