@@ -1,6 +1,7 @@
 package com.stav.libraryfrontend.controllers.models.myPage;
 
 import com.stav.libraryfrontend.controllers.models.myPage.loanedBooks.LoanedBooksView;
+import com.stav.libraryfrontend.controllers.models.myPage.reservedBooks.ReservedBooksView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -65,6 +66,11 @@ public class MyPage extends BorderPane {
             content.setCenter(LoanedBooksView.inst());
             LoanedBooksView.inst().loadBooks();
             setFocused(borrowedBooksButton);
+        });
+        reservedBooksButton.setOnMousePressed(e -> {
+            content.setCenter(ReservedBooksView.inst());
+            ReservedBooksView.inst().loadBooks();
+            setFocused(reservedBooksButton);
         });
     }
 

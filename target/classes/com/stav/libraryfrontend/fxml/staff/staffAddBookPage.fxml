@@ -23,3 +23,7 @@
       </HBox>
    </top>
 </fx:root>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="staff-add-book-page-content" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" />

@@ -87,7 +87,7 @@ public class BackendCaller {
 
     public Book getBook(int bookId){
         String data = request("api/books/id/" + bookId);
-        System.out.println(data);
+        System.out.println("test " + data);
         JSONObject object = new JSONObject(data);
         return new Book(
                 object.getInt("book_id"),
@@ -148,11 +148,6 @@ public class BackendCaller {
 
     public int getAmountOfBooksInStock(String isbn){
         String data = request("api/books/amount_in_stock/" + isbn);
-        return Integer.parseInt(data);
-    }
-
-    public int getAmountInQueue(String isbn){
-        String data = request("api/book_queue/amount/" + isbn);
         return Integer.parseInt(data);
     }
 
@@ -246,11 +241,47 @@ public class BackendCaller {
         return output;
     }
 
+    public int getAmountInQueue(String isbn){
+        String data = request("api/book_queue/amount/" + isbn);
+        return Integer.parseInt(data);
+    }
+
+    public List<BookQueue> getReservedBooks(int customerId){
+        String data = request("api/book_queue/customer/" + customerId);
+        JSONArray array = new JSONArray(data);
+        List<BookQueue> output = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            output.add(new BookQueue(
+                    object.getInt("book_id"),
+                    object.getInt("customer_id"),
+                    object.getString("queue_date")
+            ));
+        }
+        return output;
+    }
+
+    public boolean isInQueue(String isbn, int customerId){
+        String data = request("api/book_queue/in_queue?isbn=" + isbn + "&customerId=" + customerId);
+        return Boolean.parseBoolean(data);
+    }
+
+    public boolean reserveBook(String isbn, int customerId){
+        String data = request("api/book_queue/reserve?isbn=" + isbn + "&customerId=" + customerId);
+        return Boolean.parseBoolean(data);
+    }
+
+    public boolean leaveQueue(String isbn){
+        String data = request("api/book_queue/leave_queue/" + isbn);
+        return Boolean.parseBoolean(data);
+    }
+
     public boolean returnBook(int bookId){
         String data = request("api/loans/return_book/" + bookId);
         return Boolean.parseBoolean(data);
     }
 
+    //Post
     /**
      * @return the book with the correct book_id
      * */
@@ -301,6 +332,7 @@ public class BackendCaller {
                 object.getString("role")
         );
     }
+    //
 
     private String[] convertJSONArrayToStringArray(JSONArray array){
         List<String> output = new ArrayList<>();
