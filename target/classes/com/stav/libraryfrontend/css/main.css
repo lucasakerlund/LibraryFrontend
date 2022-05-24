@@ -1170,3 +1170,31 @@
     -fx-border-width: 4;
     -fx-border-color: #007715;
 }
+/* time select button */
+
+/* Booking box */
+.booking-box{
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-background-color: white;
+}
+
+.booking-box-info-labels{
+    -fx-text-fill: black;
+    -fx-font-size: 18;
+}
+
+.booking-box-cancel-button{
+    -fx-font-size: 12;
+    -fx-text-fill: red;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-background-color: transparent;
+}
+
+.booking-box-cancel-button:hover{
+    -fx-background-color: black;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+/* Booking box */

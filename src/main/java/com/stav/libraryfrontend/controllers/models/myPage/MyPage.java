@@ -1,5 +1,6 @@
 package com.stav.libraryfrontend.controllers.models.myPage;
 
+import com.stav.libraryfrontend.controllers.models.myPage.groupRoomBookings.MyBookingsPage;
 import com.stav.libraryfrontend.controllers.models.myPage.loanedBooks.LoanedBooksView;
 import com.stav.libraryfrontend.controllers.models.myPage.reservedBooks.ReservedBooksView;
 import javafx.application.Platform;
@@ -9,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 public class MyPage extends BorderPane {
 
@@ -86,6 +86,11 @@ public class MyPage extends BorderPane {
             ReservedBooksView.inst().loadBooks();
             setFocused(reservedBooksButton);
         });
+        bookedRoomsButton.setOnMousePressed(e -> {
+            content.setCenter(MyBookingsPage.inst());
+            setFocused(bookedRoomsButton);
+        });
+
     }
 
     public void inputMessage(String update){

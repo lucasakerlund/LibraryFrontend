@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+
+<fx:root type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;">
+         <content>
+            <FlowPane fx:id="flowPane" hgap="10.0" prefHeight="219.0" prefWidth="220.0" style="-fx-background-color: blue;" vgap="10.0" />
+         </content>
+      </ScrollPane>
+   </center>
+</fx:root>
