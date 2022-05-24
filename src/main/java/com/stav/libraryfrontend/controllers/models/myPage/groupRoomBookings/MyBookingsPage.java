@@ -3,7 +3,6 @@ package com.stav.libraryfrontend.controllers.models.myPage.groupRoomBookings;
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.UserDetails;
 import com.stav.libraryfrontend.controllers.models.groupRooms.RoomBox;
-import com.stav.libraryfrontend.models.GroupRoomTimes;
 import com.stav.libraryfrontend.models.RoomBooking;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

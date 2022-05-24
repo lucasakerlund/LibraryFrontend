@@ -383,7 +383,7 @@ public class BackendCaller {
 
     public List<JSONObject> getUsersGroupRoomTimesById(int customer_id){
         // We need all the group room times and then separate out the ones with my cus_id
-        String data = request("api/groupRoomTimes/get_times_by_id/" + customer_id);
+        String data = request("api/group_room_times/get_times_by_id/" + customer_id);
         System.out.println("The String containing all bookings: " + data);
 
         JSONArray allUsersTimes = new JSONArray(data);

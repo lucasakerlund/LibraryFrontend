@@ -43,12 +43,17 @@ public class GroupRooms extends BorderPane {
 
     public void setup(){
         showAllRooms.setOnMousePressed(e -> {
-            List<GroupRoom> l = BackendCaller.inst().getGroupRooms();
-
-            for (int i = 0; i < l.size(); i++){
-                contentFlowPane.getChildren().add(new RoomBox(l.get(i).getRoom_id(), l.get(i).getName(), l.get(i).getDescription()));
-            }
+            loadRooms();
         });
+    }
+
+    public void loadRooms(){
+        contentFlowPane.getChildren().clear();
+        List<GroupRoom> l = BackendCaller.inst().getGroupRooms();
+
+        for (int i = 0; i < l.size(); i++){
+            contentFlowPane.getChildren().add(new RoomBox(l.get(i).getRoom_id(), l.get(i).getName(), l.get(i).getDescription()));
+        }
     }
 
     public static GroupRooms inst(){
