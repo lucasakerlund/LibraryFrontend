@@ -4,13 +4,13 @@ public class GroupRoom {
     private int room_id;
     private String name;
     private int library_id;
-    private String date;
+    private String description;
 
-    public GroupRoom(int room_id, String name, int library_id, String date) {
+    public GroupRoom(int room_id, String name, int library_id, String description) {
         this.room_id = room_id;
         this.name = name;
         this.library_id = library_id;
-        this.date = date;
+        this.description = description;
     }
 
     public int getRoom_id() {
@@ -25,7 +25,7 @@ public class GroupRoom {
         return library_id;
     }
 
-    public String getDate() {
-        return date;
+    public String getDescription() {
+        return description;
     }
 }

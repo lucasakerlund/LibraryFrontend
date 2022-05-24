@@ -13,10 +13,14 @@ public class RoomBox extends StackPane {
     @FXML
     private Label roomNameLabel;
 
-    public RoomBox(){
+    public int id;
 
-        String[] placeHolder = placeholderBox().split(",");
+    public String roomDescription;
 
+
+    public RoomBox(int room_id, String name, String description){
+        id = room_id;
+        roomDescription = description;
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/groupRooms/roomBox.fxml"));
         fxmlLoader.setRoot(this);
@@ -28,22 +32,15 @@ public class RoomBox extends StackPane {
             e.printStackTrace();
         }
 
-        roomNameLabel.setText(placeHolder[0]);
-
-        String avalibleSeats = placeHolder[1]; // If this needs to be used...
+        roomNameLabel.setText(name);
 
         setup();
     }
 
     public void setup(){
         this.setOnMousePressed(e -> {
-            SubSceneHandler.inst().show(new RoomView());
+            SubSceneHandler.inst().show(new RoomView(id, roomNameLabel.getText(), roomDescription));
         });
-    }
-
-    public String placeholderBox(){
-        String nameSeats = "bigRoom,10";
-        return nameSeats;
     }
 
 }

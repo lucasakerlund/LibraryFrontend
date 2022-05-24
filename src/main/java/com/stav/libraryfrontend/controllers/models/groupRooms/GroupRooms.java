@@ -1,5 +1,7 @@
 package com.stav.libraryfrontend.controllers.models.groupRooms;
 
+import com.stav.libraryfrontend.abstracts.BackendCaller;
+import com.stav.libraryfrontend.models.GroupRoom;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ComboBox;
@@ -8,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
+import java.util.List;
 
 public class GroupRooms extends BorderPane {
 
@@ -40,7 +43,11 @@ public class GroupRooms extends BorderPane {
 
     public void setup(){
         showAllRooms.setOnMousePressed(e -> {
-            contentFlowPane.getChildren().add(new RoomBox());
+            List<GroupRoom> l = BackendCaller.inst().getGroupRooms();
+
+            for (int i = 0; i < l.size(); i++){
+                contentFlowPane.getChildren().add(new RoomBox(l.get(i).getRoom_id(), l.get(i).getName(), l.get(i).getDescription()));
+            }
         });
     }
 
