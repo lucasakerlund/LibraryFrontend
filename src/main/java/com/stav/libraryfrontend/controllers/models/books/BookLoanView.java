@@ -106,6 +106,14 @@ public class BookLoanView extends StackPane {
         inQueueButton.setOnMousePressed(e -> {
             BackendCaller.inst().reserveBook(book.getIsbn(), UserDetails.inst().getCustomer().getCustomerId());
         });
+        queueButton.setOnMousePressed(e -> {
+            if (!BackendCaller.inst().reserveBook(book.getIsbn(), UserDetails.inst().getCustomer().getCustomerId())) {
+                errorLabel.setText("Något fel inträffade.");
+                errorLabel.setVisible(true);
+                return;
+            }
+            SubSceneHandler.inst().hide();
+        });
 
         setupBookInformation();
 
@@ -118,25 +126,21 @@ public class BookLoanView extends StackPane {
                 outOfStock = false;
             }
         }
+        box.getChildren().remove(lendButton);
+        box.getChildren().remove(queueButton);
+        box.getChildren().remove(inQueueButton);
         if(outOfStock){
             if (BackendCaller.inst().isInQueue(book.getIsbn(), UserDetails.inst().getCustomer().getCustomerId())) {
-                box.getChildren().remove(lendButton);
-                box.getChildren().remove(queueButton);
-                if(!box.getChildren().contains(inQueueButton)){
-                    box.getChildren().add(0, inQueueButton);
-                }
+                box.getChildren().add(1, inQueueButton);
                 return;
             }
-            if(!box.getChildren().contains(queueButton)){
-                box.getChildren().add(0, queueButton);
-            }
-            box.getChildren().remove(lendButton);
-            box.getChildren().remove(inQueueButton);
+            box.getChildren().add(1, queueButton);
         }else{
-            if(!box.getChildren().contains(lendButton)){
-                box.getChildren().add(0, lendButton);
+            if(BackendCaller.inst().getAmountInQueue(book.getIsbn()) >= 1){
+                //Perhaps check if the customer is first in the queue and then let him be able to lend from here.
+                return;
             }
-            box.getChildren().remove(queueButton);
+            box.getChildren().add(1, lendButton);
         }
 
         SubSceneHandler.inst().hide();

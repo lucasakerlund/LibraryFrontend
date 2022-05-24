@@ -241,8 +241,16 @@ public class BackendCaller {
         return output;
     }
 
+    public boolean returnBook(int bookId){
+        String data = request("api/loans/return_book/" + bookId);
+        return Boolean.parseBoolean(data);
+    }
+
     public int getAmountInQueue(String isbn){
         String data = request("api/book_queue/amount/" + isbn);
+        if(data.equals("")){
+            return 0;
+        }
         return Integer.parseInt(data);
     }
 
@@ -273,11 +281,6 @@ public class BackendCaller {
 
     public boolean leaveQueue(String isbn){
         String data = request("api/book_queue/leave_queue/" + isbn);
-        return Boolean.parseBoolean(data);
-    }
-
-    public boolean returnBook(int bookId){
-        String data = request("api/loans/return_book/" + bookId);
         return Boolean.parseBoolean(data);
     }
 
