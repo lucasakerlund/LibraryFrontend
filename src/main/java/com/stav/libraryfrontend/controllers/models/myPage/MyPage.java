@@ -77,14 +77,10 @@ public class MyPage extends BorderPane {
         clearMessage();
 
         borrowedBooksButton.setOnMousePressed(e -> {
-            content.setCenter(LoanedBooksView.inst());
-            LoanedBooksView.inst().loadBooks();
-            setFocused(borrowedBooksButton);
+            open("borrowedBooks");
         });
         reservedBooksButton.setOnMousePressed(e -> {
-            content.setCenter(ReservedBooksView.inst());
-            ReservedBooksView.inst().loadBooks();
-            setFocused(reservedBooksButton);
+            open("reservedBooks");
         });
     }
 

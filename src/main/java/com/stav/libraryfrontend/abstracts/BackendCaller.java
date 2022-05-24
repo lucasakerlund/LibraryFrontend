@@ -363,23 +363,28 @@ public class BackendCaller {
         return returnable;
     }
 
-    public List<GroupRoomTimes> getGroupRoomTimes(){
-        String data = request("api/groupRoomTimes/getTimes");
+    public List<GroupRoomTime> getGroupRoomTimes(int roomId){
+        String data = request("api/group_room_times/available_times/" + roomId);
         JSONArray allTimes = new JSONArray(data);
 
-        List<GroupRoomTimes> returnable = new ArrayList<GroupRoomTimes>();
+        List<GroupRoomTime> returnable = new ArrayList<GroupRoomTime>();
 
         for (int i = 0; i < allTimes.length(); i++){
-            GroupRoomTimes groupRoomTimes = new GroupRoomTimes
+            GroupRoomTime groupRoomTime = new GroupRoomTime
                     (allTimes.getJSONObject(i).getInt("time_id"),
                     allTimes.getJSONObject(i).getInt("room_id"),
                     allTimes.getJSONObject(i).getString("time"),
                     allTimes.getJSONObject(i).getString("date"));
 
-            returnable.add(groupRoomTimes);
+            returnable.add(groupRoomTime);
         }
 
         return returnable;
+    }
+
+    public boolean bookGroupRoom(int timeId, int customerId){
+        String data = request("api/group_room_times/book?timeId=" + timeId + "&customerId=" + customerId);
+        return Boolean.parseBoolean(data);
     }
 
 }

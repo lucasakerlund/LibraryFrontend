@@ -4,6 +4,7 @@ import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.UserDetails;
 import com.stav.libraryfrontend.controllers.models.myPage.loanedBooks.LoanedBooksView;
+import com.stav.libraryfrontend.controllers.models.myPage.reservedBooks.ReservedBooksView;
 import com.stav.libraryfrontend.models.Customer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -94,6 +95,7 @@ public class ExistingUserLoginScreen extends BorderPane {
         Library.inst().setContent(CustomerMenu.inst());
 
         LoanedBooksView.inst().loadBooks();
+        ReservedBooksView.inst().loadBooks();
     }
 
     public void clearOldInfo(){
