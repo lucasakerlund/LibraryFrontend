@@ -47,7 +47,7 @@ public class ReservedBooksView extends BorderPane {
         List<BookQueue> list = BackendCaller.inst().getReservedBooks(UserDetails.inst().getCustomer().getCustomerId());
         for (BookQueue reservedBook : list) {
             try {
-                addBook(new ReservedBookCover(BackendCaller.inst().getBook(reservedBook.getBookId())));
+                addBook(new ReservedBookCover(BackendCaller.inst().getBook(reservedBook.getIsbn())));
             } catch (IOException e) {
                 e.printStackTrace();
             }

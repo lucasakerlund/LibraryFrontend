@@ -3,7 +3,10 @@ package com.stav.libraryfrontend.controllers.models.books;
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.SubSceneHandler;
 import com.stav.libraryfrontend.abstracts.UserDetails;
+import com.stav.libraryfrontend.controllers.models.CustomerMenu;
+import com.stav.libraryfrontend.controllers.models.myPage.MyPage;
 import com.stav.libraryfrontend.controllers.models.myPage.loanedBooks.LoanedBooksView;
+import com.stav.libraryfrontend.controllers.models.myPage.reservedBooks.ReservedBooksView;
 import com.stav.libraryfrontend.models.Book;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -104,7 +107,9 @@ public class BookLoanView extends StackPane {
             SubSceneHandler.inst().hide();
         });
         inQueueButton.setOnMousePressed(e -> {
-            BackendCaller.inst().reserveBook(book.getIsbn(), UserDetails.inst().getCustomer().getCustomerId());
+            CustomerMenu.inst().open("myPage");
+            MyPage.inst().open("reservedBooks");
+            SubSceneHandler.inst().hide();
         });
         queueButton.setOnMousePressed(e -> {
             if (!BackendCaller.inst().reserveBook(book.getIsbn(), UserDetails.inst().getCustomer().getCustomerId())) {

@@ -1,6 +1,7 @@
 package com.stav.libraryfrontend.controllers.models.myPage.reservedBooks;
 
 import com.stav.libraryfrontend.abstracts.BackendCaller;
+import com.stav.libraryfrontend.abstracts.UserDetails;
 import com.stav.libraryfrontend.models.Book;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +35,7 @@ public class ReservedBookCover extends StackPane {
         imageView.setImage(new Image(book.getImageSrc()));
 
         leaveQueueButton.setOnMousePressed(e -> {
-            BackendCaller.inst().leaveQueue(book.getIsbn());
+            BackendCaller.inst().leaveQueue(book.getIsbn(), UserDetails.inst().getCustomer().getCustomerId());
             ReservedBooksView.inst().deleteBook(this);
         });
     }

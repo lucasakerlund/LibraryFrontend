@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class MyPage extends BorderPane {
 
@@ -49,6 +50,19 @@ public class MyPage extends BorderPane {
         content.setCenter(LoanedBooksView.inst());
         LoanedBooksView.inst().loadBooks();
         setFocused(borrowedBooksButton);
+    }
+
+    public void open(String id){
+        if(id.equals("reservedBooks")){
+            content.setCenter(ReservedBooksView.inst());
+            ReservedBooksView.inst().loadBooks();
+            setFocused(reservedBooksButton);
+        }
+        if(id.equals("borrowedBooks")){
+            content.setCenter(LoanedBooksView.inst());
+            LoanedBooksView.inst().loadBooks();
+            setFocused(borrowedBooksButton);
+        }
     }
 
     public void setFocused(Label focused) {

@@ -106,6 +106,7 @@ public class BackendCaller {
 
     public Book getBook(String isbn){
         String data = request("api/book_details/" + isbn);
+        System.out.println("ej123 " + data);
         JSONObject object = new JSONObject(data);
         return new Book(
                 0,
@@ -113,7 +114,7 @@ public class BackendCaller {
                 object.getString("title"),
                 object.getString("description"),
                 convertJSONArrayToStringArray(object.getJSONArray("authors")),
-                convertJSONArrayToStringArray(object.getJSONArray("genre")),
+                convertJSONArrayToStringArray(object.getJSONArray("genres")),
                 object.getString("isbn"),
                 object.getString("published"),
                 object.getInt("pages"),
@@ -261,7 +262,7 @@ public class BackendCaller {
         for (int i = 0; i < array.length(); i++) {
             JSONObject object = array.getJSONObject(i);
             output.add(new BookQueue(
-                    object.getInt("book_id"),
+                    object.getString("isbn"),
                     object.getInt("customer_id"),
                     object.getString("queue_date")
             ));
@@ -279,8 +280,8 @@ public class BackendCaller {
         return Boolean.parseBoolean(data);
     }
 
-    public boolean leaveQueue(String isbn){
-        String data = request("api/book_queue/leave_queue/" + isbn);
+    public boolean leaveQueue(String isbn, int customerId){
+        String data = request("api/book_queue/leave_queue?isbn=" + isbn + "&customerId=" + customerId);
         return Boolean.parseBoolean(data);
     }
 
@@ -350,8 +351,6 @@ public class BackendCaller {
         String data = request("api/rooms/all");
         JSONArray allRooms = new JSONArray(data);
 
-        System.out.println("When data has arrived in frontend: " + data);
-
         List<GroupRoom> returnable = new ArrayList<GroupRoom>();
 
         for (int i = 0; i < allRooms.length(); i++){
@@ -367,8 +366,6 @@ public class BackendCaller {
     public List<GroupRoomTimes> getGroupRoomTimes(){
         String data = request("api/groupRoomTimes/getTimes");
         JSONArray allTimes = new JSONArray(data);
-
-        System.out.println("data: " + data);
 
         List<GroupRoomTimes> returnable = new ArrayList<GroupRoomTimes>();
 

@@ -2,22 +2,22 @@ package com.stav.libraryfrontend.models;
 
 public class BookQueue {
 
-    private int bookId;
+    private String isbn;
     private int customerId;
     private String reservationDate;
 
-    public BookQueue(int bookId, int customerId, String reservationDate) {
-        this.bookId = bookId;
+    public BookQueue(String isbn, int customerId, String reservationDate) {
+        this.isbn = isbn;
         this.customerId = customerId;
         this.reservationDate = reservationDate;
     }
 
-    public int getBookId() {
-        return bookId;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public int getCustomerId() {
