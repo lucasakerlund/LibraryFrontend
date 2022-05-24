@@ -378,7 +378,29 @@ public class BackendCaller {
 
             returnable.add(groupRoomTime);
         }
+        return returnable;
+    }
 
+    public List<JSONObject> getUsersGroupRoomTimesById(int customer_id){
+        // We need all the group room times and then separate out the ones with my cus_id
+        String data = request("api/groupRoomTimes/get_times_by_id/" + customer_id);
+        System.out.println("The String containing all bookings: " + data);
+
+        JSONArray allUsersTimes = new JSONArray(data);
+
+        System.out.println("The JSONArray containing all bookings: " + allUsersTimes);
+
+        List<JSONObject> returnable = new ArrayList<JSONObject>();
+
+        for (int i = 0; i < allUsersTimes.length(); i++){
+            JSONObject object = new JSONObject();
+            object.put("time_id", allUsersTimes.getJSONObject(i).getInt("time_id"));
+            object.put("time", allUsersTimes.getJSONObject(i).getString("time"));
+            object.put("date", allUsersTimes.getJSONObject(i).getString("date"));
+            object.put("name", allUsersTimes.getJSONObject(i).getString("name"));
+
+            returnable.add(object);
+        }
         return returnable;
     }
 
