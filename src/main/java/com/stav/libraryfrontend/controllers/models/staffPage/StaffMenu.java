@@ -47,7 +47,7 @@ public class StaffMenu extends BorderPane {
             e.printStackTrace();
         }
             buttons.put("books", new MenuButton(allBooksButton, StaffBookPage.inst()));
-            buttons.put("dunno", new MenuButton(staffAddBookButton, StaffAddBookPage.inst()));
+            buttons.put("dunno", new MenuButton(staffAddBookButton, null/*StaffAddBookPage.inst()*/));
             buttons.put("locals", new MenuButton(staffLocalsButton, null));
 
         setup();
