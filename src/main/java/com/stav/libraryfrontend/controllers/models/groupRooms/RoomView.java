@@ -86,6 +86,7 @@ public class RoomView extends BorderPane {
     }
 
 
+    // This placeholder adds in the temporary values before we get information from database
     public void placeholder() {
         roomName.setText("Big old room");
         descriptionArea.setText("This is a big old room, huge enough to fit me and my ego! :)");

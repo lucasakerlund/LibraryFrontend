@@ -347,4 +347,21 @@ public class BackendCaller {
         return output.toArray(new String[output.size()]);
     }
 
+    // Placeholder, change if database groupRooms table changes
+    public List<GroupRoom> getGroupRooms(){
+        String data = request("api/group_rooms");
+        JSONArray allRooms = new JSONArray(data);
+
+        List<GroupRoom> returnable = new ArrayList<GroupRoom>();
+
+        for (int i = 0; i < allRooms.length(); i++){
+            GroupRoom groupRoom = new GroupRoom (allRooms.getJSONObject(i).getInt("room_id"), allRooms.getJSONObject(i).getString("name"),
+                    allRooms.getJSONObject(i).getInt("library_id"), allRooms.getJSONObject(i).getString("date"));
+
+            returnable.add(groupRoom);
+        }
+
+        return returnable;
+    }
+
 }
