@@ -45,7 +45,7 @@ public class MyBookingsPage extends BorderPane {
         List<JSONObject> allUserTimes = BackendCaller.inst().getUsersGroupRoomTimesById(UserDetails.inst().getCustomer().getCustomerId());
 
         for (int i = 0; i < allUserTimes.size(); i++){
-            flowPane.getChildren().add(new BookingBox(allUserTimes.get(i).getString("name"), allUserTimes.get(i).getString("date"),
+            flowPane.getChildren().add(new BookingBox(allUserTimes.get(i).getInt("time_id"), allUserTimes.get(i).getString("name"), allUserTimes.get(i).getString("date"),
                     allUserTimes.get(i).getString("time")));
         }
     }

@@ -2,6 +2,7 @@ package com.stav.libraryfrontend.controllers.models.groupRooms;
 
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.UserDetails;
+import com.stav.libraryfrontend.controllers.models.myPage.groupRoomBookings.MyBookingsPage;
 import com.stav.libraryfrontend.models.GroupRoomTime;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -72,6 +73,7 @@ public class RoomView extends BorderPane {
                 timesVbox.getChildren().remove(focused);
                 // Removes highlight
                 focused = null;
+                MyBookingsPage.inst().loadBookings();
             }
         });
 

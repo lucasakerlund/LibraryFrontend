@@ -63,6 +63,11 @@ public class MyPage extends BorderPane {
             LoanedBooksView.inst().loadBooks();
             setFocused(borrowedBooksButton);
         }
+        if(id.equals("bookedRooms")){
+            content.setCenter(MyBookingsPage.inst());
+            MyBookingsPage.inst().loadBookings();
+            setFocused(bookedRoomsButton);
+        }
     }
 
     public void setFocused(Label focused) {
@@ -83,8 +88,7 @@ public class MyPage extends BorderPane {
             open("reservedBooks");
         });
         bookedRoomsButton.setOnMousePressed(e -> {
-            content.setCenter(MyBookingsPage.inst());
-            setFocused(bookedRoomsButton);
+            open("bookedRooms");
         });
 
     }

@@ -409,4 +409,9 @@ public class BackendCaller {
         return Boolean.parseBoolean(data);
     }
 
+    public boolean removeGroupRoomBooking(int timeId, int customerId){
+        String data = request("api/group_room_times/unbook?timeId=" + timeId + "&customerId=" + customerId);
+        return Boolean.parseBoolean(data);
+    }
+
 }
