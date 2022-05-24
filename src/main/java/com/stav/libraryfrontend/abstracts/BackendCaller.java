@@ -335,7 +335,6 @@ public class BackendCaller {
                 object.getString("role")
         );
     }
-    //
 
     private String[] convertJSONArrayToStringArray(JSONArray array){
         List<String> output = new ArrayList<>();
@@ -347,18 +346,40 @@ public class BackendCaller {
         return output.toArray(new String[output.size()]);
     }
 
-    // Placeholder, change if database groupRooms table changes
     public List<GroupRoom> getGroupRooms(){
-        String data = request("api/group_rooms");
+        String data = request("api/rooms/all");
         JSONArray allRooms = new JSONArray(data);
+
+        System.out.println("When data has arrived in frontend: " + data);
 
         List<GroupRoom> returnable = new ArrayList<GroupRoom>();
 
         for (int i = 0; i < allRooms.length(); i++){
             GroupRoom groupRoom = new GroupRoom (allRooms.getJSONObject(i).getInt("room_id"), allRooms.getJSONObject(i).getString("name"),
-                    allRooms.getJSONObject(i).getInt("library_id"), allRooms.getJSONObject(i).getString("date"));
+                    allRooms.getJSONObject(i).getInt("library_id"), allRooms.getJSONObject(i).getString("description"));
 
             returnable.add(groupRoom);
+        }
+
+        return returnable;
+    }
+
+    public List<GroupRoomTimes> getGroupRoomTimes(){
+        String data = request("api/groupRoomTimes/getTimes");
+        JSONArray allTimes = new JSONArray(data);
+
+        System.out.println("data: " + data);
+
+        List<GroupRoomTimes> returnable = new ArrayList<GroupRoomTimes>();
+
+        for (int i = 0; i < allTimes.length(); i++){
+            GroupRoomTimes groupRoomTimes = new GroupRoomTimes
+                    (allTimes.getJSONObject(i).getInt("time_id"),
+                    allTimes.getJSONObject(i).getInt("room_id"),
+                    allTimes.getJSONObject(i).getString("time"),
+                    allTimes.getJSONObject(i).getString("date"));
+
+            returnable.add(groupRoomTimes);
         }
 
         return returnable;
