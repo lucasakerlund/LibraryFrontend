@@ -363,27 +363,27 @@ public class BackendCaller {
         return returnable;
     }
 
-    public List<GroupRoomTimes> getGroupRoomTimes(){
-        String data = request("api/groupRoomTimes/getTimes");
+    public List<GroupRoomTime> getGroupRoomTimes(int roomId){
+        String data = request("api/group_room_times/available_times/" + roomId);
         JSONArray allTimes = new JSONArray(data);
 
-        List<GroupRoomTimes> returnable = new ArrayList<GroupRoomTimes>();
+        List<GroupRoomTime> returnable = new ArrayList<GroupRoomTime>();
 
         for (int i = 0; i < allTimes.length(); i++){
-            GroupRoomTimes groupRoomTimes = new GroupRoomTimes
+            GroupRoomTime groupRoomTime = new GroupRoomTime
                     (allTimes.getJSONObject(i).getInt("time_id"),
                     allTimes.getJSONObject(i).getInt("room_id"),
                     allTimes.getJSONObject(i).getString("time"),
                     allTimes.getJSONObject(i).getString("date"));
 
-            returnable.add(groupRoomTimes);
+            returnable.add(groupRoomTime);
         }
         return returnable;
     }
 
     public List<JSONObject> getUsersGroupRoomTimesById(int customer_id){
         // We need all the group room times and then separate out the ones with my cus_id
-        String data = request("api/groupRoomTimes/get_times_by_id/" + customer_id);
+        String data = request("api/group_room_times/get_times_by_id/" + customer_id);
         System.out.println("The String containing all bookings: " + data);
 
         JSONArray allUsersTimes = new JSONArray(data);
@@ -402,6 +402,16 @@ public class BackendCaller {
             returnable.add(object);
         }
         return returnable;
+    }
+
+    public boolean bookGroupRoom(int timeId, int customerId){
+        String data = request("api/group_room_times/book?timeId=" + timeId + "&customerId=" + customerId);
+        return Boolean.parseBoolean(data);
+    }
+
+    public boolean removeGroupRoomBooking(int timeId, int customerId){
+        String data = request("api/group_room_times/unbook?timeId=" + timeId + "&customerId=" + customerId);
+        return Boolean.parseBoolean(data);
     }
 
 }

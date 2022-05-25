@@ -1,6 +1,7 @@
 package com.stav.libraryfrontend.controllers.models.groupRooms;
 
 import com.stav.libraryfrontend.Library;
+import com.stav.libraryfrontend.models.GroupRoomTime;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -12,10 +13,10 @@ public class TimeSelectButton extends Label{
     @FXML
     private Label timeSelectButton;
 
-    private String time;
+    private GroupRoomTime groupRoomTime;
 
-    public TimeSelectButton(String time){
-        this.time = time;
+    public TimeSelectButton(GroupRoomTime groupRoomTime){
+        this.groupRoomTime = groupRoomTime;
         FXMLLoader fxmlLoader = new FXMLLoader(Library.class.getResource("/com/stav/libraryfrontend/fxml/groupRooms/timeSelectButton.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -26,11 +27,11 @@ public class TimeSelectButton extends Label{
             e.printStackTrace();
         }
 
-        timeSelectButton.setText(time);
+        timeSelectButton.setText(groupRoomTime.getTime());
     }
 
-    public String getTime() {
-        return time;
+    public GroupRoomTime getGroupRoomTime(){
+        return groupRoomTime;
     }
 
 }

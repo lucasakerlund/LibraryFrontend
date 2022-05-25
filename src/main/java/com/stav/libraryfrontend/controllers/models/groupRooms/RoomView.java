@@ -1,33 +1,24 @@
 package com.stav.libraryfrontend.controllers.models.groupRooms;
 
 import com.stav.libraryfrontend.abstracts.BackendCaller;
-import com.stav.libraryfrontend.models.GroupRoomTimes;
+import com.stav.libraryfrontend.abstracts.UserDetails;
+import com.stav.libraryfrontend.controllers.models.myPage.groupRoomBookings.MyBookingsPage;
+import com.stav.libraryfrontend.models.GroupRoomTime;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import org.json.JSONArray;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class RoomView extends BorderPane {
 
     @FXML
     private Label roomName;
 
-    private int room_id;
-
-    public int getRoom_id() {
-        return room_id;
-    }
-
-    public void setRoom_id(int room_id) {
-        this.room_id = room_id;
-    }
+    private int roomId;
 
     @FXML
     private TextArea descriptionArea;
@@ -44,6 +35,7 @@ public class RoomView extends BorderPane {
     private TimeSelectButton focused;
 
     public RoomView(int id, String name, String description) {
+        this.roomId = id;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/groupRooms/roomView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -54,7 +46,6 @@ public class RoomView extends BorderPane {
             e.printStackTrace();
         }
 
-        setRoom_id(id);
         roomName.setText(name);
         descriptionArea.setText(description);
 
@@ -64,46 +55,39 @@ public class RoomView extends BorderPane {
     }
 
     public void setup() {
-        // Empty list, will later be filled with all available bookable times for THIS room
-        List<GroupRoomTimes> timesForThisRoom = new ArrayList<>();
+        loadTimes();
 
-        // List that contains times for every single group room in database
-        List<GroupRoomTimes> allTimes = BackendCaller.inst().getGroupRoomTimes();
-
-        // Loops through allTimes to find the ones specific to this room (sorted by id from constructor)
-        for (int i = 0; i < allTimes.size(); i++){
-            if (allTimes.get(i).getRoom_id() == getRoom_id()){
-                timesForThisRoom.add(allTimes.get(i));
-            }
-        }
-
-        // All available times for THIS specific room are added to the view so that they can be selected and booked
-        for (int i = 0; i < timesForThisRoom.size(); i++){
-            addTime(timesForThisRoom.get(i).getTime());
-        }
-
-
-        // This button must remove the available time from the room and save it for the current user
         bookRoomButton.setOnMousePressed(e->{
             // If nothing is selected, tell user
             if(focused == null){
                 messageLabel.setId("room-view-message-label");
                 messageLabel.setText("Ett rum måste markeras först!");
             } else {
-                System.out.println(focused.getTime());
+                if(!BackendCaller.inst().bookGroupRoom(focused.getGroupRoomTime().getTime_id(), UserDetails.inst().getCustomer().getCustomerId())) {
+                    messageLabel.setId("room-view-message-label");
+                    messageLabel.setText("Något fel inträffade!");
+                    return;
+                }
                 messageLabel.setId("room-view-message-label-green");
-                messageLabel.setText("Du har bokat tiden: " + focused.getTime());
+                messageLabel.setText("Du har bokat tiden: " + focused.getGroupRoomTime().getTime());
                 timesVbox.getChildren().remove(focused);
                 // Removes highlight
                 focused = null;
+                MyBookingsPage.inst().loadBookings();
             }
         });
 
     }
 
+    private void loadTimes(){
+        for (GroupRoomTime groupRoomTime : BackendCaller.inst().getGroupRoomTimes(roomId)) {
+            addTime(groupRoomTime);
+        }
+    }
+
     // This method adds the 'time' (hh:mm-hh-mm) it gets as input into the view so that they can be viewed and selected
-    private void addTime(String time){
-        TimeSelectButton selectButton = new TimeSelectButton(time);
+    private void addTime(GroupRoomTime groupRoomTime){
+        TimeSelectButton selectButton = new TimeSelectButton(groupRoomTime);
         selectButton.setOnMousePressed(e->{
             if (focused != null){
                 focused.setId("");
