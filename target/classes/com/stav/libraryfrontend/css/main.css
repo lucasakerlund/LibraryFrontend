@@ -1198,3 +1198,25 @@
     -fx-cursor: hand;
 }
 /* Booking box */
+/*Top Seller Cover*/
+.top-seller-book-cover{
+    -fx-background-color: black;
+}
+
+.top-seller-book-cover-imageview{
+    -fx-opacity: .5;
+}
+
+.top-seller-book-cover-label{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+
+.top-seller-book-cover-value{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+
+.top-seller-book-cover:hover{
+    -fx-cursor: hand;
+}

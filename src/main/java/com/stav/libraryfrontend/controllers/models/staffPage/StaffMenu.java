@@ -4,6 +4,7 @@ import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.controllers.models.AdminScreen;
 import com.stav.libraryfrontend.controllers.models.CustomerMenu;
 import com.stav.libraryfrontend.controllers.models.staffPage.books.StaffBookPage;
+import com.stav.libraryfrontend.controllers.models.staffPage.topSeller.TopSellerPage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,6 +25,8 @@ public class StaffMenu extends BorderPane {
     private HBox staffAddBookButton;
     @FXML
     private HBox staffLocalsButton;
+    @FXML
+    private HBox topSellerButton;
     @FXML
     private HBox logoutButton;
 
@@ -47,8 +50,9 @@ public class StaffMenu extends BorderPane {
             e.printStackTrace();
         }
             buttons.put("books", new MenuButton(allBooksButton, StaffBookPage.inst()));
-            buttons.put("dunno", new MenuButton(staffAddBookButton, null/*StaffAddBookPage.inst()*/));
+            buttons.put("dunno", new MenuButton(staffAddBookButton, StaffAddBookPage.inst()));
             buttons.put("locals", new MenuButton(staffLocalsButton, null));
+            buttons.put("topSeller", new MenuButton(topSellerButton, TopSellerPage.inst()));
 
         setup();
         open("books");

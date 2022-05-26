@@ -45,8 +45,8 @@ public class BookingBox extends BorderPane {
 
     public void setup(){
         cancelButton.setOnMousePressed(e -> {
-            if (BackendCaller.inst().removeGroupRoomBooking(timeId, UserDetails.inst().getCustomer().getCustomerId())) {
-
+            if(!BackendCaller.inst().removeGroupRoomBooking(timeId, UserDetails.inst().getCustomer().getCustomerId())) {
+                //Maybe some error
             }
             MyBookingsPage.inst().loadBookings();
         });

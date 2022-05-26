@@ -12,6 +12,7 @@ module com.stav.libraryfrontend {
     opens com.stav.libraryfrontend.controllers.models.groupRooms to javafx.fxml;
     exports com.stav.libraryfrontend;
     opens com.stav.libraryfrontend.controllers.models.staffPage.books to javafx.fxml;
+    opens com.stav.libraryfrontend.controllers.models.staffPage.topSeller to javafx.fxml;
     opens com.stav.libraryfrontend.controllers.models.myPage.loanedBooks to javafx.fxml;
     opens com.stav.libraryfrontend.controllers.models.myPage.reservedBooks to javafx.fxml;
     opens com.stav.libraryfrontend.controllers.models.userSuggestions to javafx.fxml, javafx.graphics;

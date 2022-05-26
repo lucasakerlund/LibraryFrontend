@@ -23,9 +23,8 @@ public class StaffAddBookPage extends BorderPane {
 
 
     public StaffAddBookPage(){
-        instance = this;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/staffPage/staff/staffAddBookPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/staff/staffAddBookPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {

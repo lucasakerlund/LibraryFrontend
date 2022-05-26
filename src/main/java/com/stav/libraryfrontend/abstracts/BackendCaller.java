@@ -162,11 +162,33 @@ public class BackendCaller {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        System.out.println("123 " + search);
         String data = request("api/book_details?language=" + language + "&releaseDate=" + releaseDate + "&library=" + library + "&searchType=" + searchType + "&search=" + search);
         if(data.equals("")){
             return new ArrayList<>();
         }
+        JSONArray array = new JSONArray(data);
+        List<Book> output = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            output.add(new Book(
+                    0,
+                    0,
+                    object.getString("title"),
+                    object.getString("description"),
+                    convertJSONArrayToStringArray(object.getJSONArray("authors")),
+                    convertJSONArrayToStringArray(object.getJSONArray("genres")),
+                    object.getString("isbn"),
+                    object.getString("published"),
+                    object.getInt("pages"),
+                    object.getString("language"),
+                    object.getString("image_source")
+            ));
+        }
+        return output;
+    }
+
+    public List<Book> getBooksByGenre(String genre){
+        String data = request("api/book_details/genre/" + genre);
         JSONArray array = new JSONArray(data);
         List<Book> output = new ArrayList<>();
         for (int i = 0; i < array.length(); i++) {
