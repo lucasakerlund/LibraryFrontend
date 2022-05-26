@@ -122,24 +122,6 @@ public class BackendCaller {
                 object.getString("language"),
                 object.getString("image_source")
         );
-
-        /*String data = request("books/v1/volumes?q=isbn:" + isbn);
-        System.out.println(data);
-        JSONObject object = new JSONObject(data);
-        JSONArray array = new JSONArray(object.getJSONArray("items"));
-        Book book = new Book(
-                0,
-                array.getJSONObject(0).getJSONObject("volumeInfo").getString("title"),
-                array.getJSONObject(0).getJSONObject("volumeInfo").getString("description"),
-                convertJSONArrayToStringArray(array.getJSONObject(0).getJSONObject("volumeInfo").getJSONArray("authors")),
-                convertJSONArrayToStringArray(array.getJSONObject(0).getJSONObject("volumeInfo").getJSONArray("categories")),
-                array.getJSONObject(0).getJSONObject("volumeInfo").getJSONArray("industryIdentifiers").getJSONObject(1).getString("identifier"),
-                array.getJSONObject(0).getJSONObject("volumeInfo").getString("publishedDate"),
-                array.getJSONObject(0).getJSONObject("volumeInfo").getInt("pageCount"),
-                array.getJSONObject(0).getJSONObject("volumeInfo").getString("language"),
-                array.getJSONObject(0).getJSONObject("volumeInfo").getJSONObject("imageLinks").getString("thumbnail").replace("zoom=1", "zoom=10")
-        );
-        return book;*/
     }
 
     public int getAmountOfBooks(String isbn){
@@ -318,6 +300,73 @@ public class BackendCaller {
         return Boolean.parseBoolean(data);
     }
 
+    public List<GroupRoom> getGroupRooms(){
+        String data = request("api/rooms/all");
+        JSONArray allRooms = new JSONArray(data);
+
+        List<GroupRoom> returnable = new ArrayList<GroupRoom>();
+
+        for (int i = 0; i < allRooms.length(); i++){
+            GroupRoom groupRoom = new GroupRoom (allRooms.getJSONObject(i).getInt("room_id"), allRooms.getJSONObject(i).getString("name"),
+                    allRooms.getJSONObject(i).getInt("library_id"), allRooms.getJSONObject(i).getString("description"));
+
+            returnable.add(groupRoom);
+        }
+
+        return returnable;
+    }
+
+    public List<GroupRoomTime> getGroupRoomTimes(int roomId){
+        String data = request("api/group_room_times/available_times/" + roomId);
+        JSONArray allTimes = new JSONArray(data);
+
+        List<GroupRoomTime> returnable = new ArrayList<GroupRoomTime>();
+
+        for (int i = 0; i < allTimes.length(); i++){
+            GroupRoomTime groupRoomTime = new GroupRoomTime
+                    (allTimes.getJSONObject(i).getInt("time_id"),
+                            allTimes.getJSONObject(i).getInt("room_id"),
+                            allTimes.getJSONObject(i).getString("time"),
+                            allTimes.getJSONObject(i).getString("date"));
+
+            returnable.add(groupRoomTime);
+        }
+        return returnable;
+    }
+
+    public List<JSONObject> getUsersGroupRoomTimesById(int customer_id){
+        // We need all the group room times and then separate out the ones with my cus_id
+        String data = request("api/group_room_times/get_times_by_id/" + customer_id);
+        System.out.println("The String containing all bookings: " + data);
+
+        JSONArray allUsersTimes = new JSONArray(data);
+
+        System.out.println("The JSONArray containing all bookings: " + allUsersTimes);
+
+        List<JSONObject> returnable = new ArrayList<JSONObject>();
+
+        for (int i = 0; i < allUsersTimes.length(); i++){
+            JSONObject object = new JSONObject();
+            object.put("time_id", allUsersTimes.getJSONObject(i).getInt("time_id"));
+            object.put("time", allUsersTimes.getJSONObject(i).getString("time"));
+            object.put("date", allUsersTimes.getJSONObject(i).getString("date"));
+            object.put("name", allUsersTimes.getJSONObject(i).getString("name"));
+
+            returnable.add(object);
+        }
+        return returnable;
+    }
+
+    public boolean bookGroupRoom(int timeId, int customerId){
+        String data = request("api/group_room_times/book?timeId=" + timeId + "&customerId=" + customerId);
+        return Boolean.parseBoolean(data);
+    }
+
+    public boolean removeGroupRoomBooking(int timeId, int customerId){
+        String data = request("api/group_room_times/unbook?timeId=" + timeId + "&customerId=" + customerId);
+        return Boolean.parseBoolean(data);
+    }
+
     //Post
     /**
      * @return the book with the correct book_id
@@ -381,73 +430,6 @@ public class BackendCaller {
             System.out.println(array);
         }
         return output.toArray(new String[output.size()]);
-    }
-
-    public List<GroupRoom> getGroupRooms(){
-        String data = request("api/rooms/all");
-        JSONArray allRooms = new JSONArray(data);
-
-        List<GroupRoom> returnable = new ArrayList<GroupRoom>();
-
-        for (int i = 0; i < allRooms.length(); i++){
-            GroupRoom groupRoom = new GroupRoom (allRooms.getJSONObject(i).getInt("room_id"), allRooms.getJSONObject(i).getString("name"),
-                    allRooms.getJSONObject(i).getInt("library_id"), allRooms.getJSONObject(i).getString("description"));
-
-            returnable.add(groupRoom);
-        }
-
-        return returnable;
-    }
-
-    public List<GroupRoomTime> getGroupRoomTimes(int roomId){
-        String data = request("api/group_room_times/available_times/" + roomId);
-        JSONArray allTimes = new JSONArray(data);
-
-        List<GroupRoomTime> returnable = new ArrayList<GroupRoomTime>();
-
-        for (int i = 0; i < allTimes.length(); i++){
-            GroupRoomTime groupRoomTime = new GroupRoomTime
-                    (allTimes.getJSONObject(i).getInt("time_id"),
-                    allTimes.getJSONObject(i).getInt("room_id"),
-                    allTimes.getJSONObject(i).getString("time"),
-                    allTimes.getJSONObject(i).getString("date"));
-
-            returnable.add(groupRoomTime);
-        }
-        return returnable;
-    }
-
-    public List<JSONObject> getUsersGroupRoomTimesById(int customer_id){
-        // We need all the group room times and then separate out the ones with my cus_id
-        String data = request("api/group_room_times/get_times_by_id/" + customer_id);
-        System.out.println("The String containing all bookings: " + data);
-
-        JSONArray allUsersTimes = new JSONArray(data);
-
-        System.out.println("The JSONArray containing all bookings: " + allUsersTimes);
-
-        List<JSONObject> returnable = new ArrayList<JSONObject>();
-
-        for (int i = 0; i < allUsersTimes.length(); i++){
-            JSONObject object = new JSONObject();
-            object.put("time_id", allUsersTimes.getJSONObject(i).getInt("time_id"));
-            object.put("time", allUsersTimes.getJSONObject(i).getString("time"));
-            object.put("date", allUsersTimes.getJSONObject(i).getString("date"));
-            object.put("name", allUsersTimes.getJSONObject(i).getString("name"));
-
-            returnable.add(object);
-        }
-        return returnable;
-    }
-
-    public boolean bookGroupRoom(int timeId, int customerId){
-        String data = request("api/group_room_times/book?timeId=" + timeId + "&customerId=" + customerId);
-        return Boolean.parseBoolean(data);
-    }
-
-    public boolean removeGroupRoomBooking(int timeId, int customerId){
-        String data = request("api/group_room_times/unbook?timeId=" + timeId + "&customerId=" + customerId);
-        return Boolean.parseBoolean(data);
     }
 
 }

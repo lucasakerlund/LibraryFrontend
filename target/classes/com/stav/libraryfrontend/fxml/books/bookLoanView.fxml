@@ -23,11 +23,6 @@
             <HBox alignment="CENTER_LEFT" prefWidth="500.0" spacing="25.0" BorderPane.alignment="CENTER">
                <children>
                   <Label fx:id="titleLabel" styleClass="book-loan-view-title" text="Titel" wrapText="true" />
-                  <Label fx:id="suggestionsButton" styleClass="book-loan-view-similar-books-button" text="Liknande böcker">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
                </children>
                <padding>
                   <Insets left="25.0" right="25.0" />
@@ -51,6 +46,11 @@
                   <Label fx:id="lendButton" styleClass="book-loan-view-book-button" text="Låna" />
                   <Label fx:id="queueButton" layoutX="77.0" layoutY="91.0" styleClass="book-loan-view-queue-button" text="Ställ dig i kö" />
                   <Label fx:id="inQueueButton" layoutX="44.0" layoutY="118.0" styleClass="book-loan-view-in-queue" text="Du står i kö" />
+                  <Label fx:id="suggestionsButton" styleClass="book-loan-view-similar-books-button" text="Liknande böcker">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
                   <VBox prefHeight="239.0" prefWidth="190.0" styleClass="book-loan-view-location-list">
                      <children>
                         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="190.0" styleClass="book-loan-view-location-header">
