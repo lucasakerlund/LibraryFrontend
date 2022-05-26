@@ -355,6 +355,20 @@
     -fx-text-fill: #bebebe;
 }
 
+.book-loan-view-similar-books-button{
+    -fx-font-size: 14;
+    -fx-border-width: 1;
+    -fx-border-color: #39a9e7;
+    -fx-text-fill: #39a9e7;
+}
+
+.book-loan-view-similar-books-button:hover{
+    -fx-border-color: #39e1e7;
+    -fx-text-fill: #39e1e7;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
 /* LOGIN SCREEN */
 .login-screen{
     -fx-background-color: #e2c8af;
@@ -1198,3 +1212,24 @@
     -fx-cursor: hand;
 }
 /* Booking box */
+
+/* Suggested books */
+.suggested-books{
+}
+
+.suggested-books-back-button{
+    -fx-font-size: 18;
+    -fx-border-width: 3;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-text-fill: black;
+    -fx-padding: 3;
+}
+
+.suggested-books-back-button:hover{
+    -fx-underline: true;
+    -fx-cursor: hand;
+    -fx-border-color: gray;
+    -fx-text-fill: gray;
+}
+/* Suggested books */

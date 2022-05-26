@@ -322,8 +322,11 @@ public class BackendCaller {
                 );
     }
 
-    public Staff loginStaff(String email, String password){
-        String data = request("api/employees/login?username=" + email + "&password=" + password);
+    public Staff loginStaff(String username, String password){
+        String data = request("api/employees/login?username=" + username + "&password=" + password);
+
+        System.out.println("This is the data that Sahra f****d up: " + data);
+
         if(data.equals("")){
             return null;
         }

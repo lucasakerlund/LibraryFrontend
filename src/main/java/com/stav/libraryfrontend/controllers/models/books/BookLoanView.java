@@ -1,5 +1,6 @@
 package com.stav.libraryfrontend.controllers.models.books;
 
+import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.SubSceneHandler;
 import com.stav.libraryfrontend.abstracts.UserDetails;
@@ -62,6 +63,8 @@ public class BookLoanView extends StackPane {
     private TextArea descriptionLabel;
     @FXML
     private Label languageLabel;
+    @FXML
+    private Label suggestionsButton;
 
     private Book book;
     private LocationItem focused;
@@ -149,6 +152,12 @@ public class BookLoanView extends StackPane {
         }
 
         SubSceneHandler.inst().hide();
+
+        suggestionsButton.setOnMousePressed(e -> {
+            SuggestedBooks.inst().setBookGenre(genreLabel.getText());
+            CustomerMenu.inst().open(SuggestedBooks.inst());
+            SubSceneHandler.inst().hide();
+        });
     }
 
     private void setupBookInformation() {
