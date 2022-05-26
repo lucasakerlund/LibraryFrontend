@@ -11,6 +11,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -187,8 +188,18 @@ public class BackendCaller {
         return output;
     }
 
-    public List<Book> getBooksByGenre(String genre){
+    public List<Book> getBooksByGenre(String[] genres){
+        String genre = "";
+        try {
+            genre = URLEncoder.encode(String.join(",", genres), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         String data = request("api/book_details/genre/" + genre);
+        System.out.println(data);
+        if(data.equals("")){
+            return new ArrayList<>();
+        }
         JSONArray array = new JSONArray(data);
         List<Book> output = new ArrayList<>();
         for (int i = 0; i < array.length(); i++) {

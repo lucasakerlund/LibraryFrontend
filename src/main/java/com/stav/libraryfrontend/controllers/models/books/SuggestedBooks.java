@@ -1,6 +1,8 @@
 package com.stav.libraryfrontend.controllers.models.books;
 
+import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.controllers.models.CustomerMenu;
+import com.stav.libraryfrontend.models.Book;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -14,18 +16,18 @@ public class SuggestedBooks extends BorderPane {
 
     private static SuggestedBooks instance = new SuggestedBooks();
 
-    private String bookGenre;
+    private String[] bookGenres;
 
-    public String getBookGenre() {
-        return bookGenre;
+    public String[] getBookGenres() {
+        return bookGenres;
     }
 
-    public void setBookGenre(String bookGenre) {
-        this.bookGenre = bookGenre;
+    public void setBookGenre(String[] bookGenres) {
+        this.bookGenres = bookGenres;
     }
 
     @FXML
-    private FlowPane contentFlowpane;
+    private FlowPane content;
 
     @FXML
     private Label backButton;
@@ -51,7 +53,14 @@ public class SuggestedBooks extends BorderPane {
     }
 
     public void loadBooks(){
-        // Make this method create 6ish books that can be displayed based on "genre"
+        content.getChildren().clear();
+        for (Book book : BackendCaller.inst().getBooksByGenre(bookGenres)) {
+            try {
+                content.getChildren().add(new BookCover(book));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static SuggestedBooks inst(){

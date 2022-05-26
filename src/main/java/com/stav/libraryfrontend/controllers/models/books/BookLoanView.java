@@ -154,7 +154,8 @@ public class BookLoanView extends StackPane {
         SubSceneHandler.inst().hide();
 
         suggestionsButton.setOnMousePressed(e -> {
-            SuggestedBooks.inst().setBookGenre(genreLabel.getText());
+            SuggestedBooks.inst().setBookGenre(book.getGenre());
+            SuggestedBooks.inst().loadBooks();
             CustomerMenu.inst().open(SuggestedBooks.inst());
             SubSceneHandler.inst().hide();
         });

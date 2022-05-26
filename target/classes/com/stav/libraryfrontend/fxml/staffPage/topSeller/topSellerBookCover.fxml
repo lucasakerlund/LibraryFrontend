@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="252.0" prefWidth="202.0" styleClass="top-seller-book-cover" stylesheets="@../../../css/main.css" type="StackPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="250.0" fitWidth="200.0" pickOnBounds="true" styleClass="top-seller-book-cover-imageview">
+         <image>
+            <Image url="@../../../../../../../../../../Desktop/hpcovertest.jpg" />
+         </image>
+      </ImageView>
+      <VBox alignment="TOP_CENTER">
+         <children>
+            <Label styleClass="top-seller-book-cover-label" text="Mängd kvar:" />
+            <Label fx:id="amountLabel" styleClass="top-seller-book-cover-value" text="0" />
+         </children>
+         <padding>
+            <Insets top="25.0" />
+         </padding>
+      </VBox>
+   </children>
+</fx:root>
