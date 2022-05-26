@@ -3,6 +3,7 @@ package com.stav.libraryfrontend.controllers.models;
 import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.UserDetails;
+import com.stav.libraryfrontend.controllers.models.books.Books;
 import com.stav.libraryfrontend.controllers.models.myPage.groupRoomBookings.MyBookingsPage;
 import com.stav.libraryfrontend.controllers.models.myPage.loanedBooks.LoanedBooksView;
 import com.stav.libraryfrontend.controllers.models.myPage.reservedBooks.ReservedBooksView;
@@ -94,6 +95,7 @@ public class ExistingUserLoginScreen extends BorderPane {
         clearOldInfo();
         UserDetails.inst().setCustomer(customer);
         Library.inst().setContent(CustomerMenu.inst());
+        CustomerMenu.inst().open(Books.inst());
 
         LoanedBooksView.inst().loadBooks();
         MyBookingsPage.inst().loadBookings();

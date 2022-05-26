@@ -20,9 +20,14 @@
       </ImageView>
       <BorderPane>
          <top>
-            <HBox alignment="CENTER_LEFT" prefWidth="500.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER_LEFT" prefWidth="500.0" spacing="25.0" BorderPane.alignment="CENTER">
                <children>
                   <Label fx:id="titleLabel" styleClass="book-loan-view-title" text="Titel" wrapText="true" />
+                  <Label fx:id="suggestionsButton" styleClass="book-loan-view-similar-books-button" text="Liknande böcker">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
                </children>
                <padding>
                   <Insets left="25.0" right="25.0" />

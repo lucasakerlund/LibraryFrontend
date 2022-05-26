@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -36,7 +37,7 @@
             <VBox alignment="BOTTOM_CENTER" prefHeight="86.0" prefWidth="600.0">
                <children>
                   <Label text="Lösenord" />
-                  <TextField fx:id="passwordInput" maxWidth="150.0" promptText="Lösenord här..." />
+                  <PasswordField fx:id="passwordInput" maxWidth="150.0" promptText="Lösen här..." />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0" spacing="20.0">

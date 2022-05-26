@@ -29,7 +29,7 @@
    <top>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" focusTraversable="true" prefHeight="50.0" prefWidth="600.0" spacing="10.0" styleClass="books-header">
+            <HBox fx:id="header" alignment="CENTER" focusTraversable="true" prefHeight="50.0" prefWidth="600.0" spacing="10.0" styleClass="books-header">
                <children>
                   <ComboBox fx:id="languageChoice" focusTraversable="false" prefHeight="25.0" prefWidth="105.0" promptText="Språk" styleClass="books-header-choice" />
                   <TextField fx:id="releaseInput" focusTraversable="false" prefHeight="25.0" prefWidth="96.0" promptText="Datum" styleClass="books-header-released" />
