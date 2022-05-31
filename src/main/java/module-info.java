@@ -17,4 +17,5 @@ module com.stav.libraryfrontend {
     opens com.stav.libraryfrontend.controllers.models.myPage.reservedBooks to javafx.fxml;
     opens com.stav.libraryfrontend.controllers.models.userSuggestions to javafx.fxml, javafx.graphics;
     opens com.stav.libraryfrontend.controllers.models.myPage.groupRoomBookings to javafx.fxml, javafx.graphics;
+    opens com.stav.libraryfrontend.controllers.models.staffPage.findCustomer to javafx.fxml, javafx.graphics;
 }

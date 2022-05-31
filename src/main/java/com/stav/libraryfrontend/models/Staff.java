@@ -3,17 +3,17 @@ package com.stav.libraryfrontend.models;
 public class Staff {
 
     private int employee_id;
-    private  String first_name;
-    private  String last_name;
-    private String user_name;
-    private  String password;
+    private String first_name;
+    private String last_name;
+    private String email;
+    private String password;
     private String role;
 
-    public Staff(int employee_id, String first_name, String last_name, String user_name, String password, String role) {
+    public Staff(int employee_id, String first_name, String last_name, String email, String password, String role) {
         this.employee_id = employee_id;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.user_name = user_name;
+        this.email = email;
         this.password = password;
         this.role = role;
     }
@@ -42,14 +42,6 @@ public class Staff {
         this.last_name = last_name;
     }
 
-    public String getUser_name() {
-        return user_name;
-    }
-
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -64,5 +56,13 @@ public class Staff {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
