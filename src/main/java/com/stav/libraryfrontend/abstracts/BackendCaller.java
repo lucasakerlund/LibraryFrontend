@@ -404,8 +404,8 @@ public class BackendCaller {
                 );
     }
 
-    public Staff loginStaff(String username, String password){
-        String data = request("api/employees/login?username=" + username + "&password=" + password);
+    public Staff loginStaff(String email, String password){
+        String data = request("api/employees/login?email=" + email + "&password=" + password);
 
         System.out.println("This is the data that Sahra f****d up: " + data);
 
@@ -416,9 +416,26 @@ public class BackendCaller {
         return new Staff(object.getInt("employee_id"),
                 object.getString("first_name"),
                 object.getString("last_name"),
-                object.getString("username"),
+                object.getString("email"),
                 object.getString("password"),
                 object.getString("role")
+        );
+    }
+
+    public Customer getCustomerByEmail (String email){
+        String data = request("api/customers/getCustomerByEmail?email=" + email);
+
+        System.out.println("Returned in BackendCaller = " + data);
+
+        if(data.equals("")){
+            return null;
+        }
+        JSONObject object = new JSONObject(data);
+        return new Customer(object.getInt("customer_id"),
+                object.getString("first_name"),
+                object.getString("last_name"),
+                object.getString("email"),
+                object.getString("password")
         );
     }
 

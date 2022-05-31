@@ -1255,3 +1255,69 @@
     -fx-text-fill: gray;
 }
 /* Suggested books */
+
+/* find customer page - staff screen */
+.findCustomerButton{
+    -fx-background-color: transparent;
+}
+
+.find-customer-page-search-button{
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-font-size: 16;
+    -fx-background-color: #04f304;
+    -fx-padding: 4;
+}
+
+.find-customer-page-search-button:hover{
+    -fx-cursor: hand;
+    -fx-underline: true;
+    -fx-background-color: green;
+}
+
+.find-customer-page-error-label{
+    -fx-font-size: 16;
+    -fx-underline: true;
+    -fx-text-fill: red;
+}
+/* find customer page - staff screen */
+
+/* find customer page - basic info */
+.customer-box{
+    -fx-background-color: transparent;
+}
+
+.customer-box-inspect-button{
+    -fx-font-size: 14;
+    -fx-border-width: 3;
+    -fx-padding: 4;
+    -fx-border-color: green;
+    -fx-text-fill: green;
+}
+
+.customer-box-inspect-button:hover{
+    -fx-border-color: #099309;
+    -fx-text-fill: #099309;
+    -fx-cursor: hand;
+    -fx-underline: true;
+}
+
+.customer-box-account-label{
+    -fx-underline: true;
+    -fx-text-fill: blue;
+    -fx-font-size: 14;
+}
+/* find customer page - basic info */
+
+.customer-content-header-buttons{
+    -fx-font-size: 16;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-padding: 4;
+    -fx-text-fill: black;
+}
+
+.customer-content-header-buttons:hover{
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
