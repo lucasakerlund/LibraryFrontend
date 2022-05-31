@@ -38,7 +38,7 @@ public class StaffMenuBookView extends BorderPane {
     }
 
     public void updateBooks(){
-        List<Book> books = BackendCaller.inst().getBooks("", "", "", "", "");
+        List<Book> books = BackendCaller.inst().getBooks("", "", "", "", "", "");
         for (Book book : books) {
             addBook(new StaffMenuBookCover(book));
         }

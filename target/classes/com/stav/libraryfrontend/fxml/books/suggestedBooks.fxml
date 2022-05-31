@@ -6,12 +6,18 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 
 <fx:root prefHeight="400.0" prefWidth="600.0" styleClass="suggested-books" stylesheets="@../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <FlowPane fx:id="content" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0" />
+            <StackPane>
+               <children>
+                  <FlowPane fx:id="content" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0" />
+                  <Label fx:id="emptyLabel" styleClass="suggested-books-empty-label" text="Hittade inga liknande böcker :(" visible="false" />
+               </children>
+            </StackPane>
          </content>
       </ScrollPane>
    </center>
@@ -26,6 +32,6 @@
       </HBox>
    </bottom>
    <padding>
-      <Insets left="25.0" top="25.0" />
+      <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
    </padding>
 </fx:root>

@@ -30,6 +30,9 @@ public class SuggestedBooks extends BorderPane {
     private FlowPane content;
 
     @FXML
+    private Label emptyLabel;
+
+    @FXML
     private Label backButton;
 
     private SuggestedBooks(){
@@ -61,6 +64,8 @@ public class SuggestedBooks extends BorderPane {
                 e.printStackTrace();
             }
         }
+
+        emptyLabel.setVisible(content.getChildren().isEmpty() ? true : false);
     }
 
     public static SuggestedBooks inst(){
