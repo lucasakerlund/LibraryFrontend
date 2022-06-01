@@ -135,18 +135,18 @@ public class BackendCaller {
         return Integer.parseInt(data);
     }
 
-    public List<Book> getBooks(String language, String releaseDate, String library, String searchType, String search, String popuplarSort){
+    public List<Book> getBooks(String language, String releaseDate, String library, String searchType, String search, String popularSort){
         try {
             language = URLEncoder.encode(language, "UTF-8");
             releaseDate = URLEncoder.encode(releaseDate, "UTF-8");
             library = URLEncoder.encode(library, "UTF-8");
             searchType = URLEncoder.encode(searchType, "UTF-8");
             search = URLEncoder.encode(search, "UTF-8");
-            popuplarSort = URLEncoder.encode(popuplarSort, "UTF-8");
+            popularSort = URLEncoder.encode(popularSort, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        String data = request("api/book_details?language=" + language + "&releaseDate=" + releaseDate + "&library=" + library + "&searchType=" + searchType + "&search=" + search + "&popularSort=" + popuplarSort);
+        String data = request("api/book_details?language=" + language + "&releaseDate=" + releaseDate + "&library=" + library + "&searchType=" + searchType + "&search=" + search + "&popularSort=" + popularSort);
         if(data.equals("")){
             return new ArrayList<>();
         }
