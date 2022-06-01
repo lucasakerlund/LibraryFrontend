@@ -1,5 +1,6 @@
 package com.stav.libraryfrontend.abstracts;
 
+import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.models.*;
 
 import java.io.BufferedReader;
@@ -243,6 +244,17 @@ public class BackendCaller {
             output.add(array.getJSONObject(i));
         }
         return output;
+    }
+
+    public LibraryModel getLibraryById(int libraryId){
+        String data = request("api/libraries/" + libraryId);
+        JSONObject o = new JSONObject(data);
+        LibraryModel library = new LibraryModel(o.getString("address"),
+                    o.getString("county"),
+                    o.getInt("library_id"),
+                    o.getString("name")
+            );
+        return library;
     }
 
     public List<LoanedBook> getLoanedBooksWithIsbn(String isbn){

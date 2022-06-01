@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="530.0" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <Label text="Rummets namn:" />
+                  <Label fx:id="roomNameLabel" layoutX="10.0" layoutY="10.0" text="roomNameLabel" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <Label text="Bibliotekets namn:" />
+                  <Label fx:id="libraryNameLabel" layoutX="10.0" layoutY="10.0" text="libraryNameLabel" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <Label text="Bokad tid:" />
+                  <Label fx:id="bookedTimeLabel" layoutX="10.0" layoutY="10.0" text="bookedTimeLabel" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <HBox alignment="CENTER" spacing="15.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Kundens namn:" />
+            <Label fx:id="customerNameLabel" layoutX="10.0" layoutY="10.0" text="customerNameLabel" />
+         </children>
+      </HBox>
+   </center>
+   <bottom>
+      <Label fx:id="cancelBookingButton" text="Avboka kundens önskade tid" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="30.0" />
+         </BorderPane.margin>
+      </Label>
+   </bottom>
+</fx:root>

@@ -1335,3 +1335,63 @@
     -fx-underline: true;
     -fx-cursor: hand;
 }
+/* find customer page - basic info */
+
+/* find customer page - book box */
+
+.find-customer-book-box{
+    -fx-background-color: white;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-padding: 2;
+}
+
+.find-customer-book-box:hover{
+    -fx-background-color: gray;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.find-customer-book-title{
+    -fx-border-width: 2;
+    -fx-padding: 2;
+    -fx-border-color: blue;
+    -fx-font-size: 14;
+    -fx-text-fill: blue;
+}
+
+/* find customer page - book box */
+
+/* find customer page - group room box */
+
+.find-customer-group-room-box{
+    -fx-background-color: white;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-text-fill: black;
+}
+
+.find-customer-group-room-box:hover{
+    -fx-border-color: gray;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+/* find customer page - group room box */
+
+/* find customer page - loaned book view */
+
+.find-customer-loaned-book-view{
+    -fx-background-color: #4b4b4b;
+}
+
+.find-customer-loaned-book-view-labels{
+    -fx-font-size: 18;
+    -fx-text-fill: white;
+}
+
+.find-customer-loaned-book-view-image{
+    -fx-background-color: white;
+}
+
+/* find customer page - loaned book view */
