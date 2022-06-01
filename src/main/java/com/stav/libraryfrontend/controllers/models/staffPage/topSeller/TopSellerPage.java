@@ -42,7 +42,7 @@ public class TopSellerPage extends BorderPane {
     public void loadBooks(){
         content.getChildren().clear();
         List<JSONObject> list = new ArrayList<>();
-        for (Book book : BackendCaller.inst().getBooks("", "", "", "", "")) {
+        for (Book book : BackendCaller.inst().getBooks("", "", "", "", "", "")) {
             int amount = BackendCaller.inst().getAmountOfBooksInStock(book.getIsbn());
             JSONObject o = new JSONObject();
             o.put("book", book);

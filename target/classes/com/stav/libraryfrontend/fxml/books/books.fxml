@@ -14,7 +14,7 @@
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <VBox fx:id="centerVbox" alignment="TOP_CENTER">
+            <VBox alignment="TOP_CENTER">
                <children>
                   <FlowPane fx:id="box" hgap="10.0" vgap="10.0">
                      <padding>
@@ -31,6 +31,7 @@
          <children>
             <HBox fx:id="header" alignment="CENTER" focusTraversable="true" prefHeight="50.0" prefWidth="600.0" spacing="10.0" styleClass="books-header">
                <children>
+                  <ComboBox fx:id="popularChoice" focusTraversable="false" layoutX="81.0" layoutY="23.0" prefHeight="25.0" prefWidth="105.0" promptText="Popularitet" styleClass="books-header-choice" />
                   <ComboBox fx:id="languageChoice" focusTraversable="false" prefHeight="25.0" prefWidth="105.0" promptText="Språk" styleClass="books-header-choice" />
                   <TextField fx:id="releaseInput" focusTraversable="false" prefHeight="25.0" prefWidth="96.0" promptText="Datum" styleClass="books-header-released" />
                   <ComboBox fx:id="libraryChoice" focusTraversable="false" prefHeight="25.0" prefWidth="105.0" promptText="Bibliotek" styleClass="books-header-choice" />

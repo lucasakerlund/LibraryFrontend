@@ -43,10 +43,17 @@ public class StaffBookPage extends BorderPane {
 
     public void setup(){
         staffContent.setCenter(StaffMenuBookView.inst());
+        searchButton.setOnMousePressed(e -> {
+            StaffMenuBookView.inst().updateBooks();
+        });
     }
 
     public static StaffBookPage inst(){
         return instance;
+    }
+
+    public String getInput(){
+        return searchField.getText();
     }
 }
 

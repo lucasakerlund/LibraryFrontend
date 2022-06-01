@@ -30,7 +30,7 @@
             <VBox alignment="BOTTOM_CENTER" prefHeight="109.0" prefWidth="600.0">
                <children>
                   <Label fx:id="errorLabel" styleClass="admin-screen-login-error-label" text="TEAST: Error label" visible="false" />
-                  <Label text="Användanamn" />
+                  <Label text="Mail" />
                   <TextField fx:id="usernameInput" maxWidth="150.0" promptText="Användarnamn här..." />
                </children>
             </VBox>

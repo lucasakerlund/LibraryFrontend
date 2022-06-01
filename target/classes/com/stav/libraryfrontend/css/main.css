@@ -115,38 +115,46 @@
 }
 
 .books-header-choice{
-    -fx-background-color: white;
-    -fx-focus-traversable: false;
-    -fx-faint-focus-color: transparent;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-background-radius: 10;
+    -fx-background-insets: 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-border-color: gray;
 }
 
-.books-header-choice .text-field{
-    -fx-faint-focus-color: transparent;
-    -fx-focus-color: transparent;
+.books-header-choice .text{
+    -fx-fill: black;
+}
+
+.books-header-choice:showing{
+    -fx-background-radius: 10 10 0 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10 10 0 0;
+    -fx-border-color: gray;
+}
+
+.books-header-choice .combo-box-popup .list-view{
+    -fx-border-width: 0 1 1 1;
+    -fx-border-color: gray;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-padding: 0;
+}
+
+.books-header-choice .list-view .list-cell{
     -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-border-radius: 0;
+}
+.books-header-choice .list-view .list-cell:hover{
+    -fx-background-color: rgb(229, 229, 229);
 }
 
-.books-header-choice .text-field:focused{
-    -fx-background-color: transparent;
+.books-header-choice .list-view .list-cell:selected{
+    -fx-background-color: rgb(178, 178, 178);
 }
 
-.books-header-choice .arrow-button{
-    -fx-background-color: transparent;
-}
-
-.books-header-choice .list-cell{
-    -fx-background-color: white;
-}
-
-.books-header-choice .list-cell:hover{
-    -fx-background-color: rgb(217, 217, 217);
-    -fx-text-fill: black;
-}
-
-.books-header-choice .list-cell:focused{
-    -fx-background-color: rgb(204, 204, 204);
-    -fx-text-fill: black;
-}
 
 .books-header-released{
     -fx-text-box-border: transparent;
@@ -1237,6 +1245,12 @@
 
 /* Suggested books */
 .suggested-books{
+}
+
+.suggested-books-empty-label{
+    -fx-font-size: 20;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
 }
 
 .suggested-books-back-button{

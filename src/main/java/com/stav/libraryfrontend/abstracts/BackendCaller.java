@@ -135,17 +135,18 @@ public class BackendCaller {
         return Integer.parseInt(data);
     }
 
-    public List<Book> getBooks(String language, String releaseDate, String library, String searchType, String search){
+    public List<Book> getBooks(String language, String releaseDate, String library, String searchType, String search, String popuplarSort){
         try {
             language = URLEncoder.encode(language, "UTF-8");
             releaseDate = URLEncoder.encode(releaseDate, "UTF-8");
             library = URLEncoder.encode(library, "UTF-8");
             searchType = URLEncoder.encode(searchType, "UTF-8");
             search = URLEncoder.encode(search, "UTF-8");
+            popuplarSort = URLEncoder.encode(popuplarSort, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        String data = request("api/book_details?language=" + language + "&releaseDate=" + releaseDate + "&library=" + library + "&searchType=" + searchType + "&search=" + search);
+        String data = request("api/book_details?language=" + language + "&releaseDate=" + releaseDate + "&library=" + library + "&searchType=" + searchType + "&search=" + search + "&popularSort=" + popuplarSort);
         if(data.equals("")){
             return new ArrayList<>();
         }
@@ -176,6 +177,9 @@ public class BackendCaller {
             genre = URLEncoder.encode(String.join(",", genres), "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
+        }
+        if(genre.equalsIgnoreCase("")){
+            return new ArrayList<>();
         }
         String data = request("api/book_details/genre/" + genre);
         System.out.println(data);
@@ -341,8 +345,6 @@ public class BackendCaller {
 
         JSONArray allUsersTimes = new JSONArray(data);
 
-        System.out.println("The JSONArray containing all bookings: " + allUsersTimes);
-
         List<JSONObject> returnable = new ArrayList<JSONObject>();
 
         for (int i = 0; i < allUsersTimes.length(); i++){
@@ -386,7 +388,7 @@ public class BackendCaller {
     }
 
     public boolean createStaff(String firstName, String lastName, String userName, String password, String role){
-        String data = request("api/employees/create?firstName=" + firstName + "&lastName=" + lastName + "&username=" + userName + "&password=" + password + "&role=" + role);
+        String data = request("api/employees/create?firstName=" + firstName + "&lastName=" + lastName + "&email=" + userName + "&password=" + password + "&role=" + role);
         return Boolean.parseBoolean(data);
     }
 
@@ -406,8 +408,6 @@ public class BackendCaller {
 
     public Staff loginStaff(String email, String password){
         String data = request("api/employees/login?email=" + email + "&password=" + password);
-
-        System.out.println("This is the data that Sahra f****d up: " + data);
 
         if(data.equals("")){
             return null;
