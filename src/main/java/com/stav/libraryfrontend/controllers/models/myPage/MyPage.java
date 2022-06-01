@@ -1,6 +1,8 @@
 package com.stav.libraryfrontend.controllers.models.myPage;
 
+import com.stav.libraryfrontend.controllers.models.myPage.groupRoomBookings.MyBookingsPage;
 import com.stav.libraryfrontend.controllers.models.myPage.loanedBooks.LoanedBooksView;
+import com.stav.libraryfrontend.controllers.models.myPage.reservedBooks.ReservedBooksView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,6 +52,24 @@ public class MyPage extends BorderPane {
         setFocused(borrowedBooksButton);
     }
 
+    public void open(String id){
+        if(id.equals("reservedBooks")){
+            content.setCenter(ReservedBooksView.inst());
+            ReservedBooksView.inst().loadBooks();
+            setFocused(reservedBooksButton);
+        }
+        if(id.equals("borrowedBooks")){
+            content.setCenter(LoanedBooksView.inst());
+            LoanedBooksView.inst().loadBooks();
+            setFocused(borrowedBooksButton);
+        }
+        if(id.equals("bookedRooms")){
+            content.setCenter(MyBookingsPage.inst());
+            MyBookingsPage.inst().loadBookings();
+            setFocused(bookedRoomsButton);
+        }
+    }
+
     public void setFocused(Label focused) {
         if(this.focused != null){
             this.focused.setId("");
@@ -62,10 +82,15 @@ public class MyPage extends BorderPane {
         clearMessage();
 
         borrowedBooksButton.setOnMousePressed(e -> {
-            content.setCenter(LoanedBooksView.inst());
-            LoanedBooksView.inst().loadBooks();
-            setFocused(borrowedBooksButton);
+            open("borrowedBooks");
         });
+        reservedBooksButton.setOnMousePressed(e -> {
+            open("reservedBooks");
+        });
+        bookedRoomsButton.setOnMousePressed(e -> {
+            open("bookedRooms");
+        });
+
     }
 
     public void inputMessage(String update){

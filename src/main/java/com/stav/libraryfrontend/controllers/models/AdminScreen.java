@@ -8,6 +8,7 @@ import com.stav.libraryfrontend.models.Staff;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
@@ -24,7 +25,7 @@ public class AdminScreen extends BorderPane {
     private TextField usernameInput;
 
     @FXML
-    private TextField passwordInput;
+    private PasswordField passwordInput;
 
     @FXML
     private Label adminLoginButton;

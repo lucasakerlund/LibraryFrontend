@@ -11,16 +11,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Books extends BorderPane {
 
@@ -29,6 +27,8 @@ public class Books extends BorderPane {
     @FXML
     private FlowPane box;
 
+    @FXML
+    private ComboBox<String> popularChoice;
     @FXML
     private ComboBox<String> languageChoice;
     @FXML
@@ -43,8 +43,6 @@ public class Books extends BorderPane {
     private ComboBox<String> searchByChoice;
     @FXML
     private Label errorLabel;
-    @FXML
-    private VBox centerVbox;
 
     private Books(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/books/books.fxml"));
@@ -65,6 +63,13 @@ public class Books extends BorderPane {
     }
 
     private void setup(){
+        popularChoice.getItems().add("Ingen sortering");
+        popularChoice.getItems().add("Någonsin");
+        popularChoice.getItems().add("År");
+        popularChoice.getItems().add("Månad");
+        popularChoice.getItems().add("Vecka");
+        popularChoice.setValue("Populäritet");
+
         languageChoice.getItems().add("Alla");
         languageChoice.getItems().add("Svenska");
         languageChoice.getItems().add("Engelska");
@@ -108,11 +113,33 @@ public class Books extends BorderPane {
         box.getChildren().clear();
         String lang = "";
         switch(languageChoice.getValue().toLowerCase()){
+            case "alla":
+                lang = "";
+                break;
             case "svenska":
                 lang = "SE";
                 break;
             case "engelska":
                 lang = "EN";
+                break;
+        }
+        String popularSort = "";
+        switch(popularChoice.getValue().toLowerCase()){
+            case "populäritet":
+            case "ingen sortering":
+                popularSort = "";
+                break;
+            case "någonsin":
+                popularSort = "ALL_TIME";
+                break;
+            case "år":
+                popularSort = "YEAR";
+                break;
+            case "månad":
+                popularSort = "MONTH";
+                break;
+            case "vecka":
+                popularSort = "WEEK";
                 break;
         }
         if(!correctDateFormat()){
@@ -122,22 +149,18 @@ public class Books extends BorderPane {
         }
         errorLabel.setVisible(false);
         for(Book book : BackendCaller.inst().getBooks(
-                languageChoice.getValue().equalsIgnoreCase("alla") ? "" : lang,
+                lang,
                 releaseInput.getText(),
                 libraryChoice.getValue().equalsIgnoreCase("alla") ? "" : libraryChoice.getValue(),
                 searchByChoice.getValue(),
-                searchInput.getText())) {
+                searchInput.getText(),
+                popularSort)) {
             try {
                 addBook(new BookCover(book));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        addSuggestionBox();
-    }
-
-    public void addSuggestionBox(){
-        centerVbox.getChildren().add(SuggestionBox.inst());
     }
 
     public void addBook(BookCover bookCover){

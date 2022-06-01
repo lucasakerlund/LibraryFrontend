@@ -115,38 +115,46 @@
 }
 
 .books-header-choice{
-    -fx-background-color: white;
-    -fx-focus-traversable: false;
-    -fx-faint-focus-color: transparent;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-background-radius: 10;
+    -fx-background-insets: 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-border-color: gray;
 }
 
-.books-header-choice .text-field{
-    -fx-faint-focus-color: transparent;
-    -fx-focus-color: transparent;
+.books-header-choice .text{
+    -fx-fill: black;
+}
+
+.books-header-choice:showing{
+    -fx-background-radius: 10 10 0 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10 10 0 0;
+    -fx-border-color: gray;
+}
+
+.books-header-choice .combo-box-popup .list-view{
+    -fx-border-width: 0 1 1 1;
+    -fx-border-color: gray;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-padding: 0;
+}
+
+.books-header-choice .list-view .list-cell{
     -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-border-radius: 0;
+}
+.books-header-choice .list-view .list-cell:hover{
+    -fx-background-color: rgb(229, 229, 229);
 }
 
-.books-header-choice .text-field:focused{
-    -fx-background-color: transparent;
+.books-header-choice .list-view .list-cell:selected{
+    -fx-background-color: rgb(178, 178, 178);
 }
 
-.books-header-choice .arrow-button{
-    -fx-background-color: transparent;
-}
-
-.books-header-choice .list-cell{
-    -fx-background-color: white;
-}
-
-.books-header-choice .list-cell:hover{
-    -fx-background-color: rgb(217, 217, 217);
-    -fx-text-fill: black;
-}
-
-.books-header-choice .list-cell:focused{
-    -fx-background-color: rgb(204, 204, 204);
-    -fx-text-fill: black;
-}
 
 .books-header-released{
     -fx-text-box-border: transparent;
@@ -292,7 +300,8 @@
     -fx-text-fill: red;
 }
 
-.book-loan-view-book-button{
+.book-loan-view-book-button, .book-loan-view-queue-button, .book-loan-view-in-queue{
+    -fx-background-color: rgba(52,53,53,.4);
     -fx-font-size: 20;
     -fx-text-fill: #00ff00;
     -fx-border-width: 2;
@@ -300,7 +309,7 @@
     -fx-padding: 0 5 0 5;
 }
 
-.book-loan-view-book-button:hover{
+.book-loan-view-book-button:hover, .book-loan-view-queue-button:hover, .book-loan-view-in-queue:hover{
     -fx-text-fill: #b0dab0;
     -fx-border-color: #b0dab0;
     -fx-cursor: hand;
@@ -352,6 +361,20 @@
 .book-loan-view-book-information-value{
     -fx-font-size: 15;
     -fx-text-fill: #bebebe;
+}
+
+.book-loan-view-similar-books-button{
+    -fx-font-size: 14;
+    -fx-border-width: 1;
+    -fx-border-color: #39a9e7;
+    -fx-text-fill: #39a9e7;
+}
+
+.book-loan-view-similar-books-button:hover{
+    -fx-border-color: #39e1e7;
+    -fx-text-fill: #39e1e7;
+    -fx-underline: true;
+    -fx-cursor: hand;
 }
 
 /* LOGIN SCREEN */
@@ -689,6 +712,7 @@
     -fx-cursor: hand;
 }
 
+/*Loaned Book*/
 .loaned-book-cover-return-button{
     -fx-background-color: rgba(59, 59, 59, 0.34);;
     -fx-border-width: 2;
@@ -717,6 +741,28 @@
     -fx-underline: true;
     -fx-font-size: 14;
 }
+
+/**/
+.reserved-book{
+
+}
+
+.reserved-book-cover-leave-queue-button{
+    -fx-background-color: rgba(52,53,53,.4);
+    -fx-font-size: 20;
+    -fx-text-fill: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: #00ff00;
+    -fx-padding: 0 5 0 5;
+
+}
+
+.reserved-book-cover-leave-queue-button:hover{
+    -fx-text-fill: #b0dab0;
+    -fx-border-color: #b0dab0;
+    -fx-cursor: hand;
+}
+
 /* MY PAGE (MIN SIDA) */
 
 /* STAFF PAGE */
@@ -1023,6 +1069,18 @@
     -fx-background-color: #303034;
 }
 
+.room-view-message-label{
+    -fx-font-size: 16;
+    -fx-underline: true;
+    -fx-text-fill: red;
+}
+
+#room-view-message-label-green{
+    -fx-font-size: 16;
+    -fx-underline: true;
+    -fx-text-fill: #03b003;
+}
+
 /* group room view */
 
 /* user suggestion box */
@@ -1112,3 +1170,168 @@
 }
 
 /* user suggestion view */
+
+/* time select button */
+.time-select-button{
+    -fx-font-size: 14;
+    -fx-text-fill: white;
+    -fx-underline: true;
+    -fx-border-width: 4;
+    -fx-border-color: black;
+}
+
+.time-select-button:hover{
+    -fx-cursor: hand;
+    -fx-text-fill: #4d4d4d;
+}
+
+#time-select-button-focused{
+    -fx-font-size: 14;
+    -fx-text-fill: #969696;
+    -fx-underline: true;
+    -fx-border-width: 4;
+    -fx-border-color: #007715;
+}
+/* time select button */
+
+/* Booking box */
+.booking-box{
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-background-color: white;
+}
+
+.booking-box-info-labels{
+    -fx-text-fill: black;
+    -fx-font-size: 18;
+}
+
+.booking-box-cancel-button{
+    -fx-font-size: 12;
+    -fx-text-fill: red;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-background-color: transparent;
+}
+
+.booking-box-cancel-button:hover{
+    -fx-background-color: black;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+/* Booking box */
+/*Top Seller Cover*/
+.top-seller-book-cover{
+    -fx-background-color: black;
+}
+
+.top-seller-book-cover-imageview{
+    -fx-opacity: .5;
+}
+
+.top-seller-book-cover-label{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+
+.top-seller-book-cover-value{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+
+.top-seller-book-cover:hover{
+    -fx-cursor: hand;
+}
+
+/* Suggested books */
+.suggested-books{
+}
+
+.suggested-books-empty-label{
+    -fx-font-size: 20;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+.suggested-books-back-button{
+    -fx-font-size: 18;
+    -fx-border-width: 3;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-text-fill: black;
+    -fx-padding: 3;
+}
+
+.suggested-books-back-button:hover{
+    -fx-underline: true;
+    -fx-cursor: hand;
+    -fx-border-color: gray;
+    -fx-text-fill: gray;
+}
+/* Suggested books */
+
+/* find customer page - staff screen */
+.findCustomerButton{
+    -fx-background-color: transparent;
+}
+
+.find-customer-page-search-button{
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-font-size: 16;
+    -fx-background-color: #04f304;
+    -fx-padding: 4;
+}
+
+.find-customer-page-search-button:hover{
+    -fx-cursor: hand;
+    -fx-underline: true;
+    -fx-background-color: green;
+}
+
+.find-customer-page-error-label{
+    -fx-font-size: 16;
+    -fx-underline: true;
+    -fx-text-fill: red;
+}
+/* find customer page - staff screen */
+
+/* find customer page - basic info */
+.customer-box{
+    -fx-background-color: transparent;
+}
+
+.customer-box-inspect-button{
+    -fx-font-size: 14;
+    -fx-border-width: 3;
+    -fx-padding: 4;
+    -fx-border-color: green;
+    -fx-text-fill: green;
+}
+
+.customer-box-inspect-button:hover{
+    -fx-border-color: #099309;
+    -fx-text-fill: #099309;
+    -fx-cursor: hand;
+    -fx-underline: true;
+}
+
+.customer-box-account-label{
+    -fx-underline: true;
+    -fx-text-fill: blue;
+    -fx-font-size: 14;
+}
+/* find customer page - basic info */
+
+.customer-content-header-buttons{
+    -fx-font-size: 16;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-padding: 4;
+    -fx-text-fill: black;
+}
+
+.customer-content-header-buttons:hover{
+    -fx-underline: true;
+    -fx-cursor: hand;
+}

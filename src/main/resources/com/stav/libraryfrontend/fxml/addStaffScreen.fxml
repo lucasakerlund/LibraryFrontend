@@ -78,7 +78,7 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label id="add-staff-screen-first-name-label" styleClass="add-staff-screen-label" text="Användarnamn" />
+                  <Label id="add-staff-screen-first-name-label" styleClass="add-staff-screen-label" text="Mail" />
                   <TextField fx:id="userNameInput" maxWidth="150.0" promptText="Användarnamn här..." />
                   <Label id="add-staff-screen-first-name-label" layoutX="369.0" layoutY="66.0" styleClass="add-staff-screen-label" text="Förnamn" />
                   <TextField fx:id="firstNameTextField" layoutX="335.0" layoutY="107.0" maxWidth="150.0" promptText="F.namn här..." />

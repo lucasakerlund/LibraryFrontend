@@ -27,11 +27,14 @@
             <Label fx:id="bookedRoomsButton" styleClass="my-page-header-buttons" text="Bokade lokaler" />
          </children>
          <BorderPane.margin>
-            <Insets left="25.0" right="25.0" />
+            <Insets />
          </BorderPane.margin>
       </HBox>
    </top>
    <center>
       <BorderPane fx:id="content" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
+   <padding>
+      <Insets left="25.0" right="25.0" />
+   </padding>
 </fx:root>

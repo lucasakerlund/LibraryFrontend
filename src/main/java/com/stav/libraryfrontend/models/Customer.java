@@ -11,15 +11,15 @@ public class Customer {
     @JsonProperty("last_name")
     private String lastName;
     @JsonProperty("e-mail")
-    private String mail;
+    private String rmail;
     @JsonProperty("password")
     private String password;
 
-    public Customer(int customerId, String firstName, String lastName, String mail, String password) {
+    public Customer(int customerId, String firstName, String lastName, String rmail, String password) {
         this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.mail = mail;
+        this.rmail = rmail;
         this.password = password;
     }
 
@@ -47,12 +47,12 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return rmail;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String mail) {
+        this.rmail = rmail;
     }
 
     public String getPassword() {

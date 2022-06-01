@@ -1,8 +1,6 @@
 package com.stav.libraryfrontend.abstracts;
 
-import com.stav.libraryfrontend.models.Book;
-import com.stav.libraryfrontend.models.Customer;
-import com.stav.libraryfrontend.models.LoanedBook;
+import com.stav.libraryfrontend.models.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -13,10 +11,10 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import com.stav.libraryfrontend.models.Staff;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
@@ -90,7 +88,7 @@ public class BackendCaller {
 
     public Book getBook(int bookId){
         String data = request("api/books/id/" + bookId);
-        System.out.println(data);
+        System.out.println("test " + data);
         JSONObject object = new JSONObject(data);
         return new Book(
                 object.getInt("book_id"),
@@ -109,6 +107,7 @@ public class BackendCaller {
 
     public Book getBook(String isbn){
         String data = request("api/book_details/" + isbn);
+        System.out.println("ej123 " + data);
         JSONObject object = new JSONObject(data);
         return new Book(
                 0,
@@ -116,31 +115,13 @@ public class BackendCaller {
                 object.getString("title"),
                 object.getString("description"),
                 convertJSONArrayToStringArray(object.getJSONArray("authors")),
-                convertJSONArrayToStringArray(object.getJSONArray("genre")),
+                convertJSONArrayToStringArray(object.getJSONArray("genres")),
                 object.getString("isbn"),
                 object.getString("published"),
                 object.getInt("pages"),
                 object.getString("language"),
                 object.getString("image_source")
         );
-
-        /*String data = request("books/v1/volumes?q=isbn:" + isbn);
-        System.out.println(data);
-        JSONObject object = new JSONObject(data);
-        JSONArray array = new JSONArray(object.getJSONArray("items"));
-        Book book = new Book(
-                0,
-                array.getJSONObject(0).getJSONObject("volumeInfo").getString("title"),
-                array.getJSONObject(0).getJSONObject("volumeInfo").getString("description"),
-                convertJSONArrayToStringArray(array.getJSONObject(0).getJSONObject("volumeInfo").getJSONArray("authors")),
-                convertJSONArrayToStringArray(array.getJSONObject(0).getJSONObject("volumeInfo").getJSONArray("categories")),
-                array.getJSONObject(0).getJSONObject("volumeInfo").getJSONArray("industryIdentifiers").getJSONObject(1).getString("identifier"),
-                array.getJSONObject(0).getJSONObject("volumeInfo").getString("publishedDate"),
-                array.getJSONObject(0).getJSONObject("volumeInfo").getInt("pageCount"),
-                array.getJSONObject(0).getJSONObject("volumeInfo").getString("language"),
-                array.getJSONObject(0).getJSONObject("volumeInfo").getJSONObject("imageLinks").getString("thumbnail").replace("zoom=1", "zoom=10")
-        );
-        return book;*/
     }
 
     public int getAmountOfBooks(String isbn){
@@ -154,23 +135,54 @@ public class BackendCaller {
         return Integer.parseInt(data);
     }
 
-    public int getAmountInQueue(String isbn){
-        String data = request("api/book_queue/amount/" + isbn);
-        return Integer.parseInt(data);
-    }
-
-    public List<Book> getBooks(String language, String releaseDate, String library, String searchType, String search){
+    public List<Book> getBooks(String language, String releaseDate, String library, String searchType, String search, String popuplarSort){
         try {
             language = URLEncoder.encode(language, "UTF-8");
             releaseDate = URLEncoder.encode(releaseDate, "UTF-8");
             library = URLEncoder.encode(library, "UTF-8");
             searchType = URLEncoder.encode(searchType, "UTF-8");
             search = URLEncoder.encode(search, "UTF-8");
+            popuplarSort = URLEncoder.encode(popuplarSort, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        System.out.println("123 " + search);
-        String data = request("api/book_details?language=" + language + "&releaseDate=" + releaseDate + "&library=" + library + "&searchType=" + searchType + "&search=" + search);
+        String data = request("api/book_details?language=" + language + "&releaseDate=" + releaseDate + "&library=" + library + "&searchType=" + searchType + "&search=" + search + "&popularSort=" + popuplarSort);
+        if(data.equals("")){
+            return new ArrayList<>();
+        }
+        JSONArray array = new JSONArray(data);
+        List<Book> output = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            output.add(new Book(
+                    0,
+                    0,
+                    object.getString("title"),
+                    object.getString("description"),
+                    convertJSONArrayToStringArray(object.getJSONArray("authors")),
+                    convertJSONArrayToStringArray(object.getJSONArray("genres")),
+                    object.getString("isbn"),
+                    object.getString("published"),
+                    object.getInt("pages"),
+                    object.getString("language"),
+                    object.getString("image_source")
+            ));
+        }
+        return output;
+    }
+
+    public List<Book> getBooksByGenre(String[] genres){
+        String genre = "";
+        try {
+            genre = URLEncoder.encode(String.join(",", genres), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        if(genre.equalsIgnoreCase("")){
+            return new ArrayList<>();
+        }
+        String data = request("api/book_details/genre/" + genre);
+        System.out.println(data);
         if(data.equals("")){
             return new ArrayList<>();
         }
@@ -254,6 +266,110 @@ public class BackendCaller {
         return Boolean.parseBoolean(data);
     }
 
+    public int getAmountInQueue(String isbn){
+        String data = request("api/book_queue/amount/" + isbn);
+        if(data.equals("")){
+            return 0;
+        }
+        return Integer.parseInt(data);
+    }
+
+    public List<BookQueue> getReservedBooks(int customerId){
+        String data = request("api/book_queue/customer/" + customerId);
+        JSONArray array = new JSONArray(data);
+        List<BookQueue> output = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            output.add(new BookQueue(
+                    object.getString("isbn"),
+                    object.getInt("customer_id"),
+                    object.getString("queue_date")
+            ));
+        }
+        return output;
+    }
+
+    public boolean isInQueue(String isbn, int customerId){
+        String data = request("api/book_queue/in_queue?isbn=" + isbn + "&customerId=" + customerId);
+        return Boolean.parseBoolean(data);
+    }
+
+    public boolean reserveBook(String isbn, int customerId){
+        String data = request("api/book_queue/reserve?isbn=" + isbn + "&customerId=" + customerId);
+        return Boolean.parseBoolean(data);
+    }
+
+    public boolean leaveQueue(String isbn, int customerId){
+        String data = request("api/book_queue/leave_queue?isbn=" + isbn + "&customerId=" + customerId);
+        return Boolean.parseBoolean(data);
+    }
+
+    public List<GroupRoom> getGroupRooms(){
+        String data = request("api/rooms/all");
+        JSONArray allRooms = new JSONArray(data);
+
+        List<GroupRoom> returnable = new ArrayList<GroupRoom>();
+
+        for (int i = 0; i < allRooms.length(); i++){
+            GroupRoom groupRoom = new GroupRoom (allRooms.getJSONObject(i).getInt("room_id"), allRooms.getJSONObject(i).getString("name"),
+                    allRooms.getJSONObject(i).getInt("library_id"), allRooms.getJSONObject(i).getString("description"));
+
+            returnable.add(groupRoom);
+        }
+
+        return returnable;
+    }
+
+    public List<GroupRoomTime> getGroupRoomTimes(int roomId){
+        String data = request("api/group_room_times/available_times/" + roomId);
+        JSONArray allTimes = new JSONArray(data);
+
+        List<GroupRoomTime> returnable = new ArrayList<GroupRoomTime>();
+
+        for (int i = 0; i < allTimes.length(); i++){
+            GroupRoomTime groupRoomTime = new GroupRoomTime
+                    (allTimes.getJSONObject(i).getInt("time_id"),
+                            allTimes.getJSONObject(i).getInt("room_id"),
+                            allTimes.getJSONObject(i).getString("time"),
+                            allTimes.getJSONObject(i).getString("date"));
+
+            returnable.add(groupRoomTime);
+        }
+        return returnable;
+    }
+
+    public List<JSONObject> getUsersGroupRoomTimesById(int customer_id){
+        // We need all the group room times and then separate out the ones with my cus_id
+        String data = request("api/group_room_times/get_times_by_id/" + customer_id);
+        System.out.println("The String containing all bookings: " + data);
+
+        JSONArray allUsersTimes = new JSONArray(data);
+
+        List<JSONObject> returnable = new ArrayList<JSONObject>();
+
+        for (int i = 0; i < allUsersTimes.length(); i++){
+            JSONObject object = new JSONObject();
+            object.put("time_id", allUsersTimes.getJSONObject(i).getInt("time_id"));
+            object.put("time", allUsersTimes.getJSONObject(i).getString("time"));
+            object.put("date", allUsersTimes.getJSONObject(i).getString("date"));
+            object.put("name", allUsersTimes.getJSONObject(i).getString("name"));
+
+            returnable.add(object);
+        }
+        return returnable;
+    }
+
+    public boolean bookGroupRoom(int timeId, int customerId){
+        String data = request("api/group_room_times/book?timeId=" + timeId + "&customerId=" + customerId);
+        return Boolean.parseBoolean(data);
+    }
+
+    public boolean removeGroupRoomBooking(int timeId, int customerId){
+        String data = request("api/group_room_times/unbook?timeId=" + timeId + "&customerId=" + customerId);
+        return Boolean.parseBoolean(data);
+    }
+
+    //Post
     /**
      * @return the book with the correct book_id
      * */
@@ -272,7 +388,7 @@ public class BackendCaller {
     }
 
     public boolean createStaff(String firstName, String lastName, String userName, String password, String role){
-        String data = request("api/employees/create?firstName=" + firstName + "&lastName=" + lastName + "&username=" + userName + "&password=" + password + "&role=" + role);
+        String data = request("api/employees/create?firstName=" + firstName + "&lastName=" + lastName + "&email=" + userName + "&password=" + password + "&role=" + role);
         return Boolean.parseBoolean(data);
     }
 
@@ -291,7 +407,8 @@ public class BackendCaller {
     }
 
     public Staff loginStaff(String email, String password){
-        String data = request("api/employees/login?username=" + email + "&password=" + password);
+        String data = request("api/employees/login?email=" + email + "&password=" + password);
+
         if(data.equals("")){
             return null;
         }
@@ -299,9 +416,26 @@ public class BackendCaller {
         return new Staff(object.getInt("employee_id"),
                 object.getString("first_name"),
                 object.getString("last_name"),
-                object.getString("username"),
+                object.getString("email"),
                 object.getString("password"),
                 object.getString("role")
+        );
+    }
+
+    public Customer getCustomerByEmail (String email){
+        String data = request("api/customers/getCustomerByEmail?email=" + email);
+
+        System.out.println("Returned in BackendCaller = " + data);
+
+        if(data.equals("")){
+            return null;
+        }
+        JSONObject object = new JSONObject(data);
+        return new Customer(object.getInt("customer_id"),
+                object.getString("first_name"),
+                object.getString("last_name"),
+                object.getString("email"),
+                object.getString("password")
         );
     }
 

@@ -88,6 +88,10 @@ public class CustomerMenu extends BorderPane {
         });
     }
 
+    public void open(Parent parent){
+        content.setCenter(parent);
+    }
+
     private class MenuButton {
 
         private HBox buttonBox;
