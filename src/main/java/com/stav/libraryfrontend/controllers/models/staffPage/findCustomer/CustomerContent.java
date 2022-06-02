@@ -23,6 +23,8 @@ public class CustomerContent extends BorderPane {
     @FXML
     private Label bookedRoomsButton;
 
+    private Label focused;
+
     private static CustomerContent instance = new CustomerContent();
 
     private CustomerContent() {
@@ -36,25 +38,40 @@ public class CustomerContent extends BorderPane {
             e.printStackTrace();
         }
 
+        setFocused(generalInfoButton);
+
         setup();
     }
 
     public void setup(){
         generalInfoButton.setOnMousePressed(e ->{
             this.setCenter(BasicInfo.inst());
+            setFocused(generalInfoButton);
         });
 
         loanedBooksButton.setOnMousePressed(e -> {
             this.setCenter(LoanedBooks.inst());
+            setFocused(loanedBooksButton);
         });
 
         reservedBooksButton.setOnMousePressed(e -> {
             this.setCenter(ReservedBooks.inst());
+
+            setFocused(reservedBooksButton);
         });
 
         bookedRoomsButton.setOnMousePressed(e -> {
             this.setCenter(GroupRoomBookings.inst());
+            setFocused(bookedRoomsButton);
         });
+    }
+
+    public void setFocused(Label focused) {
+        if(this.focused != null){
+            this.focused.setId("");
+        }
+        focused.setId("button-focus");
+        this.focused = focused;
     }
 
     public static CustomerContent inst(){

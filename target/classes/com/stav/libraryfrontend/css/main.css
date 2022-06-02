@@ -1301,27 +1301,27 @@
     -fx-background-color: transparent;
 }
 
-.customer-box-inspect-button{
-    -fx-font-size: 14;
-    -fx-border-width: 3;
-    -fx-padding: 4;
-    -fx-border-color: green;
-    -fx-text-fill: green;
-}
-
-.customer-box-inspect-button:hover{
-    -fx-border-color: #099309;
-    -fx-text-fill: #099309;
-    -fx-cursor: hand;
-    -fx-underline: true;
-}
-
 .customer-box-account-label{
     -fx-underline: true;
     -fx-text-fill: blue;
-    -fx-font-size: 14;
+    -fx-font-size: 28;
 }
+
+.find-customer-basic-info-vbox{
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
+
 /* find customer page - basic info */
+
+/* find customer page - header */
+
+.customer-content-header{
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: black;
+    -fx-padding: 4;
+}
 
 .customer-content-header-buttons{
     -fx-font-size: 16;
@@ -1335,7 +1335,8 @@
     -fx-underline: true;
     -fx-cursor: hand;
 }
-/* find customer page - basic info */
+
+/* find customer page - header */
 
 /* find customer page - book box */
 
@@ -1355,9 +1356,10 @@
 .find-customer-book-title{
     -fx-border-width: 2;
     -fx-padding: 2;
-    -fx-border-color: blue;
+    -fx-background-color: white;
+    -fx-border-color: black;
     -fx-font-size: 14;
-    -fx-text-fill: blue;
+    -fx-text-fill: black;
 }
 
 /* find customer page - book box */
@@ -1395,3 +1397,31 @@
 }
 
 /* find customer page - loaned book view */
+
+/* find customer page - reserved group rooms view */
+
+.find-customer-reserved-group-room-view-cancel-time-button{
+    -fx-font-size: 20;
+    -fx-border-width: 4;
+    -fx-border-color: #04e504;
+    -fx-text-fill: #04e504;
+    -fx-padding: 4;
+}
+
+.find-customer-reserved-group-room-view-cancel-time-button:hover{
+    -fx-border-color: green;
+    -fx-text-fill: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+/* find customer page - reserved group rooms view */
+
+/* Find customer page - button focus */
+
+#button-focus{
+    -fx-background-color: #9b9898;
+    -fx-underline: true;
+}
+
+/* Find customer page - button focus */
