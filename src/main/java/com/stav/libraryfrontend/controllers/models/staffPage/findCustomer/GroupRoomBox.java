@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class GroupRoomBox extends Label {
 
-    public GroupRoomBox(String roomName, String libraryName, String bookedTime, String customerName){
+    public GroupRoomBox(String roomName, String libraryName, String bookedTime, int timeId, String customerName, int customerId){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/staffPage/findCustomer/groupRoomBox.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -20,12 +20,12 @@ public class GroupRoomBox extends Label {
         }
 
         this.setText(roomName);
-        setup(roomName, libraryName, bookedTime, customerName);
+        setup(roomName, libraryName, bookedTime, timeId, customerName, customerId);
     }
 
-    public void setup(String roomName, String libraryName, String bookedTime, String customerName){
+    public void setup(String roomName, String libraryName, String bookedTime, int timeId, String customerName, int customerId){
         this.setOnMousePressed(e -> {
-            SubSceneHandler.inst().show(new ReservedGroupRoomsView(roomName, libraryName, bookedTime, customerName));
+            SubSceneHandler.inst().show(new ReservedGroupRoomsView(roomName, libraryName, bookedTime, timeId, customerName, customerId));
         });
     }
 }

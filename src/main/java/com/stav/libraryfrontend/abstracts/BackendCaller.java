@@ -249,6 +249,7 @@ public class BackendCaller {
     public LibraryModel getLibraryById(int libraryId){
         String data = request("api/libraries/" + libraryId);
         JSONObject o = new JSONObject(data);
+        System.out.println("From backend: " + data + " JSONobject: " + o);
         LibraryModel library = new LibraryModel(o.getString("address"),
                     o.getString("county"),
                     o.getInt("library_id"),
@@ -436,7 +437,6 @@ public class BackendCaller {
 
     public Customer getCustomerByEmail (String email){
         String data = request("api/customers/getCustomerByEmail?email=" + email);
-
         System.out.println("Returned in BackendCaller = " + data);
 
         if(data.equals("")){

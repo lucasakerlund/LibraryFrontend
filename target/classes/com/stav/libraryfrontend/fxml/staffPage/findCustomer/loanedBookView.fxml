@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="530.0" styleClass="find-customer-loaned-book-view" stylesheets="@../../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <Label styleClass="find-customer-loaned-book-view-labels" text="Titel" />
+                  <Label fx:id="bookTitle" layoutX="10.0" layoutY="10.0" styleClass="find-customer-loaned-book-view-labels" text="bookTitle" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="530.0" spacing="15.0">
+               <children>
+                  <Label styleClass="find-customer-loaned-book-view-labels" text="Författare" />
+                  <Label fx:id="authorName" layoutX="10.0" layoutY="10.0" styleClass="find-customer-loaned-book-view-labels" text="authorName" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <Label styleClass="find-customer-loaned-book-view-labels" text="Återlämnas senast" />
+                  <Label fx:id="returnDate" layoutX="261.0" layoutY="10.0" styleClass="find-customer-loaned-book-view-labels" text="returnDate" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER" spacing="15.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label styleClass="find-customer-loaned-book-view-labels" text="ISB-Nummer" />
+            <Label fx:id="isbnLabel" layoutX="261.0" layoutY="10.0" styleClass="find-customer-loaned-book-view-labels" text="ISBN" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="15.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <center>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="180.0" styleClass="find-customer-loaned-book-view-image" BorderPane.alignment="CENTER">
+         <center>
+            <ImageView fx:id="coverImage" fitHeight="255.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="find-customer-loaned-book-view-image" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </center>
+</fx:root>

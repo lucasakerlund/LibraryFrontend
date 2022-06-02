@@ -32,6 +32,10 @@ public class GroupRoomBookings extends ScrollPane {
 
     }
 
+    public void clearInfo(){
+        content.getChildren().clear();
+    }
+
     public void addRoomBox(GroupRoomBox grb){
         content.getChildren().add(grb);
     }

@@ -33,6 +33,10 @@ public class LoanedBooks extends ScrollPane {
 
     }
 
+    public void clearInfo(){
+        content.getChildren().clear();
+    }
+
     public void addBookBox(LoanedBookBox lbb){
         content.getChildren().add(lbb);
     }
