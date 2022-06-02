@@ -79,6 +79,7 @@ public class Books extends BorderPane {
         searchByChoice.getItems().add("Författare");
         searchByChoice.setValue("Titel");
 
+        libraryChoice.getItems().add("Alla");
         libraryChoice.setValue("Alla");
 
         searchButton.setOnMousePressed(e -> {
@@ -89,7 +90,6 @@ public class Books extends BorderPane {
                 updateBooks();
             }
         });
-        libraryChoice.getItems().add("Alla");
         for (JSONObject library : BackendCaller.inst().getLibraries()) {
             libraryChoice.getItems().add(library.getString("name"));
         }
