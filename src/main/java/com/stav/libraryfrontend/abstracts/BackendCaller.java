@@ -249,7 +249,6 @@ public class BackendCaller {
     public LibraryModel getLibraryById(int libraryId){
         String data = request("api/libraries/" + libraryId);
         JSONObject o = new JSONObject(data);
-        System.out.println("From backend: " + data + " JSONobject: " + o);
         LibraryModel library = new LibraryModel(o.getString("address"),
                     o.getString("county"),
                     o.getInt("library_id"),
