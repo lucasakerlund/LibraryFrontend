@@ -21,6 +21,33 @@ public class StaffAddBookPage extends BorderPane {
     @FXML
     private Label addButton;
 
+    @FXML
+    private TextField titleField;
+
+    @FXML
+    private TextField descriptionField;
+
+    @FXML
+    private TextField authorField;
+
+    @FXML
+    private TextField genreField;
+
+    @FXML
+    private TextField lastPublishedField;
+
+    @FXML
+    private TextField amountOfPagesField;
+
+    @FXML
+    private TextField languageField;
+
+    @FXML
+    private TextField imageField;
+
+    @FXML
+    private TextField succeedField;
+
 
     public StaffAddBookPage(){
 
