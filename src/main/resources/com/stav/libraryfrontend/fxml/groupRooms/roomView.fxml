@@ -35,4 +35,12 @@
          </children>
       </VBox>
    </right>
+   <bottom>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Label styleClass="room-view-name-label" text="Tillhör: " />
+            <Label fx:id="libraryNameLabel" layoutX="10.0" layoutY="10.0" styleClass="room-view-name-label" text="libraryNameLabel" />
+         </children>
+      </HBox>
+   </bottom>
 </fx:root>
