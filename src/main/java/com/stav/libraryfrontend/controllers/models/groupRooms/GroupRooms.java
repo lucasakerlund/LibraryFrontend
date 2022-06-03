@@ -107,6 +107,11 @@ public class GroupRooms extends BorderPane {
         }
     }
 
+    public void setDefaults(){
+        contentFlowPane.getChildren().clear();
+        libraryComboBox.setValue("Alla bibliotek");
+    }
+
     public static GroupRooms inst(){
         return instance;
     }
