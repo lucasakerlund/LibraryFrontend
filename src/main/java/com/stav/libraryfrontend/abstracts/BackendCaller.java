@@ -436,7 +436,6 @@ public class BackendCaller {
 
     public Customer getCustomerByEmail (String email){
         String data = request("api/customers/getCustomerByEmail?email=" + email);
-
         System.out.println("Returned in BackendCaller = " + data);
 
         if(data.equals("")){
@@ -460,5 +459,8 @@ public class BackendCaller {
         }
         return output.toArray(new String[output.size()]);
     }
-
+    public boolean addBook(String title, String description, String authors, String genres, String isbn, String published, int page_count, String language, String image){
+        String data = request("/api/book_details/add?title" + title + "description" + description + "authors" + authors + "genres" + genres + "isbn" + isbn + "published" + published + "page_count" + page_count + "language" + language + "image" + image);
+        return Boolean.parseBoolean(data);
+    }
 }

@@ -6,27 +6,26 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="530.0" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="530.0" styleClass="find-customer-loaned-book-view" stylesheets="@../../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" spacing="15.0">
                <children>
-                  <Label text="Rummets namn:" />
-                  <Label fx:id="roomNameLabel" layoutX="10.0" layoutY="10.0" text="roomNameLabel" />
+                  <Label styleClass="find-customer-loaned-book-view-labels" text="Rummets namn:" />
+                  <Label fx:id="roomNameLabel" layoutX="10.0" layoutY="10.0" styleClass="find-customer-loaned-book-view-labels" text="roomNameLabel" />
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="15.0">
                <children>
-                  <Label text="Bibliotekets namn:" />
-                  <Label fx:id="libraryNameLabel" layoutX="10.0" layoutY="10.0" text="libraryNameLabel" />
+                  <Label styleClass="find-customer-loaned-book-view-labels" text="Bibliotekets namn:" />
+                  <Label fx:id="libraryNameLabel" layoutX="10.0" layoutY="10.0" styleClass="find-customer-loaned-book-view-labels" text="libraryNameLabel" />
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="15.0">
                <children>
-                  <Label text="Bokad tid:" />
-                  <Label fx:id="bookedTimeLabel" layoutX="10.0" layoutY="10.0" text="bookedTimeLabel" />
+                  <Label styleClass="find-customer-loaned-book-view-labels" text="Bokad tid:" />
+                  <Label fx:id="bookedTimeLabel" layoutX="10.0" layoutY="10.0" styleClass="find-customer-loaned-book-view-labels" text="bookedTimeLabel" />
                </children>
             </HBox>
          </children>
@@ -35,13 +34,13 @@
    <center>
       <HBox alignment="CENTER" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Kundens namn:" />
-            <Label fx:id="customerNameLabel" layoutX="10.0" layoutY="10.0" text="customerNameLabel" />
+            <Label styleClass="find-customer-loaned-book-view-labels" text="Kundens namn:" />
+            <Label fx:id="customerNameLabel" layoutX="10.0" layoutY="10.0" styleClass="find-customer-loaned-book-view-labels" text="customerNameLabel" />
          </children>
       </HBox>
    </center>
    <bottom>
-      <Label fx:id="cancelBookingButton" text="Avboka kundens önskade tid" BorderPane.alignment="CENTER">
+      <Label fx:id="cancelBookingButton" styleClass="find-customer-reserved-group-room-view-cancel-time-button" text="Avboka kundens önskade tid" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="30.0" />
          </BorderPane.margin>

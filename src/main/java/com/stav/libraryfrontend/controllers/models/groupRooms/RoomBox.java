@@ -17,8 +17,10 @@ public class RoomBox extends StackPane {
 
     public String roomDescription;
 
+    public String libName;
 
-    public RoomBox(int room_id, String name, String description){
+
+    public RoomBox(int room_id, String name, String description, String libraryName){
         id = room_id;
         roomDescription = description;
 
@@ -33,13 +35,14 @@ public class RoomBox extends StackPane {
         }
 
         roomNameLabel.setText(name);
+        libName = libraryName;
 
         setup();
     }
 
     public void setup(){
         this.setOnMousePressed(e -> {
-            SubSceneHandler.inst().show(new RoomView(id, roomNameLabel.getText(), roomDescription));
+            SubSceneHandler.inst().show(new RoomView(id, roomNameLabel.getText(), roomDescription, libName));
         });
     }
 

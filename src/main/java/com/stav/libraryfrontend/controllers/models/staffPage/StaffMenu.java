@@ -4,6 +4,7 @@ import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.controllers.models.AdminScreen;
 import com.stav.libraryfrontend.controllers.models.CustomerMenu;
 import com.stav.libraryfrontend.controllers.models.staffPage.books.StaffBookPage;
+import com.stav.libraryfrontend.controllers.models.staffPage.findCustomer.CustomerContent;
 import com.stav.libraryfrontend.controllers.models.staffPage.findCustomer.FindCustomerPage;
 import com.stav.libraryfrontend.controllers.models.staffPage.topSeller.TopSellerPage;
 import javafx.fxml.FXML;

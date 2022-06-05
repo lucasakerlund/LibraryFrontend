@@ -8,7 +8,7 @@
 
 <fx:root prefHeight="426.0" prefWidth="602.0" styleClass="customer-box" stylesheets="@../../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <VBox alignment="TOP_CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" maxHeight="122.0" maxWidth="200.0" prefHeight="361.0" prefWidth="417.0" spacing="10.0" styleClass="find-customer-basic-info-vbox" BorderPane.alignment="TOP_CENTER">
          <children>
             <Label fx:id="firstName" layoutX="10.0" layoutY="10.0" text="firstName">
                <VBox.margin>
@@ -17,6 +17,9 @@
             <Label fx:id="lastName" layoutX="10.0" layoutY="27.0" text="lastName" />
             <Label fx:id="customerId" layoutX="286.0" layoutY="52.0" text="customerId" />
          </children>
+         <BorderPane.margin>
+            <Insets top="15.0" />
+         </BorderPane.margin>
       </VBox>
    </center>
    <top>

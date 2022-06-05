@@ -32,9 +32,12 @@ public class RoomView extends BorderPane {
     @FXML
     private Label messageLabel;
 
+    @FXML
+    private Label libraryNameLabel;
+
     private TimeSelectButton focused;
 
-    public RoomView(int id, String name, String description) {
+    public RoomView(int id, String name, String description, String libraryName) {
         this.roomId = id;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/groupRooms/roomView.fxml"));
         fxmlLoader.setRoot(this);
@@ -48,6 +51,7 @@ public class RoomView extends BorderPane {
 
         roomName.setText(name);
         descriptionArea.setText(description);
+        libraryNameLabel.setText(libraryName);
 
         // Hides message label by default until it is needed
         messageLabel.setText("");

@@ -1,5 +1,6 @@
 package com.stav.libraryfrontend.controllers.models.staffPage;
 
+import com.stav.libraryfrontend.abstracts.BackendCaller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -21,6 +22,33 @@ public class StaffAddBookPage extends BorderPane {
     @FXML
     private Label addButton;
 
+    @FXML
+    private TextField titleField;
+
+    @FXML
+    private TextField descriptionField;
+
+    @FXML
+    private TextField authorField;
+
+    @FXML
+    private TextField genreField;
+
+    @FXML
+    private TextField lastPublishedField;
+
+    @FXML
+    private TextField amountOfPagesField;
+
+    @FXML
+    private TextField languageField;
+
+    @FXML
+    private TextField imageField;
+
+    @FXML
+    private TextField succeedField;
+
 
     public StaffAddBookPage(){
 
@@ -32,6 +60,18 @@ public class StaffAddBookPage extends BorderPane {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        setup();
+    }
+    public void setup(){
+        addButton.setOnMousePressed(e ->{
+            BackendCaller.inst().addBook(titleField.getText(), descriptionField.getText(), authorField.getText(), genreField.getText(), isbnField.getText(), lastPublishedField.getText(), Integer.parseInt(amountOfPagesField.getText()), languageField.getText(), imageField.getText());
+            if (titleField.getText().equals("") || descriptionField.getText().equals("") || authorField.getText().equals("") || genreField.getText().equals("") || isbnField.getText().equals("") || lastPublishedField.getText().equals("")
+                    || amountOfPagesField.getText().equals("") || languageField.getText().equals("") || imageField.getText().equals("")){
+                return;
+            }
+
+        });
+
     }
 
     public static StaffAddBookPage inst(){

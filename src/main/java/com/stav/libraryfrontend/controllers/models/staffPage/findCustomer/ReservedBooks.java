@@ -32,6 +32,10 @@ public class ReservedBooks extends ScrollPane {
 
     }
 
+    public void clearInfo(){
+        content.getChildren().clear();
+    }
+
     public void addBookBox(ReservedBookBox rbb){
         content.getChildren().add(rbb);
     }

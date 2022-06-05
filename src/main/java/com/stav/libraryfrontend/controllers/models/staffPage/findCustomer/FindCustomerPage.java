@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class FindCustomerPage extends BorderPane {
 
@@ -42,7 +43,6 @@ public class FindCustomerPage extends BorderPane {
         }
 
         errorLabel.setVisible(false); //Default error label is off
-
         CustomerContent.inst().setInvisible();
         contentPane.setCenter(CustomerContent.inst());
 
@@ -50,55 +50,95 @@ public class FindCustomerPage extends BorderPane {
     }
 
     public void setup(){
+        //Makes a customer object to check if the email is valid or not
+
+
        searchButton.setOnMousePressed(e -> {
+           Customer customer = BackendCaller.inst().getCustomerByEmail(searchBar.getText());
+           // If email is valid, continue - Else, display error
+           if (customer == null) {
+               errorLabel.setVisible(true);
+               errorLabel.setText("Kunde inte hitta kontot...");
+           } else {
+               errorLabel.setVisible(false);
+               CustomerContent.inst().setVisible();
+               getBasicInfo();
+               getLoanedBooksInfo();
+               getReservedBooksInfo();
+               getGroupRoomBookingsInfo();
+               searchBar.setText("");
+           }
+       });
+    }
 
-            Customer c = BackendCaller.inst().getCustomerByEmail(searchBar.getText());
-            if (c == null){
-                errorLabel.setVisible(true);
-                errorLabel.setText("Kunde inte hitta kontot...");
-            } else{
-                BasicInfo.inst().setInfo(c.getCustomerId(), c.getEmail(), c.getFirstName(), c.getLastName());
-                CustomerContent.inst().setVisible();
-                CustomerContent.inst().setCenter(BasicInfo.inst());
+    public void getBasicInfo() {
+            Customer customer = BackendCaller.inst().getCustomerByEmail(searchBar.getText());
+            BasicInfo.inst().setInfo(customer.getCustomerId(), customer.getEmail(), customer.getFirstName(), customer.getLastName());
+            CustomerContent.inst().setCenter(BasicInfo.inst());
+    }
 
-                List<LoanedBook> loanedBooks = BackendCaller.inst().getLoanedBooks(c.getCustomerId());
-                for (int i = 0; i < loanedBooks.size(); i++) {
-                    Book b = BackendCaller.inst().getBook(loanedBooks.get(i).getBookId());
+    public void getLoanedBooksInfo(){
+        Customer customer = BackendCaller.inst().getCustomerByEmail(searchBar.getText());
+        LoanedBooks.inst().clearInfo();
+        List<LoanedBook> loanedBooks = BackendCaller.inst().getLoanedBooks(customer.getCustomerId());
+        for (int i = 0; i < loanedBooks.size(); i++) {
+            Book b = BackendCaller.inst().getBook(loanedBooks.get(i).getBookId());
 
-                    String replace1 = Arrays.toString(b.getAuthors()).replace("[", "");
-                    String authors = replace1.replace("]", "");
+            String replace1 = Arrays.toString(b.getAuthors()).replace("[", "");
+            String authors = replace1.replace("]", "");
 
-                    LoanedBookBox lbb = new LoanedBookBox(b.getTitle(), authors, b.getIsbn(), b.getImageSrc(), loanedBooks.get(i).getReturnDate());
-                    LoanedBooks.inst().addBookBox(lbb);
+            LoanedBookBox lbb = new LoanedBookBox(b.getTitle(), authors, b.getIsbn(), b.getImageSrc(), loanedBooks.get(i).getReturnDate());
+            LoanedBooks.inst().addBookBox(lbb);
+        }
+    }
+
+    public void getReservedBooksInfo(){
+        Customer customer = BackendCaller.inst().getCustomerByEmail(searchBar.getText());
+        ReservedBooks.inst().clearInfo();
+        List <BookQueue> reservedBooks = BackendCaller.inst().getReservedBooks(customer.getCustomerId());
+        for (int i = 0; i < reservedBooks.size(); i++) {
+            Book b = BackendCaller.inst().getBook(reservedBooks.get(i).getIsbn());
+
+            String replace1 = Arrays.toString(b.getAuthors()).replace("[", "");
+            String authors = replace1.replace("]", "");
+
+            ReservedBookBox rbb = new ReservedBookBox(b.getTitle(), authors, reservedBooks.get(i).getReservationDate(), b.getIsbn(), b.getImageSrc());
+            ReservedBooks.inst().addBookBox(rbb);
+        }
+    }
+
+    public void getGroupRoomBookingsInfo() {
+        Customer customer = BackendCaller.inst().getCustomerByEmail(searchBar.getText());
+        GroupRoomBookings.inst().clearInfo();
+
+        // Gets all the users booked times and gets ALL group rooms, so we can find what the name of the room
+        // of a particular booking is.
+        List<JSONObject> usersTimes = BackendCaller.inst().getUsersGroupRoomTimesById(customer.getCustomerId());
+        List<GroupRoom> allGroupRooms = BackendCaller.inst().getGroupRooms();
+
+        int libraryID;
+        LibraryModel l = null;
+
+        for (int i = 0; i < usersTimes.size(); i++) {
+            for (int j = 0; j < usersTimes.size(); j++) {
+                if (Objects.equals(allGroupRooms.get(j).getName(), usersTimes.get(i).getString("name"))){
+                    libraryID = allGroupRooms.get(j).getLibrary_id();
+                    l = BackendCaller.inst().getLibraryById(libraryID);
+                    System.out.println("l = " + l);
                 }
-
-                List <BookQueue> reservedBooks = BackendCaller.inst().getReservedBooks(c.getCustomerId());
-                for (int i = 0; i < reservedBooks.size(); i++) {
-                    Book b = BackendCaller.inst().getBook(reservedBooks.get(i).getIsbn());
-
-                    String replace1 = Arrays.toString(b.getAuthors()).replace("[", "");
-                    String authors = replace1.replace("]", "");
-
-                    ReservedBookBox rbb = new ReservedBookBox(b.getTitle(), authors, reservedBooks.get(i).getReservationDate(), b.getIsbn(), b.getImageSrc());
-                    ReservedBooks.inst().addBookBox(rbb);
-                }
-
-                List<JSONObject> usersTimes = BackendCaller.inst().getUsersGroupRoomTimesById(c.getCustomerId());
-                List<GroupRoom> allGroupRooms = BackendCaller.inst().getGroupRooms();
-                int libraryId;
-
-                BackendCaller.inst().getLibraryById(1);
-
-                for (int i = 0; i < usersTimes.size(); i++) {
-                    // JAG BEHÖVER FÅ TILLBAKA ETT LIBRARY NAMN PER LIBRARY ID
-                    //GroupRoomBox box = new GroupRoomBox(usersTimes.get(i).getString("name"));
-                    //GroupRoomBookings.inst().addRoomBox(box);
-                }
-
-
-                // Kötta in Lånade böcker, reserverade böcker och bokade grupprum HÄR
             }
-        });
+            GroupRoomBox box = new GroupRoomBox(usersTimes.get(i).getString("name"), l.getName(),
+                    usersTimes.get(i).getString("time"), usersTimes.get(i).getInt("time_id"),
+                    customer.getFirstName() + " " + customer.getLastName(), customer.getCustomerId());
+            GroupRoomBookings.inst().addRoomBox(box);
+        }
+    }
+
+    public void clearAll(){
+        LoanedBooks.inst().clearInfo();
+        ReservedBooks.inst().clearInfo();
+        GroupRoomBookings.inst().clearInfo();
+        searchBar.setText("");
     }
 
     public static FindCustomerPage inst(){

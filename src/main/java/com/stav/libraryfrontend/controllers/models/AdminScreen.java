@@ -4,6 +4,8 @@ import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.StaffDetails;
 import com.stav.libraryfrontend.controllers.models.staffPage.StaffMenu;
+import com.stav.libraryfrontend.controllers.models.staffPage.findCustomer.CustomerContent;
+import com.stav.libraryfrontend.controllers.models.staffPage.findCustomer.FindCustomerPage;
 import com.stav.libraryfrontend.models.Staff;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -78,6 +80,8 @@ public class AdminScreen extends BorderPane {
                 errorLabel.setVisible(true);
                 return;
             }
+            CustomerContent.inst().setInvisible();
+            FindCustomerPage.inst().clearAll();
             StaffDetails.inst().setStaff(staff);
             Library.inst().setContent(StaffMenu.inst());
             usernameInput.setText("");

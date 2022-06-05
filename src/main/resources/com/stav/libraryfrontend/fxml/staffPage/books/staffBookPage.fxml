@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<fx:root prefHeight="400.0" prefWidth="600.0" styleClass="staff-page" stylesheets="@../../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="400.0" prefWidth="716.0" styleClass="staff-page" stylesheets="@../../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0" styleClass="staff-page-header" stylesheets="@../../../css/main.css" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -14,11 +14,14 @@
          </BorderPane.margin>
          <children>
             <TextField fx:id="searchField" maxWidth="-Infinity" promptText="Sök..." />
-            <Label fx:id="searchButton" styleClass="staff-book-page-search-button" text="Hitta" />
+            <Label fx:id="searchButton" styleClass="staff-add-button" stylesheets="@../../../css/main.css" text="Hitta" />
          </children>
       </HBox>
    </top>
    <center>
-      <BorderPane fx:id="staffContent" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <BorderPane fx:id="staffContent" prefHeight="300.0" prefWidth="660.0" BorderPane.alignment="CENTER">
+         <top>
+            <HBox alignment="CENTER" spacing="25.0" BorderPane.alignment="CENTER" />
+         </top></BorderPane>
    </center>
 </fx:root>
