@@ -26,6 +26,8 @@ public class Books extends BorderPane {
 
     @FXML
     private FlowPane box;
+    @FXML
+    private VBox vbox;
 
     @FXML
     private ComboBox<String> popularChoice;
@@ -93,6 +95,7 @@ public class Books extends BorderPane {
         for (JSONObject library : BackendCaller.inst().getLibraries()) {
             libraryChoice.getItems().add(library.getString("name"));
         }
+        vbox.getChildren().add(SuggestionBox.inst());
     }
 
     private boolean correctDateFormat() {
