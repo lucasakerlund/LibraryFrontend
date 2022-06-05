@@ -312,7 +312,7 @@ public class BackendCaller {
     }
 
     public boolean leaveQueue(String isbn, int customerId){
-        String data = request("api/book_queue/leave_queue?isbn=" + isbn + "&customerId=" + customerId);
+        String data = request("api/book_queue/leave_queue?isbn=" + isbn + "&customerId=" + customerId); 
         return Boolean.parseBoolean(data);
     }
 
@@ -369,6 +369,25 @@ public class BackendCaller {
             returnable.add(object);
         }
         return returnable;
+    }
+
+    public void getAllGroupRoomBookings(){
+        String data = request("api/group_room_times/allRoomBookings");
+        JSONArray allBookings = new JSONArray(data);
+
+        System.out.println("Data: " + data);
+
+        List<JSONObject> returnable = new ArrayList<>();
+
+        for (int i = 0; i < allBookings.length(); i++) {
+            JSONObject o = new JSONObject();
+            o.put("customerId", allBookings.getJSONObject(i).getInt("customerId"));
+            o.put("timeId", allBookings.getJSONObject(i).getInt("timeId"));
+
+            returnable.add(o);
+        }
+
+        System.out.println("What the final list looks like: " + returnable);
     }
 
     public boolean bookGroupRoom(int timeId, int customerId){
@@ -450,6 +469,7 @@ public class BackendCaller {
                 object.getString("password")
         );
     }
+
 
     private String[] convertJSONArrayToStringArray(JSONArray array){
         List<String> output = new ArrayList<>();

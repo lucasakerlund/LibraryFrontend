@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="250.0" styleClass="booking-box" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" styleClass="booking-box" stylesheets="@../../../css/main.css" BorderPane.alignment="CENTER">
@@ -13,7 +12,7 @@
             <Label fx:id="roomNameLabel" styleClass="booking-box-info-labels" text="Room name label" />
             <Label fx:id="bookingTimeLabel" layoutX="89.0" layoutY="77.0" styleClass="booking-box-info-labels" text="Booking time label" />
             <Label fx:id="bookingDateLabel" layoutX="85.0" layoutY="64.0" styleClass="booking-box-info-labels" text="Booking date label" />
-            <Label fx:id="cancelButton" layoutX="89.0" layoutY="85.0" styleClass="booking-box-cancel-button" text="Cancel button">
+            <Label fx:id="cancelButton" layoutX="89.0" layoutY="85.0" styleClass="booking-box-cancel-button" text="Avboka tiden">
                <VBox.margin>
                   <Insets top="25.0" />
                </VBox.margin>
