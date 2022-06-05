@@ -400,7 +400,7 @@ public class BackendCaller {
     }
 
     public boolean createStaff(String firstName, String lastName, String userName, String password, String role){
-        String data = request("api/employees/create?firstName=" + firstName + "&lastName=" + lastName + "&email=" + userName + "&password=" + password + "&role=" + role);
+        String data = request("api/employees/create?firstName=" + firstName + "&lastName=" + lastName + "&mail=" + userName + "&password=" + password + "&role=" + role);
         return Boolean.parseBoolean(data);
     }
 
@@ -409,6 +409,7 @@ public class BackendCaller {
         if(data.equals("")){
             return null;
         }
+        System.out.println("data " + data);
         JSONObject object = new JSONObject(data);
         return new Customer(object.getInt("customer_id"),
                 object.getString("first_name"),
