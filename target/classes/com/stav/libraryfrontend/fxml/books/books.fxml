@@ -14,7 +14,7 @@
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <VBox alignment="TOP_CENTER">
+            <VBox fx:id="vbox" alignment="TOP_CENTER">
                <children>
                   <FlowPane fx:id="box" hgap="10.0" vgap="10.0">
                      <padding>

@@ -95,7 +95,7 @@ public class ExistingUserLoginScreen extends BorderPane {
         clearOldInfo();
         UserDetails.inst().setCustomer(customer);
         Library.inst().setContent(CustomerMenu.inst());
-        CustomerMenu.inst().open(Books.inst());
+        CustomerMenu.inst().open("books");
 
         LoanedBooksView.inst().loadBooks();
         MyBookingsPage.inst().loadBookings();

@@ -157,7 +157,13 @@
 
 
 .books-header-released{
-    -fx-text-box-border: transparent;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-background-radius: 10;
+    -fx-background-insets: 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-border-color: gray;
+    -fx-prompt-text-fill: black;
 }
 
 .books-header-released:focused{
