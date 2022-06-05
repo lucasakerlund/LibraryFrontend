@@ -1425,3 +1425,13 @@
 }
 
 /* Find customer page - button focus */
+
+/* available times box */
+
+.available-times-box{
+    -fx-background-color: white;
+    -fx-border-width: 2;
+    -fx-border-color: orange;
+}
+
+/* available times box */

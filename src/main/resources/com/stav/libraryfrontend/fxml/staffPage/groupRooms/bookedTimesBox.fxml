@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Bokad av: " />
+            <Label fx:id="accountLabel" layoutX="10.0" layoutY="10.0" text="accountLabel" />
+            <Label layoutX="38.0" layoutY="10.0" text="Tid: " />
+            <Label fx:id="timeLabel" layoutX="66.0" layoutY="10.0" text="timeLabel" />
+            <Label layoutX="132.0" layoutY="10.0" text="Datum: " />
+            <Label fx:id="dateLabel" layoutX="207.0" layoutY="10.0" text="dateLabel" />
+         </children>
+      </HBox>
+   </center>
+</BorderPane>

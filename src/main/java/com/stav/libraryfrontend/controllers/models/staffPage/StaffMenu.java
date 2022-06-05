@@ -2,10 +2,9 @@ package com.stav.libraryfrontend.controllers.models.staffPage;
 
 import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.controllers.models.AdminScreen;
-import com.stav.libraryfrontend.controllers.models.CustomerMenu;
 import com.stav.libraryfrontend.controllers.models.staffPage.books.StaffBookPage;
-import com.stav.libraryfrontend.controllers.models.staffPage.findCustomer.CustomerContent;
 import com.stav.libraryfrontend.controllers.models.staffPage.findCustomer.FindCustomerPage;
+import com.stav.libraryfrontend.controllers.models.staffPage.groupRooms.StaffGroupRooms;
 import com.stav.libraryfrontend.controllers.models.staffPage.topSeller.TopSellerPage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -55,7 +54,7 @@ public class StaffMenu extends BorderPane {
         }
             buttons.put("books", new MenuButton(allBooksButton, StaffBookPage.inst()));
             buttons.put("dunno", new MenuButton(staffAddBookButton, StaffAddBookPage.inst()));
-            buttons.put("locals", new MenuButton(staffLocalsButton, null));
+            buttons.put("locals", new MenuButton(staffLocalsButton, StaffGroupRooms.inst()));
             buttons.put("topSeller", new MenuButton(topSellerButton, TopSellerPage.inst()));
             buttons.put("findCustomer", new MenuButton(findCustomerButton, FindCustomerPage.inst()));
 
