@@ -90,6 +90,7 @@ public class NewCustomerScreen extends BorderPane {
             }
 
             BankID.inst().setConfirmListener((s) -> {
+                SubSceneHandler.inst().hide();
                 boolean response = BackendCaller.inst().createCustomer(firstNameTextField.getText(), lastNameTextField.getText(),
                         emailTextField.getText(), passwordField.getText());
                 if(!response){
@@ -98,7 +99,6 @@ public class NewCustomerScreen extends BorderPane {
                 }
                 LoginScreen.inst().userAddedSuccessfully();
                 Library.inst().setContent(LoginScreen.inst());
-                SubSceneHandler.inst().hide();
             });
             SubSceneHandler.inst().show(BankID.inst());
 
