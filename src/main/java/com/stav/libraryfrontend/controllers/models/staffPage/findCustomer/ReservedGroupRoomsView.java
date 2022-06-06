@@ -2,6 +2,7 @@ package com.stav.libraryfrontend.controllers.models.staffPage.findCustomer;
 
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.SubSceneHandler;
+import com.stav.libraryfrontend.models.Customer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -26,7 +27,13 @@ public class ReservedGroupRoomsView extends BorderPane {
     @FXML
     private Label roomNameLabel;
 
-    public ReservedGroupRoomsView(String roomName, String libraryName, String bookedTime, int timeID, String customerName, int customerID){
+    private int timeId;
+    private Customer customer;
+
+    public ReservedGroupRoomsView(String roomName, String libraryName, String bookedTime, int timeId, Customer customer){
+        this.timeId = timeId;
+        this.customer = customer;
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/staffPage/findCustomer/reservedGroupRoomsView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -40,15 +47,15 @@ public class ReservedGroupRoomsView extends BorderPane {
         roomNameLabel.setText(roomName);
         libraryNameLabel.setText(libraryName);
         bookedTimeLabel.setText(bookedTime);
-        customerNameLabel.setText(customerName);
+        customerNameLabel.setText(customer.getFirstName() + " " + customer.getLastName());
 
-        setup(timeID, customerID);
+        setup();
     }
 
-    public void setup(int timeID, int customerID){
+    public void setup(){
         cancelBookingButton.setOnMousePressed(e -> {
-            BackendCaller.inst().removeGroupRoomBooking(timeID, customerID);
-            FindCustomerPage.inst().getGroupRoomBookingsInfo();
+            BackendCaller.inst().removeGroupRoomBooking(timeId, customer.getCustomerId());
+            FindCustomerPage.inst().getGroupRoomBookingsInfo(customer);
             SubSceneHandler.inst().hide();
         });
     }

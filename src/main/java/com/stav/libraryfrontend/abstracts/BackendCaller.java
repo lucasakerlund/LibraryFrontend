@@ -336,7 +336,7 @@ public class BackendCaller {
         String data = request("api/group_room_times/available_times/" + roomId);
         JSONArray allTimes = new JSONArray(data);
 
-        List<GroupRoomTime> returnable = new ArrayList<GroupRoomTime>();
+        List<GroupRoomTime> output = new ArrayList<GroupRoomTime>();
 
         for (int i = 0; i < allTimes.length(); i++){
             GroupRoomTime groupRoomTime = new GroupRoomTime
@@ -345,9 +345,21 @@ public class BackendCaller {
                             allTimes.getJSONObject(i).getString("time"),
                             allTimes.getJSONObject(i).getString("date"));
 
-            returnable.add(groupRoomTime);
+            output.add(groupRoomTime);
         }
-        return returnable;
+        return output;
+    }
+
+    public List<JSONObject> getBookedGroupRoomTimes(int roomId){
+        String data = request("api/group_room_times/booked_times/" + roomId);
+        JSONArray allTimes = new JSONArray(data);
+
+        List<JSONObject> output = new ArrayList<>();
+
+        for (int i = 0; i < allTimes.length(); i++){
+            output.add(allTimes.getJSONObject(i));
+        }
+        return output;
     }
 
     public List<JSONObject> getUsersGroupRoomTimesById(int customer_id){
@@ -371,23 +383,23 @@ public class BackendCaller {
         return returnable;
     }
 
-    public void getAllGroupRoomBookings(){
+    public List<RoomBooking> getAllGroupRoomBookings(){
         String data = request("api/group_room_times/allRoomBookings");
         JSONArray allBookings = new JSONArray(data);
 
         System.out.println("Data: " + data);
 
-        List<JSONObject> returnable = new ArrayList<>();
+        List<RoomBooking> output = new ArrayList<>();
 
         for (int i = 0; i < allBookings.length(); i++) {
-            JSONObject o = new JSONObject();
-            o.put("customerId", allBookings.getJSONObject(i).getInt("customerId"));
-            o.put("timeId", allBookings.getJSONObject(i).getInt("timeId"));
 
-            returnable.add(o);
+            output.add(new RoomBooking(
+                    allBookings.getJSONObject(i).getInt("timeId"),
+                    allBookings.getJSONObject(i).getInt("customerId")
+                    ));
         }
 
-        System.out.println("What the final list looks like: " + returnable);
+        return output;
     }
 
     public boolean bookGroupRoom(int timeId, int customerId){
@@ -398,6 +410,22 @@ public class BackendCaller {
     public boolean removeGroupRoomBooking(int timeId, int customerId){
         String data = request("api/group_room_times/unbook?timeId=" + timeId + "&customerId=" + customerId);
         return Boolean.parseBoolean(data);
+    }
+
+    public Customer getCustomerByEmail (String email){
+        String data = request("api/customers/getCustomerByEmail?email=" + email);
+        System.out.println("Returned in BackendCaller = " + data);
+
+        if(data.equals("")){
+            return null;
+        }
+        JSONObject object = new JSONObject(data);
+        return new Customer(object.getInt("customer_id"),
+                object.getString("first_name"),
+                object.getString("last_name"),
+                object.getString("email"),
+                object.getString("password")
+        );
     }
 
     //Post
@@ -453,23 +481,6 @@ public class BackendCaller {
                 object.getString("role")
         );
     }
-
-    public Customer getCustomerByEmail (String email){
-        String data = request("api/customers/getCustomerByEmail?email=" + email);
-        System.out.println("Returned in BackendCaller = " + data);
-
-        if(data.equals("")){
-            return null;
-        }
-        JSONObject object = new JSONObject(data);
-        return new Customer(object.getInt("customer_id"),
-                object.getString("first_name"),
-                object.getString("last_name"),
-                object.getString("email"),
-                object.getString("password")
-        );
-    }
-
 
     private String[] convertJSONArrayToStringArray(JSONArray array){
         List<String> output = new ArrayList<>();

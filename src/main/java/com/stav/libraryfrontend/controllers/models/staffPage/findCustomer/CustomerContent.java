@@ -38,8 +38,6 @@ public class CustomerContent extends BorderPane {
             e.printStackTrace();
         }
 
-        setFocused(generalInfoButton);
-
         setup();
     }
 
@@ -64,6 +62,10 @@ public class CustomerContent extends BorderPane {
             this.setCenter(GroupRoomBookings.inst());
             setFocused(bookedRoomsButton);
         });
+    }
+
+    public void setDefaultFocus(){
+        setFocused(generalInfoButton);
     }
 
     public void setFocused(Label focused) {

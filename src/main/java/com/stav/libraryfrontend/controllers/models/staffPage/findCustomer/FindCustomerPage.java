@@ -59,26 +59,27 @@ public class FindCustomerPage extends BorderPane {
            if (customer == null) {
                errorLabel.setVisible(true);
                errorLabel.setText("Kunde inte hitta kontot...");
+               clearAll();
+               CustomerContent.inst().setVisible(false);
            } else {
                errorLabel.setVisible(false);
                CustomerContent.inst().setVisible();
-               getBasicInfo();
-               getLoanedBooksInfo();
-               getReservedBooksInfo();
-               getGroupRoomBookingsInfo();
+               getBasicInfo(customer);
+               getLoanedBooksInfo(customer);
+               getReservedBooksInfo(customer);
+               getGroupRoomBookingsInfo(customer);
+               CustomerContent.inst().setDefaultFocus();
                searchBar.setText("");
            }
        });
     }
 
-    public void getBasicInfo() {
-            Customer customer = BackendCaller.inst().getCustomerByEmail(searchBar.getText());
+    public void getBasicInfo(Customer customer) {
             BasicInfo.inst().setInfo(customer.getCustomerId(), customer.getEmail(), customer.getFirstName(), customer.getLastName());
             CustomerContent.inst().setCenter(BasicInfo.inst());
     }
 
-    public void getLoanedBooksInfo(){
-        Customer customer = BackendCaller.inst().getCustomerByEmail(searchBar.getText());
+    public void getLoanedBooksInfo(Customer customer){
         LoanedBooks.inst().clearInfo();
         List<LoanedBook> loanedBooks = BackendCaller.inst().getLoanedBooks(customer.getCustomerId());
         for (int i = 0; i < loanedBooks.size(); i++) {
@@ -92,8 +93,7 @@ public class FindCustomerPage extends BorderPane {
         }
     }
 
-    public void getReservedBooksInfo(){
-        Customer customer = BackendCaller.inst().getCustomerByEmail(searchBar.getText());
+    public void getReservedBooksInfo(Customer customer){
         ReservedBooks.inst().clearInfo();
         List <BookQueue> reservedBooks = BackendCaller.inst().getReservedBooks(customer.getCustomerId());
         for (int i = 0; i < reservedBooks.size(); i++) {
@@ -107,8 +107,7 @@ public class FindCustomerPage extends BorderPane {
         }
     }
 
-    public void getGroupRoomBookingsInfo() {
-        Customer customer = BackendCaller.inst().getCustomerByEmail(searchBar.getText());
+    public void getGroupRoomBookingsInfo(Customer customer) {
         GroupRoomBookings.inst().clearInfo();
 
         // Gets all the users booked times and gets ALL group rooms, so we can find what the name of the room
@@ -120,8 +119,8 @@ public class FindCustomerPage extends BorderPane {
         LibraryModel l = null;
 
         for (int i = 0; i < usersTimes.size(); i++) {
-            for (int j = 0; j < usersTimes.size(); j++) {
-                if (Objects.equals(allGroupRooms.get(j).getName(), usersTimes.get(i).getString("name"))){
+            for (int j = 0; j < allGroupRooms.size(); j++) {
+                if (allGroupRooms.get(j).getName().equalsIgnoreCase(usersTimes.get(i).getString("name"))){
                     libraryID = allGroupRooms.get(j).getLibrary_id();
                     l = BackendCaller.inst().getLibraryById(libraryID);
                     System.out.println("l = " + l);
@@ -129,7 +128,7 @@ public class FindCustomerPage extends BorderPane {
             }
             GroupRoomBox box = new GroupRoomBox(usersTimes.get(i).getString("name"), l.getName(),
                     usersTimes.get(i).getString("time"), usersTimes.get(i).getInt("time_id"),
-                    customer.getFirstName() + " " + customer.getLastName(), customer.getCustomerId());
+                    customer);
             GroupRoomBookings.inst().addRoomBox(box);
         }
     }

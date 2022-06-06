@@ -1440,4 +1440,10 @@
     -fx-border-color: orange;
 }
 
+.booked-times-box{
+    -fx-background-color: white;
+    -fx-border-width: 2;
+    -fx-border-color: orange;
+}
+
 /* available times box */

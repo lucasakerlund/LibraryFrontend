@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
@@ -47,14 +48,21 @@ public class StaffGroupRoomsView extends BorderPane {
         setup();
     }
 
-    public void addTimes(int room_id){
+    public void addTimes(int roomId){
         // TESTING
         BackendCaller.inst().getAllGroupRoomBookings();
 
-
-        List<GroupRoomTime> availableRoomTimes = BackendCaller.inst().getGroupRoomTimes(room_id);
+        List<GroupRoomTime> availableRoomTimes = BackendCaller.inst().getGroupRoomTimes(roomId);
         for (int i = 0; i < availableRoomTimes.size(); i++) {
             allTimesVbox.getChildren().add(new AvailableTimesBox(availableRoomTimes.get(i).getTime(), availableRoomTimes.get(i).getDate()));
+        }
+
+        for (JSONObject bookedGroupRoomTime : BackendCaller.inst().getBookedGroupRoomTimes(roomId)) {
+            allBookedTimesVbox.getChildren().add(new BookedTimesBox(
+                    bookedGroupRoomTime.getString("email"),
+                    bookedGroupRoomTime.getString("time"),
+                    bookedGroupRoomTime.getString("date")
+                    ));
         }
     }
 
