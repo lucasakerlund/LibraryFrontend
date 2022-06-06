@@ -89,7 +89,6 @@ public class BackendCaller {
 
     public Book getBook(int bookId){
         String data = request("api/books/id/" + bookId);
-        System.out.println("test " + data);
         JSONObject object = new JSONObject(data);
         return new Book(
                 object.getInt("book_id"),
@@ -108,7 +107,6 @@ public class BackendCaller {
 
     public Book getBook(String isbn){
         String data = request("api/book_details/" + isbn);
-        System.out.println("ej123 " + data);
         JSONObject object = new JSONObject(data);
         return new Book(
                 0,
@@ -127,7 +125,6 @@ public class BackendCaller {
 
     public int getAmountOfBooks(String isbn){
         String data = request("api/books/amount_with_isbn/" + isbn);
-        System.out.println(data);
         return Integer.parseInt(data);
     }
 
@@ -174,7 +171,6 @@ public class BackendCaller {
             return new ArrayList<>();
         }
         String data = request("api/book_details/genre/" + genre);
-        System.out.println(data);
         if(data.equals("")){
             return new ArrayList<>();
         }
@@ -207,7 +203,6 @@ public class BackendCaller {
 
     public JSONArray getAmountOfBookInLibraries(String isbn){
         String data = request("api/books/amount_in_libraries/" + isbn);
-        System.out.println(data);
         return new JSONArray(data);
     }
 
@@ -359,7 +354,6 @@ public class BackendCaller {
     public List<JSONObject> getUsersGroupRoomTimesById(int customer_id){
         // We need all the group room times and then separate out the ones with my cus_id
         String data = request("api/group_room_times/get_times_by_id/" + customer_id);
-        System.out.println("The String containing all bookings: " + data);
 
         JSONArray allUsersTimes = new JSONArray(data);
 
@@ -380,8 +374,6 @@ public class BackendCaller {
     public List<RoomBooking> getAllGroupRoomBookings(){
         String data = request("api/group_room_times/allRoomBookings");
         JSONArray allBookings = new JSONArray(data);
-
-        System.out.println("Data: " + data);
 
         List<RoomBooking> output = new ArrayList<>();
 
@@ -409,7 +401,6 @@ public class BackendCaller {
     public Customer getCustomerByEmail(String email){
         email = encode(email);
         String data = request("api/customers/getCustomerByEmail?email=" + email);
-        System.out.println("Returned in BackendCaller = " + data);
 
         if(data.equals("")){
             return null;
@@ -493,7 +484,6 @@ public class BackendCaller {
         if(data.equals("")){
             return null;
         }
-        System.out.println("data " + data);
         JSONObject object = new JSONObject(data);
         return new Customer(object.getInt("customer_id"),
                 object.getString("first_name"),
@@ -538,8 +528,6 @@ public class BackendCaller {
         List<String> output = new ArrayList<>();
         for (int i = 0; i < array.length(); i++) {
             output.add(array.getString(i));
-            System.out.println(array.getString(i));
-            System.out.println(array);
         }
         return output.toArray(new String[output.size()]);
     }

@@ -45,7 +45,6 @@ public class LoanedBookCover extends StackPane {
     public void setup(){
         returnBookButton.setOnMousePressed(e -> {
             boolean response = BackendCaller.inst().returnBook(book.getBookId());
-            System.out.println(response);
             if(!response){
                 //Ett fel har inträffat, försök igen!
                 LoanedBooksView.inst().loadBooks();

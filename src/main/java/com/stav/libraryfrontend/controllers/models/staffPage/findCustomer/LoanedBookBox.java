@@ -31,7 +31,6 @@ public class LoanedBookBox extends StackPane {
 
         title.setText(bookTitle);
         image.setImage(new Image(imageSrc));
-        System.out.println("Data now: " + bookTitle + " " + authorName + " " + isbn);
 
         setup(bookTitle, authorName, isbn, imageSrc, returnDate);
     }

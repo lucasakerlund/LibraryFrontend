@@ -123,7 +123,6 @@ public class FindCustomerPage extends BorderPane {
                 if (allGroupRooms.get(j).getName().equalsIgnoreCase(usersTimes.get(i).getString("name"))){
                     libraryID = allGroupRooms.get(j).getLibrary_id();
                     l = BackendCaller.inst().getLibraryById(libraryID);
-                    System.out.println("l = " + l);
                 }
             }
             GroupRoomBox box = new GroupRoomBox(usersTimes.get(i).getString("name"), l.getName(),

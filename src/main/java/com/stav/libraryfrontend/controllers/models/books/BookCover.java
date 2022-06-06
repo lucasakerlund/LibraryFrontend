@@ -27,7 +27,6 @@ public class BookCover extends StackPane {
         loader.setRoot(this);
         loader.setController(this);
         loader.load();
-        System.out.println(book.getImageSrc());
         imageView.setImage(new Image(book.getImageSrc()));
 
         setup();

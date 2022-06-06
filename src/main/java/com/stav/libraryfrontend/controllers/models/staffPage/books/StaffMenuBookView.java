@@ -39,10 +39,8 @@ public class StaffMenuBookView extends BorderPane {
 
     public void updateBooks(){
         box.getChildren().clear();
-        System.out.println("tjenare " + StaffBookPage.inst().getInput());
         List<Book> books = BackendCaller.inst().getBooks("", "", "", "", StaffBookPage.inst().getInput(), "");
         for (Book book : books) {
-            System.out.println(book);
             addBook(new StaffMenuBookCover(book));
         }
     }

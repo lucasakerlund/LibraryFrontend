@@ -45,7 +45,6 @@ public class StaffGroupRooms extends BorderPane {
 
     public void setup(){
         showAllRooms.setOnMousePressed(e -> {
-            System.out.println("BUTTON PRESSED!");
             loadRooms();
         });
     }
