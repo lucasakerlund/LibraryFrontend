@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="600.0" type="BorderPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <center>
@@ -12,6 +13,11 @@
          <top>
             <VBox alignment="CENTER" prefHeight="421.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
+                  <Label fx:id="errorLabel" styleClass="error-label" stylesheets="@../../css/main.css" text="ERROR LABEL" textFill="#ff2200">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                   <TextField fx:id="titleField" maxWidth="-Infinity" promptText="Titel">
                      <VBox.margin>
                         <Insets />
