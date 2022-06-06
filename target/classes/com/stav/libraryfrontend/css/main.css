@@ -1,4 +1,58 @@
+.root{
+    -fx-background-color: black;
+}
+
+/* STAFF MENU */
+.staff{
+    -fx-background-color: black;
+}
+
+.staff-menu-bar{
+    -fx-background-color: #d4b38f;
+    -fx-border-width: 0 2 0 0;
+    -fx-border-color: white;
+}
+
+.staff-menu-bar-list{
+    -fx-background-color: #e2c8ab;
+}
+
+.staff-menu-bar-button{
+    -fx-background-color: #d4b38f;
+    -fx-background-insets: 2 5 2 5;
+}
+
+.staff-menu-bar-button:hover{
+    -fx-cursor: hand;
+}
+
+.staff-menu-bar-button:hover .staff-menu-bar-button-label{
+    -fx-text-fill: INDIANRED;
+}
+#staff-menu-bar-button-focused:hover .staff-menu-bar-button-label{
+    -fx-text-fill: white;
+}
+
+#staff-menu-bar-button-focused{
+    -fx-background-color: #efddc9;
+    -fx-background-insets: 0 -2 0 0;
+    -fx-border-width: 2 0 2 0;
+    -fx-border-insets: 0 -2 0 0;
+    -fx-border-color: white;
+}
+
+.staff-menu-bar-button-label{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: BOLD;
+}
+
+.staff-content{
+    -fx-background-color: #efddc9;
+}
+
 /*Customer Menu*/
+
 .customer-menu-bar{
     -fx-background-color: #d4b38f;
     -fx-border-width: 0 2 0 0;
@@ -12,6 +66,10 @@
 .customer-menu-bar-button{
     -fx-background-color: #d4b38f;
     -fx-background-insets: 2 5 2 5;
+}
+
+.customer-menu-bar-button:hover{
+    -fx-cursor: hand;
 }
 
 .customer-menu-bar-button:hover .customer-menu-bar-button-label{
@@ -52,13 +110,158 @@
 }
 
 /*Books*/
+.books-header{
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: white;
+}
+
+.books-header-choice{
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-background-radius: 10;
+    -fx-background-insets: 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-border-color: gray;
+}
+
+.books-header-choice .text{
+    -fx-fill: black;
+}
+
+.books-header-choice:showing{
+    -fx-background-radius: 10 10 0 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10 10 0 0;
+    -fx-border-color: gray;
+}
+
+.books-header-choice .combo-box-popup .list-view{
+    -fx-border-width: 0 1 1 1;
+    -fx-border-color: gray;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-padding: 0;
+}
+
+.books-header-choice .list-view .list-cell{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-border-radius: 0;
+}
+.books-header-choice .list-view .list-cell:hover{
+    -fx-background-color: rgb(229, 229, 229);
+}
+
+.books-header-choice .list-view .list-cell:selected{
+    -fx-background-color: rgb(178, 178, 178);
+}
+
+
+.books-header-released{
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-background-radius: 10;
+    -fx-background-insets: 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-border-color: gray;
+    -fx-prompt-text-fill: black;
+}
+
+.books-header-released:focused{
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+}
+
+.books-header-search-bar{
+}
+
+.books-header-search-bar .combo-box{
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-background-radius: 10 0 0 10;
+    -fx-background-insets: 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10 0 0 10;
+    -fx-border-color: gray;
+}
+
+.books-header-search-bar .combo-box:showing{
+    -fx-background-radius: 10 0 0 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10 0 0 0;
+    -fx-border-color: gray;
+}
+
+.books-header-search-bar .combo-box .combo-box-popup .list-view{
+    -fx-border-width: 0 1 1 1;
+    -fx-border-color: gray;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-padding: 0;
+}
+
+.books-header-search-bar .combo-box .list-view .list-cell{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-border-radius: 0;
+}
+
+.books-header-search-bar .combo-box .list-view .list-cell:hover{
+    -fx-background-color: rgb(229, 229, 229);
+}
+
+.books-header-search-bar .combo-box .list-view .list-cell:selected{
+    -fx-background-color: rgb(178, 178, 178);
+}
+
+.books-header-search-bar .combo-box .text{
+    -fx-fill: black;
+}
+
+.books-header-search-bar .text-field{
+    -fx-text-box-border: transparent;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-border-width: 1 0 1 0;
+    -fx-border-color: gray;
+    -fx-background-radius: 0;
+}
+
+.books-header-search-bar .text-field:focused{
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+
+}
+
+.books-header-search-bar .label{
+    -fx-font-size: 16;
+    -fx-text-fill: black;
+    -fx-background-color: rgb(208, 208, 208);
+    -fx-background-radius: 0 10 10 0;
+    -fx-border-width: 1;
+    -fx-border-radius: 0 10 10 0;
+    -fx-border-color: gray;
+    -fx-padding: 0 7 0 5;
+}
+
+.books-header-search-bar .label:hover{
+    -fx-background-color: #e5e5e5;
+}
+
+.books-header-error-label{
+    -fx-font-size: 15;
+    -fx-text-fill: red;
+}
+
+/*Book Cover*/
 .book-cover{
     -fx-background-color: black;
 }
 
+.book-cover:hover{
+    -fx-cursor: hand;
+}
+
 .book-cover:hover .image-view{
     -fx-opacity: 0.5;
-    -fx-cursor: hand;
 }
 
 .book-cover:hover .book-cover-title{
@@ -80,7 +283,7 @@
 }
 
 .book-loan-view-title{
-    -fx-font-size: 40;
+    -fx-font-size: 30;
     -fx-text-fill: white;
 }
 
@@ -99,7 +302,13 @@
     -fx-background-color: rgba(52,53,53,.4);
 }
 
-.book-loan-view-book-button{
+.book-loan-view-error-label{
+    -fx-font-size: 20;
+    -fx-text-fill: red;
+}
+
+.book-loan-view-book-button, .book-loan-view-queue-button, .book-loan-view-in-queue{
+    -fx-background-color: rgba(52,53,53,.4);
     -fx-font-size: 20;
     -fx-text-fill: #00ff00;
     -fx-border-width: 2;
@@ -107,7 +316,7 @@
     -fx-padding: 0 5 0 5;
 }
 
-.book-loan-view-book-button:hover{
+.book-loan-view-book-button:hover, .book-loan-view-queue-button:hover, .book-loan-view-in-queue:hover{
     -fx-text-fill: #b0dab0;
     -fx-border-color: #b0dab0;
     -fx-cursor: hand;
@@ -115,6 +324,34 @@
 
 .book-loan-view-location-list{
     -fx-background-color: rgba(52,53,53,.4);
+}
+
+.book-loan-view-location-header-label{
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+}
+
+.book-loan-view-location-header{
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: white;
+}
+
+.book-loan-view-location-box{
+
+}
+
+.book-loan-view-location-label{
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+}
+
+.book-loan-view-location-box:hover{
+    -fx-background-color: rgba(126, 126, 126, 0.4);
+    -fx-cursor: hand;
+}
+
+#book-loan-view-location-box-focused{
+    -fx-background-color: rgba(187, 187, 187, 0.4);
 }
 
 .book-loan-view-book-information-box{
@@ -131,6 +368,20 @@
 .book-loan-view-book-information-value{
     -fx-font-size: 15;
     -fx-text-fill: #bebebe;
+}
+
+.book-loan-view-similar-books-button{
+    -fx-font-size: 14;
+    -fx-border-width: 1;
+    -fx-border-color: #39a9e7;
+    -fx-text-fill: #39a9e7;
+}
+
+.book-loan-view-similar-books-button:hover{
+    -fx-border-color: #39e1e7;
+    -fx-text-fill: #39e1e7;
+    -fx-underline: true;
+    -fx-cursor: hand;
 }
 
 /* LOGIN SCREEN */
@@ -155,6 +406,7 @@
 .login-screen-login-button:hover{
     -fx-text-fill: green;
     -fx-border-color: green;
+    -fx-cursor: hand;
 }
 
 .login-screen-new-account-button{
@@ -164,6 +416,7 @@
 
 .login-screen-new-account-button:hover{
     -fx-underline: true;
+    -fx-cursor: hand;
 }
 
 .login-screen-quit-button{
@@ -175,6 +428,7 @@
 .login-screen-quit-button:hover{
     -fx-border-color: green;
     -fx-text-fill: green;
+    -fx-cursor: hand;
 }
 
 .login-screen-admin-button{
@@ -184,6 +438,7 @@
 
 .login-screen-admin-button:hover{
     -fx-underline: true;
+    -fx-cursor: hand;
 }
 
 .login-screen-user-message-label{
@@ -209,6 +464,7 @@
 
 .existing-user-login-screen-back-button:hover{
     -fx-background-color: orange;
+    -fx-cursor: hand;
 }
 
 .existing-user-login-screen-login-button{
@@ -223,6 +479,7 @@
 
 .existing-user-login-screen-login-button:hover {
     -fx-background-color: #00bbff;
+    -fx-cursor: hand;
 }
 
 .existing-user-login-screen-forgotten-password-button{
@@ -232,10 +489,18 @@
 
 .existing-user-login-screen-forgotten-password-button:hover{
     -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.existing-user-login-screen-error-label{
+    -fx-underline: true;
+    -fx-font-size:22;
+    -fx-text-fill: red;
 }
 /* EXISTING USER LOGIN SCREEN */
 
-/* USER LOGIN SCREEN */
+
+/* ADMIN LOGIN SCREEN */
 .admin-login-screen {
     -fx-background-color: #e2c8af;
 }
@@ -249,6 +514,7 @@
 
 .admin-back-button:hover{
     -fx-background-color: orange;
+    -fx-cursor: hand;
 }
 
 .admin-login-button{
@@ -259,6 +525,7 @@
 }
 .admin-login-button:hover{
     -fx-background-color: orange;
+    -fx-cursor: hand;
 }
 .admin-forgot-password-button{
     -fx-text-fill: #4343ef;
@@ -266,8 +533,16 @@
 }
 .admin-forgot-password-button:hover{
     -fx-underline: true;
+    -fx-cursor: hand;
 }
-/* USER LOGIN SCREEN */
+
+.admin-screen-login-error-label{
+    -fx-text-fill: red;
+    -fx-font-size: 18;
+    -fx-underline: true;
+}
+/* ADMIN LOGIN SCREEN */
+
 
 /* NEW CUSTOMER SCREEN */
 .new-customer-screen{
@@ -280,27 +555,7 @@
     -fx-text-fill: blue;
 }
 
-.new-customer-screen-first-name-label{
-    -fx-font-size: 14;
-    -fx-underline: true;
-}
-
-.new-customer-screen-last-name-label{
-    -fx-font-size: 14;
-    -fx-underline: true;
-}
-
-.new-customer-screen-email-label{
-    -fx-font-size: 14;
-    -fx-underline: true;
-}
-
-.new-customer-screen-password-label{
-    -fx-font-size: 14;
-    -fx-underline: true;
-}
-
-.new-customer-screen-confirm-password-label{
+.new-customer-screen-label{
     -fx-font-size: 14;
     -fx-underline: true;
 }
@@ -318,6 +573,7 @@
 .new-customer-screen-create-user-button:hover{
     -fx-background-color: #007715;
     -fx-underline: true;
+    -fx-cursor: hand;
 }
 
 .new-customer-screen-back-button{
@@ -332,4 +588,945 @@
 .new-customer-screen-back-button:hover{
     -fx-background-color: #6b7700;
     -fx-underline: true;
+}
+
+.new-customer-screen-error-label{
+    -fx-text-fill: red;
+    -fx-font-size: 18;
+    -fx-underline: true;
+}
+
+/* NEW CUSTOMER SCREEN */
+
+/* ADD STAFF SCREEN */
+.add-staff-screen-security-buttons{
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-background-color: #00fff7;
+    -fx-font-size: 40;
+    -fx-background-radius: 100;
+}
+
+.add-staff-screen-security-buttons:hover{
+    -fx-background-color: #136173;
+}
+
+.add-staff-screen-accept-security-button{
+    -fx-border-width: 2;
+    -fx-border-color:black;
+    -fx-font-size:24;
+    -fx-background-color: #00ff00;
+}
+
+.add-staff-screen-accept-security-button:hover{
+    -fx-background-color: #1a8d1a;
+}
+
+.add-staff-screen-security-back-button{
+    -fx-border-width: 2;
+    -fx-border-color:black;
+    -fx-font-size:24;
+    -fx-background-color: #ff4d00;
+}
+
+.add-staff-screen-security-back-button:hover{
+    -fx-background-color: #6c0f0f;
+}
+
+.add-staff-screen{
+    -fx-background-color: #e2c8af;
+}
+
+.add-staff-screen-label{
+    -fx-font-size: 21;
+    -fx-underline: true;
+}
+
+.add-staff-screen-admin-checkbox{
+    -fx-font-size: 14;
+}
+
+.add-staff-screen-create-button{
+    -fx-background-color: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-font-size: 24;
+}
+
+.add-staff-screen-create-button:hover{
+    -fx-background-color: green;
+}
+
+.add-staff-screen-back-button{
+    -fx-font-size: 24;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-color: red;
+}
+
+.add-staff-screen-back-button:hover{
+    -fx-background-color: rgb(138, 4, 4);
+}
+
+.add-staff-screen-message-label{
+    -fx-text-fill: GREEN;
+    -fx-underline: true;
+}
+
+.add-staff-screen-create-account-error-label{
+    -fx-font-size: 18;
+    -fx-text-fill: red;
+    -fx-underline: true;
+}
+
+/* ADD STAFF SCREEN */
+
+/* MY PAGE (MIN SIDA) */
+.my-page{
+    -fx-background-color: transparent;
+}
+
+.my-page-header{
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: white;
+}
+
+.my-page-header-buttons{
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+    -fx-padding: 6;
+    -fx-background-color: #d4b38f;
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+}
+
+.my-page-header-buttons:hover{
+    -fx-background-color: #8c734e;
+    -fx-underline: true;
+    -fx-border-width: 4;
+    -fx-border-color: green;
+}
+
+#my-page-header-buttons-focused{
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+    -fx-padding: 6;
+    -fx-background-color: #e0c4b0;
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+}
+
+/*Loaned Book*/
+.loaned-book-cover-return-button{
+    -fx-background-color: rgba(59, 59, 59, 0.34);;
+    -fx-border-width: 2;
+    -fx-border-color: green;
+    -fx-font-size: 24;
+    -fx-text-fill: green;
+}
+
+.loaned-book-cover-return-button:hover{
+    -fx-background-color: rgba(0, 128, 0, 0.75);
+    -fx-underline: true;
+    -fx-text-fill: black;
+    -fx-border-color: black;
+    -fx-cursor: hand;
+}
+
+.loaned-book-cover-days-left-label{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+}
+
+.my-page-op-message-label{
+    -fx-text-fill: green;
+    -fx-underline: true;
+    -fx-font-size: 14;
+}
+
+/**/
+.reserved-book{
+
+}
+
+.reserved-book-cover-leave-queue-button{
+    -fx-background-color: rgba(52,53,53,.4);
+    -fx-font-size: 20;
+    -fx-text-fill: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: #00ff00;
+    -fx-padding: 0 5 0 5;
+
+}
+
+.reserved-book-cover-leave-queue-button:hover{
+    -fx-text-fill: #b0dab0;
+    -fx-border-color: #b0dab0;
+    -fx-cursor: hand;
+}
+
+/* MY PAGE (MIN SIDA) */
+
+/* STAFF PAGE */
+.staff-page{
+    -fx-background-color: transparent;
+}
+
+.staff-page-header{
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: white;
+}
+
+.staff-page-header-button{
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+    -fx-padding: 6;
+    -fx-background-color: #d4b38f;
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+}
+
+.staff-book-page-search-button{
+    -fx-font-size: 14;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-padding: 6;
+    -fx-background-color: #00e100;
+}
+
+.staff-book-page-search-button:hover{
+    -fx-background-color: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+/* STAFF PAGE */
+
+/* Staff menu book cover */
+.staff-menu-book-cover{
+    -fx-border-width: 2;
+    -fx-border-color: black;
+}
+
+.staff-menu-book-cover-imageview:hover{
+    -fx-opacity: 0.75;
+    -fx-cursor: hand;
+}
+
+/*Staff Book Info View*/
+.staff-book-info-view{
+    -fx-background-color: black;
+}
+
+.staff-book-info-view .image-view{
+    -fx-opacity: .5;
+}
+
+.staff-book-info-view-title{
+    -fx-font-size: 30;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-footer{
+    -fx-border-width: 2 0 0 0;
+    -fx-border-color: white;
+}
+
+.staff-book-info-view-description{
+    -fx-background-color: rgba(52,53,53,.4);
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-description .content{
+    -fx-background-color: rgba(52,53,53,.4);
+}
+
+.staff-book-info-view-return-list{
+    -fx-background-color: rgba(52,53,53,.4);
+}
+
+.staff-book-info-view-return-header-label{
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-return-header{
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: white;
+}
+
+.staff-book-info-view-return-box{
+
+}
+
+.staff-book-info-view-return-label{
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+}
+
+#staff-book-info-view-return-box-focused{
+    -fx-background-color: rgba(187, 187, 187, 0.4);
+}
+
+.staff-book-info-view-book-information-box{
+    -fx-background-color: rgba(52,53,53,.4);
+    -fx-border-width: 2 2 0 0;
+    -fx-border-color: white;
+}
+
+.staff-book-info-view-information-label{
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-book-information-value{
+    -fx-font-size: 15;
+    -fx-text-fill: #bebebe;
+}
+
+.staff-book-info-view-quantity-box{
+    -fx-background-color: rgba(52,53,53,.4);
+}
+
+.staff-book-info-view-quantity-label{
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+}
+
+.staff-book-info-view-quantity-value{
+    -fx-font-size: 30;
+    -fx-text-fill: #dcdcdc;
+}
+
+/* BankID */
+.bank-id{
+    -fx-background-color: white;
+}
+
+.bank-id-confirm-button{
+    -fx-background-color: #44b7ef;
+    -fx-font-size: 18;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+    -fx-border-radius: 20;
+    -fx-background-radius: 100;
+}
+
+.bank-id-confirm-button:hover{
+    -fx-background-color: #286d8f;
+    -fx-cursor: hand;
+}
+
+.bank-id-cancel-button{
+    -fx-font-size: 14;
+    -fx-text-fill: blue;
+}
+
+.bank-id-cancel-button:hover{
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+/* group rooms */
+
+.group-rooms-header{
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+    -fx-padding: 6;
+    -fx-background-color: #d4b38f;
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+}
+
+.group-rooms-header:hover{
+    -fx-background-color: #8c734e;
+    -fx-underline: true;
+    -fx-border-width: 4;
+    -fx-border-color: green;
+}
+
+#group-rooms-header-focused{
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+    -fx-padding: 6;
+    -fx-background-color: #e0c4b0;
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+}
+
+.group-rooms-header-border{
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: white;
+}
+
+.group-rooms-combo-box{
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+}
+
+/* group rooms */
+
+/* group rooms box*/
+
+.room-box-pane{
+    -fx-background-color: #303034;
+    -fx-border-width:2;
+    -fx-border-color: white;
+}
+
+.room-box-pane:hover {
+    -fx-border-color: #06b206;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.room-box-label{
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+}
+
+/* group rooms box*/
+
+/* group room view */
+
+.room-view{
+    -fx-background-color: #303034;
+}
+
+.room-view-name-label{
+    -fx-font-size: 24;
+    -fx-text-fill: white;
+    -fx-underline: true;
+}
+
+.room-view-left-side-text{
+    -fx-text-fill: white;
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-border-width: 0;
+    -fx-border: none;
+    -fx-background-color: transparent;
+}
+
+.room-view-left-side-text:hover{
+    -fx-cursor: default;
+}
+
+.room-view-left-side-text .content{
+    -fx-background-color: #303034;
+}
+
+.room-view-book-button{
+    -fx-font-size: 18;
+    -fx-border-width: 2;
+    -fx-border-color: gray;
+    -fx-text-fill: gray;
+}
+
+.room-view-book-button:hover{
+    -fx-text-fill: green;
+    -fx-border-color: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.room-view-avalible-label{
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+}
+
+.room-view-right-side-avalible-text-area{
+    -fx-text-fill: white;
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-border-width: 0;
+    -fx-border: none;
+    -fx-background-color: transparent;
+}
+
+.room-view-right-side-avalible-text-area .content{
+    -fx-background-color: #303034;
+}
+
+.room-view-message-label{
+    -fx-font-size: 16;
+    -fx-underline: true;
+    -fx-text-fill: red;
+}
+
+#room-view-message-label-green{
+    -fx-font-size: 16;
+    -fx-underline: true;
+    -fx-text-fill: #03b003;
+}
+
+/* group room view */
+
+/* user suggestion box */
+
+.suggestion-box{
+    -fx-background-color: transparent;
+}
+
+.suggestion-box-label{
+    -fx-text-fill: black;
+    -fx-font-size: 16;
+    -fx-underline: true;
+}
+
+.suggestion-box-press-me-label{
+    -fx-text-fill: blue;
+    -fx-font-size: 14;
+    -fx-border-color: blue;
+    -fx-border-width: 2;
+    -fx-padding: 5;
+}
+
+.suggestion-box-press-me-label:hover{
+    -fx-border-color: green;
+    -fx-text-fill: green;
+    -fx-cursor: hand;
+}
+
+/* user suggestion box */
+
+/* user suggestion view */
+
+.suggestion-view{
+    -fx-background-color: #242426;
+    -fx-border-color: white;
+}
+
+.suggestion-view-back-button{
+    -fx-font-size: 14;
+    -fx-text-fill: white;
+    -fx-border-width: 3;
+    -fx-border-color: #25a4e8;
+    -fx-padding: 3;
+}
+
+.suggestion-view-back-button:hover{
+    -fx-text-fill: green;
+    -fx-border-color: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.suggestion-view-intro-text{
+    -fx-font-size: 18;
+    -fx-text-fill: white;
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+}
+
+.suggestion-view-intro-text .content{
+    -fx-background-color: #242426;
+}
+
+.suggestion-view-suggest-button{
+    -fx-font-size: 18;
+    -fx-text-fill: white;
+    -fx-border-width: 4;
+    -fx-border-color: orange;
+    -fx-padding: 6;
+}
+
+.suggestion-view-suggest-button:hover{
+    -fx-border-color: green;
+    -fx-text-fill: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.suggestion-view-error-label{
+    -fx-underline: true;
+    -fx-text-fill: red;
+    -fx-padding: 3;
+}
+
+.suggestion-view-basic-labels{
+    -fx-text-fill: white;
+}
+
+/* user suggestion view */
+
+/* time select button */
+.time-select-button{
+    -fx-font-size: 14;
+    -fx-text-fill: white;
+    -fx-underline: true;
+    -fx-border-width: 4;
+    -fx-border-color: black;
+}
+
+.time-select-button:hover{
+    -fx-cursor: hand;
+    -fx-text-fill: #4d4d4d;
+}
+
+#time-select-button-focused{
+    -fx-font-size: 14;
+    -fx-text-fill: #969696;
+    -fx-underline: true;
+    -fx-border-width: 4;
+    -fx-border-color: #007715;
+}
+/* time select button */
+
+/* Booking box */
+.booking-box{
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-background-color: white;
+}
+
+.booking-box-info-labels{
+    -fx-text-fill: black;
+    -fx-font-size: 18;
+}
+
+.booking-box-cancel-button{
+    -fx-font-size: 12;
+    -fx-text-fill: red;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-background-color: transparent;
+}
+
+.booking-box-cancel-button:hover{
+    -fx-background-color: black;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+/* Booking box */
+
+/*Top Seller Page*/
+.top-seller-reload-button{
+    -fx-font-size: 20;
+    -fx-text-fill: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: #00ff00;
+    -fx-padding: 0 5 0 5;
+}
+
+.top-seller-reload-button:hover{
+    -fx-text-fill: #92f192;
+    -fx-border-color: #92f192;
+    -fx-cursor: hand;
+}
+
+/*Top Seller Cover*/
+.top-seller-book-cover{
+    -fx-background-color: black;
+}
+
+.top-seller-book-cover-imageview{
+    -fx-opacity: .5;
+}
+
+.top-seller-book-cover-label{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+
+.top-seller-book-cover-value{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+
+.top-seller-book-cover:hover{
+    -fx-cursor: hand;
+}
+
+/* Suggested books */
+.suggested-books{
+}
+
+.suggested-books-empty-label{
+    -fx-font-size: 20;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+.suggested-books-back-button{
+    -fx-font-size: 18;
+    -fx-border-width: 3;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-text-fill: black;
+    -fx-padding: 3;
+}
+
+.suggested-books-back-button:hover{
+    -fx-underline: true;
+    -fx-cursor: hand;
+    -fx-border-color: gray;
+    -fx-text-fill: gray;
+}
+/* Suggested books */
+
+/* find customer page - staff screen */
+.findCustomerButton{
+    -fx-background-color: transparent;
+}
+
+.find-customer-page-search-button{
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-font-size: 16;
+    -fx-background-color: #04f304;
+    -fx-padding: 4;
+}
+
+.find-customer-page-search-button:hover{
+    -fx-cursor: hand;
+    -fx-underline: true;
+    -fx-background-color: green;
+}
+
+.find-customer-page-error-label{
+    -fx-font-size: 16;
+    -fx-underline: true;
+    -fx-text-fill: red;
+}
+/* find customer page - staff screen */
+
+/* find customer page - basic info */
+.customer-box{
+    -fx-background-color: transparent;
+}
+
+.customer-box-account-label{
+    -fx-underline: true;
+    -fx-text-fill: blue;
+    -fx-font-size: 28;
+}
+
+.find-customer-basic-info-vbox{
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
+
+/* find customer page - basic info */
+
+/* find customer page - header */
+
+.customer-content-header{
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: black;
+    -fx-padding: 4;
+}
+
+.customer-content-header-buttons{
+    -fx-font-size: 16;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-padding: 4;
+    -fx-text-fill: black;
+}
+
+.customer-content-header-buttons:hover{
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+/* find customer page - header */
+
+/* find customer page - book box */
+
+.find-customer-book-box{
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-padding: 2;
+}
+
+.find-customer-book-box{
+    -fx-background-color: black;
+}
+
+.find-customer-book-box-image:hover{
+    -fx-opacity: .5;
+    -fx-cursor: hand;
+}
+
+.find-customer-book-title{
+    -fx-border-width: 2;
+    -fx-padding: 2;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-font-size: 14;
+    -fx-text-fill: black;
+}
+
+/* find customer page - book box */
+
+/* find customer page - group room box */
+
+.find-customer-group-room-box{
+    -fx-background-color: white;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-text-fill: black;
+}
+
+.find-customer-group-room-box:hover{
+    -fx-border-color: gray;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+/* find customer page - group room box */
+
+/* find customer page - loaned book view */
+
+.find-customer-loaned-book-view{
+    -fx-background-color: #4b4b4b;
+}
+
+.find-customer-loaned-book-view-labels{
+    -fx-font-size: 18;
+    -fx-text-fill: white;
+}
+
+.find-customer-loaned-book-view-image{
+    -fx-background-color: white;
+}
+
+/* find customer page - loaned book view */
+
+/* find customer page - reserved group rooms view */
+
+.find-customer-reserved-group-room-view-cancel-time-button{
+    -fx-font-size: 20;
+    -fx-border-width: 4;
+    -fx-border-color: #04e504;
+    -fx-text-fill: #04e504;
+    -fx-padding: 4;
+}
+
+.find-customer-reserved-group-room-view-cancel-time-button:hover{
+    -fx-border-color: green;
+    -fx-text-fill: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+/* find customer page - reserved group rooms view */
+
+/* Find customer page - button focus */
+
+#button-focus{
+    -fx-background-color: #9b9898;
+    -fx-underline: true;
+}
+
+/* Find customer page - button focus */
+
+/* available times box */
+
+.available-times-box{
+    -fx-background-color: white;
+    -fx-border-width: 2;
+    -fx-border-color: orange;
+}
+
+.booked-times-box{
+    -fx-background-color: white;
+    -fx-border-width: 2;
+    -fx-border-color: orange;
+}
+
+/* available times box */
+
+/* Staff add book page */
+
+.staff-add-book-page-content{
+
+}
+
+.staff-add-button{
+    -fx-font-size: 14;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-padding: 6;
+    -fx-background-color: #00e100;
+}
+
+.staff-add-button:hover{
+    -fx-background-color: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.staff-add-book-error-label{
+    -fx-text-fill: red;
+    -fx-font-size: 18;
+    -fx-underline: true;
+}
+
+.staff-add-book-succeed{
+    -fx-font-size: 20;
+    -fx-text-fill: green;
+}
+
+/*Staff Book Suggestion Page*/
+.staff-book-suggestions{
+
+}
+/*Staff Book Suggestion Cover*/
+.staff-book-suggestion-cover{
+
+}
+
+.staff-book-suggestion-cover-list{
+    -fx-background-color: rgba(52,53,53,.4);
+    -fx-border-width: 2;
+    -fx-border-color: white;
+}
+
+.staff-book-suggestion-cover-list-footer{
+    -fx-border-width: 2 0 0 0;
+    -fx-border-color: white;
+}
+
+.staff-book-suggestion-cover-remove-button{
+    -fx-font-size: 20;
+    -fx-text-fill: red;
+    -fx-border-width: 2;
+    -fx-border-color: red;
+    -fx-padding: 0 2 0 2;
+}
+
+.staff-book-suggestion-cover-remove-button:hover{
+    -fx-text-fill: #ff6363;
+    -fx-border-color: #ff6363;
+    -fx-cursor: hand;
+}
+
+.staff-book-suggestion-cover-label{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+
+.staff-book-suggestion-reload-button{
+    -fx-font-size: 20;
+    -fx-text-fill: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: #00ff00;
+    -fx-padding: 0 5 0 5;
+}
+
+.staff-book-suggestion-reload-button:hover{
+    -fx-text-fill: #92f192;
+    -fx-border-color: #92f192;
+    -fx-cursor: hand;
 }

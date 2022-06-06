@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root id="login-screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="login-screen" stylesheets="@../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="login-screen" prefHeight="900.0" prefWidth="1300.0" styleClass="login-screen" stylesheets="@../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="120.0" stylesheets="@../css/main.css" BorderPane.alignment="CENTER">
          <children>
@@ -41,7 +41,7 @@
             <Insets />
          </BorderPane.margin>
          <right>
-            <Label id="login-screen-admin-button" fx:id="adminButton" alignment="BOTTOM_LEFT" styleClass="login-screen-admin-button" text="Administratör..." BorderPane.alignment="CENTER">
+            <Label id="login-screen-admin-button" fx:id="adminButton" alignment="BOTTOM_LEFT" styleClass="login-screen-admin-button" text="Personalsida" BorderPane.alignment="CENTER">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>

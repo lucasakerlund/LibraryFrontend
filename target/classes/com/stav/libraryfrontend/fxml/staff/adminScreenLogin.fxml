@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="admin-login-screen" stylesheets="@../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="600.0" prefWidth="800.0" styleClass="admin-login-screen" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
       <BorderPane prefHeight="52.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <left>
-            <Label id="admin-back-button" fx:id="backButton" styleClass="admin-back-button" stylesheets="@../../css/main.css" text="&lt;-Tillbaka" BorderPane.alignment="CENTER">
+            <Label id="admin-back-button" fx:id="backButton" styleClass="admin-back-button" stylesheets="@../css/main.css" text="&lt;-Tillbaka" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
@@ -26,30 +29,34 @@
          <children>
             <VBox alignment="BOTTOM_CENTER" prefHeight="109.0" prefWidth="600.0">
                <children>
-                  <Label text="Användanamn" />
-                  <TextField maxWidth="150.0" promptText="Användarnamn här..." />
+                  <Label fx:id="errorLabel" styleClass="admin-screen-login-error-label" text="TEAST: Error label" visible="false" />
+                  <Label text="Mail" />
+                  <TextField fx:id="usernameInput" maxWidth="150.0" promptText="Användarnamn här..." />
                </children>
             </VBox>
             <VBox alignment="BOTTOM_CENTER" prefHeight="86.0" prefWidth="600.0">
                <children>
                   <Label text="Lösenord" />
-                  <TextField maxWidth="150.0" promptText="Lösenord här..." />
+                  <PasswordField fx:id="passwordInput" maxWidth="150.0" promptText="Lösen här..." />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
                <children>
-                  <Label id="admin-login-button" fx:id="adminLoginButton" styleClass="admin-login-button" stylesheets="@../../css/main.css" text="Logga in">
+                  <Label id="admin-login-button" fx:id="adminLoginButton" styleClass="admin-login-button" stylesheets="@../css/main.css" text="Logga in">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                   </Label>
-                  <Label id="admin-forgot-password-button" fx:id="adminForgotPasswordButton" styleClass="admin-forgot-password-button" stylesheets="@../../css/main.css" text="Glömt lösenord...">
+                  <Label id="admin-forgot-password-button" fx:id="adminForgotPasswordButton" styleClass="admin-forgot-password-button" stylesheets="@../css/main.css" text="Lägg till anställd...">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Label>
                </children>
                <opaqueInsets>
@@ -62,4 +69,8 @@
          </children>
       </VBox>
    </center>
+   <stylesheets>
+      <URL value="@../css/main.css" />
+      <URL value="@../../css/main.css" />
+   </stylesheets>
 </fx:root>

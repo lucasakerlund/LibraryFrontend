@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="500.0" styleClass="room-view" stylesheets="@../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER" prefHeight="95.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="roomName" styleClass="room-view-name-label" text="Name of room here:" />
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <TextArea fx:id="descriptionArea" editable="false" prefHeight="200.0" prefWidth="200.0" styleClass="room-view-left-side-text" text="Random dumbass text here:" wrapText="true" BorderPane.alignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </TextArea>
+   </left>
+   <right>
+      <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="messageLabel" styleClass="room-view-message-label" text="TEST: MsgLabel" />
+            <Label fx:id="bookRoomButton" styleClass="room-view-book-button" text="Boka rum">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Label>
+            <VBox fx:id="timesVbox" alignment="TOP_CENTER" spacing="10.0" />
+         </children>
+      </VBox>
+   </right>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label styleClass="room-view-name-label" text="Tillhör: " />
+            <Label fx:id="libraryNameLabel" layoutX="10.0" layoutY="10.0" styleClass="room-view-name-label" text="libraryNameLabel" />
+         </children>
+      </HBox>
+   </bottom>
+</fx:root>

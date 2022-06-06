@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root styleClass="staff-add-book" stylesheets="@../../../css/main.css" type="BorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <BorderPane fx:id="staffAddBookContent" styleClass="staff-add-book-page-content" stylesheets="@../../../css/main.css" BorderPane.alignment="CENTER">
+         <center>
+            <VBox alignment="CENTER" prefHeight="421.0" prefWidth="600.0" spacing="8.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="errorLabel" styleClass="error-label" stylesheets="@../../../css/main.css" text="ERROR LABEL" textFill="#ff2200" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="titleField" maxWidth="-Infinity" promptText="Titel">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
+                  <TextArea fx:id="descriptionField" maxWidth="300.0" minHeight="150.0" prefHeight="159.0" prefWidth="300.0" promptText="Beskrivning">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextArea>
+                  <TextField fx:id="authorField" layoutX="20.0" layoutY="40.0" maxWidth="-Infinity" prefHeight="25.0" prefWidth="250.0" promptText="Författare (separera med &quot;,&quot;)">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="genreField" layoutX="20.0" layoutY="71.0" maxWidth="-Infinity" prefHeight="25.0" prefWidth="250.0" promptText="Genre (separera med &quot;,&quot;)">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="isbnField" layoutX="240.0" layoutY="170.0" maxWidth="-Infinity" promptText="ISBN">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="lastPublishedField" layoutX="20.0" layoutY="101.0" maxWidth="-Infinity" prefHeight="25.0" prefWidth="119.0" promptText="Senast publicerad">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="amountOfPagesField" layoutX="20.0" layoutY="132.0" maxWidth="-Infinity" prefHeight="25.0" prefWidth="74.0" promptText="Antal sidor">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="languageField" layoutX="20.0" layoutY="162.0" maxWidth="-Infinity" promptText="Språk">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="imageField" layoutX="10.0" layoutY="188.0" maxWidth="-Infinity" prefHeight="25.0" prefWidth="366.0" promptText="Bild">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
+                  <Label fx:id="addButton" styleClass="staff-add-button" stylesheets="@../../../css/main.css" text="Lägg till">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="succeedLabel" styleClass="staff-add-book-succeed" text="Label" visible="false" />
+               </children>
+            </VBox>
+         </center></BorderPane>
+   </center>
+</fx:root>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+
+
+<fx:root alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="find-customer-group-room-box" stylesheets="@../../../css/main.css" text="roomName" type="Label" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" />
