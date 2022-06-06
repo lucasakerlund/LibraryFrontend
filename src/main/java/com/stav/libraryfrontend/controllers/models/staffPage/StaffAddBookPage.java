@@ -49,6 +49,9 @@ public class StaffAddBookPage extends BorderPane {
     @FXML
     private TextField succeedField;
 
+    @FXML
+    private Label errorLabel;
+
 
     public StaffAddBookPage(){
 
@@ -63,10 +66,13 @@ public class StaffAddBookPage extends BorderPane {
         setup();
     }
     public void setup(){
+        errorLabel.setText("");
         addButton.setOnMousePressed(e ->{
             BackendCaller.inst().addBook(titleField.getText(), descriptionField.getText(), authorField.getText(), genreField.getText(), isbnField.getText(), lastPublishedField.getText(), Integer.parseInt(amountOfPagesField.getText()), languageField.getText(), imageField.getText());
+
             if (titleField.getText().equals("") || descriptionField.getText().equals("") || authorField.getText().equals("") || genreField.getText().equals("") || isbnField.getText().equals("") || lastPublishedField.getText().equals("")
                     || amountOfPagesField.getText().equals("") || languageField.getText().equals("") || imageField.getText().equals("")){
+                errorLabel.setText("VÄNLIGEN SKRIV IN I FÄLTEN!");
                 return;
             }
 

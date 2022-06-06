@@ -1441,3 +1441,11 @@
 }
 
 /* available times box */
+
+/* Staff add book page */
+
+.error-label{
+    -fx-text-fill: red;
+    -fx-font-size: 18;
+    -fx-underline: true;
+}
