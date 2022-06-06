@@ -4,10 +4,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.StackPane?>
 
-
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="160.0" styleClass="find-customer-book-box" stylesheets="@../../../css/main.css" type="StackPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="212.0" prefWidth="167.0" styleClass="find-customer-book-box" stylesheets="@../../../css/main.css" type="StackPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="image" fitHeight="210.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="image" fitHeight="210.0" fitWidth="165.0" pickOnBounds="true" styleClass="find-customer-book-box-image" />
       <Label fx:id="title" styleClass="find-customer-book-title" text="Label" />
    </children>
 </fx:root>

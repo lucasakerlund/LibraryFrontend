@@ -3,6 +3,7 @@ package com.stav.libraryfrontend.controllers.models;
 import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.SubSceneHandler;
+import com.stav.libraryfrontend.models.Customer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -81,13 +82,24 @@ public class NewCustomerScreen extends BorderPane {
                 return;
             }
 
-            boolean response = BackendCaller.inst().createCustomer(firstNameTextField.getText(), lastNameTextField.getText(),
-                    emailTextField.getText(), passwordField.getText());
-            if(!response){
+            Customer customer = BackendCaller.inst().getCustomerByEmail(emailTextField.getText());
+
+            if(customer != null) {
                 errorLabel.setText("Email-adressen används redan av ett annat konto");
                 return;
             }
 
+            BankID.inst().setConfirmListener((s) -> {
+                boolean response = BackendCaller.inst().createCustomer(firstNameTextField.getText(), lastNameTextField.getText(),
+                        emailTextField.getText(), passwordField.getText());
+                if(!response){
+                    errorLabel.setText("Något fel inträffade, försök igen.");
+                    return;
+                }
+                LoginScreen.inst().userAddedSuccessfully();
+                Library.inst().setContent(LoginScreen.inst());
+                SubSceneHandler.inst().hide();
+            });
             SubSceneHandler.inst().show(BankID.inst());
 
             // LoginScreen.inst().userAddedSuccessfully();

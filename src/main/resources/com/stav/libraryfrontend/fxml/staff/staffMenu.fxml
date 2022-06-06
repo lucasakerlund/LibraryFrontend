@@ -53,6 +53,11 @@
                                     <Label alignment="TOP_LEFT" styleClass="staff-menu-bar-button-label" stylesheets="@../../css/main.css" text="HITTA KUND" />
                                  </children>
                               </HBox>
+                              <HBox fx:id="bookSuggestionsbutton" alignment="CENTER" layoutX="10.0" layoutY="212.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="staff-menu-bar-button" stylesheets="@../../css/main.css">
+                                 <children>
+                                    <Label alignment="TOP_LEFT" styleClass="staff-menu-bar-button-label" stylesheets="@../../css/main.css" text="Bokförslag" />
+                                 </children>
+                              </HBox>
                            </children>
                            <padding>
                               <Insets bottom="2.0" top="2.0" />

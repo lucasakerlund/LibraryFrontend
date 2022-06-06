@@ -125,6 +125,20 @@ public class BookLoanView extends StackPane {
 
         setupBookInformation();
 
+        suggestionsButton.setOnMousePressed(e -> {
+            SuggestedBooks.inst().setBookGenre(book.getGenre());
+            SuggestedBooks.inst().setClickedBook(book);
+            SuggestedBooks.inst().loadBooks();
+            CustomerMenu.inst().open(SuggestedBooks.inst());
+            SubSceneHandler.inst().hide();
+        });
+
+        calculateButtons();
+
+        SubSceneHandler.inst().hide();
+    }
+
+    private void calculateButtons(){
         JSONArray array = BackendCaller.inst().getAmountOfBookInLibraries(book.getIsbn());
         boolean outOfStock = true;
         for (int i = 0; i < array.length(); i++) {
@@ -150,15 +164,6 @@ public class BookLoanView extends StackPane {
             }
             box.getChildren().add(1, lendButton);
         }
-
-        SubSceneHandler.inst().hide();
-
-        suggestionsButton.setOnMousePressed(e -> {
-            SuggestedBooks.inst().setBookGenre(book.getGenre());
-            SuggestedBooks.inst().loadBooks();
-            CustomerMenu.inst().open(SuggestedBooks.inst());
-            SubSceneHandler.inst().hide();
-        });
     }
 
     private void setupBookInformation() {

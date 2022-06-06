@@ -75,14 +75,14 @@ public class Books extends BorderPane {
         languageChoice.getItems().add("Alla");
         languageChoice.getItems().add("Svenska");
         languageChoice.getItems().add("Engelska");
-        languageChoice.setValue("Alla");
+        languageChoice.setValue("Språk");
 
         searchByChoice.getItems().add("Titel");
         searchByChoice.getItems().add("Författare");
         searchByChoice.setValue("Titel");
 
         libraryChoice.getItems().add("Alla");
-        libraryChoice.setValue("Alla");
+        libraryChoice.setValue("Lagertillgänglighet");
 
         searchButton.setOnMousePressed(e -> {
             updateBooks();
@@ -116,6 +116,7 @@ public class Books extends BorderPane {
         box.getChildren().clear();
         String lang = "";
         switch(languageChoice.getValue().toLowerCase()){
+            case "språk":
             case "alla":
                 lang = "";
                 break;
@@ -154,7 +155,7 @@ public class Books extends BorderPane {
         for(Book book : BackendCaller.inst().getBooks(
                 lang,
                 releaseInput.getText(),
-                libraryChoice.getValue().equalsIgnoreCase("alla") ? "" : libraryChoice.getValue(),
+                libraryChoice.getValue().equalsIgnoreCase("alla") || libraryChoice.getValue().equalsIgnoreCase("Lagertillgänglighet") ? "" : libraryChoice.getValue(),
                 searchByChoice.getValue(),
                 searchInput.getText(),
                 popularSort)) {

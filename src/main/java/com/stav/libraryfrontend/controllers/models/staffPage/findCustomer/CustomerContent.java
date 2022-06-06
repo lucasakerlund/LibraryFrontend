@@ -54,7 +54,6 @@ public class CustomerContent extends BorderPane {
 
         reservedBooksButton.setOnMousePressed(e -> {
             this.setCenter(ReservedBooks.inst());
-
             setFocused(reservedBooksButton);
         });
 

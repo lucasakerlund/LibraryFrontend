@@ -10,6 +10,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class BankID extends BorderPane {
 
@@ -23,6 +26,8 @@ public class BankID extends BorderPane {
 
     @FXML
     private ImageView imageView;
+
+    private Consumer<?> action;
 
     private BankID(){
         instance = this;
@@ -44,14 +49,16 @@ public class BankID extends BorderPane {
 
     public void setup(){
         confirmButton.setOnMousePressed(e -> {
-            LoginScreen.inst().userAddedSuccessfully();
-            Library.inst().setContent(LoginScreen.inst());
-            SubSceneHandler.inst().hide();
+            action.accept(null);
         });
 
         cancelButton.setOnMousePressed(e -> {
             SubSceneHandler.inst().hide();
         });
+    }
+
+    public void setConfirmListener(Consumer<Void> action){
+        this.action = action;
     }
 
     public static BankID inst(){

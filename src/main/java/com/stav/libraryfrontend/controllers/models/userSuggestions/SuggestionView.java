@@ -1,6 +1,7 @@
 package com.stav.libraryfrontend.controllers.models.userSuggestions;
 
 import com.stav.libraryfrontend.Library;
+import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.abstracts.SubSceneHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +31,9 @@ public class SuggestionView extends BorderPane {
     private Label suggestButton;
 
     @FXML
+    private TextField languageField;
+
+    @FXML
     private TextField titleField;
 
     private SuggestionView(){
@@ -57,14 +61,8 @@ public class SuggestionView extends BorderPane {
             if (titleField.getText().equals("")){
                 errorLabel.setText("Du måste fylla i bokens titel!");
             } else {
-                /* SUGGESTION CODE HERE!! -> Backend -> Databas
-                Send this to backend, bro
-                titleField.getText();
-                authorField.getText();
-                isbnField.getText(); */
-
+                BackendCaller.inst().suggestBook(titleField.getText(), authorField.getText(), isbnField.getText(), languageField.getText());
                 // Placeholder
-                System.out.println("WOOP, du skickade in ett förslag! Duktig ponke!");
                 errorLabel.setText("");
                 SubSceneHandler.inst().hide();
             }

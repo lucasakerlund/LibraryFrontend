@@ -4,6 +4,7 @@ import com.stav.libraryfrontend.abstracts.BackendCaller;
 import com.stav.libraryfrontend.models.Book;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import org.json.JSONObject;
@@ -21,6 +22,9 @@ public class TopSellerPage extends BorderPane {
     @FXML
     private FlowPane content;
 
+    @FXML
+    private Label reloadButton;
+
     private TopSellerPage(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/stav/libraryfrontend/fxml/staffPage/topSeller/topSellerPage.fxml"));
         loader.setRoot(this);
@@ -36,6 +40,9 @@ public class TopSellerPage extends BorderPane {
     }
 
     private void setup(){
+        reloadButton.setOnMousePressed(e -> {
+            loadBooks();
+        });
         loadBooks();
     }
 

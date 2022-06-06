@@ -17,14 +17,7 @@ public class SuggestedBooks extends BorderPane {
     private static SuggestedBooks instance = new SuggestedBooks();
 
     private String[] bookGenres;
-
-    public String[] getBookGenres() {
-        return bookGenres;
-    }
-
-    public void setBookGenre(String[] bookGenres) {
-        this.bookGenres = bookGenres;
-    }
+    private Book clickedBook;
 
     @FXML
     private FlowPane content;
@@ -49,16 +42,27 @@ public class SuggestedBooks extends BorderPane {
         setup();
     }
 
-    public void setup(){
+    private void setup(){
         backButton.setOnMousePressed(e -> {
             CustomerMenu.inst().open(Books.inst());
         });
+    }
+
+    public void setBookGenre(String[] bookGenres) {
+        this.bookGenres = bookGenres;
+    }
+
+    public void setClickedBook(Book book){
+        this.clickedBook = book;
     }
 
     public void loadBooks(){
         content.getChildren().clear();
         for (Book book : BackendCaller.inst().getBooksByGenre(bookGenres)) {
             try {
+                if(clickedBook.getIsbn().equals(book.getIsbn())){
+                    continue;
+                }
                 content.getChildren().add(new BookCover(book));
             } catch (IOException e) {
                 e.printStackTrace();

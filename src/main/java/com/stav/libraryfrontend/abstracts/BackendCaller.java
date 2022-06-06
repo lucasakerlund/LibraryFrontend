@@ -137,16 +137,12 @@ public class BackendCaller {
     }
 
     public List<Book> getBooks(String language, String releaseDate, String library, String searchType, String search, String popularSort){
-        try {
-            language = URLEncoder.encode(language, "UTF-8");
-            releaseDate = URLEncoder.encode(releaseDate, "UTF-8");
-            library = URLEncoder.encode(library, "UTF-8");
-            searchType = URLEncoder.encode(searchType, "UTF-8");
-            search = URLEncoder.encode(search, "UTF-8");
-            popularSort = URLEncoder.encode(popularSort, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        language = encode(language);
+        releaseDate = encode(releaseDate);
+        library = encode(library);
+        searchType = encode(searchType);
+        search = encode(search);
+        popularSort = encode(popularSort);
         String data = request("api/book_details?language=" + language + "&releaseDate=" + releaseDate + "&library=" + library + "&searchType=" + searchType + "&search=" + search + "&popularSort=" + popularSort);
         if(data.equals("")){
             return new ArrayList<>();
@@ -173,12 +169,7 @@ public class BackendCaller {
     }
 
     public List<Book> getBooksByGenre(String[] genres){
-        String genre = "";
-        try {
-            genre = URLEncoder.encode(String.join(",", genres), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        String genre = encode(String.join(",", genres));
         if(genre.equalsIgnoreCase("")){
             return new ArrayList<>();
         }
@@ -302,16 +293,19 @@ public class BackendCaller {
     }
 
     public boolean isInQueue(String isbn, int customerId){
+        isbn = encode(isbn);
         String data = request("api/book_queue/in_queue?isbn=" + isbn + "&customerId=" + customerId);
         return Boolean.parseBoolean(data);
     }
 
     public boolean reserveBook(String isbn, int customerId){
+        isbn = encode(isbn);
         String data = request("api/book_queue/reserve?isbn=" + isbn + "&customerId=" + customerId);
         return Boolean.parseBoolean(data);
     }
 
     public boolean leaveQueue(String isbn, int customerId){
+        isbn = encode(isbn);
         String data = request("api/book_queue/leave_queue?isbn=" + isbn + "&customerId=" + customerId); 
         return Boolean.parseBoolean(data);
     }
@@ -412,7 +406,8 @@ public class BackendCaller {
         return Boolean.parseBoolean(data);
     }
 
-    public Customer getCustomerByEmail (String email){
+    public Customer getCustomerByEmail(String email){
+        email = encode(email);
         String data = request("api/customers/getCustomerByEmail?email=" + email);
         System.out.println("Returned in BackendCaller = " + data);
 
@@ -425,6 +420,104 @@ public class BackendCaller {
                 object.getString("last_name"),
                 object.getString("email"),
                 object.getString("password")
+        );
+    }
+
+    public List<BookSuggestion> getBookSuggestions(){
+        String data = request("api/book_suggestions");
+        JSONArray array = new JSONArray(data);
+        List<BookSuggestion> output = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject o = array.getJSONObject(i);
+            output.add(new BookSuggestion(
+                    o.getInt("book_suggestion_id"),
+                    o.getString("isbn"),
+                    o.getString("title"),
+                    o.getString("authors"),
+                    o.getString("language")
+            ));
+        }
+        return output;
+    }
+
+    public boolean removeBookSuggestion(int bookSuggestionId){
+        String data = request("api/book_suggestions/remove/" + bookSuggestionId);
+        return Boolean.parseBoolean(data);
+    }
+
+    public boolean suggestBook(String title, String authors, String isbn, String language){
+        title = encode(title);
+        authors = encode(authors);
+        isbn = encode(isbn);
+        language = encode(language);
+        String data = request("api/book_suggestions/suggest?title=" + title + "&authors=" + authors + "&isbn=" + isbn + "&language=" + language);
+        return Boolean.parseBoolean(data);
+    }
+
+    public boolean addBook(String title, String description, String authors, String genres, String isbn, String published, int page_count, String language, String image){
+        title = encode(title);
+        description = encode(description);
+        authors = encode(authors);
+        genres = encode(genres);
+        isbn = encode(isbn);
+        published = encode(published);
+        language = encode(language);
+        image = encode(image);
+        String data = request("api/book_details/add?title=" + title + "&description=" + description + "&authors=" + authors + "&genres=" + genres + "&isbn=" + isbn + "&published=" + published + "&page_count=" + page_count + "&language=" + language + "&image=" + image);
+        return Boolean.parseBoolean(data);
+    }
+
+    public boolean createCustomer(String firstName, String lastName, String mail, String password){
+        firstName = encode(firstName);
+        lastName = encode(lastName);
+        mail = encode(mail);
+        password = encode(password);
+        String data = request("api/customers/create?firstName=" + firstName + "&lastName=" + lastName + "&mail=" + mail + "&password=" + password);
+        return Boolean.parseBoolean(data);
+    }
+
+    public boolean createStaff(String firstName, String lastName, String username, String password, String role){
+        firstName = encode(firstName);
+        lastName = encode(lastName);
+        username = encode(username);
+        password = encode(password);
+        role = encode(role);
+        String data = request("api/employees/create?firstName=" + firstName + "&lastName=" + lastName + "&mail=" + username + "&password=" + password + "&role=" + role);
+        return Boolean.parseBoolean(data);
+    }
+
+    public Customer loginCustomer(String email, String password){
+        email = encode(email);
+        password = encode(password);
+        String data = request("api/customers/login?email=" + email + "&password=" + password);
+        if(data.equals("")){
+            return null;
+        }
+        System.out.println("data " + data);
+        JSONObject object = new JSONObject(data);
+        return new Customer(object.getInt("customer_id"),
+                object.getString("first_name"),
+                object.getString("last_name"),
+                object.getString("email"),
+                object.getString("password")
+        );
+    }
+
+    public Staff loginStaff(String email, String password){
+        email = encode(email);
+        password = encode(password);
+        String data = request("api/employees/login?email=" + email + "&password=" + password);
+
+        if(data.equals("")){
+            return null;
+        }
+        JSONObject object = new JSONObject(data);
+        return new Staff(object.getInt("employee_id"),
+                object.getString("first_name"),
+                object.getString("last_name"),
+                object.getString("email"),
+                object.getString("password"),
+                object.getString("role")
         );
     }
 
@@ -441,47 +534,6 @@ public class BackendCaller {
         return Boolean.parseBoolean(post("api/loans/loan", object.toString()));
     }
 
-    public boolean createCustomer(String firstName, String lastName, String mail, String password){
-        String data = request("api/customers/create?firstName=" + firstName + "&lastName=" + lastName + "&mail=" + mail + "&password=" + password);
-        return Boolean.parseBoolean(data);
-    }
-
-    public boolean createStaff(String firstName, String lastName, String userName, String password, String role){
-        String data = request("api/employees/create?firstName=" + firstName + "&lastName=" + lastName + "&mail=" + userName + "&password=" + password + "&role=" + role);
-        return Boolean.parseBoolean(data);
-    }
-
-    public Customer loginCustomer(String email, String password){
-        String data = request("api/customers/login?email=" + email + "&password=" + password);
-        if(data.equals("")){
-            return null;
-        }
-        System.out.println("data " + data);
-        JSONObject object = new JSONObject(data);
-        return new Customer(object.getInt("customer_id"),
-                object.getString("first_name"),
-                object.getString("last_name"),
-                object.getString("email"),
-                object.getString("password")
-                );
-    }
-
-    public Staff loginStaff(String email, String password){
-        String data = request("api/employees/login?email=" + email + "&password=" + password);
-
-        if(data.equals("")){
-            return null;
-        }
-        JSONObject object = new JSONObject(data);
-        return new Staff(object.getInt("employee_id"),
-                object.getString("first_name"),
-                object.getString("last_name"),
-                object.getString("email"),
-                object.getString("password"),
-                object.getString("role")
-        );
-    }
-
     private String[] convertJSONArrayToStringArray(JSONArray array){
         List<String> output = new ArrayList<>();
         for (int i = 0; i < array.length(); i++) {
@@ -491,8 +543,13 @@ public class BackendCaller {
         }
         return output.toArray(new String[output.size()]);
     }
-    public boolean addBook(String title, String description, String authors, String genres, String isbn, String published, int page_count, String language, String image){
-        String data = request("/api/book_details/add?title" + title + "description" + description + "authors" + authors + "genres" + genres + "isbn" + isbn + "published" + published + "page_count" + page_count + "language" + language + "image" + image);
-        return Boolean.parseBoolean(data);
+
+    private String encode(String text){
+        try {
+            return URLEncoder.encode(text, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

@@ -9,7 +9,7 @@
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" BorderPane.alignment="TOP_LEFT">
          <content>
-            <FlowPane fx:id="box" />
+            <FlowPane fx:id="box" hgap="10.0" vgap="10.0" />
          </content>
          <padding>
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />

@@ -2,6 +2,8 @@ package com.stav.libraryfrontend.controllers.models.staffPage;
 
 import com.stav.libraryfrontend.Library;
 import com.stav.libraryfrontend.controllers.models.AdminScreen;
+import com.stav.libraryfrontend.controllers.models.staffPage.addBook.StaffAddBookPage;
+import com.stav.libraryfrontend.controllers.models.staffPage.bookSuggestions.StaffBookSuggestionsPage;
 import com.stav.libraryfrontend.controllers.models.staffPage.books.StaffBookPage;
 import com.stav.libraryfrontend.controllers.models.staffPage.findCustomer.FindCustomerPage;
 import com.stav.libraryfrontend.controllers.models.staffPage.groupRooms.StaffGroupRooms;
@@ -31,6 +33,8 @@ public class StaffMenu extends BorderPane {
     @FXML
     private HBox findCustomerButton;
     @FXML
+    private HBox bookSuggestionsbutton;
+    @FXML
     private HBox logoutButton;
 
     @FXML
@@ -57,6 +61,7 @@ public class StaffMenu extends BorderPane {
             buttons.put("locals", new MenuButton(staffLocalsButton, StaffGroupRooms.inst()));
             buttons.put("topSeller", new MenuButton(topSellerButton, TopSellerPage.inst()));
             buttons.put("findCustomer", new MenuButton(findCustomerButton, FindCustomerPage.inst()));
+            buttons.put("bookSuggestions", new MenuButton(bookSuggestionsbutton, StaffBookSuggestionsPage.inst()));
 
         setup();
         open("books");

@@ -111,7 +111,8 @@
 
 /*Books*/
 .books-header{
-
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: white;
 }
 
 .books-header-choice{
@@ -932,26 +933,6 @@
     -fx-cursor: hand;
 }
 
-/*Staff Add Book Page*/
-
-.staff-add-book-page-content{
-    -fx-background-color: white;
-}
-
-.staff-add-button{
-    -fx-font-size: 14;
-    -fx-border-width: 2;
-    -fx-border-color: black;
-    -fx-padding: 6;
-    -fx-background-color: #00e100;
-}
-
-.staff-add-button:hover{
-    -fx-background-color: green;
-    -fx-underline: true;
-    -fx-cursor: hand;
-}
-
 /* group rooms */
 
 .group-rooms-header{
@@ -1226,6 +1207,22 @@
     -fx-cursor: hand;
 }
 /* Booking box */
+
+/*Top Seller Page*/
+.top-seller-reload-button{
+    -fx-font-size: 20;
+    -fx-text-fill: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: #00ff00;
+    -fx-padding: 0 5 0 5;
+}
+
+.top-seller-reload-button:hover{
+    -fx-text-fill: #92f192;
+    -fx-border-color: #92f192;
+    -fx-cursor: hand;
+}
+
 /*Top Seller Cover*/
 .top-seller-book-cover{
     -fx-background-color: black;
@@ -1347,15 +1344,17 @@
 /* find customer page - book box */
 
 .find-customer-book-box{
-    -fx-background-color: white;
     -fx-border-width: 2;
     -fx-border-color: black;
     -fx-padding: 2;
 }
 
-.find-customer-book-box:hover{
-    -fx-background-color: gray;
-    -fx-underline: true;
+.find-customer-book-box{
+    -fx-background-color: black;
+}
+
+.find-customer-book-box-image:hover{
+    -fx-opacity: .5;
     -fx-cursor: hand;
 }
 
@@ -1450,8 +1449,84 @@
 
 /* Staff add book page */
 
-.error-label{
+.staff-add-book-page-content{
+
+}
+
+.staff-add-button{
+    -fx-font-size: 14;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-padding: 6;
+    -fx-background-color: #00e100;
+}
+
+.staff-add-button:hover{
+    -fx-background-color: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.staff-add-book-error-label{
     -fx-text-fill: red;
     -fx-font-size: 18;
     -fx-underline: true;
+}
+
+.staff-add-book-succeed{
+    -fx-font-size: 20;
+    -fx-text-fill: green;
+}
+
+/*Staff Book Suggestion Page*/
+.staff-book-suggestions{
+
+}
+/*Staff Book Suggestion Cover*/
+.staff-book-suggestion-cover{
+
+}
+
+.staff-book-suggestion-cover-list{
+    -fx-background-color: rgba(52,53,53,.4);
+    -fx-border-width: 2;
+    -fx-border-color: white;
+}
+
+.staff-book-suggestion-cover-list-footer{
+    -fx-border-width: 2 0 0 0;
+    -fx-border-color: white;
+}
+
+.staff-book-suggestion-cover-remove-button{
+    -fx-font-size: 20;
+    -fx-text-fill: red;
+    -fx-border-width: 2;
+    -fx-border-color: red;
+    -fx-padding: 0 2 0 2;
+}
+
+.staff-book-suggestion-cover-remove-button:hover{
+    -fx-text-fill: #ff6363;
+    -fx-border-color: #ff6363;
+    -fx-cursor: hand;
+}
+
+.staff-book-suggestion-cover-label{
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+
+.staff-book-suggestion-reload-button{
+    -fx-font-size: 20;
+    -fx-text-fill: #00ff00;
+    -fx-border-width: 2;
+    -fx-border-color: #00ff00;
+    -fx-padding: 0 5 0 5;
+}
+
+.staff-book-suggestion-reload-button:hover{
+    -fx-text-fill: #92f192;
+    -fx-border-color: #92f192;
+    -fx-cursor: hand;
 }
