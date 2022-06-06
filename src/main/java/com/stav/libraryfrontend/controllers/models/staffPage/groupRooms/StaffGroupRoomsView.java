@@ -1,7 +1,6 @@
 package com.stav.libraryfrontend.controllers.models.staffPage.groupRooms;
 
 import com.stav.libraryfrontend.abstracts.BackendCaller;
-import com.stav.libraryfrontend.models.Customer;
 import com.stav.libraryfrontend.models.GroupRoomTime;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
